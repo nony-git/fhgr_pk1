@@ -5,6 +5,7 @@
     <HelloWorld v-if="show=='methodencheck'" msg="Hallo methodencheck!"/>
     <HelloWorld v-if="show=='bibeval'" msg="Hallo bibeval!"/>
     <HelloWorld v-if="show=='suchanfrage'" msg="Hallo suchanfrage!"/>
+    <HelloWorld v-if="show=='Team'" msg="Hallo Team!"/>
     {{show}}
   </div>
 </template>
