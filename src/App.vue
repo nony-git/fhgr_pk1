@@ -3,7 +3,7 @@
 
     <img alt="Vue logo" src="./assets/fhgr.jpg">
     <HelloWorld v-if="show=='methodencheck'" msg="Hallo methodencheck!"/>
-    <HelloWorld v-if="show=='bibeval'" msg="Hallo bibeval!"/>
+    <Bibeval v-if="show=='bibeval'"/>
     <HelloWorld v-if="show=='suchanfrage'" msg="Hallo suchanfrage!"/>
     {{show}}
   </div>
@@ -11,11 +11,13 @@
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
+import Bibeval from './components/Bibeval.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    HelloWorld,
+		Bibeval
   },
   props:[
     "show"
