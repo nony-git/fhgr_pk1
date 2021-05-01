@@ -1,7 +1,7 @@
 <template>
   <div id="app">
 
-    <HelloWorld v-if="show=='methodencheck'" msg="Hallo methodencheck!"/>
+    <Methodencheck v-if="show=='methodencheck'"/>
     <Bibeval v-if="show=='bibeval'"/>
     <HelloWorld v-if="show=='suchanfrage'" msg="Hallo suchanfrage!"/>
 
@@ -11,12 +11,14 @@
 <script>
 import HelloWorld from './components/HelloWorld.vue'
 import Bibeval from './components/Bibeval.vue'
+import Methodencheck from './components/Methodencheck.vue'
 
 export default {
   name: 'App',
   components: {
     HelloWorld,
-		Bibeval
+		Bibeval,
+    Methodencheck
   },
   props:[
     "show"
