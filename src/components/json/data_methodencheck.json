@@ -1,41 +1,73 @@
 {
   "fragen": {
     "produktstatus": {
-  		"1":"eine Idee",
-  		"2":"einen skizzierten Entwurf",
-  		"3":"einen funktionsfähigen Entwurf",
-  		"4":"ein fertiges Produkt"
+      "frage": "Was ist der Status Ihres Produkts?",
+      "antworten": {
+        "1":"eine Idee",
+    		"2":"einen skizzierten Entwurf",
+    		"3":"einen funktionsfähigen Entwurf",
+    		"4":"ein fertiges Produkt"
+      }
   	},
   	"motivation": {
-  		"1":"nur ein Produkt untersuchen",
-  		"2":"mehrere Produkte/Varianten vergleichen",
-  		"3":"mehr über das Marktumfeld erfahren",
-  		"4":"Unterstützung bei der Entwicklung"
+      "frage": "Was wollen Sie mit der Evaluation erreichen?",
+      "antworten": {
+        "1":"nur ein Produkt untersuchen",
+    		"2":"mehrere Produkte/Varianten vergleichen",
+    		"3":"mehr über das Marktumfeld erfahren",
+    		"4":"Unterstützung bei der Entwicklung"
+      }
   	},
   	"untersuchungsziel":{
-  		"1":"eine allgemeine Bewertung meines Produkt",
-  		"2":"Fehler und Schwachstellen aufdecken",
-  		"3":"eine explorative Analyse des Produktes",
-  		"4":"konzeptionelle Unterstützung"
+      "frage": "Was ist das Ziel der Unterschung?",
+      "antworten": {
+        "1":"eine allgemeine Bewertung meines Produkt",
+    		"2":"Fehler und Schwachstellen aufdecken",
+    		"3":"eine explorative Analyse des Produktes",
+    		"4":"konzeptionelle Unterstützung"
+      }
   	},
   	"untersuchungsschwerpunkt":{
-  		"1":"Erlernbarkeit",
-  		"2":"Dialoggestaltung",
-  		"3":"Informationspräsentation",
-  		"4":"Accessibility",
-  		"5":"Joy of Use",
-  		"6":"Zielgruppendefinition",
-  		"7":"Mitbewerber",
-  		"8":"Anforderungsdefinition",
-  		"9":"gesamthaft untersucht werden"
-  	}
+      "frage": "Dabei soll das Produkt?",
+      "antworten": {
+        "1":"Erlernbarkeit",
+    		"2":"Dialoggestaltung",
+    		"3":"Informationspräsentation",
+    		"4":"Accessibility",
+    		"5":"Joy of Use",
+    		"6":"Zielgruppendefinition",
+    		"7":"Mitbewerber",
+    		"8":"Anforderungsdefinition",
+    		"9":"gesamthaft untersucht werden"
+      }
+  	},
+    "zeit": {
+      "frage": "Wie viel Zeit steht für die Untersuchung an?",
+      "antworten": {
+        "1":"Sehr wenig",
+        "2":"Wenig",
+        "3":"Mittel",
+        "4":"Hoch",
+        "5":"Sehr hoch"
+      }
+    },
+    "budget": {
+      "frage": "Wie ist das Budget für die Untersuchung?",
+      "antworten": {
+        "1":"Sehr niedrig",
+        "2":"Niedrig",
+        "3":"Mittel",
+        "4":"Hoch",
+        "5":"Sehr hoch"
+      }
+    }
   },
   "methoden": [
 		 {
 			"id":1,
 			"bezeichnung":"Cognitive Walkthrough",
-			"zeit":"hoch",
-			"budget":"hoch",
+			"zeit":"4",
+			"budget":"4",
 			"relevanz":4,
 			"produktstatus": [
 				 "2",
@@ -57,8 +89,8 @@
 		{
 			"id":2,
 			"bezeichnung":"Pluralistic Usability Walkthrough",
-			"zeit":"hoch",
-			"budget":"hoch",
+			"zeit":"4",
+			"budget":"4",
 			"relevanz":2,
 			"produktstatus": [
 				 "2",
@@ -79,8 +111,8 @@
 		{
 			"id":3,
 			"bezeichnung":"Collaborative Usability Inspection",
-			"zeit":"hoch",
-			"budget":"hoch",
+			"zeit":"4",
+			"budget":"4",
 			"relevanz":3,
 			"produktstatus": [
 				 "2",
@@ -101,8 +133,8 @@
 		{
 			"id":4,
 			"bezeichnung":"Heuristische Evaluation",
-			"zeit":"mittel",
-			"budget":"mittel",
+			"zeit":"3",
+			"budget":"3",
 			"relevanz":5,
 			"produktstatus": [
 				 "2",
@@ -123,8 +155,8 @@
 		{
 			"id":5,
 			"bezeichnung":"Claims Analysis",
-			"zeit":"mittel",
-			"budget":"mittel",
+			"zeit":"3",
+			"budget":"3",
 			"relevanz":1,
 			"produktstatus": [
 				 "2",
@@ -144,8 +176,8 @@
 		{
 			"id":6,
 			"bezeichnung":"ISO-9241-110",
-			"zeit":"wenig",
-			"budget":"niedrig",
+			"zeit":"2",
+			"budget":"2",
 			"relevanz":3,
 			"produktstatus": [
 				 "2",
@@ -167,8 +199,8 @@
 		{
 			"id":7,
 			"bezeichnung":"ISO-9241-12",
-			"zeit":"wenig",
-			"budget":"niedrig",
+			"zeit":"2",
+			"budget":"2",
 			"relevanz":3,
 			"produktstatus": [
 				 "2",
@@ -190,8 +222,8 @@
 		{
 			"id":8,
 			"bezeichnung":"Web Accessibility Guidelines",
-			"zeit":"mittel",
-			"budget":"mittel",
+			"zeit":"3",
+			"budget":"3",
 			"relevanz":3,
 			"produktstatus": [
 				 "3",
@@ -212,8 +244,8 @@
 		{
 			"id":9,
 			"bezeichnung":"AttrakDiff",
-			"zeit":"sehr wenig",
-			"budget":"sehr niedrig",
+			"zeit":"1",
+			"budget":"1",
 			"relevanz":5,
 			"produktstatus": [
 				 "3",
@@ -233,8 +265,8 @@
 		{
 			"id":10,
 			"bezeichnung":"ISOMetrics (kurz)",
-			"zeit":"sehr wenig",
-			"budget":"sehr niedrig",
+			"zeit":"1",
+			"budget":"1",
 			"relevanz":4,
 			"produktstatus": [
 				 "3",
@@ -254,8 +286,8 @@
 		{
 			"id":11,
 			"bezeichnung":"ISOMetrics (lang)",
-			"zeit":"wenig",
-			"budget":"niedrig",
+			"zeit":"2",
+			"budget":"2",
 			"relevanz":3,
 			"produktstatus": [
 				 "3",
@@ -275,8 +307,8 @@
 		{
 			"id":12,
 			"bezeichnung":"ISONorm 110-S/ISONorm 10",
-			"zeit":"sehr wenig",
-			"budget":"sehr niedrig",
+			"zeit":"1",
+			"budget":"1",
 			"relevanz":4,
 			"produktstatus": [
 				 "2"
@@ -295,8 +327,8 @@
 		{
 			"id":13,
 			"bezeichnung":"SUMI",
-			"zeit":"wenig",
-			"budget":"niedrig",
+			"zeit":"2",
+			"budget":"2",
 			"relevanz":2,
 			"produktstatus": [
 				 "3",
@@ -316,8 +348,8 @@
 		{
 			"id":14,
 			"bezeichnung":"QUIS",
-			"zeit":"wenig",
-			"budget":"niedrig",
+			"zeit":"2",
+			"budget":"2",
 			"relevanz":2,
 			"produktstatus": [
 				 "3",
@@ -337,8 +369,8 @@
 		{
 			"id":15,
 			"bezeichnung":"WUI",
-			"zeit":"wenig",
-			"budget":"niedrig",
+			"zeit":"2",
+			"budget":"2",
 			"relevanz":3,
 			"produktstatus": [
 				 "3",
@@ -358,8 +390,8 @@
 		{
 			"id":16,
 			"bezeichnung":"Contextual Inquiry",
-			"zeit":"hoch",
-			"budget":"hoch",
+			"zeit":"4",
+			"budget":"4",
 			"relevanz":3,
 			"produktstatus": [
 				 "1",
@@ -382,8 +414,8 @@
 		{
 			"id":17,
 			"bezeichnung":"Focus Groups",
-			"zeit":"hoch",
-			"budget":"hoch",
+			"zeit":"4",
+			"budget":"4",
 			"relevanz":3,
 			"produktstatus": [
 				 "1",
@@ -411,8 +443,8 @@
 		{
 			"id":18,
 			"bezeichnung":"Usability Test",
-			"zeit":"hoch",
-			"budget":"hoch",
+			"zeit":"4",
+			"budget":"4",
 			"relevanz":5,
 			"produktstatus": [
 				 "3",
@@ -434,8 +466,8 @@
 		{
 			"id":19,
 			"bezeichnung":"Card Sorting",
-			"zeit":"wenig",
-			"budget":"niedrig",
+			"zeit":"2",
+			"budget":"2",
 			"relevanz":3,
 			"produktstatus": [
 				 "2",
@@ -455,8 +487,8 @@
 		{
 			"id":20,
 			"bezeichnung":"Personas",
-			"zeit":"mittel",
-			"budget":"mittel",
+			"zeit":"3",
+			"budget":"3",
 			"relevanz":3,
 			"produktstatus": [
 				 "1",
@@ -477,8 +509,8 @@
 		{
 			"id":21,
 			"bezeichnung":"Best-Practice-Analyse",
-			"zeit":"mittel",
-			"budget":"mittel",
+			"zeit":"3",
+			"budget":"3",
 			"relevanz":5,
 			"produktstatus": [
 				"1",
@@ -503,8 +535,8 @@
 		{
 			"id":22,
 			"bezeichnung":"Umfragen",
-			"zeit":"sehr hoch",
-			"budget":"mittel",
+			"zeit":"5",
+			"budget":"3",
 			"relevanz":4,
 			"produktstatus": [
 				"1",
