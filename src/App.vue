@@ -1,22 +1,23 @@
 <template>
   <div id="app">
 
-    <img alt="Vue logo" src="./assets/fhgr.jpg">
-    <HelloWorld v-if="show=='methodencheck'" msg="Hallo methodencheck!"/>
-    <HelloWorld v-if="show=='bibeval'" msg="Hallo bibeval!"/>
+    <Methodencheck v-if="show=='methodencheck'"/>
+    <Bibeval v-if="show=='bibeval'"/>
     <HelloWorld v-if="show=='suchanfrage'" msg="Hallo suchanfrage!"/>
-    <HelloWorld v-if="show=='Team'" msg="Hallo Team!"/>
-    {{show}}
   </div>
 </template>
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
+import Bibeval from './components/Bibeval.vue'
+import Methodencheck from './components/Methodencheck.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    HelloWorld,
+		Bibeval,
+    Methodencheck
   },
   props:[
     "show"

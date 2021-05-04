@@ -1,0 +1,563 @@
+{
+  "fragen": {
+    "produktstatus": {
+      "frage": "Was ist der Status Ihres Produkts?",
+      "antworten": {
+        "1":"eine Idee",
+    		"2":"einen skizzierten Entwurf",
+    		"3":"einen funktionsfähigen Entwurf",
+    		"4":"ein fertiges Produkt"
+      }
+  	},
+  	"motivation": {
+      "frage": "Was wollen Sie mit der Evaluation erreichen?",
+      "antworten": {
+        "1":"nur ein Produkt untersuchen",
+    		"2":"mehrere Produkte/Varianten vergleichen",
+    		"3":"mehr über das Marktumfeld erfahren",
+    		"4":"Unterstützung bei der Entwicklung"
+      }
+  	},
+  	"untersuchungsziel":{
+      "frage": "Was ist das Ziel der Unterschung?",
+      "antworten": {
+        "1":"eine allgemeine Bewertung meines Produkt",
+    		"2":"Fehler und Schwachstellen aufdecken",
+    		"3":"eine explorative Analyse des Produktes",
+    		"4":"konzeptionelle Unterstützung"
+      }
+  	},
+  	"untersuchungsschwerpunkt":{
+      "frage": "Dabei soll das Produkt?",
+      "antworten": {
+        "1":"Erlernbarkeit",
+    		"2":"Dialoggestaltung",
+    		"3":"Informationspräsentation",
+    		"4":"Accessibility",
+    		"5":"Joy of Use",
+    		"6":"Zielgruppendefinition",
+    		"7":"Mitbewerber",
+    		"8":"Anforderungsdefinition",
+    		"9":"gesamthaft untersucht werden"
+      }
+  	},
+    "zeit": {
+      "frage": "Wie viel Zeit steht für die Untersuchung an?",
+      "antworten": {
+        "1":"Sehr wenig",
+        "2":"Wenig",
+        "3":"Mittel",
+        "4":"Hoch",
+        "5":"Sehr hoch"
+      }
+    },
+    "budget": {
+      "frage": "Wie ist das Budget für die Untersuchung?",
+      "antworten": {
+        "1":"Sehr niedrig",
+        "2":"Niedrig",
+        "3":"Mittel",
+        "4":"Hoch",
+        "5":"Sehr hoch"
+      }
+    }
+  },
+  "methoden": [
+		 {
+			"id":1,
+			"bezeichnung":"Cognitive Walkthrough",
+			"zeit":"4",
+			"budget":"4",
+			"relevanz":4,
+			"produktstatus": [
+				 "2",
+				 "3",
+				 "4"
+			],
+			"motivation": [
+				"1"
+			],
+			"untersuchungsziel": [
+				"3"
+			],
+			"untersuchungsschwerpunkt": [
+				"1",
+				"2",
+				"3"
+			]
+		},
+		{
+			"id":2,
+			"bezeichnung":"Pluralistic Usability Walkthrough",
+			"zeit":"4",
+			"budget":"4",
+			"relevanz":2,
+			"produktstatus": [
+				 "2",
+				 "3",
+				 "4"
+			],
+			"motivation": [
+				"1"
+			],
+			"untersuchungsziel": [
+				"3"
+			],
+			"untersuchungsschwerpunkt": [
+				"2",
+				"3"
+			]
+		},
+		{
+			"id":3,
+			"bezeichnung":"Collaborative Usability Inspection",
+			"zeit":"4",
+			"budget":"4",
+			"relevanz":3,
+			"produktstatus": [
+				 "2",
+				 "3",
+				 "4"
+			],
+			"motivation": [
+				"1"
+			],
+			"untersuchungsziel": [
+				"2"
+			],
+			"untersuchungsschwerpunkt": [
+				"2",
+				"3"
+			]
+		},
+		{
+			"id":4,
+			"bezeichnung":"Heuristische Evaluation",
+			"zeit":"3",
+			"budget":"3",
+			"relevanz":5,
+			"produktstatus": [
+				 "2",
+				 "3",
+				 "4"
+			],
+			"motivation": [
+				"1"
+			],
+			"untersuchungsziel": [
+				"2"
+			],
+			"untersuchungsschwerpunkt": [
+				"2",
+				"3"
+			]
+		},
+		{
+			"id":5,
+			"bezeichnung":"Claims Analysis",
+			"zeit":"3",
+			"budget":"3",
+			"relevanz":1,
+			"produktstatus": [
+				 "2",
+				 "3"
+			],
+			"motivation": [
+				"1",
+				"2"
+			],
+			"untersuchungsziel": [
+				"1"
+			],
+			"untersuchungsschwerpunkt": [
+				"2"
+			]
+		},
+		{
+			"id":6,
+			"bezeichnung":"ISO-9241-110",
+			"zeit":"2",
+			"budget":"2",
+			"relevanz":3,
+			"produktstatus": [
+				 "2",
+				 "3",
+				 "4"
+			],
+			"motivation": [
+				"1",
+				"2",
+				"4"
+			],
+			"untersuchungsziel": [
+				"1"
+			],
+			"untersuchungsschwerpunkt": [
+				"2"
+			]
+		},
+		{
+			"id":7,
+			"bezeichnung":"ISO-9241-12",
+			"zeit":"2",
+			"budget":"2",
+			"relevanz":3,
+			"produktstatus": [
+				 "2",
+				 "3",
+				 "4"
+			],
+			"motivation": [
+				"1",
+				"2",
+				"4"
+			],
+			"untersuchungsziel": [
+				"1"
+			],
+			"untersuchungsschwerpunkt": [
+				"3"
+			]
+		},
+		{
+			"id":8,
+			"bezeichnung":"Web Accessibility Guidelines",
+			"zeit":"3",
+			"budget":"3",
+			"relevanz":3,
+			"produktstatus": [
+				 "3",
+				 "4"
+			],
+			"motivation": [
+				"1",
+				"4"
+			],
+			"untersuchungsziel": [
+				"1",
+				"2"
+			],
+			"untersuchungsschwerpunkt": [
+				"4"
+			]
+		},
+		{
+			"id":9,
+			"bezeichnung":"AttrakDiff",
+			"zeit":"1",
+			"budget":"1",
+			"relevanz":5,
+			"produktstatus": [
+				 "3",
+				 "4"
+			],
+			"motivation": [
+				"1",
+				"2"
+			],
+			"untersuchungsziel": [
+				"1"
+			],
+			"untersuchungsschwerpunkt": [
+				"5"
+			]
+		},
+		{
+			"id":10,
+			"bezeichnung":"ISOMetrics (kurz)",
+			"zeit":"1",
+			"budget":"1",
+			"relevanz":4,
+			"produktstatus": [
+				 "3",
+				 "4"
+			],
+			"motivation": [
+				"1",
+				"2"
+			],
+			"untersuchungsziel": [
+				"1"
+			],
+			"untersuchungsschwerpunkt": [
+				"2"
+			]
+		},
+		{
+			"id":11,
+			"bezeichnung":"ISOMetrics (lang)",
+			"zeit":"2",
+			"budget":"2",
+			"relevanz":3,
+			"produktstatus": [
+				 "3",
+				 "4"
+			],
+			"motivation": [
+				"1",
+				"2"
+			],
+			"untersuchungsziel": [
+				"2"
+			],
+			"untersuchungsschwerpunkt": [
+				"2"
+			]
+		},
+		{
+			"id":12,
+			"bezeichnung":"ISONorm 110-S/ISONorm 10",
+			"zeit":"1",
+			"budget":"1",
+			"relevanz":4,
+			"produktstatus": [
+				 "2"
+			],
+			"motivation": [
+				"1",
+				"2"
+			],
+			"untersuchungsziel": [
+				"1"
+			],
+			"untersuchungsschwerpunkt": [
+				"2"
+			]
+		},
+		{
+			"id":13,
+			"bezeichnung":"SUMI",
+			"zeit":"2",
+			"budget":"2",
+			"relevanz":2,
+			"produktstatus": [
+				 "3",
+				 "4"
+			],
+			"motivation": [
+				"1",
+				"2"
+			],
+			"untersuchungsziel": [
+				"1"
+			],
+			"untersuchungsschwerpunkt": [
+				"9"
+			]
+		},
+		{
+			"id":14,
+			"bezeichnung":"QUIS",
+			"zeit":"2",
+			"budget":"2",
+			"relevanz":2,
+			"produktstatus": [
+				 "3",
+				 "4"
+			],
+			"motivation": [
+				"1",
+				"2"
+			],
+			"untersuchungsziel": [
+				"1"
+			],
+			"untersuchungsschwerpunkt": [
+				"9"
+			]
+		},
+		{
+			"id":15,
+			"bezeichnung":"WUI",
+			"zeit":"2",
+			"budget":"2",
+			"relevanz":3,
+			"produktstatus": [
+				 "3",
+				 "4"
+			],
+			"motivation": [
+				"1",
+				"2"
+			],
+			"untersuchungsziel": [
+				"1"
+			],
+			"untersuchungsschwerpunkt": [
+				"9"
+			]
+		},
+		{
+			"id":16,
+			"bezeichnung":"Contextual Inquiry",
+			"zeit":"4",
+			"budget":"4",
+			"relevanz":3,
+			"produktstatus": [
+				 "1",
+				 "2",
+				 "3"
+			],
+			"motivation": [
+				"4"
+			],
+			"untersuchungsziel": [
+				"4"
+			],
+			"untersuchungsschwerpunkt": [
+				"2",
+				"3",
+				"8",
+				"9"
+			]
+		},
+		{
+			"id":17,
+			"bezeichnung":"Focus Groups",
+			"zeit":"4",
+			"budget":"4",
+			"relevanz":3,
+			"produktstatus": [
+				 "1",
+				 "2",
+				 "3"
+			],
+			"motivation": [
+				"1",
+				"2",
+				"3",
+				"4"
+			],
+			"untersuchungsziel": [
+				"1",
+				"2",
+				"4"
+			],
+			"untersuchungsschwerpunkt": [
+				"2",
+				"3",
+				"8",
+				"9"
+			]
+		},
+		{
+			"id":18,
+			"bezeichnung":"Usability Test",
+			"zeit":"4",
+			"budget":"4",
+			"relevanz":5,
+			"produktstatus": [
+				 "3",
+				 "4"
+			],
+			"motivation": [
+				"1"
+			],
+			"untersuchungsziel": [
+				"2"
+			],
+			"untersuchungsschwerpunkt": [
+				"1",
+				"2",
+				"3",
+				"9"
+			]
+		},
+		{
+			"id":19,
+			"bezeichnung":"Card Sorting",
+			"zeit":"2",
+			"budget":"2",
+			"relevanz":3,
+			"produktstatus": [
+				 "2",
+				 "3"
+			],
+			"motivation": [
+				"1",
+				"4"
+			],
+			"untersuchungsziel": [
+				"4"
+			],
+			"untersuchungsschwerpunkt": [
+				"2"
+			]
+		},
+		{
+			"id":20,
+			"bezeichnung":"Personas",
+			"zeit":"3",
+			"budget":"3",
+			"relevanz":3,
+			"produktstatus": [
+				 "1",
+				 "2",
+				 "3"
+			],
+			"motivation": [
+				"4"
+			],
+			"untersuchungsziel": [
+				"4"
+			],
+			"untersuchungsschwerpunkt": [
+				"3",
+				"8"
+			]
+		},
+		{
+			"id":21,
+			"bezeichnung":"Best-Practice-Analyse",
+			"zeit":"3",
+			"budget":"3",
+			"relevanz":5,
+			"produktstatus": [
+				"1",
+				"2",
+				"3",
+				"4"
+			],
+			"motivation": [
+				"3",
+				"4"
+			],
+			"untersuchungsziel": [
+				"1",
+				"4"
+			],
+			"untersuchungsschwerpunkt": [
+				"7",
+				"8",
+				"9"
+			]
+		},
+		{
+			"id":22,
+			"bezeichnung":"Umfragen",
+			"zeit":"5",
+			"budget":"3",
+			"relevanz":4,
+			"produktstatus": [
+				"1",
+				"2",
+				"3",
+				"4"
+			],
+			"motivation": [
+				"3",
+				"4"
+			],
+			"untersuchungsziel": [
+				"1",
+				"2",
+				"4"
+			],
+			"untersuchungsschwerpunkt": [
+				"6",
+				"8",
+				"9"
+			]
+		}
+	]
+}
