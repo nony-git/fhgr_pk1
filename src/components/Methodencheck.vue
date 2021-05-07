@@ -1,7 +1,19 @@
 <template>
   <div class="methodencheck">
     <div class="methodencheck-processbar" v-if="page != 0">
-      Processbar
+      <div class="methodencheck-step" v-bind:class="{stepActive: page > 0}"></div>
+      <div class="methodencheck-line" v-bind:class="{lineActive: page > 1}"></div>
+      <div class="methodencheck-step" v-bind:class="{stepActive: page > 1}"></div>
+      <div class="methodencheck-line" v-bind:class="{lineActive: page > 2}"></div>
+      <div class="methodencheck-step" v-bind:class="{stepActive: page > 2}"></div>
+      <div class="methodencheck-line" v-bind:class="{lineActive: page > 3}"></div>
+      <div class="methodencheck-step" v-bind:class="{stepActive: page > 3}"></div>
+      <div class="methodencheck-line" v-bind:class="{lineActive: page > 4}"></div>
+      <div class="methodencheck-step" v-bind:class="{stepActive: page > 4}"></div>
+      <div class="methodencheck-line" v-bind:class="{lineActive: page > 5}"></div>
+      <div class="methodencheck-step" v-bind:class="{stepActive: page > 5}"></div>
+      <div class="methodencheck-line" v-bind:class="{lineActive: page > 6}"></div>
+      <div class="methodencheck-endstep" v-bind:class="{endstepActive: page > 6}"></div>
     </div>
 
     <div class="methodencheck-page" v-if="page == 0">
@@ -298,10 +310,26 @@
     </div>
 
     <div class="methodencheck-page" v-if="page == 7">
-      <h2 class="methodencheck-questiontitle">Result</h2>
-      {{ getResults() }}
-      <button class="button button-primary-bg methodencheck-button-back" v-on:click="page--"></button>
-      <button class="button button-primary-bg methodencheck-button-forward" v-on:click="page = 0; clearInputs(); clearMethods()">Startseite</button>
+      <h2 class="methodencheck-questiontitle">Empfohlene Methoden</h2>
+
+      <div class="methodencheck-results">
+        <div v-for="method in methods" v-bind:key="method['id']">
+          <div class="methodencheck-result" v-if="method['active'] === true">
+            <h3 class="methodencheck-resulttitle">{{ method['bezeichnung'] }}</h3>
+            <br>
+            Hier könnte noch Text, Bilder, Metadaten zu den Methoden ergänzt werden.
+            <br>
+            Müsste halt noch getextet und ausgearbeitete werden.
+          </div>
+        </div>
+      </div>
+
+      <div class="methodencheck-controls">
+        <div class="methodencheck-resultbuttons">
+          <button class="button button-primary-bg methodencheck-button-back" v-on:click="page--"></button>
+          <button class="button button-primary-bg methodencheck-button methodencheck-button-forward" v-on:click="page = 0; clearInputs(); clearMethods()">zurück zum Start</button>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -435,21 +463,6 @@ export default {
         method['position'] = 1;
       })
     },
-    getResults: function() {
-      var results = [];
-      this.methods.forEach(function(method) {
-
-        if (method['active'] == 1) {
-          results.push(method['bezeichnung']);
-        }
-      })
-      if (results != '') {
-        return results
-      }
-      else {
-        return "Keine passende Methode gefunden"
-      }
-    },
     changeMethodeActivated: function() {
       this.methodsActivated = !this.methodsActivated;
     }
@@ -465,17 +478,66 @@ h3 {
 ul {
   list-style-type: none;
   padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
+  display: flex;
+  flex-wrap: wrap;
 }
 a {
   color: #42b983;
 }
 .methodencheck-page {
-  padding: 2rem;
+  padding: 0 2rem;
   position: relative;
+}
+.methodencheck-processbar {
+  display: flex;
+  align-items: center;
+  padding: 0rem 2rem 4rem 2rem;
+}
+.methodencheck-step {
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+  border: 2px solid #817E65;
+  background: #ffffff;
+  transition: 0.3s linear;
+}
+.stepActive {
+  background: #000000;
+  border: 0;
+}
+.methodencheck-endstep {
+  width: 30px;
+  height: 30px;
+  transform: rotate(45deg);
+  border: 2px solid #817E65;
+  background: #ffffff;
+  transition: 0.3s linear;
+}
+.endstepActive {
+  background: #99C089;
+  border: 2px solid #000000;
+}
+.endstepActive::before {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 3px;
+  background-image: url("../assets/check.svg");
+  background-repeat: no-repeat;
+  background-size: 25px 25px;
+  background-position: center;
+  width: 25px;
+  height: 25px;
+  transform: rotate(-45deg);
+}
+.methodencheck-line {
+  height: 2px;
+  background: #817E65;
+  width: calc((100% - 210px) / 6);
+  transition: 0.3s linear;
+}
+.lineActive {
+  background: #000000;
 }
 .methodencheck-titlecontainer {
   display: flex;
@@ -691,4 +753,49 @@ input:checked + .slider:before {
   width: 100%;
   padding: 1rem;
 }
+.methodencheck-controls {
+  display: flex;
+  justify-content: space-between;
+}
+.methodencheck-resultbuttons {
+  display: flex;
+}
+.methodencheck-result {
+  padding: 2rem;
+  background: #F1F1F1;
+  border-radius: 10px;
+  text-align: left;
+  margin: 2rem 0;
+  max-width: 700px;
+}
+.methodencheck-resulttitle {
+  margin: 0;
+}
+@media only screen and (max-width: 767px) {
+  .methodencheck-questiontitle {
+    width: 100%;
+  }
+  .methodencheck-form {
+    width: 100%;
+    border-right: 0;
+  }
+  .methodencheck-answer {
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+    width: calc(50% - 1rem)
+  }
+  .methodencheck-answer:nth-child(2n + 2) {
+    margin-right: 0;
+  }
+  .methodencheck-buttonContainer {
+    width: calc(100% - 0.8rem);
+  }
+  .methodencheck-methodentitle-wrapper {
+    display: none;
+  }
+  .methodencheck-methodsContainer {
+    display: none;
+  }
+}
+
 </style>
