@@ -1,6 +1,6 @@
 <template>
   <div class="methodencheck">
-    <div class="methodencheck-processbar" v-if="page != 0">
+    <div class="methodencheck-processbar" v-if="page > 0">
       <div class="methodencheck-step" v-bind:class="{stepActive: page > 0}"></div>
       <div class="methodencheck-line" v-bind:class="{lineActive: page > 1}"></div>
       <div class="methodencheck-step" v-bind:class="{stepActive: page > 1}"></div>
@@ -25,7 +25,43 @@
           Zweck</b> am geeignetsten ist, kann nicht immer einfach getroffen werden.
         </p>
       </div>
-      <button class="button button-primary-bg" v-on:click="page++">Start</button>
+      <div class="methodencheck-buttons-start">
+        <button class="button button-primary-bg" v-on:click="page++">Start</button>
+        <button class="methodencheck-infobutton button button-primary-bg" v-on:click="page=-1"></button>
+      </div>
+    </div>
+
+    <div class="methodencheck-page" v-if="page == -1">
+      <div class="methodencheck-text">
+        <p>
+          Im Bereich der Usability Evaluation existiert eine Vielzahl unterschiedlicher Methoden, die für die Untersuchung interaktiver
+          Produkte genutzt werden können. Die Entscheidung <b>welche Methode</b> dabei konkret für das jeweilige Produkt und den <b>jeweiligen
+          Zweck</b> am geeignetsten ist, kann nicht immer einfach getroffen werden.
+        </p>
+        <p>
+          In der Regel ist hierfür eine gewisse Erfahrung und entsprechendes Know-How erforderlich. Die Auswahl einer passenden
+          Evaluationsmethode und die Konzeption eines geeigneten Untersuchungsdesigns ist daher eine intellektuelle Aufgabe, die
+          nur bedingt automatisierbar ist.
+        </p>
+        <p>
+          Der CHeval Methodencheck soll und kann daher eine persönliche Beratung durch Usability-Experten nicht ersetzen.
+          Vielmehr soll mit diesem Tool auch <b>Laien bzw. Personen mit wenig Erfahrung im Usability-Bereich</b> die Möglichkeit
+          gegeben werden, sich auf einfache Weise einen ersten Eindruck über für sie in Frage kommende
+          <b>Evaluationsmethoden</b> zu verschaffen.
+        </p>
+        <p>
+          Falls Sie Probleme bei der Auswahl der einzelnen Optionen haben, so können Sie mit der Maus über die einzelnen Begriffe
+          fahren und bekommen zusätzliche Informationen eingeblendet, die Ihnen bei der Entscheidung helfen sollen.
+        </p>
+        <p>
+          Sofern Sie weiterführende Fragen haben, sich gerne zusätzlich von uns beraten lassen würden, oder die Evaluation, die
+          Ihnen empfohlen wurde, mit unserer Unterstützung durchführen wollen, so zögern Sie nicht uns zu kontaktieren.
+        </p>
+      </div>
+      <div class="methodencheck-buttons-start">
+        <button class="button button-primary-bg" v-on:click="page = 1">Start</button>
+        <button class="methodencheck-button button button-primary-bg" v-on:click="page = 0">zurück</button>
+      </div>
     </div>
 
     <div class="methodencheck-page" v-if="page == 1">
@@ -322,6 +358,7 @@
             Müsste halt noch getextet und ausgearbeitete werden.
           </div>
         </div>
+        {{ showNoResults() }}
       </div>
 
       <div class="methodencheck-controls">
@@ -465,6 +502,17 @@ export default {
     },
     changeMethodeActivated: function() {
       this.methodsActivated = !this.methodsActivated;
+    },
+    showNoResults: function() {
+      var results = 0;
+      this.methods.forEach(function(method) {
+        if (method['active'] == true) {
+          results += 1;
+        }
+      });
+      if (results == 0) {
+        return "Leider trifft keine Methode auf Ihre Eingaben zu. Sie können den Test nochmals durchführen oder sich hier durch die möglichen Methoden lesen."
+      }
     }
   }
 }
@@ -538,6 +586,30 @@ a {
 }
 .lineActive {
   background: #000000;
+}
+.methodencheck-buttons-start {
+  display: flex;
+  align-items: center;
+}
+.methodencheck-infobutton {
+  position: relative;
+  width: 30px;
+  height: 30px;
+  background: #817E65;
+  border-radius: 100%;
+  margin-left: 1rem;
+}
+.methodencheck-infobutton::before {
+  content: "";
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 20px;
+  height: 20px;
+  background-image: url("../assets/info_icon.svg");
+  background-repeat: no-repeat;
+  background-size: 18px 18px;
+  background-position: center;
 }
 .methodencheck-titlecontainer {
   display: flex;
@@ -756,9 +828,13 @@ input:checked + .slider:before {
 .methodencheck-controls {
   display: flex;
   justify-content: space-between;
+  margin-top: 2rem;
 }
 .methodencheck-resultbuttons {
   display: flex;
+}
+.methodencheck-results {
+  text-align: left;
 }
 .methodencheck-result {
   padding: 2rem;
@@ -772,6 +848,32 @@ input:checked + .slider:before {
   margin: 0;
 }
 @media only screen and (max-width: 767px) {
+  .methodencheck-line {
+    display: none;
+  }
+  .methodencheck-step, .methodencheck-endstep {
+    width: 10%;
+    height: 4px;
+    border-radius: 4px;
+    border: 1.5px solid #000000;
+    background: #ffffff;
+    margin-right: 5%;
+  }
+  .methodencheck-endstep {
+    transform: rotate(0deg);
+    margin-right: 0;
+  }
+  .stepActive {
+    background: #000000;
+  }
+  .endstepActive {
+    background: #000000;
+  }
+  .endstepActive::before {
+    background-image: none;
+    width: 0;
+    height: 0;
+  }
   .methodencheck-questiontitle {
     width: 100%;
   }
@@ -780,12 +882,9 @@ input:checked + .slider:before {
     border-right: 0;
   }
   .methodencheck-answer {
-    margin-right: 1rem;
-    margin-bottom: 1rem;
-    width: calc(50% - 1rem)
-  }
-  .methodencheck-answer:nth-child(2n + 2) {
     margin-right: 0;
+    margin-bottom: 1rem;
+    width: 100%;
   }
   .methodencheck-buttonContainer {
     width: calc(100% - 0.8rem);
