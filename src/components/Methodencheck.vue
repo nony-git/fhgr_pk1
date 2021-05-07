@@ -16,185 +16,277 @@
       <button class="button button-primary-bg" v-on:click="page++">Start</button>
     </div>
 
-    <div class="methodencheck-page methodencheck-formcontainer" v-if="page == 1">
-      <div class="methodencheck-form">
-        <h2>Frage 1</h2>
-        <div class="methodencheck-question">
-          {{ questions['produktstatus']['frage'] }}
+    <div class="methodencheck-page" v-if="page == 1">
+      <div class="methodencheck-titlecontainer">
+        <h2 class="methodencheck-questiontitle">Frage 1</h2>
+        <div class="methodencheck-methodentitle-wrapper">
+          <h2 class="methodencheck-methodentitle">Methoden</h2>
+          <label class="methodencheck-methodenswitch">
+            <input type="checkbox" checked v-on:click="changeMethodeActivated()">
+            <span class="slider"></span>
+          </label>
         </div>
-        <div class="methodencheck-answers">
-          <div class="methodencheck-answer" v-for="(name, value, index) in questions['produktstatus']['antworten']" v-bind:key="index" v-on:click="inputs['produktstatus'] = parseInt(value); updateMethods('produktstatus')">
-            <div class="activeAnswer" v-if="inputs.produktstatus == value">
-              {{ name }}
-            </div>
-            <div class="inactiveAnswer" v-else>
-              {{ name }}
-            </div>
-          </div>
-        </div>
-        <button class="methodencheck-btn" v-on:click="page--">Zurück</button>
-        <button class="methodencheck-btn" v-on:click="page++" v-if="inputs.produktstatus != 0">Weiter</button>
       </div>
 
-      <div class="methodencheck-methods">
-        <div class="methodencheck-method" v-for="method in methods" v-bind:key="method['id']">
-          {{ method["bezeichnung"] }}
+      <div class="methodencheck-formcontainer">
+        <div class="methodencheck-form" v-bind:class="{fromSmall: methodsActivated}">
+          <div class="methodencheck-question">
+            {{ questions['produktstatus']['frage'] }}
+          </div>
+          <div class="methodencheck-answers">
+            <div class="methodencheck-answer" v-for="(name, value, index) in questions['produktstatus']['antworten']" v-bind:key="index" v-on:click="inputs['produktstatus'] = parseInt(value); updateMethods('produktstatus'); sortMethods()">
+              <div class="activeAnswer" v-if="inputs.produktstatus == value">
+                {{ name }}
+              </div>
+              <div class="inactiveAnswer" v-else>
+                {{ name }}
+              </div>
+            </div>
+          </div>
+          {{ methodsActivated }}
+          <button class="button button-primary-bg" v-on:click="page--">Zurück</button>
+          <button class="button button-primary-bg" v-on:click="page++" v-if="inputs.produktstatus != 0">Weiter</button>
+        </div>
 
-          <div class="inactiveMethod" v-if="method.active == false"></div>
+        <div class="methodencheck-methodsContainer" v-bind:class="{methodsActive: methodsActivated}">
+          <div class="methodencheck-methods">
+            <div class="methodencheck-method" v-for="method in methods" v-bind:key="method['id']">
+              {{ method["bezeichnung"] }}
+
+              <div class="inactiveMethod" v-if="method.active == false"></div>
+            </div>
+          </div>
+          <div class="methodencheck-methodenblur"></div>
         </div>
       </div>
     </div>
 
-    <div class="methodencheck-page methodencheck-formcontainer" v-if="page == 2">
-      <div class="methodencheck-form">
-        <h2>Frage 2</h2>
-        <div class="methodencheck-question">
-          {{ questions['motivation']['frage'] }}
+    <div class="methodencheck-page" v-if="page == 2">
+      <div class="methodencheck-titlecontainer">
+        <h2 class="methodencheck-questiontitle">Frage 2</h2>
+        <div class="methodencheck-methodentitle-wrapper">
+          <h2 class="methodencheck-methodentitle">Methoden</h2>
+          <label class="methodencheck-methodenswitch">
+            <input type="checkbox" checked v-on:click="changeMethodeActivated()">
+            <span class="slider"></span>
+          </label>
         </div>
-        <div class="methodencheck-answers">
-          <div class="methodencheck-answer" v-for="(name, value, index) in questions['motivation']['antworten']" v-bind:key="index" v-on:click="inputs['motivation'] = parseInt(value); updateMethods('motivation')">
-            <div class="activeAnswer" v-if="inputs.motivation == value">
-              {{ name }}
-            </div>
-            <div class="inactiveAnswer" v-else>
-              {{ name }}
-            </div>
-          </div>
-        </div>
-        <button class="methodencheck-btn" v-on:click="page--">Zurück</button>
-        <button class="methodencheck-btn" v-on:click="page++" v-if="inputs.motivation != 0">Weiter</button>
       </div>
 
-      <div class="methodencheck-methods">
-        <div class="methodencheck-method" v-for="method in methods" v-bind:key="method['id']">
-          {{ method["bezeichnung"] }}
+      <div class="methodencheck-formcontainer">
+        <div class="methodencheck-form" v-bind:class="{fromSmall: methodsActivated}">
+          <div class="methodencheck-question">
+            {{ questions['motivation']['frage'] }}
+          </div>
+          <div class="methodencheck-answers">
+            <div class="methodencheck-answer" v-for="(name, value, index) in questions['motivation']['antworten']" v-bind:key="index" v-on:click="inputs['motivation'] = parseInt(value); updateMethods('motivation'); sortMethods()">
+              <div class="activeAnswer" v-if="inputs.motivation == value">
+                {{ name }}
+              </div>
+              <div class="inactiveAnswer" v-else>
+                {{ name }}
+              </div>
+            </div>
+          </div>
 
-          <div class="inactiveMethod" v-if="method.active == false"></div>
+          <button class="button button-primary-bg" v-on:click="page--">Zurück</button>
+          <button class="button button-primary-bg" v-on:click="page++" v-if="inputs.motivation != 0">Weiter</button>
+        </div>
+
+        <div class="methodencheck-methodsContainer" v-bind:class="{methodsActive: methodsActivated}">
+          <div class="methodencheck-methods">
+            <div class="methodencheck-method" v-for="method in methods" v-bind:key="method['id']">
+              {{ method["bezeichnung"] }}
+
+              <div class="inactiveMethod" v-if="method.active == false"></div>
+            </div>
+          </div>
+          <div class="methodencheck-methodenblur"></div>
         </div>
       </div>
     </div>
 
-    <div class="methodencheck-page methodencheck-formcontainer" v-if="page == 3">
-      <div class="methodencheck-form">
-        <h2>Frage 3</h2>
-        <div class="methodencheck-question">
-          {{ questions['untersuchungsziel']['frage'] }}
+    <div class="methodencheck-page" v-if="page == 3">
+      <div class="methodencheck-titlecontainer">
+        <h2 class="methodencheck-questiontitle">Frage 3</h2>
+        <div class="methodencheck-methodentitle-wrapper">
+          <h2 class="methodencheck-methodentitle">Methoden</h2>
+          <label class="methodencheck-methodenswitch">
+            <input type="checkbox" checked v-on:click="changeMethodeActivated()">
+            <span class="slider"></span>
+          </label>
         </div>
-        <div class="methodencheck-answers">
-          <div class="methodencheck-answer" v-for="(name, value, index) in questions['untersuchungsziel']['antworten']" v-bind:key="index" v-on:click="inputs['untersuchungsziel'] = parseInt(value); updateMethods('untersuchungsziel')">
-            <div class="activeAnswer" v-if="inputs.untersuchungsziel == value">
-              {{ name }}
-            </div>
-            <div class="inactiveAnswer" v-else>
-              {{ name }}
-            </div>
-          </div>
-        </div>
-        <button class="methodencheck-btn" v-on:click="page--">Zurück</button>
-        <button class="methodencheck-btn" v-on:click="page++" v-if="inputs.untersuchungsziel != 0">Weiter</button>
       </div>
 
-      <div class="methodencheck-methods">
-        <div class="methodencheck-method" v-for="method in methods" v-bind:key="method['id']">
-          {{ method["bezeichnung"] }}
+      <div class="methodencheck-formcontainer">
+        <div class="methodencheck-form" v-bind:class="{fromSmall: methodsActivated}">
+          <div class="methodencheck-question">
+            {{ questions['untersuchungsziel']['frage'] }}
+          </div>
+          <div class="methodencheck-answers">
+            <div class="methodencheck-answer" v-for="(name, value, index) in questions['untersuchungsziel']['antworten']" v-bind:key="index" v-on:click="inputs['untersuchungsziel'] = parseInt(value); updateMethods('untersuchungsziel'); sortMethods()">
+              <div class="activeAnswer" v-if="inputs.untersuchungsziel == value">
+                {{ name }}
+              </div>
+              <div class="inactiveAnswer" v-else>
+                {{ name }}
+              </div>
+            </div>
+          </div>
+          <button class="button button-primary-bg" v-on:click="page--">Zurück</button>
+          <button class="button button-primary-bg" v-on:click="page++" v-if="inputs.untersuchungsziel != 0">Weiter</button>
+        </div>
 
-          <div class="inactiveMethod" v-if="method.active == false"></div>
+        <div class="methodencheck-methodsContainer" v-bind:class="{methodsActive: methodsActivated}">
+          <div class="methodencheck-methods">
+            <div class="methodencheck-method" v-for="method in methods" v-bind:key="method['id']">
+              {{ method["bezeichnung"] }}
+
+              <div class="inactiveMethod" v-if="method.active == false"></div>
+            </div>
+          </div>
+          <div class="methodencheck-methodenblur"></div>
         </div>
       </div>
     </div>
 
-    <div class="methodencheck-page methodencheck-formcontainer" v-if="page == 4">
-      <div class="methodencheck-form">
-        <h2>Frage 4</h2>
-        <div class="methodencheck-question">
-          {{ questions['untersuchungsschwerpunkt']['frage'] }}
+    <div class="methodencheck-page" v-if="page == 4">
+      <div class="methodencheck-titlecontainer">
+        <h2 class="methodencheck-questiontitle">Frage 4</h2>
+        <div class="methodencheck-methodentitle-wrapper">
+          <h2 class="methodencheck-methodentitle">Methoden</h2>
+          <label class="methodencheck-methodenswitch">
+            <input type="checkbox" checked v-on:click="changeMethodeActivated()">
+            <span class="slider"></span>
+          </label>
         </div>
-        <div class="methodencheck-answers">
-          <div class="methodencheck-answer" v-for="(name, value, index) in questions['untersuchungsschwerpunkt']['antworten']" v-bind:key="index" v-on:click="inputs['untersuchungsschwerpunkt'] = parseInt(value); updateMethods('untersuchungsschwerpunkt')">
-            <div class="activeAnswer" v-if="inputs.untersuchungsschwerpunkt == value">
-              {{ name }}
-            </div>
-            <div class="inactiveAnswer" v-else>
-              {{ name }}
-            </div>
-          </div>
-        </div>
-        <button class="methodencheck-btn" v-on:click="page--">Zurück</button>
-        <button class="methodencheck-btn" v-on:click="page++" v-if="inputs.untersuchungsschwerpunkt != 0">Weiter</button>
       </div>
 
-      <div class="methodencheck-methods">
-        <div class="methodencheck-method" v-for="method in methods" v-bind:key="method['id']">
-          {{ method["bezeichnung"] }}
+      <div class="methodencheck-formcontainer">
+        <div class="methodencheck-form" v-bind:class="{fromSmall: methodsActivated}">
+          <div class="methodencheck-question">
+            {{ questions['untersuchungsschwerpunkt']['frage'] }}
+          </div>
+          <div class="methodencheck-answers">
+            <div class="methodencheck-answer" v-for="(name, value, index) in questions['untersuchungsschwerpunkt']['antworten']" v-bind:key="index" v-on:click="inputs['untersuchungsschwerpunkt'] = parseInt(value); updateMethods('untersuchungsschwerpunkt'); sortMethods()">
+              <div class="activeAnswer" v-if="inputs.untersuchungsschwerpunkt == value">
+                {{ name }}
+              </div>
+              <div class="inactiveAnswer" v-else>
+                {{ name }}
+              </div>
+            </div>
+          </div>
+          <button class="button button-primary-bg" v-on:click="page--">Zurück</button>
+          <button class="button button-primary-bg" v-on:click="page++" v-if="inputs.untersuchungsschwerpunkt != 0">Weiter</button>
+        </div>
 
-          <div class="inactiveMethod" v-if="method.active == false"></div>
+        <div class="methodencheck-methodsContainer" v-bind:class="{methodsActive: methodsActivated}">
+          <div class="methodencheck-methods">
+            <div class="methodencheck-method" v-for="method in methods" v-bind:key="method['id']">
+              {{ method["bezeichnung"] }}
+
+              <div class="inactiveMethod" v-if="method.active == false"></div>
+            </div>
+          </div>
+          <div class="methodencheck-methodenblur"></div>
         </div>
       </div>
     </div>
 
-    <div class="methodencheck-page methodencheck-formcontainer" v-if="page == 5">
-      <div class="methodencheck-form">
-        <h2>Frage 5</h2>
-        <div class="methodencheck-question">
-          {{ questions['zeit']['frage'] }}
+    <div class="methodencheck-page" v-if="page == 5">
+      <div class="methodencheck-titlecontainer">
+        <h2 class="methodencheck-questiontitle">Frage 5</h2>
+        <div class="methodencheck-methodentitle-wrapper">
+          <h2 class="methodencheck-methodentitle">Methoden</h2>
+          <label class="methodencheck-methodenswitch">
+            <input type="checkbox" checked v-on:click="changeMethodeActivated()">
+            <span class="slider"></span>
+          </label>
         </div>
-        <div class="methodencheck-answers">
-          <div class="methodencheck-answer" v-for="(name, value, index) in questions['zeit']['antworten']" v-bind:key="index" v-on:click="inputs['zeit'] = parseInt(value); updateMethods('zeit')">
-            <div class="activeAnswer" v-if="inputs.zeit == value">
-              {{ name }}
-            </div>
-            <div class="inactiveAnswer" v-else>
-              {{ name }}
-            </div>
-          </div>
-        </div>
-        <button class="methodencheck-btn" v-on:click="page--">Zurück</button>
-        <button class="methodencheck-btn" v-on:click="page++" v-if="inputs.zeit != 0">Weiter</button>
       </div>
 
-      <div class="methodencheck-methods">
-        <div class="methodencheck-method" v-for="method in methods" v-bind:key="method['id']">
-          {{ method["bezeichnung"] }}
+      <div class="methodencheck-formcontainer">
+        <div class="methodencheck-form" v-bind:class="{fromSmall: methodsActivated}">
+          <div class="methodencheck-question">
+            {{ questions['zeit']['frage'] }}
+          </div>
+          <div class="methodencheck-answers">
+            <div class="methodencheck-answer" v-for="(name, value, index) in questions['zeit']['antworten']" v-bind:key="index" v-on:click="inputs['zeit'] = parseInt(value); updateMethods('zeit'); sortMethods()">
+              <div class="activeAnswer" v-if="inputs.zeit == value">
+                {{ name }}
+              </div>
+              <div class="inactiveAnswer" v-else>
+                {{ name }}
+              </div>
+            </div>
+          </div>
+          <button class="button button-primary-bg" v-on:click="page--">Zurück</button>
+          <button class="button button-primary-bg" v-on:click="page++" v-if="inputs.zeit != 0">Weiter</button>
+        </div>
 
-          <div class="inactiveMethod" v-if="method.active == false"></div>
+        <div class="methodencheck-methodsContainer" v-bind:class="{methodsActive: methodsActivated}">
+          <div class="methodencheck-methods">
+            <div class="methodencheck-method" v-for="method in methods" v-bind:key="method['id']">
+              {{ method["bezeichnung"] }}
+
+              <div class="inactiveMethod" v-if="method.active == false"></div>
+            </div>
+          </div>
+          <div class="methodencheck-methodenblur"></div>
         </div>
       </div>
     </div>
 
-    <div class="methodencheck-page methodencheck-formcontainer" v-if="page == 6">
-      <div class="methodencheck-form">
-        <h2>Frage 6</h2>
-        <div class="methodencheck-question">
-          {{ questions['budget']['frage'] }}
+    <div class="methodencheck-page" v-if="page == 6">
+      <div class="methodencheck-titlecontainer">
+        <h2 class="methodencheck-questiontitle">Frage 6</h2>
+        <div class="methodencheck-methodentitle-wrapper">
+          <h2 class="methodencheck-methodentitle">Methoden</h2>
+          <label class="methodencheck-methodenswitch">
+            <input type="checkbox" checked v-on:click="changeMethodeActivated()">
+            <span class="slider"></span>
+          </label>
         </div>
-        <div class="methodencheck-answers">
-          <div class="methodencheck-answer" v-for="(name, value, index) in questions['budget']['antworten']" v-bind:key="index" v-on:click="inputs['budget'] = parseInt(value); updateMethods('budget')">
-            <div class="activeAnswer" v-if="inputs.budget == value">
-              {{ name }}
-            </div>
-            <div class="inactiveAnswer" v-else>
-              {{ name }}
-            </div>
-          </div>
-        </div>
-        <button class="methodencheck-btn" v-on:click="page--">Zurück</button>
-        <button class="methodencheck-btn" v-on:click="page++" v-if="inputs.budget != 0">Weiter</button>
       </div>
 
-      <div class="methodencheck-methods">
-        <div class="methodencheck-method" v-for="method in methods" v-bind:key="method['id']">
-          {{ method["bezeichnung"] }}
+      <div class="methodencheck-formcontainer">
+        <div class="methodencheck-form" v-bind:class="{fromSmall: methodsActivated}">
+          <div class="methodencheck-question">
+            {{ questions['budget']['frage'] }}
+          </div>
+          <div class="methodencheck-answers">
+            <div class="methodencheck-answer" v-for="(name, value, index) in questions['budget']['antworten']" v-bind:key="index" v-on:click="inputs['budget'] = parseInt(value); updateMethods('budget'); sortMethods()">
+              <div class="activeAnswer" v-if="inputs.budget == value">
+                {{ name }}
+              </div>
+              <div class="inactiveAnswer" v-else>
+                {{ name }}
+              </div>
+            </div>
+          </div>
+          <button class="button button-primary-bg" v-on:click="page--">Zurück</button>
+          <button class="button button-primary-bg" v-on:click="page++" v-if="inputs.budget != 0">Weiter</button>
+        </div>
 
-          <div class="inactiveMethod" v-if="method.active == false"></div>
+        <div class="methodencheck-methodsContainer" v-bind:class="{methodsActive: methodsActivated}">
+          <div class="methodencheck-methods">
+            <div class="methodencheck-method" v-for="method in methods" v-bind:key="method['id']">
+              {{ method["bezeichnung"] }}
+
+              <div class="inactiveMethod" v-if="method.active == false"></div>
+            </div>
+          </div>
+          <div class="methodencheck-methodenblur"></div>
         </div>
       </div>
     </div>
 
     <div class="methodencheck-page" v-if="page == 7">
-      <h2>Result</h2>
+      <h2 class="methodencheck-questiontitle">Result</h2>
       {{ getResults() }}
-      <button class="methodencheck-btn" v-on:click="page--">Zurück</button>
-      <button class="methodencheck-btn" v-on:click="page = 0; clearInputs()">Startseite</button>
+      <button class="button button-primary-bg" v-on:click="page--">Zurück</button>
+      <button class="button button-primary-bg" v-on:click="page = 0; clearInputs(); clearMethods()">Startseite</button>
     </div>
   </div>
 </template>
@@ -216,28 +308,116 @@ export default {
         untersuchungsschwerpunkt: 0,
         zeit: 0,
         budget: 0
-      }
+      },
+      methodsActivated: true
     }
   },
   methods: {
     updateMethods: function(check) {
       var inputs = this.inputs;
       this.methods.forEach(function(method) {
-        if (method[check].includes(inputs[check].toString())) {
-          method['active'] = true;
-        }
-        else {
-          method['active'] = false;
+        switch (check) {
+          case 'produktstatus':
+            if (method['produktstatus'].includes(inputs['produktstatus'].toString())) {
+              method['active'] = true;
+              method['position'] = 1;
+            }
+            else {
+              method['active'] = false;
+              method['position'] = 2;
+            }
+            break;
+
+          case 'motivation':
+            if (method['produktstatus'].includes(inputs['produktstatus'].toString()) &&
+                method['motivation'].includes(inputs['motivation'].toString())) {
+              method['active'] = true;
+              method['position'] = 1;
+            }
+            else {
+              method['active'] = false;
+              method['position'] = 2;
+            }
+            break;
+
+          case 'untersuchungsziel':
+            if (method['produktstatus'].includes(inputs['produktstatus'].toString()) &&
+                method['motivation'].includes(inputs['motivation'].toString()) &&
+                method['untersuchungsziel'].includes(inputs['untersuchungsziel'].toString())) {
+              method['active'] = true;
+              method['position'] = 1;
+            }
+            else {
+              method['active'] = false;
+              method['position'] = 2;
+            }
+            break;
+
+          case 'untersuchungsschwerpunkt':
+            if (method['produktstatus'].includes(inputs['produktstatus'].toString()) &&
+                method['motivation'].includes(inputs['motivation'].toString()) &&
+                method['untersuchungsziel'].includes(inputs['untersuchungsziel'].toString()) &&
+                method['untersuchungsschwerpunkt'].includes(inputs['untersuchungsschwerpunkt'].toString())) {
+              method['active'] = true;
+              method['position'] = 1;
+            }
+            else {
+              method['active'] = false;
+              method['position'] = 2;
+            }
+            break;
+
+          case 'zeit':
+            if (method['produktstatus'].includes(inputs['produktstatus'].toString()) &&
+                method['motivation'].includes(inputs['motivation'].toString()) &&
+                method['untersuchungsziel'].includes(inputs['untersuchungsziel'].toString()) &&
+                method['untersuchungsschwerpunkt'].includes(inputs['untersuchungsschwerpunkt'].toString()) &&
+                method['zeit'].includes(inputs['zeit'].toString())) {
+              method['active'] = true;
+              method['position'] = 1;
+            }
+            else {
+              method['active'] = false;
+              method['position'] = 2;
+            }
+            break;
+
+          case 'budget':
+            if (method['produktstatus'].includes(inputs['produktstatus'].toString()) &&
+                method['motivation'].includes(inputs['motivation'].toString()) &&
+                method['untersuchungsziel'].includes(inputs['untersuchungsziel'].toString()) &&
+                method['untersuchungsschwerpunkt'].includes(inputs['untersuchungsschwerpunkt'].toString()) &&
+                method['zeit'].includes(inputs['zeit'].toString()) &&
+                method['budget'].includes(inputs['budget'].toString())) {
+              method['active'] = true;
+              method['position'] = 1;
+            }
+            else {
+              method['active'] = false;
+              method['position'] = 2;
+            }
+            break;
         }
       }
     )},
+    sortMethods: function() {
+      this.methods.sort(function (a, b) {
+        return a.position - b.position
+      })
+    },
     clearInputs: function() {
-        this.inputs['produktstatus'] = 0;
-        this.inputs['motivation'] = 0;
-        this.inputs['untersuchungsziel'] = 0;
-        this.inputs['untersuchungsschwerpunkt'] = 0;
-        this.inputs['zeit'] = 0;
-        this.inputs['budget'] = 0;
+      this.inputs['produktstatus'] = 0;
+      this.inputs['motivation'] = 0;
+      this.inputs['untersuchungsziel'] = 0;
+      this.inputs['untersuchungsschwerpunkt'] = 0;
+      this.inputs['zeit'] = 0;
+      this.inputs['budget'] = 0;
+    },
+    clearMethods: function() {
+      this.methods.forEach(function(method) {
+        method['active'] = true;
+        method['position'] = 1;
+      })
     },
     getResults: function() {
       var results = [];
@@ -253,6 +433,9 @@ export default {
       else {
         return "Keine passende Methode gefunden"
       }
+    },
+    changeMethodeActivated: function() {
+      this.methodsActivated = !this.methodsActivated;
     }
   }
 }
@@ -276,6 +459,71 @@ a {
 }
 .methodencheck-page {
   padding: 2rem;
+  position: relative;
+}
+.methodencheck-titlecontainer {
+  display: flex;
+}
+.methodencheck-questiontitle {
+  width: 70%;
+}
+.methodencheck-methodentitle-wrapper {
+  width: 30%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.methodencheck-methodentitle {
+  padding-left: 1rem;
+}
+.methodencheck-methodenswitch {
+  position: relative;
+  display: inline-block;
+  width: 3rem;
+  height: 1.5rem;
+  margin-right: 1rem;
+}
+.methodencheck-methodenswitch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+  border-radius: 34px;
+}
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 1rem;
+  width: 1rem;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+  border-radius: 50%;
+}
+input:checked + .slider {
+  background-color: #817E65;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #817E65;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
 }
 .methodencheck-image {
   width: 100%;
@@ -289,12 +537,20 @@ a {
   display: flex;
 }
 .methodencheck-form {
+  width: 100%;
+  padding-right: 2rem;
+  transition: width 0.3s linear;
+}
+.fromSmall {
   width: 70%;
   border-right: 1px solid #817E65;
-  padding-right: 2rem;
+}
+.methodencheck-questiontitle {
+  text-align: left;
 }
 .methodencheck-question {
   margin-bottom: 2rem;
+  text-align: left;
 }
 .methodencheck-answers {
   display: flex;
@@ -319,14 +575,35 @@ a {
 .methodencheck-answer:nth-child(2n+0) {
   margin-right: 0;
 }
-.methodencheck-methods {
+.methodencheck-methodsContainer {
   position: relative;
+  width: 0;
+  padding: 0 1rem;
+  display: none;
+  transition: width 0.3s linear;
+}
+.methodsActive {
+  display: block;
   width: 30%;
-  padding: 0 2rem;
+}
+.methodencheck-methods {
+  width: 100%;
+  padding: 0 1rem;
   overflow: auto;
   max-height: 500px;
   display: flex;
   flex-direction: column;
+}
+.methodencheck-methods::-webkit-scrollbar {
+    width: 12px;
+}
+.methodencheck-methods::-webkit-scrollbar-track {
+    background: #EBEBEB;
+    border-radius: 10px;
+}
+.methodencheck-methods::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: #C4C4C4;
 }
 .methodencheck-method {
   border: 2px solid #817E65;
@@ -344,6 +621,14 @@ a {
   left: -2px;
   background: #ffffff;
   opacity: 0.8;
+}
+.methodencheck-methodenblur {
+  position: absolute;
+  top: 425px;
+  right: 0;
+  width: 100%;
+  height: 75px;
+  background-image: linear-gradient(rgba(255,255,255,0.3), rgba(255,255,255,1));
 }
 .activeAnswer {
   width: 100%;

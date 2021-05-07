@@ -68,7 +68,7 @@
 			"bezeichnung":"Cognitive Walkthrough",
 			"zeit":"4",
 			"budget":"4",
-			"relevanz":4,
+			"relevanz":"4",
 			"produktstatus": [
 				 "2",
 				 "3",
@@ -91,7 +91,7 @@
 			"bezeichnung":"Pluralistic Usability Walkthrough",
 			"zeit":"4",
 			"budget":"4",
-			"relevanz":2,
+			"relevanz":"2",
 			"produktstatus": [
 				 "2",
 				 "3",
@@ -113,7 +113,7 @@
 			"bezeichnung":"Collaborative Usability Inspection",
 			"zeit":"4",
 			"budget":"4",
-			"relevanz":3,
+			"relevanz":"3",
 			"produktstatus": [
 				 "2",
 				 "3",
@@ -135,7 +135,7 @@
 			"bezeichnung":"Heuristische Evaluation",
 			"zeit":"3",
 			"budget":"3",
-			"relevanz":5,
+			"relevanz":"5",
 			"produktstatus": [
 				 "2",
 				 "3",
@@ -157,7 +157,7 @@
 			"bezeichnung":"Claims Analysis",
 			"zeit":"3",
 			"budget":"3",
-			"relevanz":1,
+			"relevanz":"1",
 			"produktstatus": [
 				 "2",
 				 "3"
@@ -178,7 +178,7 @@
 			"bezeichnung":"ISO-9241-110",
 			"zeit":"2",
 			"budget":"2",
-			"relevanz":3,
+			"relevanz":"3",
 			"produktstatus": [
 				 "2",
 				 "3",
@@ -201,7 +201,7 @@
 			"bezeichnung":"ISO-9241-12",
 			"zeit":"2",
 			"budget":"2",
-			"relevanz":3,
+			"relevanz":"3",
 			"produktstatus": [
 				 "2",
 				 "3",
@@ -224,7 +224,7 @@
 			"bezeichnung":"Web Accessibility Guidelines",
 			"zeit":"3",
 			"budget":"3",
-			"relevanz":3,
+			"relevanz":"3",
 			"produktstatus": [
 				 "3",
 				 "4"
@@ -246,7 +246,7 @@
 			"bezeichnung":"AttrakDiff",
 			"zeit":"1",
 			"budget":"1",
-			"relevanz":5,
+			"relevanz":"5",
 			"produktstatus": [
 				 "3",
 				 "4"
@@ -267,7 +267,7 @@
 			"bezeichnung":"ISOMetrics (kurz)",
 			"zeit":"1",
 			"budget":"1",
-			"relevanz":4,
+			"relevanz":"4",
 			"produktstatus": [
 				 "3",
 				 "4"
@@ -288,7 +288,7 @@
 			"bezeichnung":"ISOMetrics (lang)",
 			"zeit":"2",
 			"budget":"2",
-			"relevanz":3,
+			"relevanz":"3",
 			"produktstatus": [
 				 "3",
 				 "4"
@@ -309,7 +309,7 @@
 			"bezeichnung":"ISONorm 110-S/ISONorm 10",
 			"zeit":"1",
 			"budget":"1",
-			"relevanz":4,
+			"relevanz":"4",
 			"produktstatus": [
 				 "2"
 			],
@@ -329,7 +329,7 @@
 			"bezeichnung":"SUMI",
 			"zeit":"2",
 			"budget":"2",
-			"relevanz":2,
+			"relevanz":"2",
 			"produktstatus": [
 				 "3",
 				 "4"
@@ -350,7 +350,7 @@
 			"bezeichnung":"QUIS",
 			"zeit":"2",
 			"budget":"2",
-			"relevanz":2,
+			"relevanz":"2",
 			"produktstatus": [
 				 "3",
 				 "4"
@@ -371,7 +371,7 @@
 			"bezeichnung":"WUI",
 			"zeit":"2",
 			"budget":"2",
-			"relevanz":3,
+			"relevanz":"3",
 			"produktstatus": [
 				 "3",
 				 "4"
@@ -392,7 +392,7 @@
 			"bezeichnung":"Contextual Inquiry",
 			"zeit":"4",
 			"budget":"4",
-			"relevanz":3,
+			"relevanz":"3",
 			"produktstatus": [
 				 "1",
 				 "2",
@@ -416,7 +416,7 @@
 			"bezeichnung":"Focus Groups",
 			"zeit":"4",
 			"budget":"4",
-			"relevanz":3,
+			"relevanz":"3",
 			"produktstatus": [
 				 "1",
 				 "2",
@@ -445,7 +445,7 @@
 			"bezeichnung":"Usability Test",
 			"zeit":"4",
 			"budget":"4",
-			"relevanz":5,
+			"relevanz":"5",
 			"produktstatus": [
 				 "3",
 				 "4"
@@ -468,7 +468,7 @@
 			"bezeichnung":"Card Sorting",
 			"zeit":"2",
 			"budget":"2",
-			"relevanz":3,
+			"relevanz":"3",
 			"produktstatus": [
 				 "2",
 				 "3"
@@ -489,7 +489,7 @@
 			"bezeichnung":"Personas",
 			"zeit":"3",
 			"budget":"3",
-			"relevanz":3,
+			"relevanz":"3",
 			"produktstatus": [
 				 "1",
 				 "2",
@@ -511,7 +511,7 @@
 			"bezeichnung":"Best-Practice-Analyse",
 			"zeit":"3",
 			"budget":"3",
-			"relevanz":5,
+			"relevanz":"5",
 			"produktstatus": [
 				"1",
 				"2",
@@ -537,7 +537,7 @@
 			"bezeichnung":"Umfragen",
 			"zeit":"5",
 			"budget":"3",
-			"relevanz":4,
+			"relevanz":"4",
 			"produktstatus": [
 				"1",
 				"2",
