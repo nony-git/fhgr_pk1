@@ -20,7 +20,7 @@
       <div class="methodencheck-titlecontainer">
         <h2 class="methodencheck-questiontitle">Frage 1</h2>
         <div class="methodencheck-methodentitle-wrapper">
-          <h2 class="methodencheck-methodentitle">Methoden</h2>
+          <h2 class="methodencheck-methodentitle" v-bind:class="{methodentitleActive: methodsActivated}">Methoden</h2>
           <label class="methodencheck-methodenswitch">
             <input type="checkbox" checked v-on:click="changeMethodeActivated()">
             <span class="slider"></span>
@@ -43,9 +43,10 @@
               </div>
             </div>
           </div>
-          {{ methodsActivated }}
-          <button class="button button-primary-bg" v-on:click="page--">Zurück</button>
-          <button class="button button-primary-bg" v-on:click="page++" v-if="inputs.produktstatus != 0">Weiter</button>
+          <div class="methodencheck-buttonContainer">
+            <button class="methodencheck-button methodencheck-button-back button button-primary-bg" v-on:click="page--"></button>
+            <button class="methodencheck-button methodencheck-button-forward button button-primary-bg" v-on:click="page++" v-if="inputs.produktstatus != 0">Weiter</button>
+          </div>
         </div>
 
         <div class="methodencheck-methodsContainer" v-bind:class="{methodsActive: methodsActivated}">
@@ -65,7 +66,7 @@
       <div class="methodencheck-titlecontainer">
         <h2 class="methodencheck-questiontitle">Frage 2</h2>
         <div class="methodencheck-methodentitle-wrapper">
-          <h2 class="methodencheck-methodentitle">Methoden</h2>
+          <h2 class="methodencheck-methodentitle" v-bind:class="{methodentitleActive: methodsActivated}">Methoden</h2>
           <label class="methodencheck-methodenswitch">
             <input type="checkbox" checked v-on:click="changeMethodeActivated()">
             <span class="slider"></span>
@@ -89,8 +90,10 @@
             </div>
           </div>
 
-          <button class="button button-primary-bg" v-on:click="page--">Zurück</button>
-          <button class="button button-primary-bg" v-on:click="page++" v-if="inputs.motivation != 0">Weiter</button>
+          <div class="methodencheck-buttonContainer">
+            <button class="methodencheck-button methodencheck-button-back button button-primary-bg" v-on:click="page--"></button>
+            <button class="methodencheck-button methodencheck-button-forward button button-primary-bg" v-on:click="page++" v-if="inputs.motivation != 0">Weiter</button>
+          </div>
         </div>
 
         <div class="methodencheck-methodsContainer" v-bind:class="{methodsActive: methodsActivated}">
@@ -110,7 +113,7 @@
       <div class="methodencheck-titlecontainer">
         <h2 class="methodencheck-questiontitle">Frage 3</h2>
         <div class="methodencheck-methodentitle-wrapper">
-          <h2 class="methodencheck-methodentitle">Methoden</h2>
+          <h2 class="methodencheck-methodentitle" v-bind:class="{methodentitleActive: methodsActivated}">Methoden</h2>
           <label class="methodencheck-methodenswitch">
             <input type="checkbox" checked v-on:click="changeMethodeActivated()">
             <span class="slider"></span>
@@ -133,8 +136,11 @@
               </div>
             </div>
           </div>
-          <button class="button button-primary-bg" v-on:click="page--">Zurück</button>
-          <button class="button button-primary-bg" v-on:click="page++" v-if="inputs.untersuchungsziel != 0">Weiter</button>
+
+          <div class="methodencheck-buttonContainer">
+            <button class="methodencheck-button methodencheck-button-back button button-primary-bg" v-on:click="page--"></button>
+            <button class="methodencheck-button methodencheck-button-forward button button-primary-bg" v-on:click="page++" v-if="inputs.untersuchungsziel != 0">Weiter</button>
+          </div>
         </div>
 
         <div class="methodencheck-methodsContainer" v-bind:class="{methodsActive: methodsActivated}">
@@ -154,7 +160,7 @@
       <div class="methodencheck-titlecontainer">
         <h2 class="methodencheck-questiontitle">Frage 4</h2>
         <div class="methodencheck-methodentitle-wrapper">
-          <h2 class="methodencheck-methodentitle">Methoden</h2>
+          <h2 class="methodencheck-methodentitle" v-bind:class="{methodentitleActive: methodsActivated}">Methoden</h2>
           <label class="methodencheck-methodenswitch">
             <input type="checkbox" checked v-on:click="changeMethodeActivated()">
             <span class="slider"></span>
@@ -177,8 +183,11 @@
               </div>
             </div>
           </div>
-          <button class="button button-primary-bg" v-on:click="page--">Zurück</button>
-          <button class="button button-primary-bg" v-on:click="page++" v-if="inputs.untersuchungsschwerpunkt != 0">Weiter</button>
+
+          <div class="methodencheck-buttonContainer">
+            <button class="methodencheck-button methodencheck-button-back button button-primary-bg" v-on:click="page--"></button>
+            <button class="methodencheck-button methodencheck-button-forward button button-primary-bg" v-on:click="page++" v-if="inputs.untersuchungsschwerpunkt != 0">Weiter</button>
+          </div>
         </div>
 
         <div class="methodencheck-methodsContainer" v-bind:class="{methodsActive: methodsActivated}">
@@ -198,7 +207,7 @@
       <div class="methodencheck-titlecontainer">
         <h2 class="methodencheck-questiontitle">Frage 5</h2>
         <div class="methodencheck-methodentitle-wrapper">
-          <h2 class="methodencheck-methodentitle">Methoden</h2>
+          <h2 class="methodencheck-methodentitle" v-bind:class="{methodentitleActive: methodsActivated}">Methoden</h2>
           <label class="methodencheck-methodenswitch">
             <input type="checkbox" checked v-on:click="changeMethodeActivated()">
             <span class="slider"></span>
@@ -221,8 +230,11 @@
               </div>
             </div>
           </div>
-          <button class="button button-primary-bg" v-on:click="page--">Zurück</button>
-          <button class="button button-primary-bg" v-on:click="page++" v-if="inputs.zeit != 0">Weiter</button>
+
+          <div class="methodencheck-buttonContainer">
+            <button class="methodencheck-button methodencheck-button-back button button-primary-bg" v-on:click="page--"></button>
+            <button class="methodencheck-button methodencheck-button-forward button button-primary-bg" v-on:click="page++" v-if="inputs.zeit != 0">Weiter</button>
+          </div>
         </div>
 
         <div class="methodencheck-methodsContainer" v-bind:class="{methodsActive: methodsActivated}">
@@ -242,7 +254,7 @@
       <div class="methodencheck-titlecontainer">
         <h2 class="methodencheck-questiontitle">Frage 6</h2>
         <div class="methodencheck-methodentitle-wrapper">
-          <h2 class="methodencheck-methodentitle">Methoden</h2>
+          <h2 class="methodencheck-methodentitle" v-bind:class="{methodentitleActive: methodsActivated}">Methoden</h2>
           <label class="methodencheck-methodenswitch">
             <input type="checkbox" checked v-on:click="changeMethodeActivated()">
             <span class="slider"></span>
@@ -265,8 +277,11 @@
               </div>
             </div>
           </div>
-          <button class="button button-primary-bg" v-on:click="page--">Zurück</button>
-          <button class="button button-primary-bg" v-on:click="page++" v-if="inputs.budget != 0">Weiter</button>
+
+          <div class="methodencheck-buttonContainer">
+            <button class="methodencheck-button methodencheck-button-back button button-primary-bg" v-on:click="page--"></button>
+            <button class="methodencheck-button methodencheck-button-forward button button-primary-bg" v-on:click="page++" v-if="inputs.budget != 0">Weiter</button>
+          </div>
         </div>
 
         <div class="methodencheck-methodsContainer" v-bind:class="{methodsActive: methodsActivated}">
@@ -285,8 +300,8 @@
     <div class="methodencheck-page" v-if="page == 7">
       <h2 class="methodencheck-questiontitle">Result</h2>
       {{ getResults() }}
-      <button class="button button-primary-bg" v-on:click="page--">Zurück</button>
-      <button class="button button-primary-bg" v-on:click="page = 0; clearInputs(); clearMethods()">Startseite</button>
+      <button class="button button-primary-bg methodencheck-button-back" v-on:click="page--"></button>
+      <button class="button button-primary-bg methodencheck-button-forward" v-on:click="page = 0; clearInputs(); clearMethods()">Startseite</button>
     </div>
   </div>
 </template>
@@ -412,6 +427,7 @@ export default {
       this.inputs['untersuchungsschwerpunkt'] = 0;
       this.inputs['zeit'] = 0;
       this.inputs['budget'] = 0;
+      this.methodsActivated = true;
     },
     clearMethods: function() {
       this.methods.forEach(function(method) {
@@ -515,11 +531,9 @@ a {
 input:checked + .slider {
   background-color: #817E65;
 }
-
 input:focus + .slider {
   box-shadow: 0 0 1px #817E65;
 }
-
 input:checked + .slider:before {
   -webkit-transform: translateX(26px);
   -ms-transform: translateX(26px);
@@ -536,10 +550,42 @@ input:checked + .slider:before {
 .methodencheck-formcontainer {
   display: flex;
 }
+.methodencheck-buttonContainer {
+  margin-top: 1rem;
+  width: calc(100% - 2.5rem);
+  display: flex;
+  justify-content: flex-end;
+}
+.methodencheck-button {
+  margin-left: 1rem;
+}
+.methodencheck-button-back {
+  position: relative;
+  width: 40px;
+  height: 36px;
+}
+.methodencheck-button-forward {
+  background: #817E65;
+  color: #ffffff;
+}
+.methodencheck-button-forward:hover {
+  color: #000000;
+}
+.methodencheck-button-back::before {
+  content: "";
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background: url("../assets/Arrow.svg");
+  background-repeat: no-repeat;
+  background-size: 20px 20px;
+  background-position: center;
+  width: 20px;
+  height: 20px;
+}
 .methodencheck-form {
   width: 100%;
-  padding-right: 2rem;
-  transition: width 0.3s linear;
+  transition: width 0.5s ease-in-out;
 }
 .fromSmall {
   width: 70%;
@@ -552,15 +598,22 @@ input:checked + .slider:before {
   margin-bottom: 2rem;
   text-align: left;
 }
+.methodencheck-methodentitle {
+  opacity: 0;
+  transition: 0.5s ease-in-out;
+}
+.methodentitleActive {
+  opacity: 1;
+}
 .methodencheck-answers {
   display: flex;
   flex-wrap: wrap;
   width: 100%;
 }
 .methodencheck-answer {
-  width: 45%;
-  margin-right: 2%;
-  margin-bottom: 2%;
+  width: calc(50% - 2.5rem);
+  margin-right: 2rem;
+  margin-bottom: 2rem;
   border: 2px solid #408198;
   border-radius: 5px;
   cursor: pointer;
@@ -572,19 +625,17 @@ input:checked + .slider:before {
   background: #408198;
   color: #ffffff;
 }
-.methodencheck-answer:nth-child(2n+0) {
-  margin-right: 0;
-}
+
 .methodencheck-methodsContainer {
   position: relative;
   width: 0;
   padding: 0 1rem;
-  display: none;
-  transition: width 0.3s linear;
+  opacity: 0;
+  transition: 0.5s ease-in-out;
 }
 .methodsActive {
-  display: block;
   width: 30%;
+  opacity: 1;
 }
 .methodencheck-methods {
   width: 100%;
