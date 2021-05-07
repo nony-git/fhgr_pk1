@@ -1,7 +1,7 @@
 const config = {
     devServer: {
-        open: true,
-        disableHostCheck: true,
+        // open: true,
+       disableHostCheck: true,
     },
     pages: {
         index: {
