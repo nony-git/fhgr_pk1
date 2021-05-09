@@ -517,31 +517,35 @@ export default {
       .cell {
         border: 1px solid #7a7760;
         margin-top:5px;
-        padding: 3px 5px;
+        padding: 5px 5px;
         text-align: left;
+        height: 20px;
+        white-space: nowrap;
+        overflow: hidden;
       }
       .emptyCell {
-        height: 19px;
+        height: 20px;
       }
       .cellInput {
         padding: 0;
+        display: flex;
+        align-items: center;
+        height: 30px;
       }
       input[type=text] {
         border: 0;
-        height: 1rem;
-        padding: 3px 5px;
+        padding: 5px 5px;
+        height: 20px;
         width: 97.6%;
-        height: 100%;
         border-radius: 0;
         font-size: 1rem;
         font-family: Roboto;
       }
       input[type=number] {
         border: 0;
-        height: 1rem;
-        padding: 3px 5px;
+        padding: 5px 5px;
+        height: 20px;
         width: 96%;
-        height: 100%;
         border-radius: 0;
         font-size: 1rem;
         font-family: Roboto;
@@ -594,15 +598,21 @@ export default {
       .button:active, .button:focus {
         outline-width: 0;
       }
-      @media screen and (max-width: 700px) {
+      @media screen and (max-width: 767px) {
         .container {
-          padding: 50px 10px;
+          padding: 50px 0;
+        }
+        .firstColumn {
+          display: none;
         }
         .secondColumn {
-          widht: 33%;
+          width: 50%;
         }
-        .thirdColumn, .fourthColumn {
-          widht: 33%;
+        .thirdColumn {
+          width: 25%;
+        }
+        .fourthColumn {
+          width: 25%;
         }
       }
 </style>
