@@ -19,7 +19,7 @@
       }
   	},
   	"untersuchungsziel":{
-      "frage": "Was ist das Ziel der Unterschung?",
+      "frage": "Was ist das Ziel der Untersuchung?",
       "antworten": {
         "1":"eine allgemeine Bewertung meines Produkt",
     		"2":"Fehler und Schwachstellen aufdecken",
@@ -47,8 +47,8 @@
         "1":"Sehr wenig",
         "2":"Wenig",
         "3":"Mittel",
-        "4":"Hoch",
-        "5":"Sehr hoch"
+        "4":"Viel",
+        "5":"Sehr viel"
       }
     },
     "budget": {
