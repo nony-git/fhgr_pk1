@@ -701,6 +701,7 @@ input:checked + .slider:before {
 .methodencheck-button-forward {
   background: #817E65;
   color: #ffffff;
+  margin-top: 0;
 }
 .methodencheck-button-forward:hover {
   color: #000000;
