@@ -538,7 +538,7 @@ export default {
         height: 20px;
         width: 97.6%;
         border-radius: 0;
-        font-size: 1rem;
+        font-size: 1rem !important;
         font-family: Roboto;
       }
       input[type=number] {
@@ -547,7 +547,7 @@ export default {
         height: 20px;
         width: 96%;
         border-radius: 0;
-        font-size: 1rem;
+        font-size: 1rem !important;
         font-family: Roboto;
         -moz-appearance: textfield;
       }

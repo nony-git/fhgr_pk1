@@ -17,7 +17,6 @@
     </div>
 
     <div class="methodencheck-page" v-if="page == 0">
-      <img class="methodencheck-image" src="../assets/methodencheck_intro_image.png" alt="Image UX">
       <div class="methodencheck-text">
         <p>
           Im Bereich der Usability Evaluation existiert eine Vielzahl unterschiedlicher Methoden, die für die Untersuchung interaktiver
