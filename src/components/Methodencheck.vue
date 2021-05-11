@@ -531,6 +531,21 @@ ul {
 a {
   color: #42b983;
 }
+label {
+  margin-top: 0;
+}
+.button {
+  font-size: 1rem;
+  padding: 10px 15px;
+  color: #817e65;
+  border: 1px solid #c0beb2;
+  cursor: pointer;
+  transition: all 0.25s;
+}
+.button:hover {
+  background: #c0beb2;
+  color: #ffffff;
+}
 .methodencheck-page {
   padding: 0 2rem;
   position: relative;
@@ -621,6 +636,7 @@ a {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding-left: 2rem;
 }
 .methodencheck-methodentitle {
   padding-left: 2rem;

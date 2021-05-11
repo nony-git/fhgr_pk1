@@ -574,6 +574,18 @@ export default {
         z-index: 10;
         min-width: 90px;
       }
+      .button {
+        font-size: 1rem;
+        padding: 10px 15px;
+        color: #817e65;
+        border: 1px solid #c0beb2;
+        cursor: pointer;
+        transition: all 0.25s;
+      }
+      .button:hover {
+        background: #c0beb2;
+        color: #ffffff;
+      }
       @media screen and (max-width: 767px) {
         .container {
           padding: 50px 0;
