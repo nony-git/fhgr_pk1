@@ -10,7 +10,7 @@
     </div>
 
     <h2 class="titleMedium">Boolesche Operatoren</h2>
-    <button class="button" @click="emptyCells(1)">Eingaben leeren</button>
+    <button class="button button-primary-bg" @click="emptyCells(1)">Eingaben leeren</button>
     <div class="table">
         <div class="column firstColumn">
           <div class="cell cellTitle emptyCell">&nbsp;</div>
@@ -108,7 +108,7 @@
     </div>
 
     <h2 class="titleMedium">Trunkierungen und Wildcards</h2>
-    <button class="button" @click="emptyCells(2)">Eingaben leeren</button>
+    <button class="button button-primary-bg" @click="emptyCells(2)">Eingaben leeren</button>
     <div class="table">
       <div class="column firstColumn">
         <div class="cell cellTitle emptyCell">&nbsp;</div>
@@ -508,7 +508,6 @@ export default {
         margin-left: 5px;
       }
       .cellTitle, .firstColumnCell {
-        font-family: Roboto-Bold;
         color: #7a7760;
       }
       .firstColumnCell {
@@ -539,7 +538,6 @@ export default {
         width: 97.6%;
         border-radius: 0;
         font-size: 1rem !important;
-        font-family: Roboto;
       }
       input[type=number] {
         border: 0;
@@ -548,13 +546,7 @@ export default {
         width: 96%;
         border-radius: 0;
         font-size: 1rem !important;
-        font-family: Roboto;
         -moz-appearance: textfield;
-      }
-      input:focus {
-        border-radius: 0;
-        background: #B7B6A4;
-        outline-width: 0;
       }
       input::-webkit-outer-spin-button,
       input::-webkit-inner-spin-button {
@@ -581,22 +573,6 @@ export default {
         left: 0;
         z-index: 10;
         min-width: 90px;
-      }
-      .button {
-        padding: 8px;
-        border-radius: 0;
-        background: #fff;
-        border: 1px solid #7a7760;
-        font-family: Roboto;
-        font-size: 1rem;
-        transition: 0.3s ease-in-out;
-        cursor: pointer;
-      }
-      .button:hover {
-        background: #B7B6A4;
-      }
-      .button:active, .button:focus {
-        outline-width: 0;
       }
       @media screen and (max-width: 767px) {
         .container {

@@ -614,16 +614,16 @@ a {
   display: flex;
 }
 .methodencheck-questiontitle {
-  width: 70%;
+  width: 60%;
 }
 .methodencheck-methodentitle-wrapper {
-  width: 30%;
+  width: 40%;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 .methodencheck-methodentitle {
-  padding-left: 1rem;
+  padding-left: 2rem;
 }
 .methodencheck-methodenswitch {
   position: relative;
@@ -679,6 +679,7 @@ input:checked + .slider:before {
 }
 .methodencheck-text {
   text-align: left;
+  margin-bottom: 1.5rem;
 }
 .methodencheck-formcontainer {
   display: flex;
@@ -768,7 +769,7 @@ input:checked + .slider:before {
   transition: 0.5s ease-in-out;
 }
 .methodsActive {
-  width: 30%;
+  width: 40%;
   opacity: 1;
 }
 .methodencheck-methods {
@@ -847,7 +848,7 @@ input:checked + .slider:before {
 .methodencheck-resulttitle {
   margin: 0;
 }
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 900px) {
   .methodencheck-line {
     display: none;
   }
