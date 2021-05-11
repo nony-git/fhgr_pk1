@@ -1,6 +1,6 @@
 <template>
 <div class="container" id="app">
-    <h1 class="titleBig">Suchanfragen überprüfen</h1>
+    <!-- <h1 class="titleBig">Suchanfragen überprüfen</h1> -->
     <div class="text">
       Als professionelle Informationsdienstleister heben sich Bibliotheken durch einen hohen Qualitätsanspruch und fachlich überprüfte
       Inhalte von herkömmlichen Webanbietern ab. Dem entsprechend ist es besonders wichtig, dass Grundlagen der Recherche korrekt und
@@ -519,18 +519,18 @@ export default {
         margin-top:5px;
         padding: 5px 5px;
         text-align: left;
-        height: 20px;
+        height: 2em;
         white-space: nowrap;
         overflow: hidden;
       }
       .emptyCell {
-        height: 20px;
+        height: 2em;
       }
       .cellInput {
         padding: 0;
         display: flex;
         align-items: center;
-        height: 30px;
+        height: 2em;
       }
       input[type=text] {
         border: 0;
