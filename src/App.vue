@@ -1,11 +1,9 @@
 <template>
   <div id="app">
-
     <HelloWorld v-if="show=='helloworld'"/>
     <Methodencheck v-if="show=='methodencheck'"/>
     <Bibeval v-if="show=='bibeval'"/>
     <Suchanfrage v-if="show=='suchanfrage'"/>
-
   </div>
 </template>
 
@@ -21,7 +19,7 @@ export default {
     HelloWorld,
 		Bibeval,
     Methodencheck,
-    Suchanfrage
+    Suchanfrage,
   },
   props:[
     "show"

@@ -467,7 +467,7 @@ export default {
       }
 </script>
 
-<style>
+<style scoped>
       .container {
         max-width: 1000px;
         margin: 0 auto;
@@ -486,7 +486,7 @@ export default {
       }
       .text {
         font-size: 1rem;
-        font-weigth: 300;
+        font-weight: 300;
         line-height: 1.44;
         padding-bottom: 24px;
       }

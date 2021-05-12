@@ -1,17 +1,12 @@
 <template>
-  <div class="hello">
-    <question></question>
+  <div class="">
+    <h1>Frage X</h1>
   </div>
 </template>
 
 <script>
-import question from './components/question.vue'
-
 export default {
-  name: 'Bibeval',
-  components: {
-    question
-    }
+  name: 'question',
 }
 </script>
 
