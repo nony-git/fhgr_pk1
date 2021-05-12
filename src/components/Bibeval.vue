@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import question from './components/question.vue'
+import question from './question.vue'
 
 export default {
   name: 'Bibeval',
