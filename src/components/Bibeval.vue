@@ -30,59 +30,36 @@ let data = [
   {
     uid: "1",
     pid: "754",
-    tstamp: "1353072831",
-    lmuser_id: "103",
-    crdate: "1345708532",
-    cruser_id: "103",
-    deleted: "0",
     hidden: "0",
     category_id: "2",
-    name_de: '"Sind die Informationsseiten klar und deutlich strukturiert',
-    '"name_en"': ' um die Anwender bei der Orientierung zu unterstützen?"',
-    '"desc_de"':
-      '"Is the information section well-structured assisting the user in his orientation?"',
-    '"desc_en"': '"Es wird bspw. mit Überschriften unterschiedlichen Grades',
-    is_mandatory: " Listen",
-    order_number:
-      ' etc. gearbeitet. Bei längeren Texten bieten sich Textmarken (\\"Anker\\") an',
+    name_de: 'Sind die Informationsseiten klar und deutlich strukturiert, um die Anwender bei der Orientierung zu unterstützen?',
+    name_en: 'Is the information section well-structured assisting the user in his orientation?',
+    desc_de: 'Es wird bspw. mit Überschriften unterschiedlichen Grades, Listen, etc. gearbeitet. Bei längeren Texten bieten sich Textmarken ("Anker") an',
+    desc_en: 'description missing',
+    is_mandatory: "1",
+    order_number: "2",
   },
   {
     uid: "2",
     pid: "754",
-    tstamp: "1353073026",
-    lmuser_id: "103",
-    crdate: "1345708532",
-    cruser_id: "103",
-    deleted: "0",
     hidden: "0",
     category_id: "2",
-    name_de:
-      '"Beschränken sich die Informationstexte auf das Wesentliche und wird für diese eine leicht verständliche Sprache sowie ein einfacher Satzbau verwendet?"',
-    '"name_en"':
-      '"Does the information provided confine itself to the essentials and are the documents easy to follow (e.g. a simple writing style should be used)?"',
-    '"desc_de"':
-      '"Überflüssige Informationen und Fachwörter werden vermieden."',
-    '"desc_en"': '"Unnecessary information and technical terms are avoided."',
+    name_de: 'Beschränken sich die Informationstexte auf das Wesentliche und wird für diese eine leicht verständliche Sprache sowie ein einfacher Satzbau verwendet?',
+    name_en: 'Does the information provided confine itself to the essentials and are the documents easy to follow (e.g. a simple writing style should be used)?',
+    desc_de: 'Überflüssige Informationen und Fachwörter werden vermieden.',
+    desc_en: 'Unnecessary information and technical terms are avoided.',
     is_mandatory: "1",
     order_number: "2",
   },
   {
     uid: "3",
     pid: "754",
-    tstamp: "1353073026",
-    lmuser_id: "103",
-    crdate: "1345708532",
-    cruser_id: "103",
-    deleted: "0",
     hidden: "0",
     category_id: "2",
-    '"name_de"':
-      '"Beschränken sich die Informationstexte auf das Wesentliche und wird für diese eine leicht verständliche Sprache sowie ein einfacher Satzbau verwendet?"',
-    '"name_en"':
-      '"Does the information provided confine itself to the essentials and are the documents easy to follow (e.g. a simple writing style should be used)?"',
-    '"desc_de"':
-      '"Überflüssige Informationen und Fachwörter werden vermieden."',
-    '"desc_en"': '"Unnecessary information and technical terms are avoided."',
+    name_de: 'Beschränken sich die Informationstexte auf das Wesentliche und wird für diese eine leicht verständliche Sprache sowie ein einfacher Satzbau verwendet?',
+    name_en: 'Does the information provided confine itself to the essentials and are the documents easy to follow (e.g. a simple writing style should be used)?',
+    desc_de: 'Überflüssige Informationen und Fachwörter werden vermieden.',
+    desc_en: 'Unnecessary information and technical terms are avoided.',
     is_mandatory: "1",
     order_number: "2",
   },
@@ -99,7 +76,6 @@ export default {
 
     return {
       answers: answers,
-      // Zum Testen mal zwei Beispielfragen, TODO aktuelles JSON-Format verwenden
       questions: data,
     };
   },

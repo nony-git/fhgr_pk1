@@ -1,16 +1,12 @@
 <template>
   <tr class="single-question">
-    <!-- auf Details einer Fragee zugreifen -->
-    <td class="question-col">{{ question.name_de }}</td>
-    <td>
-      <input
-      type="radio"
-      id="zero"
-      value="0"
-      :name="question.uid"
-      v-model="picked"
-    />
-    <!-- <label for="one">One</label> -->
+    <!-- auf Details einer Frage zugreifen -->
+    <td class="question-col">
+      {{ question.name_de }}
+      <span class="tooltip">
+        &#8505;
+        <span class="tooltiptext">{{ question.desc_de }}</span>
+      </span>
     </td>
     <td>
       <input
@@ -20,8 +16,6 @@
         :name="question.uid"
         v-model="picked"
       />
-    
-    <!-- <label for="two">Two</label> -->
     </td>
     <td>
       <input
@@ -59,9 +53,19 @@
         v-model="picked"
       />
     </td>
+    <!-- k.A. -->
     <td>
-      <span>Picked: {{ picked }}</span>
+      <input
+      type="radio"
+      id="zero"
+      value="0"
+      :name="question.uid"
+      v-model="picked"
+    />
     </td>
+    <!-- <td>
+      <span>Picked: {{ picked }}</span>
+    </td> -->
   </tr>
 </template>
 
@@ -107,5 +111,23 @@ td{
   padding: 1em 0em;
   text-align:center;
   border:1px solid black;
+}
+.tooltip {
+  position: relative;
+  margin-left: 5px;
+  cursor: context-menu;
+  padding: 0 4px;
+}
+.tooltip:hover > .tooltiptext {
+  display: block;
+}
+.tooltiptext {
+  display: none;
+  position: absolute;
+  background: #B7B6A4;
+  padding: 3px 5px;
+  left: 0;
+  z-index: 10;
+  min-width: 90px;
 }
 </style>
