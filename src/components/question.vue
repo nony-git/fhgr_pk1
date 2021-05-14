@@ -1,7 +1,8 @@
 <template>
+  <tbody>
   <tr class="single-question">
     <!-- auf Details einer Frage zugreifen -->
-    <td class="question-col">
+    <td class="question-col" rowspan="2">
       {{ question.name_de }}
       <span class="tooltip">
         &#8505;
@@ -11,26 +12,8 @@
     <td>
       <input
         type="radio"
-        id="one"
-        value="1"
-        :name="question.uid"
-        v-model="picked"
-      />
-    </td>
-    <td>
-      <input
-        type="radio"
-        id="two"
-        value="2"
-        :name="question.uid"
-        v-model="picked"
-      />
-    </td>
-    <td>
-      <input
-        type="radio"
-        id="three"
-        value="3"
+        id="five"
+        value="5"
         :name="question.uid"
         v-model="picked"
       />
@@ -47,13 +30,33 @@
     <td>
       <input
         type="radio"
-        id="five"
-        value="5"
+        id="three"
+        value="3"
         :name="question.uid"
         v-model="picked"
       />
     </td>
-    <!-- k.A. -->
+    <td>
+      <input
+        type="radio"
+        id="two"
+        value="2"
+        :name="question.uid"
+        v-model="picked"
+      />
+    </td>
+    <td>
+      <input
+        type="radio"
+        id="one"
+        value="1"
+        :name="question.uid"
+        v-model="picked"
+      />
+    </td>
+    <!-- Spacer -->
+    <td></td>
+    <!-- keine Antwort -->
     <td>
       <input
       type="radio"
@@ -63,10 +66,14 @@
       v-model="picked"
     />
     </td>
-    <!-- <td>
-      <span>Picked: {{ picked }}</span>
-    </td> -->
+  <!-- <td>
+    <span>Picked: {{ picked }}</span>
+  </td> -->
   </tr>
+  <tr>
+    <td colspan="8" class="right-align add-comment"><textarea name="" id="" cols="1" rows="1" placeholder="+ Kommentar hinzufügen"></textarea></td>
+  </tr>
+  </tbody>
 </template>
 
 <script>
@@ -108,7 +115,7 @@ a {
   color: #42b983;
 }
 td{
-  padding: 1em 0em;
+  padding: 1em;
   text-align:center;
   border:1px solid black;
 }
@@ -129,5 +136,19 @@ td{
   left: 0;
   z-index: 10;
   min-width: 90px;
+}
+.right-align{
+  text-align:right;
+}
+.add-comment a{
+  color:lightgray;
+}
+.add-comment a:hover{
+  color:gray;
+  text-decoration: none;
+}
+textarea{
+  resize:none;
+  font-size:0.8rem;
 }
 </style>

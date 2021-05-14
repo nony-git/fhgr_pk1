@@ -4,12 +4,13 @@
     <table>
       <tr>
         <th class="question-col">Frage</th>
-        <th>gar nicht</th>
+        <th class="centered">Voll und ganz</th>
         <th></th>
         <th></th>
         <th></th>
-        <th>absolut</th>
-        <th>k.A.</th>
+        <th class="centered">Überhaupt nicht</th>
+        <th></th>
+        <th class="centered">keine Antwort</th>
       </tr>
       <question
       v-for="(q, index) in questions"
@@ -108,10 +109,13 @@ table{
 }
 td, th{
   width:100px;
-  padding: 1em 0em;
+  padding: 1em;
   border:1px solid black;
 }
 .question-col{
   width:500px;
+}
+.centered{
+  text-align: center;
 }
 </style>
