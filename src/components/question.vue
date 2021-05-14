@@ -71,8 +71,11 @@
   </td> -->
   </tr>
   <tr>
-    <td colspan="8" class="right-align add-comment"><textarea name="" id="" cols="1" rows="1" placeholder="+ Kommentar hinzufügen"></textarea></td>
+    <td colspan="8" class="right-align add-comment"><textarea v-model="comment" name="" id="" cols="1" rows="1" placeholder="+ Kommentar hinzufügen"></textarea></td>
   </tr>
+        <!-- dev only: um zu zeigen, dass Kommentar in comment gespeichert wird -->
+        <tr v-if="comment!=''">Kommentar: {{ comment }}</tr>
+        <!---->
   </tbody>
 </template>
 
@@ -84,6 +87,7 @@ export default {
   data: function () {
     return {
       picked: this.value,
+      comment: this.comment
     };
   },
   watch: {
@@ -91,8 +95,8 @@ export default {
       this.$emit("input", neuerWert);
     },
 
-    /*updateValue: function (value) {
-      this.$emit("input", value);
+    /*updateValue: function (comment) {
+      this.$emit("input", comment);
     },*/
   },
 };
