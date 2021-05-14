@@ -2,7 +2,7 @@
   <tbody>
   <tr class="single-question">
     <!-- auf Details einer Frage zugreifen -->
-    <td class="question-col" rowspan="2">
+    <td  rowspan="2">
       {{ question.name_de }}
       <span class="tooltip">
         &#8505;
@@ -54,14 +54,23 @@
         v-model="picked"
       />
     </td>
+    <td>
+      <input
+        type="radio"
+        id="zero"
+        value="0"
+        :name="question.uid"
+        v-model="picked"
+      />
+    </td>
     <!-- Spacer -->
-    <td></td>
+    <!-- <td></td> -->
     <!-- keine Antwort -->
     <td>
       <input
       type="radio"
-      id="zero"
-      value="0"
+      id="NaN"
+      value="NaN"
       :name="question.uid"
       v-model="picked"
     />

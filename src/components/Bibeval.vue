@@ -4,12 +4,18 @@
     <table>
       <tr>
         <th class="question-col">Frage</th>
-        <th class="centered">Voll und ganz</th>
+        <th colspan="6">
+          <div class="flex">
+            <p class="align-left flexed">Voll und ganz</p>
+            <p class="align-right">Überhaupt nicht</p>
+          </div>
+        </th>
+        <!-- <th></th>
         <th></th>
         <th></th>
-        <th></th>
-        <th class="centered">Überhaupt nicht</th>
-        <th></th>
+        <th></th> -->
+        <!-- <th class="align-right" colspan="1">Überhaupt nicht</th> -->
+        <!-- <th></th> -->
         <th class="centered">keine Antwort</th>
       </tr>
       <question
@@ -34,11 +40,8 @@ let data = [
     hidden: "0",
     category_id: "2",
     name_de: 'Sind die Informationsseiten klar und deutlich strukturiert, um die Anwender bei der Orientierung zu unterstützen?',
-    name_en: 'Is the information section well-structured assisting the user in his orientation?',
     desc_de: 'Es wird bspw. mit Überschriften unterschiedlichen Grades, Listen, etc. gearbeitet. Bei längeren Texten bieten sich Textmarken ("Anker") an',
-    desc_en: 'description missing',
     is_mandatory: "1",
-    order_number: "2",
   },
   {
     uid: "2",
@@ -46,11 +49,8 @@ let data = [
     hidden: "0",
     category_id: "2",
     name_de: 'Beschränken sich die Informationstexte auf das Wesentliche und wird für diese eine leicht verständliche Sprache sowie ein einfacher Satzbau verwendet?',
-    name_en: 'Does the information provided confine itself to the essentials and are the documents easy to follow (e.g. a simple writing style should be used)?',
     desc_de: 'Überflüssige Informationen und Fachwörter werden vermieden.',
-    desc_en: 'Unnecessary information and technical terms are avoided.',
     is_mandatory: "1",
-    order_number: "2",
   },
   {
     uid: "3",
@@ -58,11 +58,8 @@ let data = [
     hidden: "0",
     category_id: "2",
     name_de: 'Beschränken sich die Informationstexte auf das Wesentliche und wird für diese eine leicht verständliche Sprache sowie ein einfacher Satzbau verwendet?',
-    name_en: 'Does the information provided confine itself to the essentials and are the documents easy to follow (e.g. a simple writing style should be used)?',
     desc_de: 'Überflüssige Informationen und Fachwörter werden vermieden.',
-    desc_en: 'Unnecessary information and technical terms are avoided.',
     is_mandatory: "1",
-    order_number: "2",
   },
 ];
 
@@ -72,7 +69,7 @@ export default {
     let answers = [];
 
     for (let i = 0; i < data.length; i++) {
-      answers.push(0);
+      answers.push("NaN");
     }
 
     return {
@@ -106,6 +103,7 @@ table{
   text-align: left;
   border-collapse: collapse;
   border:1px solid black;
+  width:100%;
 }
 td, th{
   width:100px;
@@ -113,9 +111,21 @@ td, th{
   border:1px solid black;
 }
 .question-col{
-  width:500px;
+  width:50%;
 }
 .centered{
   text-align: center;
+}
+.align-left{
+  text-align:left;
+}
+.align-right{
+  text-align:right;
+}
+.flex{
+  display:flex !important;
+}
+.flexed{
+  flex:50%;
 }
 </style>
