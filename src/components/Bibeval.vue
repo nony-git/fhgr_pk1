@@ -1,24 +1,28 @@
 <template>
-  <div class="hello">
+  <div class="bibeval-container">
 
     <question></question>
 
-		<div v-for="item in categories" :key="item">
+		<h2>Untersuchungsbereich?</h2>
+
+		<div v-for="cat1 in categories" :key="cat1">
 
 			<select-button 
+				class="bib-select-large"
 				v-model="selectedCategories" 
-				:value="item[0]"
-			>{{ item[0] }} 
+				:value="cat1[0]"
+			>{{ cat1[0] }} 
 			</select-button>
 
 
-			<template v-if="selectedCategories.includes(item[0])">
-				<div v-for="temp in item[1]" :key="temp">
+			<template v-if="selectedCategories.includes(cat1[0])">
+				<div v-for="cat2 in cat1[1]" :key="cat2">
 
 					<select-button 
+						class="bib-select-small"
 						v-model="selectedSubCategories" 
-						:value="temp"
-					>{{ temp }} 
+						:value="cat2"
+					>{{ cat2 }} 
 					</select-button><br />
 
 				</div>
@@ -38,7 +42,8 @@
 		-->
 
 {{ selectedCategories }}<br>
-{{ selectedSubCategories }}
+{{ selectedSubCategories }}<br>
+{{ data_bibeval}}
 
   </div>
 </template>
@@ -47,7 +52,7 @@
 import question from "./question.vue";
 import selectButton from "./SelectButton.vue";
 
-import data_bibeval from './json/data_bibeval.json';
+import bibeval_json from './json/data_bibeval.json';
 
 export default {
   name: "Bibeval",
@@ -56,6 +61,7 @@ export default {
       selectedCategories: [],
       selectedSubCategories: [],
 			categories: [],
+			data_bibeval: bibeval_json,
     };
   },
 
@@ -70,13 +76,12 @@ export default {
       return ["a", "b", "c"];
     },
   },
-
-	created() {
+	mounted() {
 			var categories = [];
-			for(var i = 0; i < data_bibeval.categories_levelone.length; i++) {
-				categories.push([data_bibeval.categories_levelone[i].name]);
-				for(var x = 0; x < data_bibeval.categories_levelone[i].categories_leveltwo.length; x++) {
-					categories[i].push([data_bibeval.categories_levelone[i].categories_leveltwo[x].name]);
+			for(var i = 0; i < this.data_bibeval.categories_levelone.length; i++) {
+				categories.push([this.data_bibeval.categories_levelone[i].name]);
+				for(var x = 0; x < this.data_bibeval.categories_levelone[i].categories_leveltwo.length; x++) {
+					categories[i].push([this.data_bibeval.categories_levelone[i].categories_leveltwo[x].name]);
 				}
 			}
 			this.categories = categories;
@@ -85,5 +90,7 @@ export default {
 </script>
 
 <style scoped>
-
+.bib-select-large {
+	height: 50px;
+}
 </style>
