@@ -177,20 +177,29 @@ let data =[
 let bereich = ["Information und Kommunikation"];
 let teilbereich = ["Kontakt und Zugang"];
 let komponente = ["Kontaktinformationen"];
-console.log(bereich,teilbereich,komponente);
 
 // erstelle view für anzeige der fragen
 let view;
-if(komponente.length > 0){
+if(komponente.length == 0){
   // nimm fragen von komponente, teilbereich und bereich darüber
 }
-else if(teilbereich.length > 0){
-  // nimm fragen von teilbereich und bereich darüber
+else if(teilbereich.length == 0){
+  // nimm nur fragen von teilbereich und bereich darüber
 }
 else{
-  //nimm fragen von bereich
+  //nimm nur fragen von bereich
+  for (let i=0; i < teildata.categories_levelone.length; i++){
+    if(bereich.indexOf(teildata.categories_levelone[i].name)){
+      view = teildata.categories_levelone[i];
+    }
+    else{
+      //nothing
+    }
+    console.log(view);
+    // Bereich wurde ausgewählt
+    // Hier muss etwas passieren wenn mehrere Bereiche ausgewählt?
+  }
 }
-console.log(view);
 
 export default {
   name: "Bibeval",
