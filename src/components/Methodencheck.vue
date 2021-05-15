@@ -87,11 +87,15 @@
 
         <!-- QUESTIONS AND ANSWERS -->
         <div class="methodencheck-formcontainer">
+          <!-- QUESTION -->
           <div class="methodencheck-form" v-bind:class="{fromSmall: methodsActivated}">
             <div class="methodencheck-question">
               {{ question['frage'] }}
             </div>
+
+            <!-- ANSWERS -->
             <div>
+              <!-- MULTIPLECHOICE ANSWERS -->
               <div class="methodencheck-answers" v-if="question['multiplechoice']">
                   <div class="methodencheck-levelanswers" v-for="(name, value, index) in question['antworten']" v-bind:key="index" v-on:click="updateInputs(question['titel'], value);updateMethods(question['titel']); sortMethods()">
                     <div class="methodencheck-topanswer" v-if="name['level'] == 1" v-on:click="showSubAnwser(value)">
@@ -113,6 +117,7 @@
                   </div>
               </div>
 
+              <!-- SINGLECHOICE ANSWER -->
               <div  class="methodencheck-answers" v-else>
                 <div class="methodencheck-answer" v-for="(name, value, index) in question['antworten']" v-bind:key="index" v-on:click="updateInputs(question['titel'], value);updateMethods(question['titel']); sortMethods()">
                   <div class="activeAnswer" v-if="inputs[question['titel']] == value">
@@ -124,13 +129,15 @@
                 </div>
               </div>
             </div>
+
+            <!-- BUTTONS -->
             <div class="methodencheck-buttonContainer">
               <button class="methodencheck-button methodencheck-button-back button button-primary-bg" v-on:click="page--"></button>
               <button class="methodencheck-button methodencheck-button-forward button button-primary-bg" v-on:click="page++" v-if="inputs[question['titel']] != 0">Weiter</button>
             </div>
           </div>
 
-          <!-- METHODES -->
+          <!-- METHODS -->
           <div class="methodencheck-methodsContainer" v-bind:class="{methodsActive: methodsActivated}">
             <div class="methodencheck-methods">
               <div class="methodencheck-method" v-for="method in methods" v-bind:key="method['id']">
@@ -200,23 +207,21 @@ export default {
     updateInputs: function(question, inputValue) {
       inputValue = parseInt(inputValue);
       if (this.questions[question]['multiplechoice']) {
-        if (inputValue != 0) {
-          if (inputValue == 1) {
-            this.inputs[question] = [1];
+        if (inputValue == 1) {
+          this.inputs[question] = [1];
+        }
+        else {
+          var index = this.inputs[question].indexOf(1);
+          if (index > -1) {
+            this.inputs[question].splice(index, 1);
+          }
+
+          if (this.inputs[question].includes(inputValue)) {
+            var i = this.inputs[question].indexOf(inputValue);
+            this.inputs[question].splice(i, 1);
           }
           else {
-            var index = this.inputs[question].indexOf(1);
-            if (index > -1) {
-              this.inputs[question].splice(index, 1);
-            }
-
-            if (this.inputs[question].includes(inputValue)) {
-              var i = this.inputs[question].indexOf(inputValue);
-              this.inputs[question].splice(i, 1);
-            }
-            else {
-              this.inputs[question].push(inputValue);
-            }
+            this.inputs[question].push(inputValue);
           }
         }
       }
@@ -382,6 +387,8 @@ label {
   border: 1px solid #c0beb2;
   cursor: pointer;
   transition: all 0.25s;
+  background: #ffffff;
+
 }
 .button:hover {
   background: #c0beb2;
@@ -423,7 +430,7 @@ label {
 .endstepActive::before {
   content: "";
   position: absolute;
-  top: 2px;
+  top: 1px;
   left: 3px;
   background-image: url("../assets/check.svg");
   background-repeat: no-repeat;
@@ -553,7 +560,7 @@ input:checked + .slider:before {
 .methodencheck-button-back {
   position: relative;
   width: 40px;
-  height: 36px;
+  height: 41px;
 }
 .methodencheck-button-forward {
   background: #817E65;
@@ -566,7 +573,7 @@ input:checked + .slider:before {
 .methodencheck-button-back::before {
   content: "";
   position: absolute;
-  top: 8px;
+  top: 10px;
   left: 8px;
   background: url("../assets/Arrow.svg");
   background-repeat: no-repeat;
@@ -622,9 +629,14 @@ input:checked + .slider:before {
   margin-right: 2rem;
   margin-bottom: 2rem;
   cursor: pointer;
+  border-radius: 5px;
   transition: 0.25s;
   display: flex;
   justify-content: center;
+}
+.methodencheck-levelanswers:hover {
+  background: #408198;
+  color: #ffffff;
 }
 .methodencheck-topanswer {
   width: 100%;
@@ -706,23 +718,19 @@ input:checked + .slider:before {
   padding: 1rem;
 }
 .activeTopAnswer {
-  width: calc(100% - 2rem);
   padding: 1rem;
   background: #408198;
   color: #ffffff;
 }
 .inactiveTopAnswer {
-  width: 100%;
   padding: 1rem;
 }
 .activeSubAnswer {
-  width: 100%);
   padding: 0.4rem;
   background: #408198;
   color: #ffffff;
 }
 .inactiveSubAnswer {
-  width: 100%;
   padding: 0.4rem;
 }
 .methodencheck-controls {
@@ -748,32 +756,6 @@ input:checked + .slider:before {
   margin: 0;
 }
 @media only screen and (max-width: 900px) {
-  .methodencheck-line {
-    display: none;
-  }
-  .methodencheck-step, .methodencheck-endstep {
-    width: 10%;
-    height: 4px;
-    border-radius: 4px;
-    border: 1.5px solid #000000;
-    background: #ffffff;
-    margin-right: 5%;
-  }
-  .methodencheck-endstep {
-    transform: rotate(0deg);
-    margin-right: 0;
-  }
-  .stepActive {
-    background: #000000;
-  }
-  .endstepActive {
-    background: #000000;
-  }
-  .endstepActive::before {
-    background-image: none;
-    width: 0;
-    height: 0;
-  }
   .methodencheck-questiontitle {
     width: 100%;
   }
@@ -799,6 +781,34 @@ input:checked + .slider:before {
   }
   .methodencheck-methodsContainer {
     display: none;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .methodencheck-line {
+    display: none;
+  }
+  .methodencheck-step, .methodencheck-endstep {
+    width: 10%;
+    height: 4px;
+    border-radius: 4px;
+    border: 1.5px solid #000000;
+    background: #ffffff;
+    margin-right: 5%;
+  }
+  .methodencheck-endstep {
+    transform: rotate(0deg);
+    margin-right: 0;
+  }
+  .stepActive {
+    background: #000000;
+  }
+  .endstepActive {
+    background: #000000;
+  }
+  .endstepActive::before {
+    background-image: none;
+    width: 0;
+    height: 0;
   }
 }
 
