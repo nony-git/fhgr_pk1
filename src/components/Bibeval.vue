@@ -1,131 +1,89 @@
 <template>
-  <div class="">
-    <!-- Beispiel: mehrere Question-Komponenten anzeigen -->
-    <table>
-      <tr>
-        <th class="question-col">Frage</th>
-        <th colspan="6">
-          <div class="flex">
-            <p class="align-left flexed">Voll und ganz</p>
-            <p class="align-right">Überhaupt nicht</p>
-          </div>
-        </th>
-        <!-- <th></th>
-        <th></th>
-        <th></th>
-        <th></th> -->
-        <!-- <th class="align-right" colspan="1">Überhaupt nicht</th> -->
-        <!-- <th></th> -->
-        <th class="centered">keine Antwort</th>
-      </tr>
-      <question
-      v-for="(q, index) in questions"
-      :question="q"
-      :key="q.uid"
-      v-model="answers[index]"
-    ></question>
-    </table>
+  <div class="hello">
 
-    {{ answers }}
+    <question></question>
+
+		<div v-for="item in categories" :key="item">
+
+			<select-button 
+				v-model="selectedCategories" 
+				:value="item[0]"
+			>{{ item[0] }} 
+			</select-button>
+
+
+			<template v-if="selectedCategories.includes(item[0])">
+				<div v-for="temp in item[1]" :key="temp">
+
+					<select-button 
+						v-model="selectedSubCategories" 
+						:value="temp"
+					>{{ temp }} 
+					</select-button><br />
+
+				</div>
+			</template>
+
+	</div>
+
+<!-- 
+
+    <div v-for="subcategory in selectedSubCategories" :key="subcategory">
+      <h1>{{ subcategory }}</h1>
+
+      <button v-for="comp in getComponents(subcategory)" :key="comp">
+        {{ comp }}
+      </button>
+    </div>
+		-->
+
+{{ selectedCategories }}<br>
+{{ selectedSubCategories }}
+
   </div>
 </template>
 
 <script>
 import question from "./question.vue";
+import selectButton from "./SelectButton.vue";
 
-let data = [
-  {
-    uid: "1",
-    pid: "754",
-    hidden: "0",
-    category_id: "2",
-    name_de: 'Sind die Informationsseiten klar und deutlich strukturiert, um die Anwender bei der Orientierung zu unterstützen?',
-    desc_de: 'Es wird bspw. mit Überschriften unterschiedlichen Grades, Listen, etc. gearbeitet. Bei längeren Texten bieten sich Textmarken ("Anker") an',
-    is_mandatory: "1",
-  },
-  {
-    uid: "2",
-    pid: "754",
-    hidden: "0",
-    category_id: "2",
-    name_de: 'Beschränken sich die Informationstexte auf das Wesentliche und wird für diese eine leicht verständliche Sprache sowie ein einfacher Satzbau verwendet?',
-    desc_de: 'Überflüssige Informationen und Fachwörter werden vermieden.',
-    is_mandatory: "1",
-  },
-  {
-    uid: "3",
-    pid: "754",
-    hidden: "0",
-    category_id: "2",
-    name_de: 'Beschränken sich die Informationstexte auf das Wesentliche und wird für diese eine leicht verständliche Sprache sowie ein einfacher Satzbau verwendet?',
-    desc_de: 'Überflüssige Informationen und Fachwörter werden vermieden.',
-    is_mandatory: "1",
-  },
-];
+import data_bibeval from './json/data_bibeval.json';
 
 export default {
   name: "Bibeval",
-  data: function () {
-    let answers = [];
-
-    for (let i = 0; i < data.length; i++) {
-      answers.push("NaN");
-    }
-
+  data () {
     return {
-      answers: answers,
-      questions: data,
+      selectedCategories: [],
+      selectedSubCategories: [],
+			categories: [],
     };
   },
+
   components: {
     question,
+    selectButton,
   },
+
+  methods: {
+    getComponents(subcategory) {
+      console.log(subcategory);
+      return ["a", "b", "c"];
+    },
+  },
+
+	created() {
+			var categories = [];
+			for(var i = 0; i < data_bibeval.categories_levelone.length; i++) {
+				categories.push([data_bibeval.categories_levelone[i].name]);
+				for(var x = 0; x < data_bibeval.categories_levelone[i].categories_leveltwo.length; x++) {
+					categories[i].push([data_bibeval.categories_levelone[i].categories_leveltwo[x].name]);
+				}
+			}
+			this.categories = categories;
+	}
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
-table{
-  text-align: left;
-  border-collapse: collapse;
-  border:1px solid black;
-  width:100%;
-}
-td, th{
-  width:100px;
-  padding: 1em;
-  border:1px solid black;
-}
-.question-col{
-  width:50%;
-}
-.centered{
-  text-align: center;
-}
-.align-left{
-  text-align:left;
-}
-.align-right{
-  text-align:right;
-}
-.flex{
-  display:flex !important;
-}
-.flexed{
-  flex:50%;
-}
+
 </style>
