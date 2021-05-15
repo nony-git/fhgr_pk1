@@ -718,6 +718,7 @@ input:checked + .slider:before {
   padding: 1rem;
 }
 .activeTopAnswer {
+  height: calc(100% - 2rem);
   padding: 1rem;
   background: #408198;
   color: #ffffff;
