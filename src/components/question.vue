@@ -4,10 +4,10 @@
     <!-- auf Details einer Frage zugreifen -->
     <td  rowspan="2">
       {{ question.name }}
-      <span class="tooltip">
+      <!-- <span class="tooltip">
         &#8505;
-        <!-- <span class="tooltiptext">{{ question.desc_de }}</span> -->
-      </span>
+        <span class="tooltiptext">{{ question.desc_de }}</span>
+      </span> -->
     </td>
     <td>
       <input

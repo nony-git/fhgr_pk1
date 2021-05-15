@@ -1,30 +1,17 @@
 <template>
-  <div class="">
-    <table>
-      <tr>
-        <th class="question-col">Frage</th>
-        <th colspan="6">
-          <div class="flex">
-            <p class="align-left flexed">Voll und ganz</p>
-            <p class="align-right">Überhaupt nicht</p>
-          </div>
-        </th>
-        <th class="centered">keine Antwort</th>
-      </tr>
-        <question
-          v-for="(q, index) in questions.categories_levelone[0].questions"
-          :question="q"
-          :key="q.name"
-          v-model="answers[index]"
-      ></question>
-    </table>
-
-    {{ answers }}
+  <div class="" id="views">
+    <!-- <QuestionView v-bind:toView="toView"></QuestionView> -->
+     <QuestionView
+          v-for="(v,index) in toViewArray"
+          :toView="v"
+          :key="index"
+      ></QuestionView>
   </div>
 </template>
 
 <script>
-import question from "./question.vue";
+import QuestionView from "./QuestionView.vue";
+
 // Snippet von Ellen, Datenimport todo
 let data =[
   {
@@ -176,26 +163,57 @@ let data =[
 // Filter bringt sowas
 let bereich = ["Information und Kommunikation"];
 let teilbereich = ["Kontakt und Zugang"];
-let komponente = ["Kontaktinformationen"];
+let komponente = ["Kontaktinformationen","Einfache Suche"];
 
-// erstelle view für anzeige der fragen
-let view;
-if(komponente.length == 0){
+// was soll angezeigt werden
+let toView;
+let toViewArray = [];
+if(komponente.length > 0){
   // nimm fragen von komponente, teilbereich und bereich darüber
+
+  // einzelne komponente
+  for (let f=0; f < teildata.categories_levelone.length; f++){
+    for (let g=0; g < teildata.categories_levelone[f].categories_leveltwo.length; g++){
+      for (let h=0; h < teildata.categories_levelone[f].categories_leveltwo[g].categories_levelthree.length; h++){
+        if(komponente.indexOf(teildata.categories_levelone[f].categories_leveltwo[g].categories_levelthree[h].name)){
+          toView = teildata.categories_levelone[f].categories_leveltwo[g].categories_levelthree[h];
+          // füge einzelne view in view-Array ein mit key f,g,h
+          toViewArray[f+g+h]=toView;
+        }
+      }
+    }
+  }
+
+  // teilbereich
+
+  // bereich
+
 }
-else if(teilbereich.length == 0){
+else if(teilbereich.length > 0){
   // nimm nur fragen von teilbereich und bereich darüber
+  
+  // teilbereich
+  
+  // bereich
+  for (let i=0; i < teildata.categories_levelone.length; i++){
+    if(bereich.indexOf(teildata.categories_levelone[i].name)){
+      toView = teildata.categories_levelone[i];
+    }
+    else{
+      //nothing
+    }
+  }
 }
 else{
   //nimm nur fragen von bereich
   for (let i=0; i < teildata.categories_levelone.length; i++){
     if(bereich.indexOf(teildata.categories_levelone[i].name)){
-      view = teildata.categories_levelone[i];
+      toView = teildata.categories_levelone[i];
     }
     else{
       //nothing
     }
-    console.log(view);
+    console.log(toView);
     // Bereich wurde ausgewählt
     // Hier muss etwas passieren wenn mehrere Bereiche ausgewählt?
   }
@@ -203,22 +221,17 @@ else{
 
 export default {
   name: "Bibeval",
-  data: function () {
-
-    let answers = [];
-    // eslint-disable-next-line
-    for (var i in teildata.categories_levelone[0].questions) {
-      answers.push("NaN");
-    }
-
-    return {
-      answers: answers,
-      questions: teildata,
-    };
-  },
   components: {
-    question,
+    // eslint-disable-next-line vue/no-unused-components
+    QuestionView,
   },
+  data:function(){
+    toView
+    return{
+      toView:toView,
+      toViewArray:toViewArray
+    }
+  }
 };
 </script>
 
@@ -238,33 +251,5 @@ li {
 a {
   color: #42b983;
 }
-table{
-  text-align: left;
-  border-collapse: collapse;
-  border:1px solid black;
-  width:100%;
-}
-td, th{
-  width:100px;
-  padding: 1em;
-  border:1px solid black;
-}
-.question-col{
-  width:50%;
-}
-.centered{
-  text-align: center;
-}
-.align-left{
-  text-align:left;
-}
-.align-right{
-  text-align:right;
-}
-.flex{
-  display:flex !important;
-}
-.flexed{
-  flex:50%;
-}
+
 </style>
