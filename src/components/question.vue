@@ -3,10 +3,10 @@
   <tr class="single-question">
     <!-- auf Details einer Frage zugreifen -->
     <td  rowspan="2">
-      {{ question.name_de }}
+      {{ question.name }}
       <span class="tooltip">
         &#8505;
-        <span class="tooltiptext">{{ question.desc_de }}</span>
+        <!-- <span class="tooltiptext">{{ question.desc_de }}</span> -->
       </span>
     </td>
     <td>
@@ -14,7 +14,7 @@
         type="radio"
         id="five"
         value="5"
-        :name="question.uid"
+        :name="question.name"
         v-model="picked"
       />
     </td>
@@ -23,7 +23,7 @@
         type="radio"
         id="four"
         value="4"
-        :name="question.uid"
+        :name="question.name"
         v-model="picked"
       />
     </td>
@@ -32,7 +32,7 @@
         type="radio"
         id="three"
         value="3"
-        :name="question.uid"
+        :name="question.name"
         v-model="picked"
       />
     </td>
@@ -41,7 +41,7 @@
         type="radio"
         id="two"
         value="2"
-        :name="question.uid"
+        :name="question.name"
         v-model="picked"
       />
     </td>
@@ -50,7 +50,7 @@
         type="radio"
         id="one"
         value="1"
-        :name="question.uid"
+        :name="question.name"
         v-model="picked"
       />
     </td>
@@ -59,7 +59,7 @@
         type="radio"
         id="zero"
         value="0"
-        :name="question.uid"
+        :name="question.name"
         v-model="picked"
       />
     </td>
@@ -71,7 +71,7 @@
       type="radio"
       id="NaN"
       value="NaN"
-      :name="question.uid"
+      :name="question.name"
       v-model="picked"
     />
     </td>

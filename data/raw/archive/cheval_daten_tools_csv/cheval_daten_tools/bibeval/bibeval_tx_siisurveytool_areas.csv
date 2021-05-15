@@ -1,4 +1,0 @@
-uid,pid,tstamp,lmuser_id,crdate,cruser_id,deleted,hidden,root_category_id,"name_de","name_en",order_number
-1,754,1345708806,103,1345708806,103,0,0,1,"nur Katalog","only catalogue",0
-2,754,1345708905,103,1345708905,103,0,0,1,"nur Website","only website",1
-3,754,1345709007,103,1345709007,103,0,0,1,"nur Fachdatenbanken","only databases",2
