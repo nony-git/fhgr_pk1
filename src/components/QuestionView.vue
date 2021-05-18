@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>View</h1>
+    <h2>View</h2>
     <table>
       <tr>
         <th class="question-col">Frage</th>
@@ -53,6 +53,9 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+h2{
+  margin-bottom: 1em;
+}
 h3 {
   margin: 40px 0 0;
 }
