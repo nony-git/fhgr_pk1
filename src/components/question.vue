@@ -133,7 +133,7 @@ a {
   color: #42b983;
 }
 td{
-  padding: 2em 1em;
+  padding: 1em;
   text-align:center;
   border:1px solid black;
 }

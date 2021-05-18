@@ -1,5 +1,48 @@
 <template>
   <div class="" id="views">
+    <!-- Navigator: noch nicht ideal -->
+    <table class="navigator-table" cellspacing="0" cellpadding="0">
+      <tr class="full-box">
+        <td>
+          <div class="circle"></div>
+        </td>
+        <td>
+          <div class="line-box"></div>
+        </td>
+        <td>
+          <div class="circle"></div>
+        </td>
+        <td>
+          <div class="line-box"></div>
+        </td>
+        <td>
+          <div class="circle"></div>
+        </td>
+        <td>
+          <div class="line-box"></div>
+        </td>
+        <td>
+          <div class="circle"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="title-box">
+          <div class="navigator-title">Information & Kommunikation</div>
+        </td>
+        <td></td>
+        <td class="title-box">
+          <div class="navigator-title">Suchfunktion</div>
+        </td>
+        <td></td>
+        <td class="title-box">
+          <div class="navigator-title">Personalisierung</div>
+        </td>
+        <td></td>
+        <td class="title-box">
+          <div class="navigator-title">Nutzerpartizipation</div>
+        </td>
+      </tr>
+    </table>
     <!-- <QuestionView v-bind:toView="toView"></QuestionView> -->
      <QuestionView
           v-for="(view,index) in toViewArray"
@@ -277,5 +320,56 @@ li {
 a {
   color: #42b983;
 }
-
+.navigator{
+  display:flex;
+  padding:0em 5em;
+  justify-content: center;
+  margin-bottom: 2em;
+}
+.col{
+  text-align: center;
+  display:flex;
+  flex-direction: column;
+  width:4em;
+}
+.col-line{
+  width:6em;
+}
+.circle{
+  border:1px solid black;
+  border-radius:100%;
+  height:4em;
+  width:4em;
+}
+.line{
+  border:1px solid black;
+  margin:0;
+  margin-top: 50%;
+}
+.navigator-title{
+  font-size: 0.7rem;
+  text-align: center;
+}
+.fullbox td{
+  width:100%;
+  height:100%;
+  margin:0;
+}
+.fullbox{
+  width:100%;
+}
+.line-box{
+  height:1px;
+  width:5em;
+  border:1px solid black;
+  margin:0;
+}
+.navigator-table{
+  border: none;
+  margin:0 auto 2em auto;
+}
+.title-box{
+  width:3em;
+  max-width:2em;
+}
 </style>
