@@ -2,8 +2,8 @@
   <div class="" id="views">
     <!-- <QuestionView v-bind:toView="toView"></QuestionView> -->
      <QuestionView
-          v-for="(v,index) in toViewArray"
-          :toView="v"
+          v-for="(view,index) in toViewArray"
+          :toView="view"
           :key="index"
       ></QuestionView>
   </div>
@@ -157,94 +157,94 @@ let data =[
     ]
   }
 ];
-    // Zugriff auf erstes Listenelement
+    // Zugriff auf erstes Listenelement, da in Liste
     let teildata = data[0];
 
 // Filter bringt sowas
-let bereich = ["Information und Kommunikation"];
+let bereich = [];//["Information und Kommunikation"];
 let teilbereich = [];//["Kontakt und Zugang"];
-let komponente = []; //["Kontaktinformationen","Einfache Suche"];
+let komponente = ["Einfache Suche"]; //["Kontaktinformationen","Einfache Suche"];
 
-function chooseViews(){
-  // hier könnten die Schleifen verpackt werden, unklar wie Variablen in data angemeldet werden müssen
-}
-chooseViews();
-// was soll angezeigt werden
-let toView;
-let toViewTBereich;
-let toViewBereich;
+// finde raus welche Fragen angezeigt werden müssen und wirf sie ins Array
 let toViewArray = [];
-let arrayIndex = 0;
+function chooseViews(){
+  let arrayIndex = 0;
+  let addView;
+  // case: Komponente ist gewählt
+  if(komponente.length > 0){
+    // nimm fragen von komponente, teilbereich und bereich darüber
 
-if(komponente.length > 0){
-  // nimm fragen von komponente, teilbereich und bereich darüber
+    // einzelne komponente
+    for (let f=0; f < teildata.categories_levelone.length; f++){
+      for (let g=0; g < teildata.categories_levelone[f].categories_leveltwo.length; g++){
+        for (let h=0; h < teildata.categories_levelone[f].categories_leveltwo[g].categories_levelthree.length; h++){
+          // Wenn Name der Komponente in Filter array gefunden
+          if(komponente.indexOf(teildata.categories_levelone[f].categories_leveltwo[g].categories_levelthree[h].name) !=-1){
+            
+            // füge einzelne view in view-Array ein mit index ein
+            addView = teildata.categories_levelone[f].categories_leveltwo[g].categories_levelthree[h];
+            // toViewArray[f+"."+g+"."+h]=toView;
+            toViewArray[arrayIndex]=addView;
+            arrayIndex++;
 
-  // einzelne komponente
-  for (let f=0; f < teildata.categories_levelone.length; f++){
-    for (let g=0; g < teildata.categories_levelone[f].categories_leveltwo.length; g++){
-      for (let h=0; h < teildata.categories_levelone[f].categories_leveltwo[g].categories_levelthree.length; h++){
+            // add Teilbereich
+            addView = teildata.categories_levelone[f].categories_leveltwo[g];
+            // toViewArray[f+"."+g]=toViewTBereich;
+            toViewArray[arrayIndex]=addView;
+            arrayIndex++;
+    
+            // add Bereich
+            addView = teildata.categories_levelone[f];
+            // toViewArray[f]=toViewBereich;
+            toViewArray[arrayIndex]=addView;
+            arrayIndex++;
+          }
+        }
+      }
+    }
+  }
+  // case: Teilbereich ist gewählt
+  else if(teilbereich.length > 0){
+    // nimm nur fragen von teilbereich und bereich darüber
+    for (let f=0; f < teildata.categories_levelone.length; f++){
+      for (let g=0; g < teildata.categories_levelone[f].categories_leveltwo.length; g++){
         // Wenn Name der Komponente in Filter array gefunden
-        if(komponente.indexOf(teildata.categories_levelone[f].categories_leveltwo[g].categories_levelthree[h].name) !=-1){
+        if(teilbereich.indexOf(teildata.categories_levelone[f].categories_leveltwo[g].name) !=-1){
           
-          // füge einzelne view in view-Array ein mit index ein
-          toView = teildata.categories_levelone[f].categories_leveltwo[g].categories_levelthree[h];
-          // toViewArray[f+"."+g+"."+h]=toView;
-          toViewArray[arrayIndex]=toView;
-          arrayIndex++;
-
-          // add Teilbereich
-          toViewTBereich = teildata.categories_levelone[f].categories_leveltwo[g];
+          // füge einzelne view in view-Array mit index ein
+          addView = teildata.categories_levelone[f].categories_leveltwo[g];
           // toViewArray[f+"."+g]=toViewTBereich;
-          toViewArray[arrayIndex]=toViewTBereich;
+          toViewArray[arrayIndex]=addView;
           arrayIndex++;
 
           // add Bereich
-          toViewBereich = teildata.categories_levelone[f];
+          addView = teildata.categories_levelone[f];
           // toViewArray[f]=toViewBereich;
-          toViewArray[arrayIndex]=toViewBereich;
+          toViewArray[arrayIndex]=addView;
           arrayIndex++;
         }
       }
     }
   }
-}
-else if(teilbereich.length > 0){
-  // nimm nur fragen von teilbereich und bereich darüber
-  for (let f=0; f < teildata.categories_levelone.length; f++){
-    for (let g=0; g < teildata.categories_levelone[f].categories_leveltwo.length; g++){
+  // case: bring nur Fragen des Bereichs
+  else{
+    //nimm nur fragen von bereich
+    for (let f=0; f < teildata.categories_levelone.length; f++){
       // Wenn Name der Komponente in Filter array gefunden
-      if(teilbereich.indexOf(teildata.categories_levelone[f].categories_leveltwo[g].name) !=-1){
+      if(bereich.indexOf(teildata.categories_levelone[f].name) !=-1){
         
         // füge einzelne view in view-Array mit index ein
-        toViewTBereich = teildata.categories_levelone[f].categories_leveltwo[g];
+        addView = teildata.categories_levelone[f];
         // toViewArray[f+"."+g]=toViewTBereich;
-        toViewArray[arrayIndex]=toViewTBereich;
-        arrayIndex++;
-
-        // add Bereich
-        toViewBereich = teildata.categories_levelone[f];
-        // toViewArray[f]=toViewBereich;
-        toViewArray[arrayIndex]=toViewBereich;
+        toViewArray[arrayIndex]=addView;
         arrayIndex++;
       }
     }
   }
 }
-else{
-  //nimm nur fragen von bereich
-  for (let f=0; f < teildata.categories_levelone.length; f++){
-    // Wenn Name der Komponente in Filter array gefunden
-    if(bereich.indexOf(teildata.categories_levelone[f].name) !=-1){
-      
-      // füge einzelne view in view-Array mit index ein
-      toViewBereich = teildata.categories_levelone[f];
-      // toViewArray[f+"."+g]=toViewTBereich;
-      toViewArray[arrayIndex]=toViewBereich;
-      arrayIndex++;
-    }
-  }
-}
+chooseViews();
 
+// let toView;
 export default {
   name: "Bibeval",
   components: {
@@ -252,9 +252,9 @@ export default {
     QuestionView,
   },
   data:function(){
-    toView
+    // toView
     return{
-      toView:toView,
+      // toView:toView,
       toViewArray:toViewArray
     }
   }

@@ -6,25 +6,25 @@
         <th class="question-col">Frage</th>
         <th colspan="6">
           <div class="flex">
-            <p class="align-left flexed">Voll und ganz</p>
-            <p class="align-right">Überhaupt nicht</p>
+            <p class="to-left flexed">Voll und ganz</p>
+            <p class="to-right">Überhaupt nicht</p>
           </div>
         </th>
         <th class="centered">keine Antwort</th>
       </tr>
-        <question
-          v-for="(q, index) in questions.questions"
-          :question="q"
-          :key="q.name"
-          v-model="answers[index]"
-      ></question>
+      <!-- todo: for-loop für Fragennummer -->
+      <question
+        v-for="(q, index) in questions.questions"
+        :question="q"
+        :key="q.name"
+        v-model="answers[index]">
+      </question>
     </table>
-    <!-- zeige welche Werte gespeichert werden -->
+    <!-- dev-only: zeige welche Werte gespeichert werden -->
         {{ answers }}
 
     <!-- Navigiere zwischen Views -->
-    <div class="bottom-nav">
-      <button class="btn btn-back"></button>
+    <div class="bottom-nav to-right">
       <button class="btn btn-forward">Weiter</button>
     </div>
   </div>
@@ -84,10 +84,10 @@ td, th{
 .centered{
   text-align: center;
 }
-.align-left{
+.to-left{
   text-align:left;
 }
-.align-right{
+.to-right{
   text-align:right;
 }
 .flex{
@@ -99,6 +99,9 @@ td, th{
 .btn{
   padding:0.25em;
 }
+.btn:hover{
+  cursor: pointer;
+}
 .btn-back{
   background: url(../assets/Arrow.svg) no-repeat;
   padding: 1em;
@@ -109,5 +112,9 @@ td, th{
 .btn-forward{
   background: #817e65;
   color: #fff;
+  padding:0.25em 0.5em;
+}
+.bottom-nav{
+  padding:0em 4em;
 }
 </style>

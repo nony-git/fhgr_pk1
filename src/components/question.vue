@@ -2,12 +2,10 @@
   <tbody>
   <tr class="single-question">
     <!-- auf Details einer Frage zugreifen -->
-    <td  rowspan="2">
-      {{ question.name }}
-      <!-- <span class="tooltip">
-        &#8505;
-        <span class="tooltiptext">{{ question.desc_de }}</span>
-      </span> -->
+    <td  rowspan="2" class="left-align question">
+      <!-- Fragennummer muss noch definiert werden -->
+      {{ question.number}} {{ question.name }}
+      <!-- <span class="tooltip">&#8505;<span class="tooltiptext">{{ question.desc_de }}</span></span> -->
     </td>
     <td>
       <input
@@ -63,9 +61,6 @@
         v-model="picked"
       />
     </td>
-    <!-- Spacer -->
-    <!-- <td></td> -->
-    <!-- keine Antwort -->
     <td>
       <input
       type="radio"
@@ -75,20 +70,21 @@
       v-model="picked"
     />
     </td>
-  <!-- <td>
-    <span>Picked: {{ picked }}</span>
-  </td> -->
   </tr>
   <tr>
-    <td colspan="8" class="right-align add-comment"><textarea v-model="comment" name="" id="" cols="1" rows="1" placeholder="+ Kommentar hinzufügen"></textarea></td>
+    <td colspan="8" class="left-align add-comment">
+      <button class="btn-mini" :id='question.name+"btn"' @click="showCommentField(question.name)">+ Kommentar hinzufügen</button>
+      <textarea v-model="comment" name="" class="comment" :id="question.name" cols="1" rows="1" placeholder="Kommentar hinzufügen"></textarea>
+    </td>
   </tr>
         <!-- dev only: um zu zeigen, dass Kommentar in comment gespeichert wird -->
-        <tr v-if="comment!=''">Kommentar: {{ comment }}</tr>
+        <tr>{{ comment }}</tr>
         <!---->
   </tbody>
 </template>
 
 <script>
+
 export default {
   name: "question",
   // als Prop: JSON einer einzelnen Frage wird übergeben
@@ -98,6 +94,15 @@ export default {
       picked: this.value,
       comment: this.comment
     };
+  },
+  methods:{
+    showCommentField: function(id){
+      console.log("it works");
+    var field = document.getElementById(id);
+    field.style.display = "block";
+    var button = document.getElementById(id+"btn");
+    button.style.display = "none";
+}
   },
   watch: {
     picked: function (neuerWert) {
@@ -128,7 +133,7 @@ a {
   color: #42b983;
 }
 td{
-  padding: 1em;
+  padding: 2em 1em;
   text-align:center;
   border:1px solid black;
 }
@@ -150,9 +155,6 @@ td{
   z-index: 10;
   min-width: 90px;
 }
-.right-align{
-  text-align:right;
-}
 .add-comment a{
   color:lightgray;
 }
@@ -163,5 +165,24 @@ td{
 textarea{
   resize:none;
   font-size:0.8rem;
+  border:1px solid;
+  border-radius: 5px;
+}
+.comment{
+  display:none;
+}
+.left-align{
+  text-align: left;
+}
+.btn-mini{
+  font-size:0.6rem;
+  background-color:transparent;
+  border:0px;
+}
+.btn-mini:hover{
+  cursor: pointer;
+}
+.question{
+  vertical-align: top;
 }
 </style>
