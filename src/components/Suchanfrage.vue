@@ -1,5 +1,5 @@
 <template>
-<div class="container" id="app">
+<div>
     <!-- <h1 class="titleBig">Suchanfragen überprüfen</h1> -->
     <div class="text">
       Als professionelle Informationsdienstleister heben sich Bibliotheken durch einen hohen Qualitätsanspruch und fachlich überprüfte
@@ -193,7 +193,7 @@
         </div>
       </div>
     </div>
-  </div>
+</div>
 </template>
 
 <script>

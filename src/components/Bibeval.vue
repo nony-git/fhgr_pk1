@@ -162,12 +162,20 @@ let data =[
 
 // Filter bringt sowas
 let bereich = ["Information und Kommunikation"];
-let teilbereich = ["Kontakt und Zugang"];
-let komponente = ["Kontaktinformationen","Einfache Suche"];
+let teilbereich = [];//["Kontakt und Zugang"];
+let komponente = []; //["Kontaktinformationen","Einfache Suche"];
 
+function chooseViews(){
+  // hier könnten die Schleifen verpackt werden, unklar wie Variablen in data angemeldet werden müssen
+}
+chooseViews();
 // was soll angezeigt werden
 let toView;
+let toViewTBereich;
+let toViewBereich;
 let toViewArray = [];
+let arrayIndex = 0;
+
 if(komponente.length > 0){
   // nimm fragen von komponente, teilbereich und bereich darüber
 
@@ -175,47 +183,65 @@ if(komponente.length > 0){
   for (let f=0; f < teildata.categories_levelone.length; f++){
     for (let g=0; g < teildata.categories_levelone[f].categories_leveltwo.length; g++){
       for (let h=0; h < teildata.categories_levelone[f].categories_leveltwo[g].categories_levelthree.length; h++){
-        if(komponente.indexOf(teildata.categories_levelone[f].categories_leveltwo[g].categories_levelthree[h].name)){
+        // Wenn Name der Komponente in Filter array gefunden
+        if(komponente.indexOf(teildata.categories_levelone[f].categories_leveltwo[g].categories_levelthree[h].name) !=-1){
+          
+          // füge einzelne view in view-Array ein mit index ein
           toView = teildata.categories_levelone[f].categories_leveltwo[g].categories_levelthree[h];
-          // füge einzelne view in view-Array ein mit key f,g,h
-          toViewArray[f+g+h]=toView;
+          // toViewArray[f+"."+g+"."+h]=toView;
+          toViewArray[arrayIndex]=toView;
+          arrayIndex++;
+
+          // add Teilbereich
+          toViewTBereich = teildata.categories_levelone[f].categories_leveltwo[g];
+          // toViewArray[f+"."+g]=toViewTBereich;
+          toViewArray[arrayIndex]=toViewTBereich;
+          arrayIndex++;
+
+          // add Bereich
+          toViewBereich = teildata.categories_levelone[f];
+          // toViewArray[f]=toViewBereich;
+          toViewArray[arrayIndex]=toViewBereich;
+          arrayIndex++;
         }
       }
     }
   }
-
-  // teilbereich
-
-  // bereich
-
 }
 else if(teilbereich.length > 0){
   // nimm nur fragen von teilbereich und bereich darüber
-  
-  // teilbereich
-  
-  // bereich
-  for (let i=0; i < teildata.categories_levelone.length; i++){
-    if(bereich.indexOf(teildata.categories_levelone[i].name)){
-      toView = teildata.categories_levelone[i];
-    }
-    else{
-      //nothing
+  for (let f=0; f < teildata.categories_levelone.length; f++){
+    for (let g=0; g < teildata.categories_levelone[f].categories_leveltwo.length; g++){
+      // Wenn Name der Komponente in Filter array gefunden
+      if(teilbereich.indexOf(teildata.categories_levelone[f].categories_leveltwo[g].name) !=-1){
+        
+        // füge einzelne view in view-Array mit index ein
+        toViewTBereich = teildata.categories_levelone[f].categories_leveltwo[g];
+        // toViewArray[f+"."+g]=toViewTBereich;
+        toViewArray[arrayIndex]=toViewTBereich;
+        arrayIndex++;
+
+        // add Bereich
+        toViewBereich = teildata.categories_levelone[f];
+        // toViewArray[f]=toViewBereich;
+        toViewArray[arrayIndex]=toViewBereich;
+        arrayIndex++;
+      }
     }
   }
 }
 else{
   //nimm nur fragen von bereich
-  for (let i=0; i < teildata.categories_levelone.length; i++){
-    if(bereich.indexOf(teildata.categories_levelone[i].name)){
-      toView = teildata.categories_levelone[i];
+  for (let f=0; f < teildata.categories_levelone.length; f++){
+    // Wenn Name der Komponente in Filter array gefunden
+    if(bereich.indexOf(teildata.categories_levelone[f].name) !=-1){
+      
+      // füge einzelne view in view-Array mit index ein
+      toViewBereich = teildata.categories_levelone[f];
+      // toViewArray[f+"."+g]=toViewTBereich;
+      toViewArray[arrayIndex]=toViewBereich;
+      arrayIndex++;
     }
-    else{
-      //nothing
-    }
-    console.log(toView);
-    // Bereich wurde ausgewählt
-    // Hier muss etwas passieren wenn mehrere Bereiche ausgewählt?
   }
 }
 

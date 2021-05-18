@@ -1,9 +1,11 @@
 <template>
   <div id="app">
-    <HelloWorld v-if="show=='helloworld'"/>
-    <Methodencheck v-if="show=='methodencheck'"/>
-    <Bibeval v-if="show=='bibeval'"/>
-    <Suchanfrage v-if="show=='suchanfrage'"/>
+    <div class="container">
+      <HelloWorld v-if="show=='helloworld'"/>
+      <Methodencheck v-if="show=='methodencheck'"/>
+      <Bibeval v-if="show=='bibeval'"/>
+      <Suchanfrage v-if="show=='suchanfrage'"/>
+    </div>
   </div>
 </template>
 

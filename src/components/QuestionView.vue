@@ -19,8 +19,14 @@
           v-model="answers[index]"
       ></question>
     </table>
+    <!-- zeige welche Werte gespeichert werden -->
+        {{ answers }}
 
-    {{ answers }}
+    <!-- Navigiere zwischen Views -->
+    <div class="bottom-nav">
+      <button class="btn btn-back"></button>
+      <button class="btn btn-forward">Weiter</button>
+    </div>
   </div>
 </template>
 
@@ -89,5 +95,19 @@ td, th{
 }
 .flexed{
   flex:50%;
+}
+.btn{
+  padding:0.25em;
+}
+.btn-back{
+  background: url(../assets/Arrow.svg) no-repeat;
+  padding: 1em;
+  border:1px solid #817e65;
+  /* absoluter pfad für live version */
+  /* background: url(https://blog.fhgr.ch/apps/img/Arrow.77733ac5.svg); */
+}
+.btn-forward{
+  background: #817e65;
+  color: #fff;
 }
 </style>
