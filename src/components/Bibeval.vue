@@ -44,11 +44,22 @@
       </tr>
     </table>
     <!-- <QuestionView v-bind:toView="toView"></QuestionView> -->
-     <QuestionView
-          v-for="(view,index) in toViewArray"
-          :toView="view"
-          :key="index"
-      ></QuestionView>
+
+    <QuestionView
+      :toView="toViewArray[currentView]"
+      :key="currentView"
+      @update="newAnswer(currentView, $event)"
+    ></QuestionView>
+
+    <!-- Navigiere zwischen Views -->
+    <div class="bottom-nav to-left">
+      <button class="btn btn-back" @click="back()">Zurück</button>
+    </div>
+
+    <!-- Navigiere zwischen Views -->
+    <div class="bottom-nav to-right">
+      <button class="btn btn-forward" @click="next()">Weiter</button>
+    </div>
   </div>
 </template>
 
@@ -294,13 +305,31 @@ export default {
     // eslint-disable-next-line vue/no-unused-components
     QuestionView,
   },
-  data:function(){
+  data: function () {
     // toView
-    return{
+    return {
       // toView:toView,
-      toViewArray:toViewArray
-    }
-  }
+      toViewArray: toViewArray,
+      currentView: 0,
+    };
+  },
+  methods: {
+    next: function () {
+      if (this.currentView < this.toViewArray.length - 1) this.currentView++;
+
+      console.log(this.currentView);
+    },
+    back: function () {
+      console.log("test2");
+      if (this.currentView > 0) this.currentView--;
+
+      console.log(this.currentView);
+    },
+    newAnswer: function (page, answers) {
+      console.log("User is on page " + page);
+      console.log(answers);
+    },
+  },
 };
 </script>
 
@@ -350,26 +379,53 @@ a {
   font-size: 0.7rem;
   text-align: center;
 }
-.fullbox td{
-  width:100%;
-  height:100%;
-  margin:0;
+.fullbox td {
+  width: 100%;
+  height: 100%;
+  margin: 0;
 }
-.fullbox{
-  width:100%;
+.fullbox {
+  width: 100%;
 }
-.line-box{
-  height:1px;
-  width:5em;
-  border:1px solid black;
-  margin:0;
+.line-box {
+  height: 1px;
+  width: 5em;
+  border: 1px solid black;
+  margin: 0;
 }
-.navigator-table{
+.navigator-table {
   border: none;
-  margin:0 auto 2em auto;
+  margin: 0 auto 2em auto;
 }
-.title-box{
-  width:3em;
-  max-width:2em;
+.title-box {
+  width: 3em;
+  max-width: 2em;
+}
+.btn {
+  padding: 0.25em;
+}
+.btn:hover {
+  cursor: pointer;
+}
+.btn-back {
+  background: url(../assets/Arrow.svg) no-repeat;
+  padding: 1em;
+  border: 1px solid #817e65;
+  /* absoluter pfad für live version */
+  /* background: url(https://blog.fhgr.ch/apps/img/Arrow.77733ac5.svg); */
+}
+.btn-forward {
+  background: #817e65;
+  color: #fff;
+  padding: 0.25em 0.5em;
+}
+.bottom-nav {
+  padding: 0em 4em;
+}
+.to-left {
+  text-align: left;
+}
+.to-right {
+  text-align: right;
 }
 </style>

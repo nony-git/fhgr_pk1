@@ -21,12 +21,7 @@
       </question>
     </table>
     <!-- dev-only: zeige welche Werte gespeichert werden -->
-        {{ answers }}
-
-    <!-- Navigiere zwischen Views -->
-    <div class="bottom-nav to-right">
-      <button class="btn btn-forward">Weiter</button>
-    </div>
+    {{ answers }}
   </div>
 </template>
 
@@ -47,6 +42,11 @@ export default {
       answers: answers,
       questions: this.toView,
     };
+  },
+  watch: {
+    answers: function () {
+      this.$emit("update", this.answers);
+    },
   },
 };
 </script>
