@@ -3,55 +3,96 @@
 
     <question></question>
 
+		<h1>Was möchten Sie untersuchen?</h1>
+		<div class="bib-overview-bereiche">
+
+			<!-- TODO: sollten hier unteschiedliche json fragenkataloge geladen werden? -->
+			<button 
+				class="bib-select-large"
+				:value="website">
+				Website 
+			</button>
+
+			<button
+				class="bib-select-large"
+				:value="bibliotheksseite">
+				Bibliotheksseite
+			</button>
+
+		</div>
+
 		<h1>Untersuchungsbereich?</h1>
 
 		<div class="bib-overview-bereiche">
 
-		<!-- Loop over category level one. -->
-		<div v-for="cat1 in categories" :key="cat1">
+			<!-- Loop over category level one. -->
+			<div v-for="cat1 in categories" :key="cat1">
 
-			<select-button 
-				class="bib-select-large"
-				v-model="selectedCategories" 
-				:value="cat1[0]"
-			>{{ cat1[0] }} 
-			</select-button>
+				<select-button 
+					class="bib-select-large"
+					v-model="selectedCategories" 
+					:value="cat1[0]">
+					{{ cat1[0] }} 
+				</select-button>
 
-			<!-- Loop over category level two. -->
-			<template v-if="selectedCategories.includes(cat1[0])">
-				<div v-for="cat2 in cat1[1]" :key="cat2">
+				<!-- Loop over category level two. -->
+				<template v-if="selectedCategories.includes(cat1[0])">
+					<div v-for="cat2 in cat1[1]" :key="cat2">
 
-					<select-button 
-						class="bib-select-small"
-						v-model="selectedSubCategories" 
-						:value="cat2"
-					>{{ cat2 }} 
-					</select-button><br />
+						<select-button 
+							class="bib-select-small"
+							v-model="selectedSubCategories" 
+							:value="cat2">
+							{{ cat2 }} 
+						</select-button>
 
-				</div>
-			</template>
+					</div>
+				</template>
 
 			</div>
 
-	</div>
-   <label class="">
-    <input type="checkbox" checked v-model="mandatory">
-		<span class="slider"></span>
-   </label>
-    <div v-for="subcategory in selectedSubCategories" :key="subcategory">
+		</div>
+
+		<template v-if="selectedCategories.length > 0">
+
+			<div class="line"></div>
+
+			<label class="">
+				<input type="checkbox" v-model="mandatory">
+				<span class="slider"></span>
+				optionale Bereiche
+			</label>
+
+
+		<template v-if="selectedSubCategories.length > 0">
+
+    <div 
+			v-for="subcategory in selectedSubCategories" 
+			:key="subcategory" 
+			class="bib-komponentenauswahl bib-overview-bereiche"
+		>
       <h2>{{ subcategory }}</h2>
 
-      <select-button v-for="comp in getComponents(subcategory)" :key="comp" :value="comp" v-model="selectedComponents">
+      <select-button 
+				v-for="comp in getComponents(subcategory)" 
+				:key="comp" 
+				:value="comp" 
+				v-model="selectedComponents"
+				class="bib-select-small">
         {{ comp }}
       </select-button>
 
     </div>
 
-		<!-- DEV -->
-		Bereiche: {{ selectedCategories }}<br>
-		Teilbereiche: {{ selectedSubCategories }}<br>
-		Komponenten: {{ selectedComponents }}<br>
-		{{ mandatoryComponents }}
+		</template>
+			<p>Ihr Fragenkatalog enthält [TODO] Fragen.</p>
+			<p>
+				In der folgenden Evulation bewerten Sie verschiedene Komponenten 
+				auf einer Skala von 5 (voll und ganz) bis 0 (überhaupt nicht) wie gut  dies umgesetzt ist.
+			</p>
+			<p>[ Beispiel Skala... ]</p>
+		</template>
+
   </div>
 </template>
 
@@ -66,12 +107,13 @@ export default {
 
   data () {
     return {
+			wasUntersuchen: [],
       selectedCategories: [],
       selectedSubCategories: [],
       selectedComponents: [],
 			categories: [],
 			subcategories: [],
-			mandatory: true,
+			mandatory: false,
 			mandatoryComponents: [],
 			data_bibeval: bibeval_json,
     };
@@ -126,15 +168,23 @@ export default {
 
 <style scoped>
 
+h1 {
+	margin-bottom: 30px;
+}
+
+
 .bib-select-large {
 	width: 100%;
 	height: 60px;
 	margin-bottom: 5px;
 	border: 2px solid #408198;
 	border-radius: 5px;
+	color: #245b6f;
 	transition: 0.25s;
 }
-.bib-select-large.selected {
+
+.bib-select-large.selected,
+.bib-select-small.selected {
 	background: #408198;
 	color: #ffffff;
 	border: 2px solid #408198;
@@ -144,6 +194,9 @@ export default {
 	width: 100%;
 	height: 30px;
 	margin-bottom: 5px;
+	border: 2px solid #408198;
+	border-radius: 5px;
+	color: #245b6f;
 }
 
 .bib-overview-bereiche {
@@ -152,7 +205,31 @@ export default {
   grid-template-rows: auto auto;
   gap: 10px 10px;
 	max-width: 500px;
-	margin: 0 auto;
+	margin: 30px auto;
+}
+
+.bib-komponentenauswahl {
+	margin: 55px auto;
+}
+
+.bib-komponentenauswahl.bib-overview-bereiche {
+	gap: 0px 10px;
+}
+
+.bib-komponentenauswahl h2 {
+	margin-bottom: 20px;
+	grid-column: 1/-1;
+}
+
+.line {
+	height: 1px;
+	width: 80%;
+	margin: 20px auto;
+	background: black;
+}
+
+button:focus {
+	outline: none;
 }
 
 </style>
