@@ -51,7 +51,7 @@
 		Bereiche: {{ selectedCategories }}<br>
 		Teilbereiche: {{ selectedSubCategories }}<br>
 		Komponenten: {{ selectedComponents }}<br>
-		{{ mandatory}}
+		{{ mandatoryComponents }}
   </div>
 </template>
 
@@ -72,6 +72,7 @@ export default {
 			categories: [],
 			subcategories: [],
 			mandatory: true,
+			mandatoryComponents: [],
 			data_bibeval: bibeval_json,
     };
   },
@@ -111,6 +112,9 @@ export default {
 				subcategories.push([this.data_bibeval.categories_levelone[y].categories_leveltwo[z].name, []]);
 				for(var a = 0; a < this.data_bibeval.categories_levelone[y].categories_leveltwo[z].categories_levelthree.length; a++) {
 					subcategories[y][1].push(this.data_bibeval.categories_levelone[y].categories_leveltwo[z].categories_levelthree[a].name)
+					if ( this.data_bibeval.categories_levelone[y].categories_leveltwo[z].categories_levelthree[a].is_mandatory ) {
+						this.mandatoryComponents.push(this.data_bibeval.categories_levelone[y].categories_leveltwo[z].categories_levelthree[a].name);
+					}
 				}
 			}
 		}
