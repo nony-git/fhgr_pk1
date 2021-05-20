@@ -1,47 +1,92 @@
 {
   "fragen": {
     "produktstatus": {
+      "id": 1,
+      "titel":"produktstatus",
       "frage": "Was ist der Status Ihres Produkts?",
       "antworten": {
         "1":"eine Idee",
     		"2":"einen skizzierten Entwurf",
     		"3":"einen funktionsfähigen Entwurf",
     		"4":"ein fertiges Produkt"
-      }
+      },
+      "multiplechoice": false
   	},
   	"motivation": {
+      "id": 2,
+      "titel":"motivation",
       "frage": "Was wollen Sie mit der Evaluation erreichen?",
       "antworten": {
-        "1":"nur ein Produkt untersuchen",
+        "1":"Produkt untersuchen und mehr erfahren",
     		"2":"mehrere Produkte/Varianten vergleichen",
     		"3":"mehr über das Marktumfeld erfahren",
     		"4":"Unterstützung bei der Entwicklung"
-      }
+      },
+      "multiplechoice": false
   	},
   	"untersuchungsziel":{
+      "id": 3,
+      "titel":"untersuchungsziel",
       "frage": "Was ist das Ziel der Untersuchung?",
       "antworten": {
-        "1":"eine allgemeine Bewertung meines Produkt",
+        "1":"allgemeine Bewertung meines Produktes",
     		"2":"Fehler und Schwachstellen aufdecken",
-    		"3":"eine explorative Analyse des Produktes",
+    		"3":"explorative Analyse des Produktes",
     		"4":"konzeptionelle Unterstützung"
-      }
+      },
+      "multiplechoice": false
   	},
   	"untersuchungsschwerpunkt":{
+      "id": 4,
+      "titel":"untersuchungsschwerpunkt",
       "frage": "Dabei soll das Produkt?",
       "antworten": {
-        "1":"Erlernbarkeit",
-    		"2":"Dialoggestaltung",
-    		"3":"Informationspräsentation",
-    		"4":"Accessibility",
-    		"5":"Joy of Use",
-    		"6":"Zielgruppendefinition",
-    		"7":"Mitbewerber",
-    		"8":"Anforderungsdefinition",
-    		"9":"gesamthaft untersucht werden"
-      }
+        "1": {
+            "antwort":"gesamthaft untersucht werden",
+            "level":1
+        },
+        "0": {
+          "antwort":"schwerpunktmässig untersucht werden",
+          "level":1
+        },
+        "9": {
+          "antwort":"Erlernbarkeit",
+          "level":2
+        },
+        "2": {
+          "antwort":"Dialoggestaltung",
+          "level":2
+        },
+        "3": {
+          "antwort":"Informationspräsentation",
+          "level":2
+        },
+        "4": {
+          "antwort":"Accessibility",
+          "level":2
+        },
+        "5": {
+          "antwort":"Joy of Use",
+          "level":2
+        },
+        "6": {
+          "antwort":"Zielgruppendefinition",
+          "level":2
+        },
+        "7": {
+          "antwort":"Mitbewerber",
+          "level":2
+        },
+        "8": {
+          "antwort":"Anforderungsdefinition",
+          "level":2
+        }
+      },
+      "multiplechoice": true
   	},
     "zeit": {
+      "id": 5,
+      "titel":"zeit",
       "frage": "Wie viel Zeit steht für die Untersuchung an?",
       "antworten": {
         "1":"Sehr wenig",
@@ -49,9 +94,12 @@
         "3":"Mittel",
         "4":"Viel",
         "5":"Sehr viel"
-      }
+      },
+      "multiplechoice": false
     },
     "budget": {
+      "id": 6,
+      "titel":"budget",
       "frage": "Wie ist das Budget für die Untersuchung?",
       "antworten": {
         "1":"Sehr niedrig",
@@ -59,7 +107,8 @@
         "3":"Mittel",
         "4":"Hoch",
         "5":"Sehr hoch"
-      }
+      },
+      "multiplechoice": false
     }
   },
   "methoden": [
@@ -81,7 +130,7 @@
 				"3"
 			],
 			"untersuchungsschwerpunkt": [
-				"1",
+				"9",
 				"2",
 				"3"
 			]
@@ -342,7 +391,7 @@
 				"1"
 			],
 			"untersuchungsschwerpunkt": [
-				"9"
+				"1"
 			]
 		},
 		{
@@ -363,7 +412,7 @@
 				"1"
 			],
 			"untersuchungsschwerpunkt": [
-				"9"
+				"1"
 			]
 		},
 		{
@@ -384,7 +433,7 @@
 				"1"
 			],
 			"untersuchungsschwerpunkt": [
-				"9"
+				"1"
 			]
 		},
 		{
@@ -408,7 +457,7 @@
 				"2",
 				"3",
 				"8",
-				"9"
+				"1"
 			]
 		},
 		{
@@ -437,7 +486,7 @@
 				"2",
 				"3",
 				"8",
-				"9"
+				"1"
 			]
 		},
 		{
@@ -457,10 +506,10 @@
 				"2"
 			],
 			"untersuchungsschwerpunkt": [
-				"1",
+				"9",
 				"2",
 				"3",
-				"9"
+				"1"
 			]
 		},
 		{
@@ -529,7 +578,7 @@
 			"untersuchungsschwerpunkt": [
 				"7",
 				"8",
-				"9"
+				"1"
 			]
 		},
 		{
@@ -556,7 +605,7 @@
 			"untersuchungsschwerpunkt": [
 				"6",
 				"8",
-				"9"
+				"1"
 			]
 		}
 	]
