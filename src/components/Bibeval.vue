@@ -89,9 +89,9 @@ export default {
 		// Load categories as a nested array.
 		var categories = [];
 		for(var i = 0; i < this.data_bibeval.categories_levelone.length; i++) {
-			categories.push([this.data_bibeval.categories_levelone[i].name]);
+			categories.push([this.data_bibeval.categories_levelone[i].name, []]);
 			for(var x = 0; x < this.data_bibeval.categories_levelone[i].categories_leveltwo.length; x++) {
-				categories[i].push([this.data_bibeval.categories_levelone[i].categories_leveltwo[x].name]);
+				categories[i][1].push(this.data_bibeval.categories_levelone[i].categories_leveltwo[x].name);
 			}
 		}
 		this.categories = categories;
