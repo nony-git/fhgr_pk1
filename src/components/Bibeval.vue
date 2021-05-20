@@ -5,6 +5,8 @@
 
 		<h1>Untersuchungsbereich?</h1>
 
+		<div class="bib-overview-bereiche">
+
 		<!-- Loop over category level one. -->
 		<div v-for="cat1 in categories" :key="cat1">
 
@@ -29,8 +31,13 @@
 				</div>
 			</template>
 
-	</div>
+			</div>
 
+	</div>
+   <label class="">
+    <input type="checkbox" checked v-model="mandatory">
+		<span class="slider"></span>
+   </label>
     <div v-for="subcategory in selectedSubCategories" :key="subcategory">
       <h2>{{ subcategory }}</h2>
 
@@ -44,8 +51,7 @@
 		Bereiche: {{ selectedCategories }}<br>
 		Teilbereiche: {{ selectedSubCategories }}<br>
 		Komponenten: {{ selectedComponents }}<br>
-		{{ categories }}<br>
-		{{ subcategories }}
+		{{ mandatory}}
   </div>
 </template>
 
@@ -65,6 +71,7 @@ export default {
       selectedComponents: [],
 			categories: [],
 			subcategories: [],
+			mandatory: true,
 			data_bibeval: bibeval_json,
     };
   },
@@ -114,7 +121,34 @@ export default {
 </script>
 
 <style scoped>
+
 .bib-select-large {
-	height: 50px;
+	width: 100%;
+	height: 60px;
+	margin-bottom: 5px;
+	border: 2px solid #408198;
+	border-radius: 5px;
+	transition: 0.25s;
 }
+.bib-select-large.selected {
+	background: #408198;
+	color: #ffffff;
+	border: 2px solid #408198;
+}
+
+.bib-select-small {
+	width: 100%;
+	height: 30px;
+	margin-bottom: 5px;
+}
+
+.bib-overview-bereiche {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 10px 10px;
+	max-width: 500px;
+	margin: 0 auto;
+}
+
 </style>

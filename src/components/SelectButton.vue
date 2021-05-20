@@ -29,7 +29,4 @@ export default {
 </script>
 
 <style scoped>
-.selected {
-  background-color: blue;
-}
 </style>
