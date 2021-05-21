@@ -4,57 +4,58 @@
     <table class="navigator-table" cellspacing="0" cellpadding="0">
       <tr class="full-box">
         <td>
-          <div class="circle"></div>
+          <div class="circle" id="navcircle1"></div>
         </td>
         <td>
-          <div class="line-box"></div>
+          <div class="line-box" id="line1"></div>
         </td>
         <td>
-          <div class="circle"></div>
+          <div class="circle" id="navcircle2"></div>
         </td>
         <td>
-          <div class="line-box"></div>
+          <div class="line-box" id="line2"></div>
         </td>
         <td>
-          <div class="circle"></div>
+          <div class="circle" id="navcircle3"></div>
         </td>
         <td>
-          <div class="line-box"></div>
+          <div class="line-box" id="line3"></div>
         </td>
         <td>
-          <div class="circle"></div>
+          <div class="circle" id="navcircle4"></div>
         </td>
       </tr>
       <tr>
         <td class="title-box">
-          <div class="navigator-title">Information & Kommunikation</div>
+          <div class="navigator-title" id="navtitle1">Information und Kommunikation</div>
         </td>
         <td></td>
         <td class="title-box">
-          <div class="navigator-title">Suchfunktion</div>
+          <div class="navigator-title" id="navtitle2">Recherche im Bestand</div>
         </td>
         <td></td>
         <td class="title-box">
-          <div class="navigator-title">Personalisierung</div>
+          <div class="navigator-title" id="navtitle3">Personalisierung</div>
         </td>
         <td></td>
         <td class="title-box">
-          <div class="navigator-title">Nutzerpartizipation</div>
+          <div class="navigator-title" id="navtitle4">Nutzerpartizipation</div>
         </td>
       </tr>
     </table>
     <!-- <QuestionView v-bind:toView="toView"></QuestionView> -->
-    {{ toViewArray }}
     <QuestionView
       :toView="toViewArray[currentView]"
       :key="currentView"
       @update="newAnswer(currentView, $event)"
     ></QuestionView>
-
+    <!-- <div class="test">
+      {{ toViewArray }}
+    </div> -->
     <!-- Navigiere zwischen Views -->
     <div class="bottom-nav to-left">
-      <button class="btn btn-back" @click="back()"></button>
-      <button class="btn btn-forward" @click="next()">Weiter</button>
+      <button class="btn btn-back" @click="back();checkNav(toViewArray[currentView]['bereich'])"></button>
+      <button class="btn btn-forward" @click="next();checkNav(toViewArray[currentView]['bereich'])">Weiter</button>
     </div>
   </div>
 </template>
@@ -62,7 +63,7 @@
 <script>
 import QuestionView from "./QuestionView.vue";
 
-// Snippet von Ellen, Datenimport todo
+// Biblio-Snippet von Ellen, Datenimport todo
 let data =[
   {
     "categories_levelone": [
@@ -872,9 +873,9 @@ let data =[
     let teildata = data[0];
 
 // Filter bringt sowas
-let bereich = ["Information und Kommunikation"];//["Information und Kommunikation"];
+let bereich = [];//["Information und Kommunikation"];
 let teilbereich = [];//["Kontakt und Zugang"];
-let komponente = []; //["Kontaktinformationen","Einfache Suche"];
+let komponente = ["Einfache Suche","Recommender-Dienste","Nutzerkonto"]; //["Einfache Suche","Kontaktinformationen","Recommender-Dienste","Nutzerkonto"];
 
 // finde raus welche Fragen angezeigt werden müssen und wirf sie ins Array
 let toViewArray = [];
@@ -890,17 +891,15 @@ function chooseViews(){
           // Wenn Name der Komponente in Filter array gefunden
           // if(komponente.indexOf(teildata.categories_levelone[f].categories_leveltwo[g].categories_levelthree[h].name) !=-1){
          if(komponente.includes(teildata.categories_levelone[f].categories_leveltwo[g].categories_levelthree[h].name)){
- 
-            // füge einzelne view in view-Array ein mit index ein
-            // addView = teildata.categories_levelone[f].categories_leveltwo[g].categories_levelthree[h];
-            // toViewArray[arrayIndex]=addView;
-            // arrayIndex++;
+            // bestimme Bereich für Nav & verschiebe ins array
+            teildata.categories_levelone[f].categories_leveltwo[g].categories_levelthree[h]["bereich"] =  teildata.categories_levelone[f].name;
             toViewArray.push(teildata.categories_levelone[f].categories_leveltwo[g].categories_levelthree[h]);
             // add Teilbereich
+            teildata.categories_levelone[f].categories_leveltwo[g]["bereich"] =  teildata.categories_levelone[f].name;
             toViewArray.push(teildata.categories_levelone[f].categories_leveltwo[g]);
             // add Bereich
+            teildata.categories_levelone[f]["bereich"] =  teildata.categories_levelone[f].name;
             toViewArray.push(teildata.categories_levelone[f]);
-
           }
         }
       }
@@ -937,6 +936,7 @@ function chooseViews(){
 }
 chooseViews();
 
+
 // let toView;
 export default {
   name: "Bibeval",
@@ -956,17 +956,66 @@ export default {
     next: function () {
       if (this.currentView < this.toViewArray.length - 1) this.currentView++;
 
-      console.log(this.currentView);
+      console.log("currentView is "+this.currentView);
     },
     back: function () {
       if (this.currentView > 0) this.currentView--;
-      console.log(this.currentView);
+      console.log("currentView is "+this.currentView);
     },
     newAnswer: function (page, answers) {
       console.log("User is on page " + page);
       console.log(answers);
     },
+    checkNav: function(bereichStr) {
+      let navposition = 0;
+      if(bereichStr == "Information und Kommunikation"){navposition=1}
+      if(bereichStr == "Recherche im Bestand" || bereichStr == "Suchfunktion"){navposition=2}
+      if(bereichStr == "Personalisierung"){navposition=3}
+      if(bereichStr == "Nutzerpartizipation"){navposition=4}
+      // mach alle weiss
+      for(let i=1; i<5;i++){
+        document.querySelector("#navcircle"+i).style.backgroundColor = "#FFF";
+      }
+      // highlight aktiven bereich
+      switch(navposition) {
+        case 1:
+          document.querySelector("#navcircle1").style.backgroundColor = "#817e65";
+          break;
+        case 2:
+          document.querySelector("#navcircle2").style.backgroundColor = "#817e65";
+          break;
+        case 3:
+          document.querySelector("#navcircle3").style.backgroundColor = "#817e65";
+          break;
+        case 4:
+          document.querySelector("#navcircle4").style.backgroundColor = "#817e65";
+          break;
+        default:
+      } 
+    },
   },
+  mounted:function(){
+  // muss später wahrscheinlich erst bei Klick auf "Start" laufen
+    console.log("fired");
+    // Zeige Navelement nur, wenn in Selektion: toViewArray
+    for(let i=1; i<5; i++){
+      let part = document.querySelector("#navtitle"+i);
+      for (let y=0; y<toViewArray.length; y++){
+        // ausblenden wenn Titel nicht als "bereich" in toViewArray
+        if(!(part.innerHTML == toViewArray[y]['bereich'])){
+          part.style.display = "none";
+          if(i != 5) {document.querySelector("#navcircle"+i).style.display = "none";}
+          if(i != 4 && i != 5) {document.querySelector("#line"+i).style.display = "none";}
+        }
+        else{
+          part.style.display = "block";
+          if(i != 5) {document.querySelector("#navcircle"+i).style.display = "block";}
+          if(i != 4 && i != 5) {document.querySelector("#line"+i).style.display = "block";}
+          break;
+        }
+      }
+    }
+  }
 };
 </script>
 
