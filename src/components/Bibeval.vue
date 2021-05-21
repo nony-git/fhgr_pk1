@@ -49,9 +49,10 @@
       :key="currentView"
       @update="newAnswer(currentView, $event)"
     ></QuestionView>
-    <!-- <div class="test">
-      {{ toViewArray }}
-    </div> -->
+
+    <!-- <div class="test"> {{ toViewArray[currentView] }} </div> -->
+    <!-- {{ userdata }} -->
+
     <!-- Navigiere zwischen Views -->
     <div class="bottom-nav to-left">
       <button class="btn btn-back" @click="back();checkNav(toViewArray[currentView]['bereich'])"></button>
@@ -869,13 +870,18 @@ let data =[
     ]
 }
 ];
+console.log("data");
+console.log(data);
+// erstelle Kopie für User Input
+let userData = data;
+
     // Zugriff auf erstes Listenelement, da in Liste
     let teildata = data[0];
 
 // Filter bringt sowas
 let bereich = [];//["Information und Kommunikation"];
 let teilbereich = [];//["Kontakt und Zugang"];
-let komponente = ["Einfache Suche","Recommender-Dienste","Nutzerkonto"]; //["Einfache Suche","Kontaktinformationen","Recommender-Dienste","Nutzerkonto"];
+let komponente = ["Einfache Suche","Kontaktinformationen","Recommender-Dienste","Nutzerkonto"]; //["Einfache Suche","Kontaktinformationen","Recommender-Dienste","Nutzerkonto"];
 
 // finde raus welche Fragen angezeigt werden müssen und wirf sie ins Array
 let toViewArray = [];
@@ -950,12 +956,12 @@ export default {
       // toView:toView,
       toViewArray: toViewArray,
       currentView: 0,
+      userdata: userData,
     };
   },
   methods: {
     next: function () {
       if (this.currentView < this.toViewArray.length - 1) this.currentView++;
-
       console.log("currentView is "+this.currentView);
     },
     back: function () {
@@ -965,6 +971,13 @@ export default {
     newAnswer: function (page, answers) {
       console.log("User is on page " + page);
       console.log(answers);
+      console.log(userData);
+      // Antworten an der richtigen Stelle in userData schreiben
+      for (let i=0; i<answers.length; i++){
+        userData[0]["value"] = answers[i];
+        // userData[toViewArray["currentView"]["questions"][i]["value"]] == answers[i];
+      }
+      console.log(userData);
     },
     checkNav: function(bereichStr) {
       let navposition = 0;
