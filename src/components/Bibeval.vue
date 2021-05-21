@@ -51,12 +51,12 @@
     ></QuestionView>
 
     <!-- <div class="test"> {{ toViewArray[currentView] }} </div> -->
-    <!-- {{ userdata }} -->
+    {{ userdata }}
 
     <!-- Navigiere zwischen Views -->
     <div class="bottom-nav to-left">
-      <button class="btn btn-back" @click="back();checkNav(toViewArray[currentView]['bereich'])"></button>
-      <button class="btn btn-forward" @click="next();checkNav(toViewArray[currentView]['bereich'])">Weiter</button>
+      <button class="btn btn-back" @click="back(); checkNav(toViewArray[currentView]['bereich'])"></button>
+      <button class="btn btn-forward" @click="next(); checkNav(toViewArray[currentView]['bereich'])">Weiter</button>
     </div>
   </div>
 </template>
@@ -870,14 +870,11 @@ let data =[
     ]
 }
 ];
-console.log("data");
-console.log(data);
-// erstelle Kopie für User Input
-let userData = data;
 
     // Zugriff auf erstes Listenelement, da in Liste
     let teildata = data[0];
-
+// erstelle Kopie für User Input
+let userData = teildata;
 // Filter bringt sowas
 let bereich = [];//["Information und Kommunikation"];
 let teilbereich = [];//["Kontakt und Zugang"];
@@ -899,6 +896,7 @@ function chooseViews(){
          if(komponente.includes(teildata.categories_levelone[f].categories_leveltwo[g].categories_levelthree[h].name)){
             // bestimme Bereich für Nav & verschiebe ins array
             teildata.categories_levelone[f].categories_leveltwo[g].categories_levelthree[h]["bereich"] =  teildata.categories_levelone[f].name;
+            teildata.categories_levelone[f].categories_leveltwo[g].categories_levelthree[h]["teilbereich"] =  teildata.categories_levelone[f].categories_leveltwo[g].name;
             toViewArray.push(teildata.categories_levelone[f].categories_leveltwo[g].categories_levelthree[h]);
             // add Teilbereich
             teildata.categories_levelone[f].categories_leveltwo[g]["bereich"] =  teildata.categories_levelone[f].name;
@@ -972,12 +970,37 @@ export default {
       console.log("User is on page " + page);
       console.log(answers);
       console.log(userData);
+
       // Antworten an der richtigen Stelle in userData schreiben
-      for (let i=0; i<answers.length; i++){
-        userData[0]["value"] = answers[i];
-        // userData[toViewArray["currentView"]["questions"][i]["value"]] == answers[i];
+      function walkJSON(obj, ans, quest){
+        for(var prop in obj){
+          if(typeof obj[prop]=='object'){
+            walkJSON(obj[prop],ans, quest);
+          }
+          else{
+            if(obj["name"] == quest){
+              obj["value"]= ans;
+              console.log(obj["value"]);
+            }
+          }
+        }
       }
-      console.log(userData);
+
+        // let ViewBereich = toViewArray[page]['bereich'];
+        // console.log(ViewBereich);
+
+        // let ViewTeilbereich = toViewArray[page]['teilbereich'];
+        // console.log(ViewTeilbereich);
+
+        let ViewKomponente = toViewArray[page].name;
+        console.log(ViewKomponente);
+
+        for(let i=0;i<answers.length;i++){
+          walkJSON(userData, answers[i],ViewKomponente);
+          // console.log(userData.categories_levelone["Information und Kommunikation"].categories_leveltwo["Kontakt und Zugang"].categories_levelthree["Kontaktinformationen"].questions["Sind direkte Kontaktmöglichkeiten (z.B. per Email oder Telefon) angegeben?"].value);
+        }
+        var previewData = JSON.stringify(userData, null, 2);
+        console.log(previewData);
     },
     checkNav: function(bereichStr) {
       let navposition = 0;
