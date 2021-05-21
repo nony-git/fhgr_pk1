@@ -978,29 +978,29 @@ export default {
             walkJSON(obj[prop],ans, quest);
           }
           else{
-            if(obj["name"] == quest){
-              obj["value"]= ans;
-              console.log(obj["value"]);
-            }
+             if(obj["name"] == quest){
+               //hier wird noch an die falsche Stelle geschrieben, vgl. Konsole
+              obj.value = ans;
+              var previewData = JSON.stringify(obj, null, 2);
+              console.log(previewData);
+             }
           }
         }
       }
+      // let ViewBereich = toViewArray[page]['bereich'];
+      // console.log(ViewBereich);
+      // let ViewTeilbereich = toViewArray[page]['teilbereich'];
+      // console.log(ViewTeilbereich);
 
-        // let ViewBereich = toViewArray[page]['bereich'];
-        // console.log(ViewBereich);
+      let ViewKomponente = toViewArray[page].name;
+      console.log(ViewKomponente);
 
-        // let ViewTeilbereich = toViewArray[page]['teilbereich'];
-        // console.log(ViewTeilbereich);
-
-        let ViewKomponente = toViewArray[page].name;
-        console.log(ViewKomponente);
-
-        for(let i=0;i<answers.length;i++){
-          walkJSON(userData, answers[i],ViewKomponente);
-          // console.log(userData.categories_levelone["Information und Kommunikation"].categories_leveltwo["Kontakt und Zugang"].categories_levelthree["Kontaktinformationen"].questions["Sind direkte Kontaktmöglichkeiten (z.B. per Email oder Telefon) angegeben?"].value);
-        }
-        var previewData = JSON.stringify(userData, null, 2);
-        console.log(previewData);
+      for(let i=0;i<answers.length;i++){
+        walkJSON(userData, answers[i],ViewKomponente);
+        // console.log(userData.categories_levelone["Information und Kommunikation"].categories_leveltwo["Kontakt und Zugang"].categories_levelthree["Kontaktinformationen"].questions["Sind direkte Kontaktmöglichkeiten (z.B. per Email oder Telefon) angegeben?"].value);
+      }
+      // var previewData = JSON.stringify(userData, null, 2);
+      // console.log(previewData);
     },
     checkNav: function(bereichStr) {
       let navposition = 0;
