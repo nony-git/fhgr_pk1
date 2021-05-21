@@ -44,7 +44,7 @@
       </tr>
     </table>
     <!-- <QuestionView v-bind:toView="toView"></QuestionView> -->
-
+    {{ toViewArray }}
     <QuestionView
       :toView="toViewArray[currentView]"
       :key="currentView"
@@ -53,11 +53,7 @@
 
     <!-- Navigiere zwischen Views -->
     <div class="bottom-nav to-left">
-      <button class="btn btn-back" @click="back()">Zurück</button>
-    </div>
-
-    <!-- Navigiere zwischen Views -->
-    <div class="bottom-nav to-right">
+      <button class="btn btn-back" @click="back()"></button>
       <button class="btn btn-forward" @click="next()">Weiter</button>
     </div>
   </div>
@@ -215,15 +211,13 @@ let data =[
     let teildata = data[0];
 
 // Filter bringt sowas
-let bereich = [];//["Information und Kommunikation"];
+let bereich = ["Information und Kommunikation"];//["Information und Kommunikation"];
 let teilbereich = [];//["Kontakt und Zugang"];
-let komponente = ["Einfache Suche"]; //["Kontaktinformationen","Einfache Suche"];
+let komponente = []; //["Kontaktinformationen","Einfache Suche"];
 
 // finde raus welche Fragen angezeigt werden müssen und wirf sie ins Array
 let toViewArray = [];
 function chooseViews(){
-  let arrayIndex = 0;
-  let addView;
   // case: Komponente ist gewählt
   if(komponente.length > 0){
     // nimm fragen von komponente, teilbereich und bereich darüber
@@ -233,25 +227,19 @@ function chooseViews(){
       for (let g=0; g < teildata.categories_levelone[f].categories_leveltwo.length; g++){
         for (let h=0; h < teildata.categories_levelone[f].categories_leveltwo[g].categories_levelthree.length; h++){
           // Wenn Name der Komponente in Filter array gefunden
-          if(komponente.indexOf(teildata.categories_levelone[f].categories_leveltwo[g].categories_levelthree[h].name) !=-1){
-            
+          // if(komponente.indexOf(teildata.categories_levelone[f].categories_leveltwo[g].categories_levelthree[h].name) !=-1){
+         if(komponente.includes(teildata.categories_levelone[f].categories_leveltwo[g].categories_levelthree[h].name)){
+ 
             // füge einzelne view in view-Array ein mit index ein
-            addView = teildata.categories_levelone[f].categories_leveltwo[g].categories_levelthree[h];
-            // toViewArray[f+"."+g+"."+h]=toView;
-            toViewArray[arrayIndex]=addView;
-            arrayIndex++;
-
+            // addView = teildata.categories_levelone[f].categories_leveltwo[g].categories_levelthree[h];
+            // toViewArray[arrayIndex]=addView;
+            // arrayIndex++;
+            toViewArray.push(teildata.categories_levelone[f].categories_leveltwo[g].categories_levelthree[h]);
             // add Teilbereich
-            addView = teildata.categories_levelone[f].categories_leveltwo[g];
-            // toViewArray[f+"."+g]=toViewTBereich;
-            toViewArray[arrayIndex]=addView;
-            arrayIndex++;
-    
+            toViewArray.push(teildata.categories_levelone[f].categories_leveltwo[g]);
             // add Bereich
-            addView = teildata.categories_levelone[f];
-            // toViewArray[f]=toViewBereich;
-            toViewArray[arrayIndex]=addView;
-            arrayIndex++;
+            toViewArray.push(teildata.categories_levelone[f]);
+
           }
         }
       }
@@ -263,19 +251,13 @@ function chooseViews(){
     for (let f=0; f < teildata.categories_levelone.length; f++){
       for (let g=0; g < teildata.categories_levelone[f].categories_leveltwo.length; g++){
         // Wenn Name der Komponente in Filter array gefunden
-        if(teilbereich.indexOf(teildata.categories_levelone[f].categories_leveltwo[g].name) !=-1){
+        if(teilbereich.includes(teildata.categories_levelone[f].categories_leveltwo[g].name)){
           
           // füge einzelne view in view-Array mit index ein
-          addView = teildata.categories_levelone[f].categories_leveltwo[g];
-          // toViewArray[f+"."+g]=toViewTBereich;
-          toViewArray[arrayIndex]=addView;
-          arrayIndex++;
-
-          // add Bereich
-          addView = teildata.categories_levelone[f];
-          // toViewArray[f]=toViewBereich;
-          toViewArray[arrayIndex]=addView;
-          arrayIndex++;
+            // add Teilbereich
+            toViewArray.push(teildata.categories_levelone[f].categories_leveltwo[g]);
+            // add Bereich
+            toViewArray.push(teildata.categories_levelone[f]);
         }
       }
     }
@@ -285,13 +267,9 @@ function chooseViews(){
     //nimm nur fragen von bereich
     for (let f=0; f < teildata.categories_levelone.length; f++){
       // Wenn Name der Komponente in Filter array gefunden
-      if(bereich.indexOf(teildata.categories_levelone[f].name) !=-1){
-        
-        // füge einzelne view in view-Array mit index ein
-        addView = teildata.categories_levelone[f];
-        // toViewArray[f+"."+g]=toViewTBereich;
-        toViewArray[arrayIndex]=addView;
-        arrayIndex++;
+      if(bereich.includes(teildata.categories_levelone[f].name)){
+        // add Bereich
+          toViewArray.push(teildata.categories_levelone[f]);
       }
     }
   }
@@ -320,9 +298,7 @@ export default {
       console.log(this.currentView);
     },
     back: function () {
-      console.log("test2");
       if (this.currentView > 0) this.currentView--;
-
       console.log(this.currentView);
     },
     newAnswer: function (page, answers) {
