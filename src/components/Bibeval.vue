@@ -2,11 +2,41 @@
   <div class="bibeval-container">
 
     <question></question>
+		Bereich: {{ selectedCategories }}<br>
+		Teilbereich: {{ selectedSubCategories }}<br>
+		Komponenten: {{ selectedComponents }}<br>
+		<!-- PAGE 0 / INFO PAGE -->
+		<template v-if="page == 0">
+
+		<img class="bib-header-img" src="../assets/bibeval_intro_image.png" />
+
+			<p class="bib-txt-left">
+				Mit BibEval stellt das Schweizerische Institut für Informationswissenschaft (SII) 
+				eine modular verwendbare, hierarchisch strukturierte Liste von Evaluationskriterien 
+				zur Verfügung, mit welcher Websiten auf Usabilty Schwachstellen überprüft werden können.
+			</p>
+
+			<p class="bib-txt-left">
+				Mithilfe eines Fragebogens kann das BibEval Tool Ihnen helfen,
+				Schwachstellen ihres Webauftritts zu evaluieren. Der hierachisch struktutierte 
+				Aufbau, erlaubt es spezifsche Bereiche einer Homepage zu untersuchen. Durch 
+				Klicken auf das Info-Icon erhalten sie weiterführende Informationen zur Frage. 
+				Pro Fragen können Sie zuästzlich Kommentare hinzufügen.
+				Die graphische Auswertung am Schluss, kann als PDF oder CSV Datei gedownoadet werden.)
+			</p>
+
+			<button class="bib-pagenav" v-on:click="page += 1">Start</button>
+
+		</template>
+
+		<!-- PAGE 1 / AUSWAHL BEREICHE -->
+		<template v-if="page == 1">
 
 		<h1>Was möchten Sie untersuchen?</h1>
+
 		<div class="bib-overview-bereiche">
 
-			<!-- TODO: sollten hier unteschiedliche json fragenkataloge geladen werden? -->
+			<!-- TODO: unteschiedliche json fragenkataloge laden? -->
 			<button 
 				class="bib-select-large"
 				:value="website">
@@ -53,16 +83,16 @@
 
 		</div>
 
-		<template v-if="selectedCategories.length > 0">
+		<template v-if="selectedSubCategories.length > 0">
 
 			<div class="line"></div>
 
-			<label class="">
+			<!-- TODO: abklaeren was dieser button genau machen soll... -->
+			<label class="bib-optional">
 				<input type="checkbox" v-model="mandatory">
 				<span class="slider"></span>
 				optionale Bereiche
 			</label>
-
 
 		<template v-if="selectedSubCategories.length > 0">
 
@@ -92,6 +122,8 @@
 			</p>
 			<p>[ Beispiel Skala... ]</p>
 		</template>
+		</template>
+
 
   </div>
 </template>
@@ -107,6 +139,7 @@ export default {
 
   data () {
     return {
+			page: 0,
 			wasUntersuchen: [],
       selectedCategories: [],
       selectedSubCategories: [],
@@ -124,7 +157,29 @@ export default {
     selectButton,
   },
 
+	watch: {
+
+		// Removes selected subcategory if category is unchecked.
+		selectedCategories: function() {
+			var notselected = [];
+			for(var i = 0; i < this.categories.length; i++){
+				if(!this.selectedCategories.includes(this.categories[i][0])) {
+					notselected.push(...this.categories[i][1]);
+				}
+			}
+			for(var j = 0; j < notselected.length; j++) {
+				var index = this.selectedSubCategories.indexOf(notselected[j]);
+				if (index !== -1) {
+					this.selectedSubCategories.splice(index, 1);
+				}
+			}
+		}
+
+	},
+
   methods: {
+
+		// Loads components based on subcategory.
     getComponents(subcategory) {
 			for(var i = 0; i < this.subcategories.length; i++) {
 				if( this.subcategories[i][0] === subcategory ){
@@ -132,25 +187,19 @@ export default {
 				}
 			}
     },
+
   },
 
 	mounted() {
 
-		// Load categories as a nested array.
-		var categories = [];
-		for(var i = 0; i < this.data_bibeval.categories_levelone.length; i++) {
-			categories.push([this.data_bibeval.categories_levelone[i].name, []]);
-			for(var x = 0; x < this.data_bibeval.categories_levelone[i].categories_leveltwo.length; x++) {
-				categories[i][1].push(this.data_bibeval.categories_levelone[i].categories_leveltwo[x].name);
-			}
-		}
-		this.categories = categories;
-
-
-		// Load subcategories (Komponenten) as a nested array.
+		// Loads categories and subcategories (Komponenten) as a nested arrays.
 		var subcategories = [];
+		var categories = [];
+
 		for(var y = 0; y < this.data_bibeval.categories_levelone.length; y++) {
+			categories.push([this.data_bibeval.categories_levelone[y].name, []]);
 			for(var z = 0; z < this.data_bibeval.categories_levelone[y].categories_leveltwo.length; z++) {
+				categories[y][1].push(this.data_bibeval.categories_levelone[y].categories_leveltwo[z].name);
 				subcategories.push([this.data_bibeval.categories_levelone[y].categories_leveltwo[z].name, []]);
 				for(var a = 0; a < this.data_bibeval.categories_levelone[y].categories_leveltwo[z].categories_levelthree.length; a++) {
 					subcategories[y][1].push(this.data_bibeval.categories_levelone[y].categories_leveltwo[z].categories_levelthree[a].name)
@@ -160,18 +209,48 @@ export default {
 				}
 			}
 		}
+
 		this.subcategories = subcategories; 
+		this.categories = categories;
 
 	}
 };
+
 </script>
 
 <style scoped>
+
+.bibeval-container {
+	background: white;
+	padding: 120px 100px;
+}
+
+.bib-pagenav {
+	font-size: 1em;
+	padding: 10px 15px;
+	color: #817e65;
+	border: 1px solid #c0beb2;
+	cursor: pointer;
+	transition: all .25s;
+	background: #fff;
+}
+
+.bib-pagenav:hover {
+	background: #c0beb2;
+	text-decoration: none;
+	color: #fff;
+}
+.bib-txt-left {
+	text-align: left;
+}
 
 h1 {
 	margin-bottom: 30px;
 }
 
+.bib-header-img {
+	margin: 0 auto 50px auto;
+}
 
 .bib-select-large {
 	width: 100%;
@@ -192,7 +271,7 @@ h1 {
 
 .bib-select-small {
 	width: 100%;
-	height: 30px;
+	min-height: 30px;
 	margin-bottom: 5px;
 	border: 2px solid #408198;
 	border-radius: 5px;
