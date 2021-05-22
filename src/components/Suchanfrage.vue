@@ -9,6 +9,30 @@
       assistieren, haben wir hier eine Liste an Suchanfragen zusammengestellt, die Ihnen hierbei behilflich sein soll.
     </div>
 
+    <h2 class="titleMedium">TEST FÜR RESPONSIVE DESIGN</h2>
+    <div class="row">
+      <div class="rowFirst rowHidden cell cellTitle emptyCell">&nbsp;</div>
+      <div class="rowSecond cell cellTitle">Suchanfrage</div>
+      <div class="rowThird cell cellTitle">Anzahl Treffer</div>
+      <div class="rowFourth cell cellTitle">Korrekte Anzahl</div>
+    </div>
+    <div class="row" style="display: flex">
+      <div class="rowFirst cell firstColumnCell">A</div>
+      <div class="rowSecond cell cellInput"><input type="text" v-model="query1" placeholder="Hier Suchanfrage eingeben z.B. Schweiz"></div>
+      <div class="rowThird cell cellInput">
+        <input type="number" v-model.number="result1" v-on:keyup="getAmount()" placeholder="Hier Anzahl Treffer eingeben">
+      </div>
+      <div class="rowFourth cell">-</div>
+    </div>
+    <div class="row" style="display: flex">
+      <div class="rowFirst cell firstColumnCell">B</div>
+      <div class="rowSecond cell cellInput"><input type="text" v-model="query1" placeholder="Hier Suchanfrage eingeben z.B. Schweiz"></div>
+      <div class="rowThird cell cellInput">
+        <input type="number" v-model.number="result1" v-on:keyup="getAmount()" placeholder="Hier Anzahl Treffer eingeben">
+      </div>
+      <div class="rowFourth cell">-</div>
+    </div>
+
     <h2 class="titleMedium">Boolesche Operatoren</h2>
     <button class="button button-primary-bg" @click="emptyCells(1)">Eingaben leeren</button>
     <div class="table">
@@ -78,31 +102,31 @@
           <div class="cell">-</div>
           <div class="cell">
             ≤ {{ count1 }}
-            <span class="tooltip">&#8505;<span class="tooltiptext">Kleinster Wert von A oder B</span></span>
+            <span class="tooltip"><span class="tooltiptext">Kleinster Wert von A oder B</span></span>
           </div>
           <div class="cell">
             ≤ {{ count2 }}
-            <span class="tooltip">&#8505;<span class="tooltiptext">Kleinster Wert von A oder C</span></span>
+            <span class="tooltip"><span class="tooltiptext">Kleinster Wert von A oder C</span></span>
           </div>
           <div class="cell">
             ≤ {{ count3 }}
-            <span class="tooltip">&#8505;<span class="tooltiptext">Kleinster Wert von B oder C</span></span>
+            <span class="tooltip"><span class="tooltiptext">Kleinster Wert von B oder C</span></span>
           </div>
           <div class="cell">
             = {{ count4 }}
-            <span class="tooltip">&#8505;<span class="tooltiptext">Anzahl A + Anzahl B - Anzahl D</span></span>
+            <span class="tooltip"><span class="tooltiptext">Anzahl A + Anzahl B - Anzahl D</span></span>
           </div>
           <div class="cell">
             = {{ count5 }}
-            <span class="tooltip">&#8505;<span class="tooltiptext">Anzahl D + Anzahl C - Anzahl E - Anzahl F</span></span>
+            <span class="tooltip"><span class="tooltiptext">Anzahl D + Anzahl C - Anzahl E - Anzahl F</span></span>
           </div>
           <div class="cell">
             = {{ count6 }}
-            <span class="tooltip">&#8505;<span class="tooltiptext">Überlicherweise = Anzahl H</span></span>
+            <span class="tooltip"><span class="tooltiptext">Überlicherweise = Anzahl H</span></span>
           </div>
           <div class="cell">
             = {{ count7 }}
-            <span class="tooltip">&#8505;<span class="tooltiptext">Anzahl D + Anzahl E - Anzahl F</span></span>
+            <span class="tooltip"><span class="tooltiptext">Anzahl D + Anzahl E - Anzahl F</span></span>
           </div>
         </div>
     </div>
@@ -172,24 +196,24 @@
         <div class="cell">-</div>
         <div class="cell">
           ≥ {{ count8 }}
-          <span class="tooltip">&#8505;<span class="tooltiptext">Anzahl A + Anzahl B + Anzahl C + Anzahl D</span></span>
+          <span class="tooltip"><span class="tooltiptext">Anzahl A + Anzahl B + Anzahl C + Anzahl D</span></span>
         </div>
         <div class="cell">
           ≥ {{ count8 }}
-          <span class="tooltip">&#8505;<span class="tooltiptext">Anzahl A + Anzahl B + Anzahl C + Anzahl D</span></span>
+          <span class="tooltip"><span class="tooltiptext">Anzahl A + Anzahl B + Anzahl C + Anzahl D</span></span>
           ; &lt; {{ count9 ? count9 : 0 }}
-          <span class="tooltip">&#8505;<span class="tooltiptext">Anzahl E</span></span>
+          <span class="tooltip"><span class="tooltiptext">Anzahl E</span></span>
         </div>
         <div class="cell">
           ≥ {{ count10 }}
-          <span class="tooltip">&#8505;<span class="tooltiptext">Anzahl B + Anzahl C + Anzahl D</span></span>
+          <span class="tooltip"><span class="tooltiptext">Anzahl B + Anzahl C + Anzahl D</span></span>
           ; &lt; {{ count11 ? count11 : 0  }}
-          <span class="tooltip">&#8505;<span class="tooltiptext">Anzahl F</span></span>
+          <span class="tooltip"><span class="tooltiptext">Anzahl F</span></span>
         </div>
         <div class="cell">-</div>
         <div class="cell">
           ≥ {{ count12 }}
-          <span class="tooltip">&#8505;<span class="tooltiptext">Anzahl H</span></span>
+          <span class="tooltip"><span class="tooltiptext">Anzahl H</span></span>
         </div>
       </div>
     </div>
@@ -471,7 +495,6 @@ export default {
       .container {
         max-width: 1000px;
         margin: 0 auto;
-        padding: 50px 40px;
         background: #fff;
       }
       .titleBig {
@@ -509,6 +532,7 @@ export default {
       }
       .cellTitle, .firstColumnCell {
         color: #7a7760;
+        font-weight: 600;
       }
       .firstColumnCell {
         text-align: center;
@@ -518,35 +542,38 @@ export default {
         margin-top:5px;
         padding: 5px 5px;
         text-align: left;
-        height: 2em;
+        height: 2rem;
         white-space: nowrap;
-        overflow: hidden;
-      }
-      .emptyCell {
-        height: 2em;
-      }
-      .cellInput {
-        padding: 0;
         display: flex;
         align-items: center;
-        height: 2em;
+      }
+      .emptyCell {
+        height: 2rem;
+      }
+      .cellInput {
+        padding: 5px 5px;
+        display: flex;
+        align-items: center;
+        height: 2rem;
+        overflow: hidden;
       }
       input[type=text] {
         border: 0;
-        padding: 5px 5px;
-        height: 20px;
-        width: 97.6%;
+        height: 100%;
+        width: 100%;
         border-radius: 0;
         font-size: 1rem !important;
       }
       input[type=number] {
         border: 0;
-        padding: 5px 5px;
-        height: 20px;
-        width: 96%;
+        height: 100%;
+        width: 100%;
         border-radius: 0;
         font-size: 1rem !important;
         -moz-appearance: textfield;
+      }
+      input:focus{
+          outline: none;
       }
       input::-webkit-outer-spin-button,
       input::-webkit-inner-spin-button {
@@ -558,9 +585,23 @@ export default {
       }
       .tooltip {
         position: relative;
-        margin-left: 5px;
+        margin: 0 5px;
         cursor: context-menu;
         padding: 0 4px;
+        height: 100%;
+        widht: 20px;
+      }
+      .tooltip::before {
+        content: "";
+        position: absolute;
+        top: 3px;
+        left: 0;
+        width: 15px;
+        height: 15px;
+        background-image: url("../assets/info_icon_black.svg");
+        background-repeat: no-repeat;
+        background-size: 12px 12px;
+        background-position: center;
       }
       .tooltip:hover > .tooltiptext {
         display: block;
@@ -569,10 +610,12 @@ export default {
         display: none;
         position: absolute;
         background: #B7B6A4;
-        padding: 3px 5px;
+        padding: 5px 8px;
         left: 0;
+        top: 100%;
         z-index: 10;
         min-width: 90px;
+        font-size: 0.8rem;
       }
       .button {
         font-size: 1rem;
@@ -581,11 +624,38 @@ export default {
         border: 1px solid #c0beb2;
         cursor: pointer;
         transition: all 0.25s;
+        background-color:#ffffff;
       }
       .button:hover {
         background: #c0beb2;
         color: #ffffff;
       }
+
+
+      .row {
+        display: flex;
+        flex-wrap: no-wrap;
+        justify-content: flex-start;
+        width: 100%;
+      }
+      .rowFirst {
+        width: 2%;
+        margin-right: 1%;
+      }
+      .rowSecond {
+        width: 37%;
+        margin-right: 1%;
+      }
+      .rowThird {
+        width: 29%;
+        margin-right: 1%;
+      }
+      .rowFourth {
+        width: 29%;
+      }
+
+
+
       @media screen and (max-width: 767px) {
         .container {
           padding: 50px 0;
@@ -601,6 +671,32 @@ export default {
         }
         .fourthColumn {
           width: 25%;
+        }
+
+
+
+        .row {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: flex-start;
+          width: 100%;
+          margin-bottom: 1rem;
+        }
+        .rowHidden {
+          display: none;
+        }
+        .rowFirst {
+          width: 100%;
+        }
+        .rowSecond {
+          width: 100%;
+        }
+        .rowThird {
+          width: 46%;
+          margin-right: 1%;
+        }
+        .rowFourth {
+          width: 46%;
         }
       }
 </style>
