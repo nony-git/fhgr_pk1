@@ -1,5 +1,5 @@
 <template>
-  <div class="methodencheck">
+  <div class="methodencheck" id="methodencheck-top">
     <!-- START: PROCESSBAR -->
     <div class="methodencheck-processbar" v-if="page > 0">
       <div class="methodencheck-step" v-bind:class="{stepActive: page > 0}"></div>
@@ -28,7 +28,7 @@
         </p>
       </div>
       <div class="methodencheck-buttons-start">
-        <button class="button button-primary-bg" v-on:click="page++">Start</button>
+        <button class="button button-primary-bg" v-on:click="page++;scrollToTop()">Start</button>
         <button class="methodencheck-infobutton button button-primary-bg" v-on:click="page=-1"></button>
       </div>
     </div>
@@ -63,8 +63,8 @@
         </p>
       </div>
       <div class="methodencheck-buttons-start">
-        <button class="button button-primary-bg" v-on:click="page = 1">Start</button>
-        <button class="methodencheck-button button button-primary-bg" v-on:click="page = 0">zurück</button>
+        <button class="button button-primary-bg" v-on:click="page = 1;scrollToTop()">Start</button>
+        <button class="methodencheck-button button button-primary-bg" v-on:click="page = 0;scrollToTop()">zurück</button>
       </div>
     </div>
     <!-- END: INFO-PAGE -->
@@ -132,8 +132,8 @@
 
             <!-- BUTTONS -->
             <div class="methodencheck-buttonContainer">
-              <button class="methodencheck-button methodencheck-button-back button button-primary-bg" v-on:click="page--"></button>
-              <button class="methodencheck-button methodencheck-button-forward button button-primary-bg" v-on:click="page++" v-if="inputs[question['titel']] != 0">Weiter</button>
+              <button class="methodencheck-button methodencheck-button-back button button-primary-bg" v-on:click="page--;scrollToTop()"></button>
+              <button class="methodencheck-button methodencheck-button-forward button button-primary-bg" v-on:click="page++;scrollToTop()" v-if="inputs[question['titel']] != 0">Weiter</button>
             </div>
           </div>
 
@@ -172,7 +172,7 @@
 
       <div class="methodencheck-controls">
         <div class="methodencheck-resultbuttons">
-          <button class="button button-primary-bg methodencheck-button-back" v-on:click="page--"></button>
+          <button class="button button-primary-bg methodencheck-button-back" v-on:click="page--;scrollToTop()"></button>
           <button class="button button-primary-bg methodencheck-button methodencheck-button-forward" v-on:click="page = 0; clearInputs(); clearMethods()">zurück zum Start</button>
         </div>
       </div>
@@ -358,6 +358,10 @@ export default {
       else if (value == 1) {
         this.subAnswerActivated = false;
       }
+    },
+    scrollToTop: function() {
+      var top = document.getElementById("methodencheck-top");
+      top.scrollIntoView();
     }
   }
 }
@@ -379,6 +383,9 @@ a {
 }
 label {
   margin-top: 0;
+}
+.methodencheck {
+  padding-top: 1rem;
 }
 .button {
   font-size: 1rem;
@@ -452,6 +459,8 @@ label {
 .methodencheck-buttons-start {
   display: flex;
   align-items: center;
+  max-width: 760px;
+  margin: 0 auto;
 }
 .methodencheck-infobutton {
   position: relative;
@@ -543,7 +552,8 @@ input:checked + .slider:before {
 }
 .methodencheck-text {
   text-align: left;
-  margin-bottom: 1.5rem;
+  max-width: 760px;
+  margin: 0 auto 1.5rem auto;
 }
 .methodencheck-formcontainer {
   display: flex;
@@ -560,7 +570,7 @@ input:checked + .slider:before {
 .methodencheck-button-back {
   position: relative;
   width: 40px;
-  height: 41px;
+  height: 44px;
 }
 .methodencheck-button-forward {
   background: #817E65;
@@ -573,7 +583,7 @@ input:checked + .slider:before {
 .methodencheck-button-back::before {
   content: "";
   position: absolute;
-  top: 10px;
+  top: 12px;
   left: 8px;
   background: url("../assets/Arrow.svg");
   background-repeat: no-repeat;
@@ -702,8 +712,8 @@ input:checked + .slider:before {
 .methodencheck-methodenblur {
   position: absolute;
   top: 425px;
-  right: 0;
-  width: 100%;
+  left: 0;
+  width: calc(100% - 2rem);
   height: 75px;
   background-image: linear-gradient(rgba(255,255,255,0.3), rgba(255,255,255,1));
 }
@@ -718,7 +728,7 @@ input:checked + .slider:before {
   padding: 1rem;
 }
 .activeTopAnswer {
-  height: calc(100% - 2rem);
+  height: 100%;
   padding: 1rem;
   background: #408198;
   color: #ffffff;
