@@ -577,6 +577,7 @@ export default {
         border: 0;
         height: 100%;
         width: 100%;
+        padding: 0;
         border-radius: 0;
         font-size: 1rem !important;
       }
@@ -584,6 +585,7 @@ export default {
         border: 0;
         height: 100%;
         width: 100%;
+        padding: 0;
         border-radius: 0;
         font-size: 1rem !important;
         -moz-appearance: textfield;
@@ -659,13 +661,16 @@ export default {
           font-size: 0.9rem !important;
         }
         .secondColumn {
-          width: 50%;
+          width: 46%;
         }
         .thirdColumn {
-          width: 25%;
+          width: 27%;
         }
         .fourthColumn {
-          width: 25%;
+          width: 27%;
+        }
+        .tooltip {
+          margin: 0 2px;
         }
       }
 
