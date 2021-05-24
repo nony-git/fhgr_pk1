@@ -1,6 +1,6 @@
 <template>
 <div class="container" id="app">
-    <!-- <h1 class="titleBig">Suchanfragen überprüfen</h1> -->
+    <!-- START: EINLEITUNGSTEXT -->
     <div class="text">
       Als professionelle Informationsdienstleister heben sich Bibliotheken durch einen hohen Qualitätsanspruch und fachlich überprüfte
       Inhalte von herkömmlichen Webanbietern ab. Dem entsprechend ist es besonders wichtig, dass Grundlagen der Recherche korrekt und
@@ -8,215 +8,229 @@
       Suchanfragen in Konsequenz nur noch scheinbar korrekt abgearbeitet werden. Um Ihnen bei der Überprüfung Ihres Webangebots zu
       assistieren, haben wir hier eine Liste an Suchanfragen zusammengestellt, die Ihnen hierbei behilflich sein soll.
     </div>
+    <!-- END: EINLEITUNGSTEXT -->
 
-    <h2 class="titleMedium">TEST FÜR RESPONSIVE DESIGN</h2>
-    <div class="row">
-      <div class="rowFirst rowHidden cell cellTitle emptyCell">&nbsp;</div>
-      <div class="rowSecond cell cellTitle">Suchanfrage</div>
-      <div class="rowThird cell cellTitle">Anzahl Treffer</div>
-      <div class="rowFourth cell cellTitle">Korrekte Anzahl</div>
-    </div>
-    <div class="row" style="display: flex">
-      <div class="rowFirst cell firstColumnCell">A</div>
-      <div class="rowSecond cell cellInput"><input type="text" v-model="query1" placeholder="Hier Suchanfrage eingeben z.B. Schweiz"></div>
-      <div class="rowThird cell cellInput">
-        <input type="number" v-model.number="result1" v-on:keyup="getAmount()" placeholder="Hier Anzahl Treffer eingeben">
-      </div>
-      <div class="rowFourth cell">-</div>
-    </div>
-    <div class="row" style="display: flex">
-      <div class="rowFirst cell firstColumnCell">B</div>
-      <div class="rowSecond cell cellInput"><input type="text" v-model="query1" placeholder="Hier Suchanfrage eingeben z.B. Schweiz"></div>
-      <div class="rowThird cell cellInput">
-        <input type="number" v-model.number="result1" v-on:keyup="getAmount()" placeholder="Hier Anzahl Treffer eingeben">
-      </div>
-      <div class="rowFourth cell">-</div>
-    </div>
-
+    <!-- START: TABELLE FÜR DIE BOOLSCHEN OPERATOREN -->
     <h2 class="titleMedium">Boolesche Operatoren</h2>
     <button class="button button-primary-bg" @click="emptyCells(1)">Eingaben leeren</button>
-    <div class="table">
-        <div class="column firstColumn">
-          <div class="cell cellTitle emptyCell">&nbsp;</div>
-          <div class="cell firstColumnCell">A</div>
-          <div class="cell firstColumnCell">B</div>
-          <div class="cell firstColumnCell">C</div>
-          <div class="cell firstColumnCell">D</div>
-          <div class="cell firstColumnCell">E</div>
-          <div class="cell firstColumnCell">F</div>
-          <div class="cell firstColumnCell">G</div>
-          <div class="cell firstColumnCell">H</div>
-          <div class="cell firstColumnCell">I</div>
-          <div class="cell firstColumnCell">J</div>
-        </div>
-        <div class="column secondColumn">
-          <div class="cell cellTitle">Suchanfrage</div>
-          <div class="cell cellInput"><input type="text" v-model="query1" placeholder="Hier Suchanfrage eingeben z.B. Schweiz"></div>
-          <div class="cell cellInput"><input type="text" v-model="query2" placeholder="Hier Suchanfrage eingeben z.B. Zürich"></div>
-          <div class="cell cellInput"><input type="text" v-model="query3" placeholder="Hier Suchanfrage eingeben z.B. Johannes"></div>
-          <div class="cell">{{ query1 ? query1 : 'Schweiz' }} AND {{ query2 ? query2 : 'Zürich' }}</div>
-          <div class="cell">{{ query1 ? query1 : 'Schweiz' }} AND {{ query3 ? query3 : 'Johannes' }}</div>
-          <div class="cell">{{ query2 ? query2 : 'Zürich' }} AND {{ query3 ? query3 : 'Johannes' }}</div>
-          <div class="cell">{{ query1 ? query1 : 'Schweiz' }} OR {{ query2 ? query2 : 'Zürich' }}</div>
-          <div class="cell">({{ query1 ? query1 : 'Schweiz' }} AND {{ query2 ? query2 : 'Zürich' }}) OR {{ query3 ? query3 : 'Johannes' }}</div>
-          <div class="cell">{{ query1 ? query1 : 'Schweiz' }} AND {{ query2 ? query2 : 'Zürich' }} OR {{ query3 ? query3 : 'Johannes' }}</div>
-          <div class="cell">{{ query1 ? query1 : 'Schweiz' }} AND ({{ query2 ? query2 : 'Zürich' }} OR {{ query3 ? query3 : 'Johannes' }})</div>
-        </div>
-        <div class="column thirdColumn">
-          <div class="cell cellTitle">Anzahl Treffer</div>
-          <div class="cell cellInput">
-            <input type="number" v-model.number="result1" v-on:keyup="getAmount()" placeholder="Hier Anzahl Treffer eingeben">
-          </div>
-          <div class="cell cellInput">
-            <input type="number" v-model.number="result2" v-on:keyup="getAmount()" placeholder="Hier Anzahl Treffer eingeben">
-          </div>
-          <div class="cell cellInput">
-            <input type="number" v-model.number="result3" v-on:keyup="getAmount()" placeholder="Hier Anzahl Treffer eingeben">
-          </div>
-          <div class="cell cellInput" v-on:keyup="validateNumber(1)" v-bind:class="{ redBorder: error1 }">
-            <input type="number" v-model.number="result4" v-on:keyup="getAmount()" placeholder="Hier Anzahl Treffer eingeben">
-          </div>
-          <div class="cell cellInput" v-on:keyup="validateNumber(2)" v-bind:class="{ redBorder: error2 }">
-            <input type="number" v-model.number="result5" v-on:keyup="getAmount()" placeholder="Hier Anzahl Treffer eingeben">
-          </div>
-          <div class="cell cellInput" v-on:keyup="validateNumber(3)" v-bind:class="{ redBorder: error3 }">
-            <input type="number" v-model.number="result6" v-on:keyup="getAmount()" placeholder="Hier Anzahl Treffer eingeben">
-          </div>
-          <div class="cell cellInput" v-on:keyup="validateNumber(4)" v-bind:class="{ redBorder: error4 }">
-            <input type="number" v-model.number="result7" v-on:keyup="getAmount()" placeholder="Hier Anzahl Treffer eingeben">
-          </div>
-          <div class="cell cellInput" v-on:keyup="validateNumber(5)" v-bind:class="{ redBorder: error5 }">
-            <input type="number" v-model.number="result8" v-on:keyup="getAmount()" placeholder="Hier Anzahl Treffer eingeben">
-          </div>
-          <div class="cell cellInput" v-on:keyup="validateNumber(6)" v-bind:class="{ redBorder: error6 }">
-            <input type="number" v-model.number="result9" v-on:keyup="getAmount()" placeholder="Hier Anzahl Treffer eingeben">
-          </div>
-          <div class="cell cellInput" v-on:keyup="validateNumber(7)" v-bind:class="{ redBorder: error7 }">
-            <input type="number" v-model.number="result10" v-on:keyup="getAmount()" placeholder="Hier Anzahl Treffer eingeben">
-          </div>
-        </div>
-        <div class="column fourthColumn">
-          <div class="cell cellTitle">Korrekte Anzahl</div>
-          <div class="cell">-</div>
-          <div class="cell">-</div>
-          <div class="cell">-</div>
-          <div class="cell">
-            ≤ {{ count1 }}
-            <span class="tooltip"><span class="tooltiptext">Kleinster Wert von A oder B</span></span>
-          </div>
-          <div class="cell">
-            ≤ {{ count2 }}
-            <span class="tooltip"><span class="tooltiptext">Kleinster Wert von A oder C</span></span>
-          </div>
-          <div class="cell">
-            ≤ {{ count3 }}
-            <span class="tooltip"><span class="tooltiptext">Kleinster Wert von B oder C</span></span>
-          </div>
-          <div class="cell">
-            = {{ count4 }}
-            <span class="tooltip"><span class="tooltiptext">Anzahl A + Anzahl B - Anzahl D</span></span>
-          </div>
-          <div class="cell">
-            = {{ count5 }}
-            <span class="tooltip"><span class="tooltiptext">Anzahl D + Anzahl C - Anzahl E - Anzahl F</span></span>
-          </div>
-          <div class="cell">
-            = {{ count6 }}
-            <span class="tooltip"><span class="tooltiptext">Überlicherweise = Anzahl H</span></span>
-          </div>
-          <div class="cell">
-            = {{ count7 }}
-            <span class="tooltip"><span class="tooltiptext">Anzahl D + Anzahl E - Anzahl F</span></span>
-          </div>
-        </div>
-    </div>
 
+    <!-- TABELLE -->
+    <div class="table">
+      <!-- TABELLEN-ZEILEN -->
+      <div class="row">
+        <div class="firstColumn cell cellTitle emptyCell">&nbsp;</div>
+        <div class="secondColumn cell cellTitle">Suchanfrage</div>
+        <div class="thirdColumn cell cellTitle">Anzahl Treffer</div>
+        <div class="fourthColumn cell cellTitle">Korrekte Anzahl</div>
+      </div>
+      <div class="row">
+        <div class="firstColumn cell firstColumnCell">A</div>
+        <div class="secondColumn cell cellInput"><input type="text" v-model="query1" placeholder="Hier Suchanfrage eingeben z.B. Schweiz"></div>
+        <div class="thirdColumn cell cellInput">
+          <input type="number" v-model.number="result1" v-on:keyup="getAmount()" placeholder="Hier Anzahl Treffer eingeben">
+        </div>
+        <div class="fourthColumn cell">-</div>
+      </div>
+      <div class="row">
+        <div class="firstColumn cell firstColumnCell">B</div>
+        <div class="secondColumn cell cellInput"><input type="text" v-model="query2" placeholder="Hier Suchanfrage eingeben z.B. Zürich"></div>
+        <div class="thirdColumn cell cellInput">
+          <input type="number" v-model.number="result2" v-on:keyup="getAmount()" placeholder="Hier Anzahl Treffer eingeben">
+        </div>
+        <div class="fourthColumn cell">-</div>
+      </div>
+      <div class="row">
+        <div class="firstColumn cell firstColumnCell">C</div>
+        <div class="secondColumn cell cellInput"><input type="text" v-model="query3" placeholder="Hier Suchanfrage eingeben z.B. Johannes"></div>
+        <div class="thirdColumn cell cellInput">
+          <input type="number" v-model.number="result3" v-on:keyup="getAmount()" placeholder="Hier Anzahl Treffer eingeben">
+        </div>
+        <div class="fourthColumn cell">-</div>
+      </div>
+      <div class="row">
+        <div class="firstColumn cell firstColumnCell">D</div>
+        <div class="secondColumn cell">{{ query1 ? query1 : 'Schweiz' }} AND {{ query2 ? query2 : 'Zürich' }}</div>
+        <div class="thirdColumn cell cellInput" v-on:keyup="validateNumber(1)" v-bind:class="{ redBorder: error1 }">
+          <input type="number" v-model.number="result4" v-on:keyup="getAmount()" placeholder="Hier Anzahl Treffer eingeben">
+        </div>
+        <div class="fourthColumn cell">
+          ≤ {{ count1 }}
+          <span class="tooltip"><span class="tooltiptext">Kleinster Wert von A oder B</span></span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="firstColumn cell firstColumnCell">E</div>
+        <div class="secondColumn cell">{{ query1 ? query1 : 'Schweiz' }} AND {{ query3 ? query3 : 'Johannes' }}</div>
+        <div class="thirdColumn cell cellInput" v-on:keyup="validateNumber(2)" v-bind:class="{ redBorder: error2 }">
+          <input type="number" v-model.number="result5" v-on:keyup="getAmount()" placeholder="Hier Anzahl Treffer eingeben">
+        </div>
+        <div class="fourthColumn cell">
+          ≤ {{ count2 }}
+          <span class="tooltip"><span class="tooltiptext">Kleinster Wert von A oder C</span></span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="firstColumn cell firstColumnCell">F</div>
+        <div class="secondColumn cell">{{ query2 ? query2 : 'Zürich' }} AND {{ query3 ? query3 : 'Johannes' }}</div>
+        <div class="thirdColumn cell cellInput" v-on:keyup="validateNumber(3)" v-bind:class="{ redBorder: error3 }">
+          <input type="number" v-model.number="result6" v-on:keyup="getAmount()" placeholder="Hier Anzahl Treffer eingeben">
+        </div>
+        <div class="fourthColumn cell">
+          ≤ {{ count3 }}
+          <span class="tooltip"><span class="tooltiptext">Kleinster Wert von B oder C</span></span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="firstColumn cell firstColumnCell">G</div>
+        <div class="secondColumn cell">{{ query1 ? query1 : 'Schweiz' }} OR {{ query2 ? query2 : 'Zürich' }}</div>
+        <div class="thirdColumn cell cellInput" v-on:keyup="validateNumber(4)" v-bind:class="{ redBorder: error4 }">
+          <input type="number" v-model.number="result7" v-on:keyup="getAmount()" placeholder="Hier Anzahl Treffer eingeben">
+        </div>
+        <div class="fourthColumn cell">
+          = {{ count4 }}
+          <span class="tooltip"><span class="tooltiptext">Anzahl A + Anzahl B - Anzahl D</span></span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="firstColumn cell firstColumnCell">H</div>
+        <div class="secondColumn cell">({{ query1 ? query1 : 'Schweiz' }} AND {{ query2 ? query2 : 'Zürich' }}) OR {{ query3 ? query3 : 'Johannes' }}</div>
+        <div class="thirdColumn cell cellInput" v-on:keyup="validateNumber(5)" v-bind:class="{ redBorder: error5 }">
+          <input type="number" v-model.number="result8" v-on:keyup="getAmount()" placeholder="Hier Anzahl Treffer eingeben">
+        </div>
+        <div class="fourthColumn cell">
+          = {{ count5 }}
+          <span class="tooltip"><span class="tooltiptext">Anzahl D + Anzahl C - Anzahl E - Anzahl F</span></span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="firstColumn cell firstColumnCell">I</div>
+        <div class="secondColumn cell">{{ query1 ? query1 : 'Schweiz' }} AND {{ query2 ? query2 : 'Zürich' }} OR {{ query3 ? query3 : 'Johannes' }}</div>
+        <div class="thirdColumn cell cellInput" v-on:keyup="validateNumber(6)" v-bind:class="{ redBorder: error6 }">
+          <input type="number" v-model.number="result9" v-on:keyup="getAmount()" placeholder="Hier Anzahl Treffer eingeben">
+        </div>
+        <div class="fourthColumn cell">
+          = {{ count6 }}
+          <span class="tooltip"><span class="tooltiptext">Überlicherweise = Anzahl H</span></span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="firstColumn cell firstColumnCell">J</div>
+        <div class="secondColumn cell">{{ query1 ? query1 : 'Schweiz' }} AND ({{ query2 ? query2 : 'Zürich' }} OR {{ query3 ? query3 : 'Johannes' }})</div>
+        <div class="thirdColumn cell cellInput" v-on:keyup="validateNumber(7)" v-bind:class="{ redBorder: error7 }">
+          <input type="number" v-model.number="result10" v-on:keyup="getAmount()" placeholder="Hier Anzahl Treffer eingeben">
+        </div>
+        <div class="fourthColumn cell">
+          = {{ count7 }}
+          <span class="tooltip"><span class="tooltiptext">Anzahl D + Anzahl E - Anzahl F</span></span>
+        </div>
+      </div>
+    </div>
+    <!-- END: TABELLE FÜR DIE BOOLSCHEN OPERATOREN -->
+
+
+    <!-- START: TABELLE FÜR DIE TRUNKIERUNGEN UND WILDCARDS -->
     <h2 class="titleMedium">Trunkierungen und Wildcards</h2>
     <button class="button button-primary-bg" @click="emptyCells(2)">Eingaben leeren</button>
+
+    <!-- TABELLE -->
     <div class="table">
-      <div class="column firstColumn">
-        <div class="cell cellTitle emptyCell">&nbsp;</div>
-        <div class="cell firstColumnCell">A</div>
-        <div class="cell firstColumnCell">B</div>
-        <div class="cell firstColumnCell">C</div>
-        <div class="cell firstColumnCell">D</div>
-        <div class="cell firstColumnCell">E</div>
-        <div class="cell firstColumnCell">F</div>
-        <div class="cell firstColumnCell">G</div>
-        <div class="cell firstColumnCell">H</div>
-        <div class="cell firstColumnCell">I</div>
+      <!-- TABELLE-ZEILEN -->
+      <div class="row">
+        <div class="firstColumn cell cellTitle emptyCell">&nbsp;</div>
+        <div class="secondColumn cell cellTitle">Suchanfrage</div>
+        <div class="thirdColumn cell cellTitle">Anzahl Treffer</div>
+        <div class="fourthColumn cell cellTitle">Korrekte Anzahl</div>
       </div>
-      <div class="column secondColumn">
-        <div class="cell cellTitle">Suchanfrage</div>
-        <div class="cell cellInput"><input type="text" v-model="query4" placeholder="Hier Suchanfrage eingeben z.B. Johan"></div>
-        <div class="cell cellInput"><input type="text" v-model="query5" placeholder="Hier Suchanfrage eingeben z.B. Johann"></div>
-        <div class="cell cellInput"><input type="text" v-model="query6" placeholder="Hier Suchanfrage eingeben z.B. Johanna"></div>
-        <div class="cell cellInput"><input type="text" v-model="query7" placeholder="Hier Suchanfrage eingeben z.B. Johannes"></div>
-        <div class="cell">{{ query4 ? query4.slice(0,2) : "Jo" }}*</div>
-        <div class="cell">{{ query5 ? query5.slice(0,5) : "Johan" }}*</div>
-        <div class="cell">{{ query6 ? query6.slice(0,6) : "Johann" }}*</div>
-        <div class="cell cellInput"><input type="text" v-model="query8" placeholder="Hier Suchanfrage eingeben z.B. Müller-Jacquier"></div>
-        <div class="cell">{{ query8 ? query8.slice(0,10) : "Müller-Jac" }}*</div>
-      </div>
-      <div class="column thirdColumn">
-        <div class="cell cellTitle">Anzahl Treffer</div>
-        <div class="cell cellInput">
+      <div class="row">
+        <div class="firstColumn cell firstColumnCell">A</div>
+        <div class="secondColumn cell cellInput"><input type="text" v-model="query4" placeholder="Hier Suchanfrage eingeben z.B. Johan"></div>
+        <div class="thirdColumn cell cellInput">
           <input type="number" v-model.number="result11" v-on:keyup="getCounts()" placeholder="Hier Anzahl Treffer eingeben">
         </div>
-        <div class="cell cellInput">
+        <div class="fourthColumn cell">-</div>
+      </div>
+      <div class="row">
+        <div class="firstColumn cell firstColumnCell">B</div>
+        <div class="secondColumn cell cellInput"><input type="text" v-model="query5" placeholder="Hier Suchanfrage eingeben z.B. Johann"></div>
+        <div class="thirdColumn cell cellInput">
           <input type="number" v-model.number="result12" v-on:keyup="getCounts()" placeholder="Hier Anzahl Treffer eingeben">
         </div>
-        <div class="cell cellInput">
+        <div class="fourthColumn cell">-</div>
+      </div>
+      <div class="row">
+        <div class="firstColumn cell firstColumnCell">C</div>
+        <div class="secondColumn cell cellInput"><input type="text" v-model="query6" placeholder="Hier Suchanfrage eingeben z.B. Johanna"></div>
+        <div class="thirdColumn cell cellInput">
           <input type="number" v-model.number="result13" v-on:keyup="getCounts()" placeholder="Hier Anzahl Treffer eingeben">
         </div>
-        <div class="cell cellInput">
+        <div class="fourthColumn cell">-</div>
+      </div>
+      <div class="row">
+        <div class="firstColumn cell firstColumnCell">D</div>
+        <div class="secondColumn cell cellInput"><input type="text" v-model="query7" placeholder="Hier Suchanfrage eingeben z.B. Johannes"></div>
+        <div class="thirdColumn cell cellInput">
           <input type="number" v-model.number="result14" v-on:keyup="getCounts()" placeholder="Hier Anzahl Treffer eingeben">
         </div>
-        <div class="cell cellInput" v-on:keyup="validateNumber(8)" v-bind:class="{ redBorder: error8 }">
+        <div class="fourthColumn cell">-</div>
+      </div>
+      <div class="row">
+        <div class="firstColumn cell firstColumnCell">E</div>
+        <div class="secondColumn cell">{{ query4 ? query4.slice(0,2) : "Jo" }}*</div>
+        <div class="thirdColumn cell cellInput" v-on:keyup="validateNumber(8)" v-bind:class="{ redBorder: error8 }">
           <input type="number" v-model.number="result15" v-on:keyup="getCounts()" placeholder="Hier Anzahl Treffer eingeben">
         </div>
-        <div class="cell cellInput" v-on:keyup="validateNumber(9)" v-bind:class="{ redBorder: error9 }">
-          <input type="number" v-model.number="result16" v-on:keyup="getCounts()" placeholder="Hier Anzahl Treffer eingeben">
-        </div>
-        <div class="cell cellInput" v-on:keyup="validateNumber(10)" v-bind:class="{ redBorder: error10 }">
-          <input type="number" v-model.number="result17" v-on:keyup="getCounts()" placeholder="Hier Anzahl Treffer eingeben">
-        </div>
-        <div class="cell cellInput">
-          <input type="number" v-model.number="result18" v-on:keyup="getCounts()" placeholder="Hier Anzahl Treffer eingeben">
-        </div>
-        <div class="cell cellInput" v-on:keyup="validateNumber(11)" v-bind:class="{ redBorder: error11 }">
-          <input type="number" v-model.number="result19" v-on:keyup="getCounts()" placeholder="Hier Anzahl Treffer eingeben">
-        </div>
-      </div>
-      <div class="column fourthColumn">
-        <div class="cell cellTitle">Korrekte Anzahl</div>
-        <div class="cell">-</div>
-        <div class="cell">-</div>
-        <div class="cell">-</div>
-        <div class="cell">-</div>
-        <div class="cell">
+        <div class="fourthColumn cell">
           ≥ {{ count8 }}
           <span class="tooltip"><span class="tooltiptext">Anzahl A + Anzahl B + Anzahl C + Anzahl D</span></span>
         </div>
-        <div class="cell">
+      </div>
+      <div class="row">
+        <div class="firstColumn cell firstColumnCell">F</div>
+        <div class="secondColumn cell">{{ query5 ? query5.slice(0,5) : "Johan" }}*</div>
+        <div class="thirdColumn cell cellInput" v-on:keyup="validateNumber(9)" v-bind:class="{ redBorder: error9 }">
+          <input type="number" v-model.number="result16" v-on:keyup="getCounts()" placeholder="Hier Anzahl Treffer eingeben">
+        </div>
+        <div class="fourthColumn cell">
           ≥ {{ count8 }}
           <span class="tooltip"><span class="tooltiptext">Anzahl A + Anzahl B + Anzahl C + Anzahl D</span></span>
           ; &lt; {{ count9 ? count9 : 0 }}
           <span class="tooltip"><span class="tooltiptext">Anzahl E</span></span>
         </div>
-        <div class="cell">
+      </div>
+      <div class="row">
+        <div class="firstColumn cell firstColumnCell">G</div>
+        <div class="secondColumn cell">{{ query6 ? query6.slice(0,6) : "Johann" }}*</div>
+        <div class="thirdColumn cell cellInput" v-on:keyup="validateNumber(10)" v-bind:class="{ redBorder: error10 }">
+          <input type="number" v-model.number="result17" v-on:keyup="getCounts()" placeholder="Hier Anzahl Treffer eingeben">
+        </div>
+        <div class="fourthColumn cell">
           ≥ {{ count10 }}
           <span class="tooltip"><span class="tooltiptext">Anzahl B + Anzahl C + Anzahl D</span></span>
           ; &lt; {{ count11 ? count11 : 0  }}
           <span class="tooltip"><span class="tooltiptext">Anzahl F</span></span>
         </div>
-        <div class="cell">-</div>
-        <div class="cell">
+      </div>
+      <div class="row">
+        <div class="firstColumn cell firstColumnCell">H</div>
+        <div class="secondColumn cell cellInput"><input type="text" v-model="query8" placeholder="Hier Suchanfrage eingeben z.B. Müller-Jacquier"></div>
+        <div class="thirdColumn cell cellInput">
+          <input type="number" v-model.number="result18" v-on:keyup="getCounts()" placeholder="Hier Anzahl Treffer eingeben">
+        </div>
+        <div class="fourthColumn cell">-</div>
+      </div>
+      <div class="row">
+        <div class="firstColumn cell firstColumnCell">I</div>
+        <div class="secondColumn cell">{{ query8 ? query8.slice(0,10) : "Müller-Jac" }}*</div>
+        <div class="thirdColumn cell cellInput" v-on:keyup="validateNumber(11)" v-bind:class="{ redBorder: error11 }">
+          <input type="number" v-model.number="result19" v-on:keyup="getCounts()" placeholder="Hier Anzahl Treffer eingeben">
+        </div>
+        <div class="fourthColumn cell">
           ≥ {{ count12 }}
           <span class="tooltip"><span class="tooltiptext">Anzahl H</span></span>
         </div>
       </div>
     </div>
+    <!-- END: TABELLE FÜR DIE TRUNKIERUNGEN UND WILDCARDS -->
   </div>
 </template>
 
@@ -497,11 +511,6 @@ export default {
         margin: 0 auto;
         background: #fff;
       }
-      .titleBig {
-        font-size: 3.5rem;
-        line-height: 1.4;
-        font-weight: 300;
-      }
       .titleMedium {
         font-size: 2.5rem;
         line-height: 1.27;
@@ -514,13 +523,17 @@ export default {
         padding-bottom: 24px;
       }
       .table {
+        margin-top: 1rem;
+        margin-bottom: 2rem;
+      }
+      .row {
         display: flex;
-        padding-bottom: 24px;
-        padding-top: 14px;
       }
       .firstColumn {
         width: 26px;
         min-width: 2%;
+        display: flex;
+        justify-content: center;
       }
       .secondColumn {
         width: 46%;
@@ -542,19 +555,18 @@ export default {
         margin-top:5px;
         padding: 5px 5px;
         text-align: left;
-        height: 2rem;
-        white-space: nowrap;
+        min-height: 2rem;
         display: flex;
         align-items: center;
       }
       .emptyCell {
-        height: 2rem;
+        min-height: 2rem;
       }
       .cellInput {
         padding: 5px 5px;
         display: flex;
         align-items: center;
-        height: 2rem;
+        min-height: 2rem;
         overflow: hidden;
       }
       input[type=text] {
@@ -631,37 +643,9 @@ export default {
         color: #ffffff;
       }
 
-
-      .row {
-        display: flex;
-        flex-wrap: no-wrap;
-        justify-content: flex-start;
-        width: 100%;
-      }
-      .rowFirst {
-        width: 2%;
-        margin-right: 1%;
-      }
-      .rowSecond {
-        width: 37%;
-        margin-right: 1%;
-      }
-      .rowThird {
-        width: 29%;
-        margin-right: 1%;
-      }
-      .rowFourth {
-        width: 29%;
-      }
-
-
-
       @media screen and (max-width: 767px) {
         .container {
           padding: 50px 0;
-        }
-        .firstColumn {
-          display: none;
         }
         .secondColumn {
           width: 50%;
@@ -671,32 +655,6 @@ export default {
         }
         .fourthColumn {
           width: 25%;
-        }
-
-
-
-        .row {
-          display: flex;
-          flex-wrap: wrap;
-          justify-content: flex-start;
-          width: 100%;
-          margin-bottom: 1rem;
-        }
-        .rowHidden {
-          display: none;
-        }
-        .rowFirst {
-          width: 100%;
-        }
-        .rowSecond {
-          width: 100%;
-        }
-        .rowThird {
-          width: 46%;
-          margin-right: 1%;
-        }
-        .rowFourth {
-          width: 46%;
         }
       }
 </style>
