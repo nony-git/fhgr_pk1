@@ -818,5 +818,15 @@ input:checked + .slider:before {
     height: 0;
   }
 }
+@media only screen and (max-width: 450px) {
+  .methodencheck-answer:hover {
+    background: #ffffff;
+    color: #000000;
+  }
+  .methodencheck-levelanswers:hover {
+    background: #ffffff;
+    color: #000000;
+  }
+}
 
 </style>

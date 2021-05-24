@@ -6,8 +6,8 @@
       "frage": "Was ist der Status Ihres Produkts?",
       "antworten": {
         "1":"eine Idee",
-    		"2":"einen skizzierten Entwurf",
-    		"3":"einen funktionsfähigen Entwurf",
+    		"2":"ein skizzierter Entwurf",
+    		"3":"ein funktionsfähiger Entwurf",
     		"4":"ein fertiges Produkt"
       },
       "multiplechoice": false
