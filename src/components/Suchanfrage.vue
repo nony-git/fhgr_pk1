@@ -531,6 +531,7 @@ export default {
         width: 100%;
         max-width: 100%;
         display: flex;
+        margin: 0;
       }
       .firstColumn {
         width: 26px;
@@ -609,10 +610,11 @@ export default {
       .tooltip::before {
         content: "";
         position: absolute;
-        top: 3px;
+        top: 50%;
         left: 0;
         width: 15px;
         height: 15px;
+        margin-top: -8px;
         background-image: url("../assets/info_icon_black.svg");
         background-repeat: no-repeat;
         background-size: 12px 12px;
@@ -647,6 +649,15 @@ export default {
       }
 
       @media screen and (max-width: 767px) {
+        .row {
+          font-size: 0.9rem;
+        }
+        input[type=text] {
+          font-size: 0.9rem !important;
+        }
+        input[type=number] {
+          font-size: 0.9rem !important;
+        }
         .secondColumn {
           width: 50%;
         }
