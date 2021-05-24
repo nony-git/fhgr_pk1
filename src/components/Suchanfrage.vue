@@ -523,10 +523,13 @@ export default {
         padding-bottom: 24px;
       }
       .table {
+        width: 100%;
         margin-top: 1rem;
         margin-bottom: 2rem;
       }
       .row {
+        width: 100%;
+        max-width: 100%;
         display: flex;
       }
       .firstColumn {
@@ -644,9 +647,6 @@ export default {
       }
 
       @media screen and (max-width: 767px) {
-        .container {
-          padding: 50px 0;
-        }
         .secondColumn {
           width: 50%;
         }
@@ -655,6 +655,21 @@ export default {
         }
         .fourthColumn {
           width: 25%;
+        }
+      }
+
+      @media screen and (max-width: 450px) {
+        .row {
+          font-size: 0.8rem;
+        }
+        input[type=text] {
+          font-size: 0.8rem !important;
+        }
+        input[type=number] {
+          font-size: 0.8rem !important;
+        }
+        .tooltip {
+          display: none;
         }
       }
 </style>
