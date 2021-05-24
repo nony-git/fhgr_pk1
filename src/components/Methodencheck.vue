@@ -54,10 +54,6 @@
           <b>Evaluationsmethoden</b> zu verschaffen.
         </p>
         <p>
-          Falls Sie Probleme bei der Auswahl der einzelnen Optionen haben, so können Sie mit der Maus über die einzelnen Begriffe
-          fahren und bekommen zusätzliche Informationen eingeblendet, die Ihnen bei der Entscheidung helfen sollen.
-        </p>
-        <p>
           Sofern Sie weiterführende Fragen haben, sich gerne zusätzlich von uns beraten lassen würden, oder die Evaluation, die
           Ihnen empfohlen wurde, mit unserer Unterstützung durchführen wollen, so zögern Sie nicht uns zu kontaktieren.
         </p>

@@ -87,7 +87,7 @@
     "zeit": {
       "id": 5,
       "titel":"zeit",
-      "frage": "Wie viel Zeit steht für die Untersuchung an?",
+      "frage": "Wie viel Zeit steht für die Untersuchung zur Verfügung?",
       "antworten": {
         "1":"Sehr wenig",
         "2":"Wenig",
