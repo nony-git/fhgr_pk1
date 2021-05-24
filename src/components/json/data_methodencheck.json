@@ -115,7 +115,7 @@
 		 {
 			"id":1,
 			"bezeichnung":"Cognitive Walkthrough",
-			"zeit":"4",
+			"zeit":"5",
 			"budget":"4",
 			"relevanz":"4",
 			"produktstatus": [
@@ -130,6 +130,7 @@
 				"3"
 			],
 			"untersuchungsschwerpunkt": [
+				"1",
 				"9",
 				"2",
 				"3"
@@ -138,13 +139,12 @@
 		{
 			"id":2,
 			"bezeichnung":"Pluralistic Usability Walkthrough",
-			"zeit":"4",
-			"budget":"4",
+			"zeit":"5",
+			"budget":"5",
 			"relevanz":"2",
 			"produktstatus": [
 				 "2",
-				 "3",
-				 "4"
+				 "3"
 			],
 			"motivation": [
 				"1"
@@ -153,6 +153,7 @@
 				"3"
 			],
 			"untersuchungsschwerpunkt": [
+				"1",
 				"2",
 				"3"
 			]
@@ -175,6 +176,7 @@
 				"2"
 			],
 			"untersuchungsschwerpunkt": [
+				"1",
 				"2",
 				"3"
 			]
@@ -182,8 +184,8 @@
 		{
 			"id":4,
 			"bezeichnung":"Heuristische Evaluation",
-			"zeit":"3",
-			"budget":"3",
+			"zeit":"4",
+			"budget":"4",
 			"relevanz":"5",
 			"produktstatus": [
 				 "2",
@@ -197,6 +199,7 @@
 				"2"
 			],
 			"untersuchungsschwerpunkt": [
+				"1",
 				"2",
 				"3"
 			]
@@ -204,7 +207,7 @@
 		{
 			"id":5,
 			"bezeichnung":"Claims Analysis",
-			"zeit":"3",
+			"zeit":"4",
 			"budget":"3",
 			"relevanz":"1",
 			"produktstatus": [
@@ -219,6 +222,7 @@
 				"1"
 			],
 			"untersuchungsschwerpunkt": [
+				"1",
 				"2"
 			]
 		},
@@ -229,6 +233,7 @@
 			"budget":"2",
 			"relevanz":"3",
 			"produktstatus": [
+				"1",
 				 "2",
 				 "3",
 				 "4"
@@ -252,6 +257,7 @@
 			"budget":"2",
 			"relevanz":"3",
 			"produktstatus": [
+				"1",
 				 "2",
 				 "3",
 				 "4"
@@ -275,6 +281,7 @@
 			"budget":"3",
 			"relevanz":"3",
 			"produktstatus": [
+				"2",
 				 "3",
 				 "4"
 			],
@@ -308,6 +315,7 @@
 				"1"
 			],
 			"untersuchungsschwerpunkt": [
+				"1",
 				"5"
 			]
 		},
@@ -360,7 +368,8 @@
 			"budget":"1",
 			"relevanz":"4",
 			"produktstatus": [
-				 "2"
+				"3",
+				"4"	 
 			],
 			"motivation": [
 				"1",
@@ -439,7 +448,7 @@
 		{
 			"id":16,
 			"bezeichnung":"Contextual Inquiry",
-			"zeit":"4",
+			"zeit":"5",
 			"budget":"4",
 			"relevanz":"3",
 			"produktstatus": [
@@ -448,9 +457,11 @@
 				 "3"
 			],
 			"motivation": [
+				"1",
 				"4"
 			],
 			"untersuchungsziel": [
+				"2",
 				"4"
 			],
 			"untersuchungsschwerpunkt": [
@@ -479,7 +490,6 @@
 			],
 			"untersuchungsziel": [
 				"1",
-				"2",
 				"4"
 			],
 			"untersuchungsschwerpunkt": [
@@ -492,15 +502,16 @@
 		{
 			"id":18,
 			"bezeichnung":"Usability Test",
-			"zeit":"4",
-			"budget":"4",
+			"zeit":"5",
+			"budget":"5",
 			"relevanz":"5",
 			"produktstatus": [
 				 "3",
 				 "4"
 			],
 			"motivation": [
-				"1"
+				"1",
+				"2"
 			],
 			"untersuchungsziel": [
 				"2"
@@ -519,6 +530,7 @@
 			"budget":"2",
 			"relevanz":"3",
 			"produktstatus": [
+				"1",
 				 "2",
 				 "3"
 			],
@@ -558,8 +570,8 @@
 		{
 			"id":21,
 			"bezeichnung":"Best-Practice-Analyse",
-			"zeit":"3",
-			"budget":"3",
+			"zeit":"4",
+			"budget":"4",
 			"relevanz":"5",
 			"produktstatus": [
 				"1",
@@ -576,8 +588,7 @@
 				"4"
 			],
 			"untersuchungsschwerpunkt": [
-				"7",
-				"8",
+				"6",
 				"1"
 			]
 		},
@@ -603,7 +614,7 @@
 				"4"
 			],
 			"untersuchungsschwerpunkt": [
-				"6",
+				"7",
 				"8",
 				"1"
 			]
