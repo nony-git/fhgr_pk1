@@ -1,64 +1,69 @@
 <template>
-  <div class="" id="views">
-    <!-- Navigator: noch nicht ideal -->
-    <table class="navigator-table" cellspacing="0" cellpadding="0">
-      <tr class="full-box">
-        <td>
-          <div class="circle" id="navcircle1"></div>
-        </td>
-        <td>
-          <div class="line-box" id="line1"></div>
-        </td>
-        <td>
-          <div class="circle" id="navcircle2"></div>
-        </td>
-        <td>
-          <div class="line-box" id="line2"></div>
-        </td>
-        <td>
-          <div class="circle" id="navcircle3"></div>
-        </td>
-        <td>
-          <div class="line-box" id="line3"></div>
-        </td>
-        <td>
-          <div class="circle" id="navcircle4"></div>
-        </td>
-      </tr>
-      <tr>
-        <td class="title-box">
-          <div class="navigator-title" id="navtitle1">Information und Kommunikation</div>
-        </td>
-        <td></td>
-        <td class="title-box">
-          <div class="navigator-title" id="navtitle2">Recherche im Bestand</div>
-        </td>
-        <td></td>
-        <td class="title-box">
-          <div class="navigator-title" id="navtitle3">Personalisierung</div>
-        </td>
-        <td></td>
-        <td class="title-box">
-          <div class="navigator-title" id="navtitle4">Nutzerpartizipation</div>
-        </td>
-      </tr>
-    </table>
-    <!-- <QuestionView v-bind:toView="toView"></QuestionView> -->
-    <QuestionView
-      :toView="toViewArray[currentView]"
-      :key="currentView"
-      @update="newAnswer(currentView, $event)"
-    ></QuestionView>
+    <div class="eval-content">
+        <div class="" id="selection">
+            <!-- hier kommt Simons Teil der Selektion -->
+        </div>
+        <div class="" id="views">
+            <!-- Navigator, braucht noch Zustände: in Bearbeitung / fertig, inkl. Icons -->
+            <table class="navigator-table" cellspacing="0" cellpadding="0">
+            <tr class="full-box">
+                <td>
+                <div class="circle" id="navcircle1"></div>
+                </td>
+                <td>
+                <div class="line-box" id="line1"></div>
+                </td>
+                <td>
+                <div class="circle" id="navcircle2"></div>
+                </td>
+                <td>
+                <div class="line-box" id="line2"></div>
+                </td>
+                <td>
+                <div class="circle" id="navcircle3"></div>
+                </td>
+                <td>
+                <div class="line-box" id="line3"></div>
+                </td>
+                <td>
+                <div class="circle" id="navcircle4"></div>
+                </td>
+            </tr>
+            <tr>
+                <td class="title-box">
+                <div class="navigator-title" id="navtitle1">Information und Kommunikation</div>
+                </td>
+                <td></td>
+                <td class="title-box">
+                <div class="navigator-title" id="navtitle2">Recherche im Bestand</div>
+                </td>
+                <td></td>
+                <td class="title-box">
+                <div class="navigator-title" id="navtitle3">Personalisierung</div>
+                </td>
+                <td></td>
+                <td class="title-box">
+                <div class="navigator-title" id="navtitle4">Nutzerpartizipation</div>
+                </td>
+            </tr>
+            </table>
+            <!-- <QuestionView v-bind:toView="toView"></QuestionView> -->
+            <QuestionView
+            :toView="toViewArray[currentView]"
+            :key="currentView"
+            @update="newAnswer(currentView, $event)"
+            ></QuestionView>
 
-    <!-- <div class="test"> {{ toViewArray[currentView] }} </div> -->
-    {{ userdata }}
+            <!-- <div class="test"> {{ toViewArray[currentView] }} </div> -->
+            <!-- {{ userdata }} -->
 
-    <!-- Navigiere zwischen Views -->
-    <div class="bottom-nav to-left">
-      <button class="btn btn-back" @click="back(); checkNav(toViewArray[currentView]['bereich'])"></button>
-      <button class="btn btn-forward" @click="next(); checkNav(toViewArray[currentView]['bereich'])">Weiter</button>
+            <!-- Navigiere zwischen Views -->
+            <div class="bottom-nav to-left">
+            <button class="btn btn-back" @click="back(); checkNav(toViewArray[currentView]['bereich'])"></button>
+            <button class="btn btn-forward" @click="next(); checkNav(toViewArray[currentView]['bereich'])">Weiter</button>
+            </div>
+        </div>
     </div>
-  </div>
 </template>
 
 <script>
@@ -971,36 +976,45 @@ export default {
       console.log(answers);
       console.log(userData);
 
-      // Antworten an der richtigen Stelle in userData schreiben
-      function walkJSON(obj, ans, quest){
-        for(var prop in obj){
-          if(typeof obj[prop]=='object'){
-            walkJSON(obj[prop],ans, quest);
-          }
-          else{
-             if(obj["name"] == quest){
-               //hier wird noch an die falsche Stelle geschrieben, vgl. Konsole
-              obj.value = ans;
-              var previewData = JSON.stringify(obj, null, 2);
-              console.log(previewData);
-             }
-          }
+     let ViewName = toViewArray[page].name;
+     console.log("ViewName ist "+ViewName);
+
+     // finde Stelle in teildata wo Komponente == komponentenname der View
+        for (let f=0; f < teildata.categories_levelone.length; f++){
+            for (let g=0; g < teildata.categories_levelone[f].categories_leveltwo.length; g++){
+                for (let h=0; h < teildata.categories_levelone[f].categories_leveltwo[g].categories_levelthree.length; h++){
+                    if (teildata.categories_levelone[f].categories_leveltwo[g].categories_levelthree[h].name == toViewArray[page].name){
+                        for(let i=0;i<answers.length;i++){
+                            // Schreib die Antwort an richtige Stelle als key:value (answer:answer[i])
+                            // View zeigt Fragen aus Komponente
+                            console.log("Fragen aus Komponente");
+                            userData.categories_levelone[f].categories_leveltwo[g].categories_levelthree[h].questions[i].answer = answers[i];
+                        }
+                    }
+                    else if(teildata.categories_levelone[f].categories_leveltwo[g].name == toViewArray[page].name){
+                        for(let i=0;i<answers.length;i++){
+                            // View zeigt Fragen aus Teilbereich
+                            console.log("Fragen aus Teilbereich");
+                            userData.categories_levelone[f].categories_leveltwo[g].questions[i].answer = answers[i];
+                        }
+                    }
+                    else if(teildata.categories_levelone[f].name == toViewArray[page].name){
+                        for(let i=0;i<answers.length;i++){
+                            // View zeigt Fragen aus Bereich
+                            console.log("Fragen aus Bereich");
+                            userData.categories_levelone[f].questions[i].answer = answers[i];
+                        }
+                    }
+                    else{
+                        console.log("notfound");
+                    }
+                }
+            }
         }
-      }
-      // let ViewBereich = toViewArray[page]['bereich'];
-      // console.log(ViewBereich);
-      // let ViewTeilbereich = toViewArray[page]['teilbereich'];
-      // console.log(ViewTeilbereich);
+        // Zeige updated UserJSON in Konsole
+        var previewData = JSON.stringify(userData, null, 2);
+        console.log(previewData);
 
-      let ViewKomponente = toViewArray[page].name;
-      console.log(ViewKomponente);
-
-      for(let i=0;i<answers.length;i++){
-        walkJSON(userData, answers[i],ViewKomponente);
-        // console.log(userData.categories_levelone["Information und Kommunikation"].categories_leveltwo["Kontakt und Zugang"].categories_levelthree["Kontaktinformationen"].questions["Sind direkte Kontaktmöglichkeiten (z.B. per Email oder Telefon) angegeben?"].value);
-      }
-      // var previewData = JSON.stringify(userData, null, 2);
-      // console.log(previewData);
     },
     checkNav: function(bereichStr) {
       let navposition = 0;
