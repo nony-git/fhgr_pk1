@@ -3,7 +3,7 @@
     "produktstatus": {
       "id": 1,
       "titel":"product status",
-      "frage": "What's the state of your product?",
+      "frage": "What is the state of your product?",
       "antworten": {
             "1":"an idea",
     		"2":"a sketched design",
