@@ -48,7 +48,7 @@
         </p>
         <p>
           Sofern Sie weiterführende Fragen haben, sich gerne zusätzlich von uns beraten lassen würden, oder die Evaluation, die
-          Ihnen empfohlen wurde, mit unserer Unterstützung durchführen wollen, so zögern Sie nicht uns zu <a hef="https://blog.fhgr.ch/cheval/kontakt/">kontaktieren</a>.
+          Ihnen empfohlen wurde, mit unserer Unterstützung durchführen wollen, so zögern Sie nicht uns zu <a href="https://blog.fhgr.ch/cheval/kontakt/">kontaktieren</a>.
         </p>
       </div>
       <div class="methodencheck-linkbuttons" v-if="showInfoText">
@@ -386,7 +386,7 @@ ul {
   flex-wrap: wrap;
 }
 a {
-  color: #42b983;
+  color: #817e65;
 }
 label {
   margin-top: 0;
@@ -522,7 +522,7 @@ label {
 .linkbutton-more::after {
   content: "";
   position: absolute;
-  top: 0;
+  top: 0.3rem;
   right: -1.2rem;
   transform: rotate(270deg);
   background: url("../assets/Arrow.svg");
@@ -535,7 +535,7 @@ label {
 .linkbutton-less::after {
   content: "";
   position: absolute;
-  top: 0;
+  top: 0.3rem;
   right: -1.2rem;
   transform: rotate(90deg);
   background: url("../assets/Arrow.svg");
