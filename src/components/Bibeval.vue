@@ -1,38 +1,37 @@
 <template>
     <div class="eval-content">
-        <div class="" id="selection">
-            <!-- hier kommt Simons Teil der Selektion -->
+        <!-- hier kommt Simons Teil der Selektion -->
 
-            <question></question>
-            Bereich: {{ selectedCategories }}<br>
-            Teilbereich: {{ selectedSubCategories }}<br>
-            Komponenten: {{ selectedComponents }}<br>
-            <!-- PAGE 0 / INFO PAGE -->
-            <template v-if="page == 0">
+        <question></question>
+        Bereich: {{ selectedCategories }}<br>
+        Teilbereich: {{ selectedSubCategories }}<br>
+        Komponenten: {{ selectedComponents }}<br>
+        <!-- PAGE 0 / INFO PAGE -->
+        <template v-if="page == 0">
 
-                <img class="bib-header-img" src="../assets/bibeval_intro_image.png" />
+            <img class="bib-header-img" src="../assets/bibeval_intro_image.png" />
 
-                <p class="bib-txt-left">
-                    Mit BibEval stellt das Schweizerische Institut für Informationswissenschaft (SII) 
-                    eine modular verwendbare, hierarchisch strukturierte Liste von Evaluationskriterien 
-                    zur Verfügung, mit welcher Websiten auf Usabilty Schwachstellen überprüft werden können.
-                </p>
+            <p class="bib-txt-left">
+                Mit BibEval stellt das Schweizerische Institut für Informationswissenschaft (SII) 
+                eine modular verwendbare, hierarchisch strukturierte Liste von Evaluationskriterien 
+                zur Verfügung, mit welcher Websiten auf Usabilty Schwachstellen überprüft werden können.
+            </p>
 
-                <p class="bib-txt-left">
-                    Mithilfe eines Fragebogens kann das BibEval Tool Ihnen helfen,
-                    Schwachstellen ihres Webauftritts zu evaluieren. Der hierachisch struktutierte 
-                    Aufbau, erlaubt es spezifsche Bereiche einer Homepage zu untersuchen. Durch 
-                    Klicken auf das Info-Icon erhalten sie weiterführende Informationen zur Frage. 
-                    Pro Fragen können Sie zuästzlich Kommentare hinzufügen.
-                    Die graphische Auswertung am Schluss, kann als PDF oder CSV Datei gedownoadet werden.)
-                </p>
+            <p class="bib-txt-left">
+                Mithilfe eines Fragebogens kann das BibEval Tool Ihnen helfen,
+                Schwachstellen ihres Webauftritts zu evaluieren. Der hierachisch struktutierte 
+                Aufbau, erlaubt es spezifsche Bereiche einer Homepage zu untersuchen. Durch 
+                Klicken auf das Info-Icon erhalten sie weiterführende Informationen zur Frage. 
+                Pro Fragen können Sie zuästzlich Kommentare hinzufügen.
+                Die graphische Auswertung am Schluss, kann als PDF oder CSV Datei gedownoadet werden.)
+            </p>
 
-                <button class="bib-pagenav" v-on:click="page += 1">Start</button>
+            <button class="bib-pagenav" v-on:click="page += 1">Start</button>
 
-            </template>
+        </template>
 
-            <!-- PAGE 1 / AUSWAHL BEREICHE -->
-            <template v-if="page == 1">
+        <!-- PAGE 1 / AUSWAHL BEREICHE -->
+        <template v-if="page == 1">
 
             <h1>Was möchten Sie untersuchen?</h1>
 
@@ -96,38 +95,38 @@
                     optionale Bereiche
                 </label>
 
-            <template v-if="selectedSubCategories.length > 0">
+                <template v-if="selectedSubCategories.length > 0">
 
-        <div 
-                v-for="subcategory in selectedSubCategories" 
-                :key="subcategory" 
-                class="bib-komponentenauswahl bib-overview-bereiche"
-            >
-        <h2>{{ subcategory }}</h2>
+                    <div 
+                            v-for="subcategory in selectedSubCategories" 
+                            :key="subcategory" 
+                            class="bib-komponentenauswahl bib-overview-bereiche"
+                        >
+                        <h2>{{ subcategory }}</h2>
 
-        <select-button 
-                    v-for="comp in getComponents(subcategory)" 
-                    :key="comp" 
-                    :value="comp" 
-                    v-model="selectedComponents"
-                    class="bib-select-small">
-            {{ comp }}
-        </select-button>
+                        <select-button 
+                                    v-for="comp in getComponents(subcategory)" 
+                                    :key="comp" 
+                                    :value="comp" 
+                                    v-model="selectedComponents"
+                                    class="bib-select-small">
+                            {{ comp }}
+                        </select-button>
 
-        </div>
+                    </div>
 
-            </template>
+                </template>
                 <p>Ihr Fragenkatalog enthält [TODO] Fragen.</p>
                 <p>
                     In der folgenden Evulation bewerten Sie verschiedene Komponenten 
                     auf einer Skala von 5 (voll und ganz) bis 0 (überhaupt nicht) wie gut  dies umgesetzt ist.
                 </p>
                 <p>[ Beispiel Skala... ]</p>
+                <button class="bib-pagenav" v-on:click="page += 1">Start</button>
             </template>
-            </template>
+        </template>
 
-        </div>
-        <div class="" id="views">
+        <template v-if="page == 2">
             <!-- Navigator, braucht noch Zustände: in Bearbeitung / fertig, inkl. Icons -->
             <table class="navigator-table" cellspacing="0" cellpadding="0">
             <tr class="full-box">
@@ -186,7 +185,8 @@
             <button class="btn btn-back" @click="back(); checkNav(toViewArray[currentView]['bereich'])"></button>
             <button class="btn btn-forward" @click="next(); checkNav(toViewArray[currentView]['bereich'])">Weiter</button>
             </div>
-        </div>
+        
+        </template>
     </div>
 </template>
 
@@ -1100,6 +1100,8 @@ export default {
         mandatory: false,
         mandatoryComponents: [],
         data_bibeval: bibeval_json,
+        bibliotheksseite: this.bibliotheksseite,
+        website: this.website,
     };
   },
   methods: {
@@ -1194,25 +1196,24 @@ export default {
   },
   mounted:function(){
   // muss später wahrscheinlich erst bei Klick auf "Start" laufen
-    console.log("fired");
     // Zeige Navelement nur, wenn in Selektion: toViewArray
-    for(let i=1; i<5; i++){
-      let part = document.querySelector("#navtitle"+i);
-      for (let y=0; y<toViewArray.length; y++){
-        // ausblenden wenn Titel nicht als "bereich" in toViewArray
-        if(!(part.innerHTML == toViewArray[y]['bereich'])){
-          part.style.display = "none";
-          if(i != 5) {document.querySelector("#navcircle"+i).style.display = "none";}
-          if(i != 4 && i != 5) {document.querySelector("#line"+i).style.display = "none";}
-        }
-        else{
-          part.style.display = "block";
-          if(i != 5) {document.querySelector("#navcircle"+i).style.display = "block";}
-          if(i != 4 && i != 5) {document.querySelector("#line"+i).style.display = "block";}
-          break;
-        }
-      }
-    }
+    // for(let i=1; i<5; i++){
+    //   let part = document.querySelector("#navtitle"+i);
+    //   for (let y=0; y<toViewArray.length; y++){
+    //     // ausblenden wenn Titel nicht als "bereich" in toViewArray
+    //     if(!(part.innerHTML == toViewArray[y]['bereich'])){
+    //       part.style.display = "none";
+    //       if(i != 5) {document.querySelector("#navcircle"+i).style.display = "none";}
+    //       if(i != 4 && i != 5) {document.querySelector("#line"+i).style.display = "none";}
+    //     }
+    //     else{
+    //       part.style.display = "block";
+    //       if(i != 5) {document.querySelector("#navcircle"+i).style.display = "block";}
+    //       if(i != 4 && i != 5) {document.querySelector("#line"+i).style.display = "block";}
+    //       break;
+    //     }
+    //   }
+    // }
 
     // Loads categories and subcategories (Komponenten) as a nested arrays.
 		var subcategories = [];
