@@ -137,7 +137,8 @@
 			],
       "anzahl": "ca. 5 Personen",
       "dauer": "ca. 2 Stunden",
-      "beschreibung": "Ein Cognitive Walkthrough gliedert sich in zwei Phasen: Die Vorbereitungsphase und die Analysephase. In der Vorbereitungsphase wird detaillierte Information zu den System-Usern gesammelt und die zu analysierenden Aufgaben ausgewählt. Zudem wird die genaue Handlungsabfolge festgelegt, die Voraussetzung für die korrekte Bewältigung der Aufgaben ist."
+      "beschreibung": "Ein Cognitive Walkthrough gliedert sich in zwei Phasen: Die Vorbereitungsphase und die Analysephase. In der Vorbereitungsphase wird detaillierte Information zu den System-Usern gesammelt und die zu analysierenden Aufgaben ausgewählt. Zudem wird die genaue Handlungsabfolge festgelegt, die Voraussetzung für die korrekte Bewältigung der Aufgaben ist.",
+      "link": "https://blog.fhgr.ch/cheval/usability-methoden/#cognitive-walkthrough"
 		},
 		{
 			"id":2,
@@ -162,7 +163,8 @@
 			],
       "anzahl": "ca. 5-7 Personen",
       "dauer": "ca. 2 Stunden",
-      "beschreibung": "Im Pluralistic Usability Walkthrough, wird der Durchlauf in einem Team mit einem repräsentativen Enduser evaluiert. Zusätzlich gehören zum Team ein Entwickler und ein Usability-Experte. Der Enduser im Team hat die Aufgabe, das zu evaluierende Produkt aus seiner Perspektive zu bewerten."
+      "beschreibung": "Im Pluralistic Usability Walkthrough, wird der Durchlauf in einem Team mit einem repräsentativen Enduser evaluiert. Zusätzlich gehören zum Team ein Entwickler und ein Usability-Experte. Der Enduser im Team hat die Aufgabe, das zu evaluierende Produkt aus seiner Perspektive zu bewerten.",
+      "link": "https://blog.fhgr.ch/cheval/usability-methoden/#cognitive-walkthrough"
 		},
 		{
 			"id":3,
@@ -188,7 +190,8 @@
 			],
       "anzahl": "IN BEARBEITUNG",
       "dauer": "IN BEARBEITUNG",
-      "beschreibung": "IN BEARBEITUNG"
+      "beschreibung": "IN BEARBEITUNG",
+      "link": ""
 		},
 		{
 			"id":4,
@@ -214,7 +217,8 @@
 			],
       "anzahl": "ca. 3-5 Personen",
       "dauer": "ca. 2 Stunden",
-      "beschreibung": "Bei einer Heuristischen Evaluation überprüfen eine Reihe von Experten und Expertinnen, ob das User Interface eines Produktes konform zu bestimmten anerkannten Prinzipien des Usability Engineerings ist. Diese Prinzipien werden als Heuristiken bezeichnet."
+      "beschreibung": "Bei einer Heuristischen Evaluation überprüfen eine Reihe von Experten und Expertinnen, ob das User Interface eines Produktes konform zu bestimmten anerkannten Prinzipien des Usability Engineerings ist. Diese Prinzipien werden als Heuristiken bezeichnet.",
+      "link": "https://blog.fhgr.ch/cheval/usability-methoden/#heuristic-evaluation"
 		},
 		{
 			"id":5,
@@ -239,7 +243,8 @@
 			],
       "anzahl": "IN BEARBEITUNG",
       "dauer": "IN BEARBEITUNG",
-      "beschreibung": "IN BEARBEITUNG"
+      "beschreibung": "IN BEARBEITUNG",
+      "link": ""
 		},
 		{
 			"id":6,
@@ -266,7 +271,8 @@
 			],
       "anzahl": "",
       "dauer": "",
-      "beschreibung": "Diese Norm geht auf Grundsätze der Dialoggestaltung ein und umfasst die sieben Kriterien."
+      "beschreibung": "Diese Norm geht auf Grundsätze der Dialoggestaltung ein und umfasst die sieben Kriterien.",
+      "link": "https://blog.fhgr.ch/cheval/ucd-prozess/#iso-9241-110"
 		},
 		{
 			"id":7,
@@ -293,7 +299,8 @@
 			],
       "anzahl": "",
       "dauer": "",
-      "beschreibung": "Diese Norm beschreibt den Standard zur Ergonomie der Mensch-System-Interaktion. Teil 12 beschäftigt sich mit der Informationspräsentation interaktiver Produkte und kann eingesetzt werden, um signifikante Fehler in der Informationsdarstellung von Entwicklungsbeginn an zu vermeiden."
+      "beschreibung": "Diese Norm beschreibt den Standard zur Ergonomie der Mensch-System-Interaktion. Teil 12 beschäftigt sich mit der Informationspräsentation interaktiver Produkte und kann eingesetzt werden, um signifikante Fehler in der Informationsdarstellung von Entwicklungsbeginn an zu vermeiden.",
+      "link": "https://blog.fhgr.ch/cheval/ucd-prozess/#iso-9241-12"
 		},
 		{
 			"id":8,
@@ -319,7 +326,8 @@
 			],
       "anzahl": "IN BEARBEITUNG",
       "dauer": "IN BEARBEITUNG",
-      "beschreibung": "IN BEARBEITUNG"
+      "beschreibung": "IN BEARBEITUNG",
+      "link": ""
 		},
 		{
 			"id":9,
@@ -344,7 +352,8 @@
 			],
       "anzahl": "IN BEARBEITUNG",
       "dauer": "IN BEARBEITUNG",
-      "beschreibung": "IN BEARBEITUNG"
+      "beschreibung": "IN BEARBEITUNG",
+      "link": ""
 		},
 		{
 			"id":10,
@@ -368,7 +377,8 @@
 			],
       "anzahl": "IN BEARBEITUNG",
       "dauer": "IN BEARBEITUNG",
-      "beschreibung": "IN BEARBEITUNG"
+      "beschreibung": "IN BEARBEITUNG",
+      "link": ""
 		},
 		{
 			"id":11,
@@ -392,7 +402,8 @@
 			],
       "anzahl": "IN BEARBEITUNG",
       "dauer": "IN BEARBEITUNG",
-      "beschreibung": "IN BEARBEITUNG"
+      "beschreibung": "IN BEARBEITUNG",
+      "link": ""
 		},
 		{
 			"id":12,
@@ -416,7 +427,8 @@
 			],
       "anzahl": "IN BEARBEITUNG",
       "dauer": "IN BEARBEITUNG",
-      "beschreibung": "IN BEARBEITUNG"
+      "beschreibung": "IN BEARBEITUNG",
+      "link": ""
 		},
 		{
 			"id":13,
@@ -440,7 +452,8 @@
 			],
       "anzahl": "IN BEARBEITUNG",
       "dauer": "IN BEARBEITUNG",
-      "beschreibung": "IN BEARBEITUNG"
+      "beschreibung": "IN BEARBEITUNG",
+      "link": ""
 		},
 		{
 			"id":14,
@@ -464,7 +477,8 @@
 			],
       "anzahl": "IN BEARBEITUNG",
       "dauer": "IN BEARBEITUNG",
-      "beschreibung": "IN BEARBEITUNG"
+      "beschreibung": "IN BEARBEITUNG",
+      "link": ""
 		},
 		{
 			"id":15,
@@ -488,7 +502,8 @@
 			],
       "anzahl": "IN BEARBEITUNG",
       "dauer": "IN BEARBEITUNG",
-      "beschreibung": "IN BEARBEITUNG"
+      "beschreibung": "IN BEARBEITUNG",
+      "link": ""
 		},
 		{
 			"id":16,
@@ -517,7 +532,8 @@
 			],
       "anzahl": "",
       "dauer": "",
-      "beschreibung": "Contextual Inquiry ist eine strukturierte Feldbefragungs-Methode, die prinzipiell auf herkömmlichen journalistischen Befragungstechniken beruht. Sie dient im Rahmen der Produktentwicklung der Sammlung von Informationen, die für die Anforderungsdefinition genutzt werden können."
+      "beschreibung": "Contextual Inquiry ist eine strukturierte Feldbefragungs-Methode, die prinzipiell auf herkömmlichen journalistischen Befragungstechniken beruht. Sie dient im Rahmen der Produktentwicklung der Sammlung von Informationen, die für die Anforderungsdefinition genutzt werden können.",
+      "link": "https://blog.fhgr.ch/cheval/usability-methoden/#interviews-umfragen"
 		},
 		{
 			"id":17,
@@ -548,7 +564,8 @@
 			],
       "anzahl": "ca. 6-12 Personen",
       "dauer": "ca. 2 Stunden",
-      "beschreibung": "Bei Fokusgruppen handelt es sich um strukturierte Diskussionen zu vorgegebenen Themen bzw. Fragestellungen, die von einem geschulten Moderator geleitet werden. Die Teilnehmer der Gruppe sollten dabei ähnliche demographische Merkmale aufweisen und repräsentieren eine spezifische Zielgruppe."
+      "beschreibung": "Bei Fokusgruppen handelt es sich um strukturierte Diskussionen zu vorgegebenen Themen bzw. Fragestellungen, die von einem geschulten Moderator geleitet werden. Die Teilnehmer der Gruppe sollten dabei ähnliche demographische Merkmale aufweisen und repräsentieren eine spezifische Zielgruppe.",
+      "link": "https://blog.fhgr.ch/cheval/usability-methoden/#FocusGroup"
 		},
 		{
 			"id":18,
@@ -575,7 +592,8 @@
 			],
       "anzahl": "8 - 12 Personen",
       "dauer": "30 bis 90 Minuten",
-      "beschreibung": "Im Rahmen eines Usability-Tests bearbeiten Testpersonen mit dem zu untersuchenden Produkt realistische Aufgaben, wobei sie von Usability-Experten beobachtet werden"
+      "beschreibung": "Im Rahmen eines Usability-Tests bearbeiten Testpersonen mit dem zu untersuchenden Produkt realistische Aufgaben, wobei sie von Usability-Experten beobachtet werden",
+      "link": "https://blog.fhgr.ch/cheval/usability-methoden/#usability-test"
 		},
 		{
 			"id":19,
@@ -600,7 +618,8 @@
 			],
       "anzahl": "ca. 10-12 Personen",
       "dauer": "ca. 15 Minuten",
-      "beschreibung": "Das Card Sorting ist ein einfach anwendbares Verfahren, dass zur Beschreibung von Workflows oder auch zur Entwicklung von Navigationsmenüs genutzt werden kann. Dabei stehen die Wahrnehmung und Erwartungen der Nutzenden an das User Interface im Vordergrund."
+      "beschreibung": "Das Card Sorting ist ein einfach anwendbares Verfahren, dass zur Beschreibung von Workflows oder auch zur Entwicklung von Navigationsmenüs genutzt werden kann. Dabei stehen die Wahrnehmung und Erwartungen der Nutzenden an das User Interface im Vordergrund.",
+      "link": "https://blog.fhgr.ch/cheval/usability-methoden/#card-sorting"
 		},
 		{
 			"id":20,
@@ -625,7 +644,8 @@
 			],
       "anzahl": "3 - 5 Personen (Für Gruppendiskussion)",
       "dauer": "ca. 30 Minuten (Pro Persona)",
-      "beschreibung": "Bei dieser Methode werden Stereotypen von zukünftigen Nutzern und Nutzerinnen erstellt. Den Personas werden Namen, oftmals auch ein Bild und bestimmte Eigenschaften zugeordnet. Authentizität ist wichtig damit man sich mit ihnen identifizieren kann."
+      "beschreibung": "Bei dieser Methode werden Stereotypen von zukünftigen Nutzern und Nutzerinnen erstellt. Den Personas werden Namen, oftmals auch ein Bild und bestimmte Eigenschaften zugeordnet. Authentizität ist wichtig damit man sich mit ihnen identifizieren kann.",
+      "link": "https://blog.fhgr.ch/cheval/usability-methoden/#personas"
 		},
 		{
 			"id":21,
@@ -653,7 +673,8 @@
 			],
       "anzahl": "IN BEARBEITUNG",
       "dauer": "IN BEARBEITUNG",
-      "beschreibung": "IN BEARBEITUNG"
+      "beschreibung": "IN BEARBEITUNG",
+      "link": ""
 		},
 		{
 			"id":22,
@@ -683,7 +704,8 @@
 			],
       "anzahl": "beliebig viele Personen",
       "dauer": "ca. 15 Minuten",
-      "beschreibung": "Interviews und Umfragen können in verschiedenen Phasen des Produktentwicklungsprozesses eingesetzt werden. Sie eignen sich einerseits in frühen Stadien der Produktentwicklung zur Erstellung von Anforderungsdefinitionen. Andererseits können Befragungen auch genutzt werden, um Einschätzungen von Anwendern bezüglich der Qualität bereits existierender Produkte zu erhalten."
+      "beschreibung": "Interviews und Umfragen können in verschiedenen Phasen des Produktentwicklungsprozesses eingesetzt werden. Sie eignen sich einerseits in frühen Stadien der Produktentwicklung zur Erstellung von Anforderungsdefinitionen. Andererseits können Befragungen auch genutzt werden, um Einschätzungen von Anwendern bezüglich der Qualität bereits existierender Produkte zu erhalten.",
+      "link": "https://blog.fhgr.ch/cheval/usability-methoden/#interviews-umfragen"
 		}
 	]
 }

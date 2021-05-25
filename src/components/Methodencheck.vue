@@ -156,17 +156,17 @@
           <div class="methodencheck-result" v-if="method['active'] === true">
             <h3 class="methodencheck-resulttitle">{{ method['bezeichnung'] }}</h3>
             <div class="methodencheck-resultWrapper">
-              <div class="methodencheck-result-leftside">
-                <a class="methodencheck-result-link" href="https://blog.fhgr.ch/cheval/usability-methoden/">mehr erfahren</a>
+              <div class="methodencheck-result-leftside" v-bind:class="{wide: method['dauer'] == '' && method['anzahl'] == ''}">
+                <a class="methodencheck-result-link" :href="`$method['link']`" v-if="method['link'] != ''">mehr erfahren</a>
                 <div class="methodencheck-result-beschreibung">
                   {{ method['beschreibung'] }}
                 </div>
               </div>
-              <div class="methodencheck-result-rightside">
-                <div class="methodencheck-result-dauer">
+              <div class="methodencheck-result-rightside" v-if="method['dauer'] != '' || method['anzahl'] != ''">
+                <div class="methodencheck-result-dauer" v-if="method['dauer'] != ''">
                   {{ method['dauer'] }}
                 </div>
-                <div class="methodencheck-result-anzahl">
+                <div class="methodencheck-result-anzahl" v-if="method['anzahl'] != ''">
                   {{ method['anzahl'] }}
                 </div>
               </div>
@@ -836,6 +836,9 @@ input:checked + .slider:before {
   width: 70%;
   padding-right: 1rem;
   order: 1;
+}
+.wide {
+  width: 100%;
 }
 .methodencheck-result-rightside {
   width: 30%;
