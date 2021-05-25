@@ -7,7 +7,7 @@
       {{ question.number}} {{ question.name }}
       <!-- <span class="tooltip">&#8505;<span class="tooltiptext">{{ question.desc_de }}</span></span> -->
     </td>
-    <td>
+    <!-- <td>
       <input
         type="radio"
         id="five"
@@ -15,26 +15,28 @@
         :name="question.name"
         v-model="picked"
       />
-    </td>
-    <td>
+    </td> -->
+    <td class="input-cell">
       <input
         type="radio"
         id="four"
+        class="checkmark"
         value="4"
         :name="question.name"
         v-model="picked"
       />
     </td>
-    <td>
+    <td class="input-cell">
       <input
         type="radio"
         id="three"
+        class="checkmark"
         value="3"
         :name="question.name"
         v-model="picked"
       />
     </td>
-    <td>
+    <td class="input-cell">
       <input
         type="radio"
         id="two"
@@ -43,28 +45,31 @@
         v-model="picked"
       />
     </td>
-    <td>
+    <td class="input-cell">
       <input
         type="radio"
         id="one"
+        class="checkmark"
         value="1"
         :name="question.name"
         v-model="picked"
       />
     </td>
-    <td>
+    <td class="input-cell">
       <input
         type="radio"
         id="zero"
+        class="checkmark"
         value="0"
         :name="question.name"
         v-model="picked"
       />
     </td>
-    <td>
+    <td class="input-cell">
       <input
       type="radio"
       id="NaN"
+      class="checkmark"
       value="NaN"
       :name="question.name"
       v-model="picked"
@@ -135,7 +140,7 @@ a {
 td{
   padding: 1em;
   text-align:center;
-  border:1px solid black;
+  /* border:1px solid black; */
 }
 .tooltip {
   position: relative;
@@ -185,4 +190,5 @@ textarea{
 .question{
   vertical-align: top;
 }
+
 </style>

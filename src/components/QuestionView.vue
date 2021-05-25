@@ -4,13 +4,12 @@
     <table>
       <tr>
         <th class="question-col">Frage</th>
-        <th colspan="6">
-          <div class="flex">
-            <p class="to-left flexed">Voll und ganz</p>
-            <p class="to-right">Überhaupt nicht</p>
-          </div>
-        </th>
-        <th class="centered">keine Antwort</th>
+        <th class="severity-label">kein Usability-Problem</th>
+        <th class="severity-label">kleines Usability-Problem</th>
+        <th class="severity-label">mittleres Usability-Problem</th>
+        <th class="severity-label">schweres Usability-Problem</th>
+        <th class="severity-label">nicht umgesetzt, obwohl notwendig</th>
+        <th class="severity-label">keine Antwort</th>
       </tr>
       <!-- todo: for-loop für Fragennummer -->
       <question
@@ -73,13 +72,13 @@ a {
 table{
   text-align: left;
   border-collapse: collapse;
-  border:1px solid black;
+  /* border:1px solid black; */
   width:100%;
 }
 td, th{
   width:100px;
   padding: 1em;
-  border:1px solid black;
+  /* border:1px solid black; */
 }
 .question-col{
   width:50%;
@@ -119,5 +118,10 @@ td, th{
 }
 .bottom-nav{
   padding:0em 4em;
+}
+.severity-label{
+  font-size:0.7rem;
+  font-weight: normal;
+  background-color: lightgray;
 }
 </style>
