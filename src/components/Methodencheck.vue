@@ -2,17 +2,17 @@
   <div class="methodencheck" id="methodencheck-top">
     <!-- START: PROCESSBAR -->
     <div class="methodencheck-processbar" v-if="page > 0">
-      <div class="methodencheck-step" v-bind:class="{stepActive: page > 0}">1</div>
+      <div class="methodencheck-step" v-bind:class="{stepActive: page > 0, stepDone: page > 1}">1</div>
       <div class="methodencheck-line" v-bind:class="{lineActive: page > 1}"></div>
-      <div class="methodencheck-step" v-bind:class="{stepActive: page > 1}">2</div>
+      <div class="methodencheck-step" v-bind:class="{stepActive: page > 1, stepDone: page > 2}">2</div>
       <div class="methodencheck-line" v-bind:class="{lineActive: page > 2}"></div>
-      <div class="methodencheck-step" v-bind:class="{stepActive: page > 2}">3</div>
+      <div class="methodencheck-step" v-bind:class="{stepActive: page > 2, stepDone: page > 3}">3</div>
       <div class="methodencheck-line" v-bind:class="{lineActive: page > 3}"></div>
-      <div class="methodencheck-step" v-bind:class="{stepActive: page > 3}">4</div>
+      <div class="methodencheck-step" v-bind:class="{stepActive: page > 3, stepDone: page > 4}">4</div>
       <div class="methodencheck-line" v-bind:class="{lineActive: page > 4}"></div>
-      <div class="methodencheck-step" v-bind:class="{stepActive: page > 4}">5</div>
+      <div class="methodencheck-step" v-bind:class="{stepActive: page > 4, stepDone: page > 5}">5</div>
       <div class="methodencheck-line" v-bind:class="{lineActive: page > 5}"></div>
-      <div class="methodencheck-step" v-bind:class="{stepActive: page > 5}">6</div>
+      <div class="methodencheck-step" v-bind:class="{stepActive: page > 5, stepDone: page > 6}">6</div>
       <div class="methodencheck-line" v-bind:class="{lineActive: page > 6}"></div>
       <div class="methodencheck-endstep" v-bind:class="{endstepActive: page > 6}"></div>
     </div>
@@ -150,14 +150,27 @@
     <div class="methodencheck-page" v-if="page == Object.keys(questions).length + 1">
       <h2 class="methodencheck-questiontitle">Empfohlene Methoden</h2>
 
+      <!-- CARDS WITH METHODS-DESCRIPTION -->
       <div class="methodencheck-results">
         <div v-for="method in methods" v-bind:key="method['id']">
           <div class="methodencheck-result" v-if="method['active'] === true">
             <h3 class="methodencheck-resulttitle">{{ method['bezeichnung'] }}</h3>
-            <br>
-            Hier könnte noch Text, Bilder, Metadaten zu den Methoden ergänzt werden.
-            <br>
-            Müsste halt noch getextet und ausgearbeitete werden.
+            <div class="methodencheck-resultWrapper">
+              <div class="methodencheck-result-leftside">
+                <a class="methodencheck-result-link" href="https://blog.fhgr.ch/cheval/usability-methoden/">mehr erfahren</a>
+                <div class="methodencheck-result-beschreibung">
+                  {{ method['beschreibung'] }}
+                </div>
+              </div>
+              <div class="methodencheck-result-rightside">
+                <div class="methodencheck-result-dauer">
+                  {{ method['dauer'] }}
+                </div>
+                <div class="methodencheck-result-anzahl">
+                  {{ method['anzahl'] }}
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         <div v-html="showNoResults()"></div>
@@ -389,7 +402,6 @@ label {
   cursor: pointer;
   transition: all 0.25s;
   background: #ffffff;
-
 }
 .button:hover {
   background: #c0beb2;
@@ -420,6 +432,23 @@ label {
   background: #817E65;
   border: 0;
   color: #ffffff;
+}
+.stepDone {
+  font-size: 0;
+  color: #817E65;
+  position: relative;
+}
+.stepDone::before {
+  content: "";
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background-image: url("../assets/check_white.svg");
+  background-repeat: no-repeat;
+  background-size: 15px 15px;
+  background-position: center;
+  width: 15px;
+  height: 15px;
 }
 .methodencheck-endstep {
   width: 30px;
@@ -485,6 +514,7 @@ label {
   color: #817e65;
   position: relative;
   font-size: 1rem;
+  background: #ffffff;
 }
 .linkbutton:hover {
   text-decoration: underline;
@@ -797,7 +827,58 @@ input:checked + .slider:before {
   max-width: 700px;
 }
 .methodencheck-resulttitle {
-  margin: 0;
+  margin: 0 0 1rem 0;
+}
+.methodencheck-resultWrapper {
+  display: flex;
+}
+.methodencheck-result-leftside {
+  width: 70%;
+  padding-right: 1rem;
+  order: 1;
+}
+.methodencheck-result-rightside {
+  width: 30%;
+  padding-left: 1rem;
+  order: 2;
+}
+.methodencheck-result-beschreibung {
+  margin-top: 1rem;
+}
+.methodencheck-result-dauer {
+  position: relative;
+  padding-left: 1.5rem;
+  color: #6E798C;
+}
+.methodencheck-result-dauer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: url("../assets/dauer.svg");
+  background-repeat: no-repeat;
+  background-size: 1rem 1rem;
+  background-position: center;
+  width: 1rem;
+  height: 1rem;
+}
+.methodencheck-result-anzahl {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-top: 1rem;
+  color: #6E798C;
+}
+.methodencheck-result-anzahl::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: url("../assets/anzahl.svg");
+  background-repeat: no-repeat;
+  background-size: 1rem 1rem;
+  background-position: center;
+  width: 1rem;
+  height: 1rem;
 }
 @media only screen and (max-width: 900px) {
   .methodencheck-questiontitle {
@@ -860,6 +941,20 @@ input:checked + .slider:before {
     background-image: none;
     width: 0;
     height: 0;
+  }
+  .methodencheck-resultWrapper {
+    flex-wrap: wrap;
+  }
+  .methodencheck-result-leftside {
+    width: 100%;
+    order: 2;
+    padding: 0;
+    margin-top: 1rem;
+  }
+  .methodencheck-result-rightside {
+    width: 100%;
+    order: 1;
+    padding: 0;
   }
 }
 @media only screen and (max-width: 450px) {
