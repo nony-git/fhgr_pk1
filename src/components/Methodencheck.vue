@@ -2,17 +2,17 @@
   <div class="methodencheck" id="methodencheck-top">
     <!-- START: PROCESSBAR -->
     <div class="methodencheck-processbar" v-if="page > 0">
-      <div class="methodencheck-step" v-bind:class="{stepActive: page > 0}"></div>
+      <div class="methodencheck-step" v-bind:class="{stepActive: page > 0}">1</div>
       <div class="methodencheck-line" v-bind:class="{lineActive: page > 1}"></div>
-      <div class="methodencheck-step" v-bind:class="{stepActive: page > 1}"></div>
+      <div class="methodencheck-step" v-bind:class="{stepActive: page > 1}">2</div>
       <div class="methodencheck-line" v-bind:class="{lineActive: page > 2}"></div>
-      <div class="methodencheck-step" v-bind:class="{stepActive: page > 2}"></div>
+      <div class="methodencheck-step" v-bind:class="{stepActive: page > 2}">3</div>
       <div class="methodencheck-line" v-bind:class="{lineActive: page > 3}"></div>
-      <div class="methodencheck-step" v-bind:class="{stepActive: page > 3}"></div>
+      <div class="methodencheck-step" v-bind:class="{stepActive: page > 3}">4</div>
       <div class="methodencheck-line" v-bind:class="{lineActive: page > 4}"></div>
-      <div class="methodencheck-step" v-bind:class="{stepActive: page > 4}"></div>
+      <div class="methodencheck-step" v-bind:class="{stepActive: page > 4}">5</div>
       <div class="methodencheck-line" v-bind:class="{lineActive: page > 5}"></div>
-      <div class="methodencheck-step" v-bind:class="{stepActive: page > 5}"></div>
+      <div class="methodencheck-step" v-bind:class="{stepActive: page > 5}">6</div>
       <div class="methodencheck-line" v-bind:class="{lineActive: page > 6}"></div>
       <div class="methodencheck-endstep" v-bind:class="{endstepActive: page > 6}"></div>
     </div>
@@ -22,48 +22,45 @@
     <div class="methodencheck-page" v-if="page == 0">
       <div class="methodencheck-text">
         <p>
-          Im Bereich der Usability Evaluation existiert eine Vielzahl unterschiedlicher Methoden, die für die Untersuchung interaktiver
-          Produkte genutzt werden können. Die Entscheidung <b>welche Methode</b> dabei konkret für das jeweilige Produkt und den <b>jeweiligen
-          Zweck</b> am geeignetsten ist, kann nicht immer einfach getroffen werden.
+          Im Bereich der Usability Evaluation existiert eine Vielzahl unterschiedlicher Methoden, die für die Untersuchung
+          interaktiver Produkte genutzt werden können. Die Entscheidung welche Methode dabei konkret für das jeweilige Produkt und
+          den jeweiligen Zweck am geeignetsten ist, kann nicht immer einfach getroffen werden.
+        </p>
+        <p>
+          Mithilfe des UX-Methodenchecks, erfahren Sie in kurzer Zeit nach Beantwortung weniger Fragen welche UX-Methode für Ihre
+          Evaluation in Frage kommt.
         </p>
       </div>
-      <div class="methodencheck-buttons-start">
-        <button class="button button-primary-bg" v-on:click="page++;scrollToTop()">Start</button>
-        <button class="methodencheck-infobutton button button-primary-bg" v-on:click="page=-1"></button>
-      </div>
-    </div>
-    <!-- END: WELCOME-PAGE -->
 
-    <!-- START: INFO-PAGE -->
-    <div class="methodencheck-page" v-if="page == -1">
-      <div class="methodencheck-text">
+      <!-- ADDITIONAL INFOTEXT -->
+      <div class="methodencheck-linkbuttons" v-if="!showInfoText">
+        <button class="linkbutton linkbutton-more" v-on:click="showInfoText = true">mehr erfahren</button>
+      </div>
+      <div class="methodencheck-text" v-if="showInfoText">
         <p>
-          Im Bereich der Usability Evaluation existiert eine Vielzahl unterschiedlicher Methoden, die für die Untersuchung interaktiver
-          Produkte genutzt werden können. Die Entscheidung <b>welche Methode</b> dabei konkret für das jeweilige Produkt und den <b>jeweiligen
-          Zweck</b> am geeignetsten ist, kann nicht immer einfach getroffen werden.
+          In der Regel ist für die Entscheidung einer passenden Methode eine gewisse Erfahrung und entsprechendes Know-How erforderlich.
+          Die Auswahl einer passenden Evaluationsmethode und die Konzeption eines geeigneten Untersuchungsdesigns ist daher eine
+          intellektuelle Aufgabe, die nur bedingt automatisierbar ist.
         </p>
         <p>
-          In der Regel ist hierfür eine gewisse Erfahrung und entsprechendes Know-How erforderlich. Die Auswahl einer passenden
-          Evaluationsmethode und die Konzeption eines geeigneten Untersuchungsdesigns ist daher eine intellektuelle Aufgabe, die
-          nur bedingt automatisierbar ist.
-        </p>
-        <p>
-          Der CHeval Methodencheck soll und kann daher eine persönliche Beratung durch Usability-Experten nicht ersetzen.
-          Vielmehr soll mit diesem Tool auch <b>Laien bzw. Personen mit wenig Erfahrung im Usability-Bereich</b> die Möglichkeit
-          gegeben werden, sich auf einfache Weise einen ersten Eindruck über für sie in Frage kommende
-          <b>Evaluationsmethoden</b> zu verschaffen.
+          Hierfür wird ein Dialog genutzt, bei dem verschiedene Aspekte, wie bspw. der Produktstatus oder die Zielsetzungen der
+          Untersuchung abgefragt werden. Am Ende des Dialogs erhalten Sie eine Übersicht der für Sie in Frage kommenden Methoden.
         </p>
         <p>
           Sofern Sie weiterführende Fragen haben, sich gerne zusätzlich von uns beraten lassen würden, oder die Evaluation, die
-          Ihnen empfohlen wurde, mit unserer Unterstützung durchführen wollen, so zögern Sie nicht uns zu kontaktieren.
+          Ihnen empfohlen wurde, mit unserer Unterstützung durchführen wollen, so zögern Sie nicht uns zu <a hef="https://blog.fhgr.ch/cheval/kontakt/">kontaktieren</a>.
         </p>
       </div>
+      <div class="methodencheck-linkbuttons" v-if="showInfoText">
+        <button class="linkbutton linkbutton-less" v-on:click="showInfoText = false">weniger</button>
+      </div>
+
+      <!-- BUTTON TO START TOOL -->
       <div class="methodencheck-buttons-start">
-        <button class="button button-primary-bg" v-on:click="page = 1;scrollToTop()">Start</button>
-        <button class="methodencheck-button button button-primary-bg" v-on:click="page = 0;scrollToTop()">zurück</button>
+        <button class="button button-primary-bg" v-on:click="page++;scrollToTop()">Start</button>
       </div>
     </div>
-    <!-- END: INFO-PAGE -->
+    <!-- END: WELCOME-PAGE -->
 
     <!-- START: QUESTION-PAGES -->
     <div v-for="question in questions" v-bind:key="question['id']">
@@ -163,7 +160,7 @@
             Müsste halt noch getextet und ausgearbeitete werden.
           </div>
         </div>
-        {{ showNoResults() }}
+        <div v-html="showNoResults()"></div>
       </div>
 
       <div class="methodencheck-controls">
@@ -196,7 +193,8 @@ export default {
         budget: 0
       },
       methodsActivated: true,
-      subAnswerActivated: false
+      subAnswerActivated: false,
+      showInfoText: false
     }
   },
   methods: {
@@ -344,7 +342,7 @@ export default {
         }
       });
       if (results == 0) {
-        return "Leider trifft keine Methode auf Ihre Eingaben zu. Sie können den Test nochmals durchführen oder sich hier durch die möglichen Methoden lesen."
+        return "Leider trifft keine Methode auf Ihre Eingaben zu. Sie können den UX-Methodencheck nochmals durchführen oder sich <a href='https://blog.fhgr.ch/cheval/usability-methoden/'>hier</a> durch die möglichen Methoden lesen."
       }
     },
     showSubAnwser: function(value) {
@@ -410,47 +408,63 @@ label {
   width: 30px;
   height: 30px;
   border-radius: 100%;
-  border: 2px solid #817E65;
-  background: #ffffff;
+  background: #D0D0D0;
+  color: #8D8D8D;
+  font-size: 0.9rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   transition: 0.3s linear;
 }
 .stepActive {
-  background: #000000;
+  background: #817E65;
   border: 0;
+  color: #ffffff;
 }
 .methodencheck-endstep {
   width: 30px;
   height: 30px;
   transform: rotate(45deg);
-  border: 2px solid #817E65;
-  background: #ffffff;
+  background: #D0D0D0;
   transition: 0.3s linear;
 }
 .endstepActive {
-  background: #99C089;
-  border: 2px solid #000000;
+  background: #817E65;
+}
+.methodencheck-endstep::before {
+  content: "";
+  position: absolute;
+  top: 6px;
+  left: 8px;
+  background-image: url("../assets/check.svg");
+  background-repeat: no-repeat;
+  background-size: 20px 20px;
+  background-position: center;
+  width: 20px;
+  height: 20px;
+  transform: rotate(-45deg);
 }
 .endstepActive::before {
   content: "";
   position: absolute;
-  top: 1px;
-  left: 3px;
-  background-image: url("../assets/check.svg");
+  top: 6px;
+  left: 8px;
+  background-image: url("../assets/check_white.svg");
   background-repeat: no-repeat;
-  background-size: 25px 25px;
+  background-size: 20px 20px;
   background-position: center;
-  width: 25px;
-  height: 25px;
+  width: 20px;
+  height: 20px;
   transform: rotate(-45deg);
 }
 .methodencheck-line {
   height: 2px;
-  background: #817E65;
+  background: #D0D0D0;
   width: calc((100% - 210px) / 6);
   transition: 0.3s linear;
 }
 .lineActive {
-  background: #000000;
+  background: #817E65;
 }
 .methodencheck-buttons-start {
   display: flex;
@@ -458,25 +472,48 @@ label {
   max-width: 760px;
   margin: 0 auto;
 }
-.methodencheck-infobutton {
-  position: relative;
-  width: 30px;
-  height: 30px;
-  background: #817E65;
-  border-radius: 100%;
-  margin-left: 1rem;
+.methodencheck-linkbuttons {
+  display: flex;
+  align-items: center;
+  max-width: 760px;
+  margin: 0 auto 2rem auto;
 }
-.methodencheck-infobutton::before {
+.linkbutton {
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  color: #817e65;
+  position: relative;
+  font-size: 1rem;
+}
+.linkbutton:hover {
+  text-decoration: underline;
+}
+.linkbutton-more::after {
   content: "";
   position: absolute;
-  top: 4px;
-  left: 4px;
-  width: 20px;
-  height: 20px;
-  background-image: url("../assets/info_icon.svg");
+  top: 0;
+  right: -1.2rem;
+  transform: rotate(270deg);
+  background: url("../assets/Arrow.svg");
   background-repeat: no-repeat;
-  background-size: 18px 18px;
+  background-size: 0.9rem 0.9rem;
   background-position: center;
+  width: 0.9rem;
+  height: 0.9rem;
+}
+.linkbutton-less::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: -1.2rem;
+  transform: rotate(90deg);
+  background: url("../assets/Arrow.svg");
+  background-repeat: no-repeat;
+  background-size: 0.9rem 0.9rem;
+  background-position: center;
+  width: 0.9rem;
+  height: 0.9rem;
 }
 .methodencheck-titlecontainer {
   display: flex;
@@ -801,6 +838,8 @@ input:checked + .slider:before {
     border: 1.5px solid #000000;
     background: #ffffff;
     margin-right: 5%;
+    color: #000000;
+    font-size: 0;
   }
   .methodencheck-endstep {
     transform: rotate(0deg);
@@ -813,6 +852,11 @@ input:checked + .slider:before {
     background: #000000;
   }
   .endstepActive::before {
+    background-image: none;
+    width: 0;
+    height: 0;
+  }
+  .methodencheck-endstep::before {
     background-image: none;
     width: 0;
     height: 0;
