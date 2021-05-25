@@ -157,7 +157,7 @@
             <h3 class="methodencheck-resulttitle">{{ method['bezeichnung'] }}</h3>
             <div class="methodencheck-resultWrapper">
               <div class="methodencheck-result-leftside" v-bind:class="{wide: method['dauer'] == '' && method['anzahl'] == ''}">
-                <a class="methodencheck-result-link" :href="`$method['link']`" v-if="method['link'] != ''">mehr erfahren</a>
+                <a class="methodencheck-result-link" v-bind:href=" method['link'] " v-if="method['link'] != ''">mehr erfahren</a>
                 <div class="methodencheck-result-beschreibung">
                   {{ method['beschreibung'] }}
                 </div>
