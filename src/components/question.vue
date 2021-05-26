@@ -103,10 +103,10 @@ export default {
   methods:{
     showCommentField: function(id){
       console.log("it works");
-    var field = document.getElementById(id);
-    field.style.display = "block";
-    var button = document.getElementById(id+"btn");
-    button.style.display = "none";
+      var field = document.getElementById(id);
+      field.style.display = "block";
+      var button = document.getElementById(id+"btn");
+      button.style.display = "none";
 }
   },
   watch: {

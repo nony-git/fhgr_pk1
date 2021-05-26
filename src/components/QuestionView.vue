@@ -13,14 +13,12 @@
       </tr>
       <!-- todo: for-loop für Fragennummer -->
       <question
-        v-for="(q, index) in questions.questions"
+        v-for="q in questions.questions"
         :question="q"
         :key="q.name"
-        v-model="answers[index]">
+        v-model="userAnswers[q.name]">
       </question>
     </table>
-    <!-- dev-only: zeige welche Werte gespeichert werden -->
-    {{ answers }}
   </div>
 </template>
 
@@ -30,15 +28,9 @@ import question from './question.vue';
 export default {
   components: { question },
   name: "QuestionView",
-  props:["toView"],
+  props:["toView","userAnswers"],
    data: function () {
-    let answers = [];
-    //eslint-disable-next-line
-    for (var i in this.toView.questions) {
-      answers.push("NaN");
-    }
     return {
-      answers: answers,
       questions: this.toView,
     };
   },
