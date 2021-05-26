@@ -607,7 +607,7 @@ export default {
         cursor: context-menu;
         padding: 0 4px;
         height: 100%;
-        widht: 20px;
+        width: 20px;
       }
       .tooltip::before {
         content: "";
