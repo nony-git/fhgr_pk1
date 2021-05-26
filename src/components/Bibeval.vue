@@ -132,7 +132,7 @@
             <tr>
               <template v-for="(title,indexprogress) in progressItems">
                 <td :key="title">
-                <div :style="title==toViewArray[currentView].category_name?'background-color:#3f3f3f':'background-color:#eee'" class="circle"></div>
+                <div :style="title==toViewArray[currentView].category_name?'background-color:#817e65':'background-color:#eee'" class="circle"></div>
                 </td>
                 <td :key="title">
                 <div v-if="indexprogress < progressItems.length-1"
@@ -162,8 +162,8 @@
 
             <!-- Navigiere zwischen Views -->
             <div class="bottom-nav to-left">
-            <button class="btn btn-back" @click="back()"></button>
-            <button class="btn btn-forward" @click="next()">Weiter</button>
+              <button class="btn btn-back" @click="back()"></button>
+              <button class="btn btn-forward" @click="next()">Weiter</button>
             </div>
             {{ userAnswers }}
         </template>
@@ -173,10 +173,7 @@
 <script>
 import QuestionView from "./QuestionView.vue";
 import selectButton from "./SelectButton.vue";
-
 import bibeval_json from "./json/data_bibeval.json";
-
-
 
 // let toView;
 export default {
@@ -193,29 +190,26 @@ export default {
       currentView: 0,
       userdata: bibeval_json,
       page: 0,
-        wasUntersuchen: [],
-        selectedCategories: [],
-        selectedSubCategories: [],
-        selectedComponents: [],
-        categories: [],
-        subcategories: [],
-        mandatory: false,
-        mandatoryComponents: [],
-        data_bibeval: bibeval_json,
-        bibliotheksseite: this.bibliotheksseite,
-        website: this.website,
-        userAnswers: {},
+      wasUntersuchen: [],
+      selectedCategories: [],
+      selectedSubCategories: [],
+      selectedComponents: [],
+      categories: [],
+      subcategories: [],
+      mandatory: false,
+      mandatoryComponents: [],
+      data_bibeval: bibeval_json,
+      bibliotheksseite: this.bibliotheksseite,
+      website: this.website,
+      userAnswers: {},
     };
   },
   computed: {
     
     toViewArray: function(){
-     let ergebnis = [];
-     let selectedComponents= ["Kontaktinformationen","Kontaktformular","Personalisierte Suchmasken"];
-      // case: Komponente ist gewählt
-
+      let ergebnis = [];
+      let selectedComponents= ["Kontaktinformationen","Kontaktformular","Personalisierte Suchmasken"];
       // nimm fragen von komponente, teilbereich und bereich darüber
-
       // einzelne komponente
       for (let category of bibeval_json.categories_levelone){
         for (let subcategory of category.categories_leveltwo){
@@ -250,7 +244,6 @@ export default {
       return ergebnis;
     },
     progressItems:function(){
-      
       let categories = this.toViewArray.map(c=>c.category_name);
       let categoriesuniq = [...new Set(categories)];
       return categoriesuniq;
@@ -275,25 +268,6 @@ export default {
     },
   },
   mounted:function(){
-  // muss später wahrscheinlich erst bei Klick auf "Start" laufen
-    // Zeige Navelement nur, wenn in Selektion: toViewArray
-    // for(let i=1; i<5; i++){
-    //   let part = document.querySelector("#navtitle"+i);
-    //   for (let y=0; y<toViewArray.length; y++){
-    //     // ausblenden wenn Titel nicht als "bereich" in toViewArray
-    //     if(!(part.innerHTML == toViewArray[y]['bereich'])){
-    //       part.style.display = "none";
-    //       if(i != 5) {document.querySelector("#navcircle"+i).style.display = "none";}
-    //       if(i != 4 && i != 5) {document.querySelector("#line"+i).style.display = "none";}
-    //     }
-    //     else{
-    //       part.style.display = "block";
-    //       if(i != 5) {document.querySelector("#navcircle"+i).style.display = "block";}
-    //       if(i != 4 && i != 5) {document.querySelector("#line"+i).style.display = "block";}
-    //       break;
-    //     }
-    //   }
-    // }
 
     // Loads categories and subcategories (Komponenten) as a nested arrays.
 		var subcategories = [];

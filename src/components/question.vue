@@ -3,19 +3,8 @@
   <tr class="single-question">
     <!-- auf Details einer Frage zugreifen -->
     <td  rowspan="2" class="left-align question">
-      <!-- Fragennummer muss noch definiert werden -->
       {{ question.number}} {{ question.name }}
-      <!-- <span class="tooltip">&#8505;<span class="tooltiptext">{{ question.desc_de }}</span></span> -->
     </td>
-    <!-- <td>
-      <input
-        type="radio"
-        id="five"
-        value="5"
-        :name="question.name"
-        v-model="picked"
-      />
-    </td> -->
     <td class="input-cell">
       <input
         type="radio"
@@ -107,11 +96,15 @@ export default {
       field.style.display = "block";
       var button = document.getElementById(id+"btn");
       button.style.display = "none";
-}
+    }
   },
   watch: {
     picked: function (neuerWert) {
       this.$emit("input", neuerWert);
+    },
+    // Wohin muss Kommentar?
+    comment: function(kommentar){
+      this.$emit("input", kommentar);
     },
 
     /*updateValue: function (comment) {

@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h2>View</h2>
     <table>
       <tr>
         <th class="question-col">Frage</th>
@@ -11,12 +10,12 @@
         <th class="severity-label">nicht umgesetzt, obwohl notwendig</th>
         <th class="severity-label">keine Antwort</th>
       </tr>
-      <!-- todo: for-loop für Fragennummer -->
       <question
         v-for="q in questions.questions"
         :question="q"
         :key="q.name"
-        v-model="userAnswers[q.name]">
+        v-model="userAnswers[q.name]"
+        >
       </question>
     </table>
   </div>
@@ -29,7 +28,7 @@ export default {
   components: { question },
   name: "QuestionView",
   props:["toView","userAnswers"],
-   data: function () {
+  data: function () {
     return {
       questions: this.toView,
     };
