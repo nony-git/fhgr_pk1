@@ -41,6 +41,8 @@
         <!-- PAGE 1 / AUSWAHL BEREICHE -->
         <template v-if="page == 1">
 
+          <img class="bib-header-img" src="../assets/bibeval_intro_image.png" />
+
             <h1>Was möchten Sie untersuchen?</h1>
 
             <div class="bib-overview-bereiche">
@@ -88,6 +90,11 @@
                         </div>
                     </template>
 
+                </div>
+
+                <!-- Back Button -->
+                <div class="bibeval-buttonContainer">
+                  <button class="bibeval-button btn-back btn button-primary-bg" v-on:click="page--;scrollToTop()"></button>
                 </div>
 
             </div>
@@ -162,6 +169,7 @@
             <div class="to-right">
                 <button class="btn btn-selection" @click="page = 1">Auswahl ändern</button>
             </div>
+
             <!-- {{ toViewArray }} -->
             <QuestionView
             :toView="toViewArray[currentView]"
@@ -424,81 +432,48 @@ h1 {
   width: 3em;
   max-width: 2em;
 }
-.btn {
-  padding: 0.25em;
+
+.bibeval-buttonContainer {
+  margin-top: 1rem;
+  width: calc(100% - 2rem);
+  display: flex;
+  justify-content: flex-end;
 }
+
+.btn {
+  font-size: 1rem;
+  padding: 10px 15px;
+  color: #817e65;
+  border: 1px solid #c0beb2;
+  cursor: pointer;
+  transition: all 0.25s;
+  background: #ffffff;
+}
+
 .btn:hover {
   cursor: pointer;
 }
 .btn-back {
   background: url(../assets/Arrow.svg) no-repeat;
-  padding: 1em;
-  border: 1px solid #817e65;
-  /* absoluter pfad für live version */
-  /* background: url(https://blog.fhgr.ch/apps/img/Arrow.77733ac5.svg); */
+  position: relative;
+  width: 40px;
+  height: 44px;
 }
+
 .btn-forward {
-  background: #817e65;
-  color: #fff;
-  padding: 0.25em 0.5em;
-}
-.bottom-nav {
-  padding: 0em 4em;
-}
-.to-left {
-  text-align: left;
-}
-.to-right {
-  text-align: right;
-}
-.bib-select-large.selected,
-.bib-select-small.selected {
-	background: #408198;
-	color: #ffffff;
-	border: 2px solid #408198;
+  background: #817E65;
+  color: #ffffff;
+  margin-top: 0;
 }
 
-.bib-select-small {
-	width: 100%;
-	min-height: 30px;
-	margin-bottom: 5px;
-	border: 2px solid #408198;
-	border-radius: 5px;
-	color: #245b6f;
-}
-
-.bib-overview-bereiche {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto auto;
-  gap: 10px 10px;
-	max-width: 500px;
-	margin: 30px auto;
-}
-
-.bib-komponentenauswahl {
-	margin: 55px auto;
-}
-
-.bib-komponentenauswahl.bib-overview-bereiche {
-	gap: 0px 10px;
-}
-
-.bib-komponentenauswahl h2 {
-	margin-bottom: 20px;
-	grid-column: 1/-1;
-}
-
-.line {
-	height: 1px;
-	width: 80%;
-	margin: 20px auto;
-	background: black;
+.btn-forward:hover {
+  color: #000000;
 }
 
 button:focus {
 	outline: none;
 }
+
 .btn-selection{
     background: #817e65;
     color: #fff;
@@ -555,4 +530,63 @@ button:focus {
   max-width: 760px;
   margin: 0 auto;
 }
+
+.bottom-nav {
+  padding: 0em 4em;
+}
+
+.to-left {
+  text-align: left;
+}
+
+.to-right {
+  text-align: right;
+}
+
+.bib-select-large.selected,
+.bib-select-small.selected {
+	background: #408198;
+	color: #ffffff;
+	border: 2px solid #408198;
+}
+
+.bib-select-small {
+	width: 100%;
+	min-height: 30px;
+	margin-bottom: 5px;
+	border: 2px solid #408198;
+	border-radius: 5px;
+	color: #245b6f;
+}
+
+.bib-overview-bereiche {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 10px 10px;
+	max-width: 500px;
+	margin: 30px auto;
+}
+
+.bib-komponentenauswahl {
+	margin: 55px auto;
+}
+
+.bib-komponentenauswahl.bib-overview-bereiche {
+	gap: 0px 10px;
+}
+
+.bib-komponentenauswahl h2 {
+	margin-bottom: 20px;
+	grid-column: 1/-1;
+}
+
+.line {
+	height: 1px;
+	width: 80%;
+	margin: 20px auto;
+	background: black;
+}
+
+
 </style>
