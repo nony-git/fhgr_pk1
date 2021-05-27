@@ -10,22 +10,31 @@
 
             <img class="bib-header-img" src="../assets/bibeval_intro_image.png" />
 
-            <p class="bib-txt-left">
+            <p class="bibeval-text">
                 Mit BibEval stellt das Schweizerische Institut für Informationswissenschaft (SII) 
                 eine modular verwendbare, hierarchisch strukturierte Liste von Evaluationskriterien 
                 zur Verfügung, mit welcher Websiten auf Usabilty Schwachstellen überprüft werden können.
             </p>
+          <!-- ADDITIONAL INFOTEXT -->
+          <div class="bibeval-linkbuttons" v-if="!showInfoText">
+            <button class="linkbutton linkbutton-more" v-on:click="showInfoText = true">mehr erfahren</button>
+          </div>
 
-            <p class="bib-txt-left">
+            <p class="bibeval-text" v-if="showInfoText">
                 Mithilfe eines Fragebogens kann das BibEval Tool Ihnen helfen,
                 Schwachstellen ihres Webauftritts zu evaluieren. Der hierachisch struktutierte 
                 Aufbau, erlaubt es spezifsche Bereiche einer Homepage zu untersuchen. Durch 
                 Klicken auf das Info-Icon erhalten sie weiterführende Informationen zur Frage. 
                 Pro Fragen können Sie zuästzlich Kommentare hinzufügen.
-                Die graphische Auswertung am Schluss, kann als PDF oder CSV Datei gedownoadet werden.)
             </p>
+          <div class="bibeval-linkbuttons" v-if="showInfoText">
+            <button class="linkbutton linkbutton-less" v-on:click="showInfoText = false">weniger</button>
+          </div>
 
+          <!-- BUTTON TO START TOOL -->
+          <div class="bibeval-buttons-start">
             <button class="bib-pagenav" v-on:click="page += 1">Start</button>
+          </div>
 
         </template>
 
@@ -40,13 +49,13 @@
                 <button 
                     class="bib-select-large"
                     :value="website">
-                    Website 
+                    Website <br> (Web-Eval)
                 </button>
 
                 <button
                     class="bib-select-large"
                     :value="bibliotheksseite">
-                    Bibliotheksseite
+                    Bibliotheksseite <br> (Bib-Eval)
                 </button>
 
             </div>
@@ -335,6 +344,13 @@ export default {
 	text-decoration: none;
 	color: #fff;
 }
+
+.bibeval-text {
+  text-align: left;
+  max-width: 760px;
+  margin: 0 auto 1.5rem auto;
+}
+
 .bib-txt-left {
 	text-align: left;
 }
@@ -487,5 +503,56 @@ button:focus {
     background: #817e65;
     color: #fff;
     font-size: 0.8rem;
+}
+
+.bibeval-linkbuttons {
+  display: flex;
+  align-items: center;
+  max-width: 760px;
+  margin: 0 auto 2rem auto;
+}
+
+.linkbutton-more::after {
+  content: "";
+  position: absolute;
+  top: 0.3rem;
+  right: -1.2rem;
+  transform: rotate(270deg);
+  background: url("../assets/Arrow.svg");
+  background-repeat: no-repeat;
+  background-size: 0.9rem 0.9rem;
+  background-position: center;
+  width: 0.9rem;
+  height: 0.9rem;
+}
+.linkbutton-less::after {
+  content: "";
+  position: absolute;
+  top: 0.3rem;
+  right: -1.2rem;
+  transform: rotate(90deg);
+  background: url("../assets/Arrow.svg");
+  background-repeat: no-repeat;
+  background-size: 0.9rem 0.9rem;
+  background-position: center;
+  width: 0.9rem;
+  height: 0.9rem;
+}
+
+.linkbutton {
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  color: #817e65;
+  position: relative;
+  font-size: 1rem;
+  background: #ffffff;
+}
+
+.bibeval-buttons-start {
+  display: flex;
+  align-items: center;
+  max-width: 760px;
+  margin: 0 auto;
 }
 </style>
