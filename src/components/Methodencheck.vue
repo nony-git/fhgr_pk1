@@ -623,7 +623,7 @@ input:checked + .slider:before {
 }
 .methodencheck-buttonContainer {
   margin-top: 1rem;
-  width: calc(100% - 2.5rem);
+  width: calc(100% - 2rem);
   display: flex;
   justify-content: flex-end;
 }
@@ -683,7 +683,7 @@ input:checked + .slider:before {
   width: 100%;
 }
 .methodencheck-answer {
-  width: calc(50% - 2.5rem);
+  width: calc(50% - 2rem);
   margin-right: 2rem;
   margin-bottom: 2rem;
   border: 2px solid #408198;
@@ -698,7 +698,7 @@ input:checked + .slider:before {
   color: #ffffff;
 }
 .methodencheck-levelanswers {
-  width: calc(50% - 2.5rem);
+  width: calc(50% - 2rem);
   margin-right: 2rem;
   margin-bottom: 2rem;
   cursor: pointer;
