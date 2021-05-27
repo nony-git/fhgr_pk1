@@ -40,8 +40,7 @@
 
         <!-- PAGE 1 / AUSWAHL BEREICHE -->
         <template v-if="page == 1">
-
-          <img class="bib-header-img" src="../assets/bibeval_intro_image.png" />
+          <img v-if="showImg == true" class="bib-header-img" src="../assets/bibeval_intro_image.png" />
 
             <h1>Was möchten Sie untersuchen?</h1>
 
@@ -50,13 +49,15 @@
                 <!-- TODO: unteschiedliche json fragenkataloge laden? -->
                 <button 
                     class="bib-select-large"
-                    :value="website">
+                    :value="website"
+                    @click="showImg = false">
                     Website <br> (Web-Eval)
                 </button>
 
                 <button
                     class="bib-select-large"
-                    :value="bibliotheksseite">
+                    :value="bibliotheksseite"
+                    @click="showImg = false">
                     Bibliotheksseite <br> (Bib-Eval)
                 </button>
 
@@ -134,9 +135,26 @@
                 <p>Ihr Fragenkatalog enthält [TODO] Fragen.</p>
                 <p>
                     In der folgenden Evulation bewerten Sie verschiedene Komponenten 
-                    auf einer Skala von 5 (voll und ganz) bis 0 (überhaupt nicht) wie gut  dies umgesetzt ist.
+                    wie gut  dies umgesetzt ist.
                 </p>
-                <p>[ Beispiel Skala... ]</p>
+                <table class="table-preview">
+                  <tr>
+                    <th class="severity-label">kein Usability-Problem</th>
+                    <th class="severity-label">kleines Usability-Problem</th>
+                    <th class="severity-label">mittleres Usability-Problem</th>
+                    <th class="severity-label">schweres Usability-Problem</th>
+                    <th class="severity-label">nicht umgesetzt, obwohl notwendig</th>
+                    <th class="severity-label">keine Antwort</th>
+                  </tr>
+                  <tr>
+                    <td class="input-cell"><input type="radio" name="dummy"></td>
+                    <td class="input-cell"><input type="radio" name="dummy"></td>
+                    <td class="input-cell"><input type="radio" name="dummy"></td>
+                    <td class="input-cell"><input type="radio" name="dummy"></td>
+                    <td class="input-cell"><input type="radio" name="dummy"></td>
+                    <td class="input-cell"><input type="radio" name="dummy"></td>
+                  </tr>
+                </table>
                 <button class="bib-pagenav" v-on:click="page += 1">Start</button>
             </template>
         </template>
@@ -179,13 +197,14 @@
 
             <!-- Navigiere zwischen Views -->
             <div class="bottom-nav to-left">
-              <button class="btn btn-back" @click="back()"></button>
-              <button v-if="currentView < toViewArray.length-1"
-              class="btn btn-forward" @click="next()">Weiter</button>
+              <!-- rueckwaerts -->
+              <button v-if="currentView != 0" class="btn btn-back" @click="back()"></button>
+              <button v-if="currentView == 0" class="btn btn-back" @click="page -= 1"></button>
+              <!-- vorwaerts -->
+              <button v-if="currentView < toViewArray.length-1" class="btn btn-forward" @click="next()">Weiter</button>
               <button v-if="currentView == toViewArray.length-1"
               class="btn btn-forward" @click="page += 1">Abschliessen</button>
             </div>
-            {{ toViewArray.length }}
             {{ userAnswers }}
         </template>
         <template v-if="page == 3">
@@ -231,6 +250,7 @@ export default {
       bibliotheksseite: this.bibliotheksseite,
       website: this.website,
       userAnswers: {},
+      showImg: true,
     };
   },
   computed: {
@@ -297,7 +317,6 @@ export default {
     },
   },
   mounted:function(){
-
     // Loads categories and subcategories (Komponenten) as a nested arrays.
 		var subcategories = [];
 		var categories = [];
@@ -318,7 +337,6 @@ export default {
 
 		this.subcategories = subcategories; 
 		this.categories = categories;
-
   },
   watch: {
 
@@ -599,6 +617,28 @@ button:focus {
 	margin: 20px auto;
 	background: black;
 }
-
-
+.table-preview{
+  width: 60%;
+  margin: 1.5em auto 1.5em auto;
+  text-align: left;
+  border-collapse: collapse;
+}
+.table-preview td{
+  width:100px;
+  padding: 1em;
+  text-align:center;
+}
+.table-preview th{
+  width:100px;
+  padding: 1em;
+  text-align:left;
+}
+.question-col{
+  width:50%;
+}
+.severity-label{
+  font-size:0.7rem;
+  font-weight: normal;
+  background-color: lightgray;
+}
 </style>
