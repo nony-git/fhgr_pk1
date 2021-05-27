@@ -180,9 +180,21 @@
             <!-- Navigiere zwischen Views -->
             <div class="bottom-nav to-left">
               <button class="btn btn-back" @click="back()"></button>
-              <button class="btn btn-forward" @click="next()">Weiter</button>
+              <button v-if="currentView < toViewArray.length-1"
+              class="btn btn-forward" @click="next()">Weiter</button>
+              <button v-if="currentView == toViewArray.length-1"
+              class="btn btn-forward" @click="page += 1">Abschliessen</button>
             </div>
+            {{ toViewArray.length }}
             {{ userAnswers }}
+        </template>
+        <template v-if="page == 3">
+          <h1>Auswertung</h1>
+          TODO
+          <button class="bib-pagenav">Export</button>
+          <div class="bottom-nav to-left">
+            <button class="btn btn-back" @click="page -= 1"></button>
+          </div>
         </template>
     </div>
 </template>
