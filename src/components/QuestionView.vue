@@ -27,7 +27,7 @@ import question from './question.vue';
 export default {
   components: { question },
   name: "QuestionView",
-  props:["toView","userAnswers"],
+  props:["toView","userAnswers","userComments"],
   data: function () {
     return {
       questions: this.toView,
@@ -36,6 +36,9 @@ export default {
   watch: {
     answers: function () {
       this.$emit("update", this.answers);
+    },
+    comments: function () {
+      this.$emit("update", this.comments);
     },
   },
 };

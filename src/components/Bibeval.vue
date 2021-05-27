@@ -193,6 +193,7 @@
             :toView="toViewArray[currentView]"
             :key="currentView"
             :userAnswers="userAnswers"
+            :userComments="userComments"
             ></QuestionView>
 
             <!-- Navigiere zwischen Views -->
@@ -250,6 +251,7 @@ export default {
       bibliotheksseite: this.bibliotheksseite,
       website: this.website,
       userAnswers: {},
+      userComments: {},
       showImg: true,
     };
   },
