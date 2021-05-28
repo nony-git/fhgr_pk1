@@ -3,7 +3,7 @@
   <tr class="single-question">
     <!-- auf Details einer Frage zugreifen -->
     <td  rowspan="2" class="left-align question">
-      {{ question.number}} {{ question.name }}
+      <strong>{{ question.number}}</strong> {{ question.name }}
     </td>
     <td class="input-cell">
       <input

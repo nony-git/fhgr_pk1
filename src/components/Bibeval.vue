@@ -1,5 +1,5 @@
 <template>
-    <div class="eval-content">
+    <div class="eval-content" id="bibeval-top">
         <!-- hier kommt Simons Teil der Selektion -->
 
         Bereich: {{ selectedCategories }}<br>
@@ -12,7 +12,7 @@
             <span>DE</span>
             <label class="eval-sprachswitch">
               <input type="checkbox" v-on:click="englishActivated()">
-              <span class="slider"></span>
+              <span class="toggleswitch"></span>
             </label>
             <span>EN</span>
           </div>
@@ -160,9 +160,9 @@
                     </div>
 
                 </template>
-                <p>Ihr Fragenkatalog enthält [TODO] Fragen.</p>
+                <p>Ihr Fragenkatalog enthält {{findHighest(toViewArray)}} Fragen.</p>
                 <p>
-                    In der folgenden Evulation bewerten Sie verschiedene Komponenten 
+                    In der folgenden Evaulation bewerten Sie verschiedene Komponenten 
                     wie gut  dies umgesetzt ist.
                 </p>
                 <table class="table-preview">
@@ -183,7 +183,7 @@
                     <td class="input-cell"><input type="radio" name="dummy"></td>
                   </tr>
                 </table>
-                <button class="bib-pagenav" v-on:click="page += 1">Start</button>
+                <button class="bib-pagenav" v-on:click="page += 1; scrollToTop()">Start</button>
             </template>
         </template>
         <!-- PAGE 2 / FRAGEN -->
@@ -234,12 +234,12 @@
             <!-- Navigiere zwischen Views -->
             <div class="bibeval-buttonContainer">
               <!-- rueckwaerts -->
-              <button v-if="currentView != 0" class="btn btn-back" @click="back()"></button>
-              <button v-if="currentView == 0" class="btn btn-back" @click="page -= 1"></button>
+              <button v-if="currentView != 0" class="btn btn-back" @click="back();scrollToTop()"></button>
+              <button v-if="currentView == 0" class="btn btn-back" @click="page -= 1; scrollToTop()"></button>
               <!-- vorwaerts -->
-              <button v-if="currentView < toViewArray.length-1" class="btn btn-forward" @click="next()">Weiter</button>
+              <button v-if="currentView < toViewArray.length-1" class="btn btn-forward" @click="next();scrollToTop()">Weiter</button>
               <button v-if="currentView == toViewArray.length-1"
-              class="btn btn-forward" @click="page += 1">Abschliessen</button>
+              class="btn btn-forward" @click="page += 1; scrollToTop()">Abschliessen</button>
             </div>
             {{ userAnswers }}
         </template>
@@ -248,7 +248,7 @@
           TODO
           <button class="bib-pagenav">Export</button>
           <div class="bottom-nav">
-            <button class="btn btn-back" @click="page -= 1"></button>
+            <button class="btn btn-back" @click="page -= 1;scrollToTop()"></button>
           </div>
         </template>
     </div>
@@ -349,8 +349,8 @@ export default {
       console.log("currentView is "+this.currentView);
     },
     scrollToTop: function() {
-    var top = document.getElementById("methodencheck-top");
-    top.scrollIntoView();
+      var top = document.getElementById("bibeval-top");
+      top.scrollIntoView();
     },
     // Loads components based on subcategory.
     getComponents(subcategory) {
@@ -363,6 +363,19 @@ export default {
     englishActivated: function(){
       if(this.language == "de" || this.language == undefined)this.language = "en";
       else this.language = "de";
+      // TODO 
+      //nimm englisches JSON
+    },
+    findHighest: function(quest){
+      let highest = 0;
+      for (let page of quest) {
+        for (let question of page.questions) {
+          if (question.number> highest){
+            highest = question.number;
+          }
+        }
+      }
+      return highest;
     }
   },
   mounted:function(){
@@ -386,11 +399,12 @@ export default {
 
 		this.subcategories = subcategories; 
 		this.categories = categories;
+    // var str = JSON.stringify(this.toViewArray, null, 2);
+    // console.log(str);
   },
   watch: {
     userAnswers:function(){
-      var str = JSON.stringify(this.toViewArray, null, 2);
-      console.log(str);
+      
       // console.log(this.toViewArray);
       // for (let singleQuestion of this.toViewArray[this.currentView].questions){
       //   let toCheck = singleQuestion.name;
@@ -551,7 +565,7 @@ h1 {
   width: 0;
   height: 0;
 }
-.slider {
+.toggleswitch {
   position: absolute;
   cursor: pointer;
   top: 0;
@@ -563,7 +577,7 @@ h1 {
   transition: .4s;
   border-radius: 34px;
 }
-.slider:before {
+.toggleswitch:before {
   position: absolute;
   content: "";
   height: 1rem;
@@ -575,13 +589,13 @@ h1 {
   transition: .4s;
   border-radius: 50%;
 }
-input:checked + .slider {
+input:checked + .toggleswitch {
   background-color: #817E65;
 }
-input:focus + .slider {
+input:focus + .toggleswitch {
   box-shadow: 0 0 1px #817E65;
 }
-input:checked + .slider:before {
+input:checked + .toggleswitch:before {
   -webkit-transform: translateX(26px);
   -ms-transform: translateX(26px);
   transform: translateX(26px);
