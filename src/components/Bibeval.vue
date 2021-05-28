@@ -7,19 +7,25 @@
         Komponenten: {{ selectedComponents }}<br>
         <!-- PAGE 0 / INFO PAGE -->
         <template v-if="page == 0">
-
-            <img class="bib-header-img" src="../assets/bibeval_intro_image.png" />
-
+          <img class="bib-header-img" src="../assets/bibeval_intro_image.png" />
+          <div class="language">
+            <span>DE</span>
+            <label class="eval-sprachswitch">
+              <input type="checkbox" v-on:click="englishActivated()">
+              <span class="slider"></span>
+            </label>
+            <span>EN</span>
+          </div>
+          <span v-if="language=='de' || language==undefined">
             <p class="bibeval-text">
                 Mit BibEval stellt das Schweizerische Institut für Informationswissenschaft (SII) 
                 eine modular verwendbare, hierarchisch strukturierte Liste von Evaluationskriterien 
                 zur Verfügung, mit welcher Websiten auf Usabilty Schwachstellen überprüft werden können.
             </p>
-          <!-- ADDITIONAL INFOTEXT -->
-          <div class="bibeval-linkbuttons" v-if="!showInfoText">
-            <button class="linkbutton linkbutton-more" v-on:click="showInfoText = true">mehr erfahren</button>
-          </div>
-
+            <!-- ADDITIONAL INFOTEXT -->
+            <div class="bibeval-linkbuttons" v-if="!showInfoText">
+              <button class="linkbutton linkbutton-more" v-on:click="showInfoText = true">mehr erfahren</button>
+            </div>
             <p class="bibeval-text" v-if="showInfoText">
                 Mithilfe eines Fragebogens kann das BibEval Tool Ihnen helfen,
                 Schwachstellen ihres Webauftritts zu evaluieren. Der hierachisch struktutierte 
@@ -27,10 +33,32 @@
                 Klicken auf das Info-Icon erhalten sie weiterführende Informationen zur Frage. 
                 Pro Fragen können Sie zuästzlich Kommentare hinzufügen.
             </p>
-          <div class="bibeval-linkbuttons" v-if="showInfoText">
-            <button class="linkbutton linkbutton-less" v-on:click="showInfoText = false">weniger</button>
-          </div>
-
+            <div class="bibeval-linkbuttons" v-if="showInfoText">
+              <button class="linkbutton linkbutton-less" v-on:click="showInfoText = false">weniger</button>
+            </div>
+          </span>
+          <span v-if="language=='en'">
+            <p class="bibeval-text">
+                With the “Usability Evaluation”-tool, the Swiss Institute of Information Science
+                (SII) provides a modularly usable, hierarchically structured list of evaluation criteria. 
+                The tool is supposed to identify and evaluate usability issues of corporate or library websites.
+            </p>
+            <!-- ADDITIONAL INFOTEXT -->
+            <div class="bibeval-linkbuttons" v-if="!showInfoText">
+              <button class="linkbutton linkbutton-more" v-on:click="showInfoText = true">more</button>
+            </div>
+            <p class="bibeval-text" v-if="showInfoText">
+                The hierarchical structure allows you to analyze specific parts of a homepage. 
+                At the beginning you are asked if you want to analyze a corporate website or a library website. 
+                Depending on your selection, different sectors to be evaluated are available to choose.
+                The matching components appear automatically when you select the sectors to be evaluated. 
+                Suggested components are selected by default, but you are free to choose which sectors or components you want to evaluate. 
+                You can revoke your selection at any time and select new sectors or components to your question catalog.
+            </p>
+            <div class="bibeval-linkbuttons" v-if="showInfoText">
+              <button class="linkbutton linkbutton-less" v-on:click="showInfoText = false">less</button>
+            </div>
+          </span>
           <!-- BUTTON TO START TOOL -->
           <div class="bibeval-buttons-start">
             <button class="bib-pagenav" v-on:click="page += 1">Start</button>
@@ -167,8 +195,11 @@
               <template v-for="(title,indexprogress) in progressItems">
                 <td :key="title">
                 <div :style="title==toViewArray[currentView].category_name?'background-color:#817e65':'background-color:#eee'" class="circle">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="white" class="bi bi-three-dots" viewBox="0 0 16 16">
+                  <svg v-if="todo" xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="white" class="bi bi-three-dots" viewBox="0 0 16 16">
                     <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
+                  </svg>
+                  <svg v-if="todo" xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="white" class="bi bi-check-lg" viewBox="0 0 16 16">
+                    <path d="M13.485 1.431a1.473 1.473 0 0 1 2.104 2.062l-7.84 9.801a1.473 1.473 0 0 1-2.12.04L.431 8.138a1.473 1.473 0 0 1 2.084-2.083l4.111 4.112 6.82-8.69a.486.486 0 0 1 .04-.045z"/>
                   </svg>
                 </div>
                 </td>
@@ -257,6 +288,9 @@ export default {
       userAnswers: {},
       userComments: {},
       showImg: true,
+      answersComplete:{},
+      language: this.language,
+      showInfoText: false,
     };
   },
   computed: {
@@ -321,6 +355,10 @@ export default {
 				}
 			}
     },
+    englishActivated: function(){
+      if(this.language == "de" || this.language == undefined)this.language = "en";
+      else this.language = "de";
+    }
   },
   mounted:function(){
     // Loads categories and subcategories (Komponenten) as a nested arrays.
@@ -345,7 +383,21 @@ export default {
 		this.categories = categories;
   },
   watch: {
-
+    userAnswers:function(){
+      var str = JSON.stringify(this.toViewArray, null, 2);
+      console.log(str);
+      // console.log(this.toViewArray);
+      // for (let singleQuestion of this.toViewArray[this.currentView].questions){
+      //   let toCheck = singleQuestion.name;
+      //   if (toCheck){
+      //     this.answersComplete.category_name = true;
+      //   }
+      //   else{
+      //     this.answersComplete.category_name = false;
+      //     break;
+      //   }
+      // }
+    },
 		// Removes selected subcategory if category is unchecked.
 		selectedCategories: function() {
 			var notselected = [];
@@ -473,7 +525,62 @@ h1 {
   width: 3em;
   max-width: 2em;
 }
-
+/* language */
+.language{
+  font-size:1.3em;
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+  justify-content: end;
+  max-width: 760px;
+}
+.eval-sprachswitch {
+  position: relative;
+  display: inline-block;
+  width: 3rem;
+  height: 1.5rem;
+  margin: 0 0.5em 0.5em 0.5em;
+}
+.eval-sprachswitch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+  border-radius: 34px;
+}
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 1rem;
+  width: 1rem;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+  border-radius: 50%;
+}
+input:checked + .slider {
+  background-color: #817E65;
+}
+input:focus + .slider {
+  box-shadow: 0 0 1px #817E65;
+}
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
 .bibeval-buttonContainer {
   margin-top: 1rem;
   width: calc(100% - 2rem);
