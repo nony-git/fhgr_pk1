@@ -220,7 +220,7 @@
             </table>
             <!-- Hier kommt der Button um in die Selektion zurück zu kommen-->
             <div class="to-right">
-                <button class="btn btn-selection" @click="page = 1">Auswahl ändern</button>
+                <button class="btn btn-selection" @click="page = 1">Auswahl<br>ändern</button>
             </div>
 
             <!-- {{ toViewArray }} -->
@@ -605,11 +605,12 @@ input:checked + .toggleswitch:before {
   width: calc(100% - 2rem);
   display: flex;
   justify-content: flex-end;
+  align-items: end;
 }
 
 .btn {
   font-size: 1rem;
-  padding: 10px 15px;
+  padding: .5em 1em;
   color: #817e65;
   border: 1px solid #c0beb2;
   cursor: pointer;
@@ -624,6 +625,7 @@ input:checked + .toggleswitch:before {
   position: relative;
   width: 40px;
   height: 44px;
+  margin-right:1em;
 }
 
 .btn-forward {
@@ -648,15 +650,16 @@ input:checked + .toggleswitch:before {
   width: 20px;
   height: 20px;
 }
-
-button:focus {
-	outline: none;
-}
-
 .btn-selection{
     background: #817e65;
     color: #fff;
-    font-size: 0.8rem;
+    /* font-size: 0.8rem; */
+}
+.btn-selection:hover{
+  color:black;
+}
+button:focus {
+	outline: none;
 }
 
 .bibeval-linkbuttons {
