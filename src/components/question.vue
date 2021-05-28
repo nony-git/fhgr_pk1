@@ -8,61 +8,71 @@
     <td class="input-cell">
       <input
         type="radio"
+        checked="checked"
         id="four"
-        class="checkmark"
         value="4"
         :name="question.name"
         v-model="picked"
-      />
+      >
+      <span class="checkmark"></span>
     </td>
     <td class="input-cell">
       <input
         type="radio"
+        checked="checked"
         id="three"
-        class="checkmark"
+        
         value="3"
         :name="question.name"
         v-model="picked"
-      />
+      >
+      <span class="checkmark"></span>
     </td>
     <td class="input-cell">
       <input
         type="radio"
+        checked="checked"
         id="two"
+        
         value="2"
         :name="question.name"
         v-model="picked"
-      />
+      >
+      <span class="checkmark"></span>
     </td>
     <td class="input-cell">
       <input
         type="radio"
+        checked="checked"
         id="one"
-        class="checkmark"
+        
         value="1"
         :name="question.name"
         v-model="picked"
-      />
+      >
+      <span class="checkmark"></span>
     </td>
     <td class="input-cell">
       <input
         type="radio"
         id="zero"
-        class="checkmark"
+        
         value="0"
         :name="question.name"
         v-model="picked"
-      />
+      >
+      <span class="checkmark"></span>
     </td>
     <td class="input-cell">
       <input
       type="radio"
       id="NaN"
-      class="checkmark"
+      
       value="NaN"
       :name="question.name"
       v-model="picked"
-    />
+      >
+      <span class="checkmark"></span>
     </td>
   </tr>
   <tr>
@@ -183,5 +193,45 @@ textarea{
 .question{
   vertical-align: top;
 }
+
+
+/*https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_custom_radio*/
+/*Checkboxen in Bearbeitung*/
+
+.input-cell{
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+
+/* Hide the browser's default radio button 
+.input-cell input {
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}*/
+
+.checkmark {
+  height: 20px;
+  width: 20px;
+  background-color: #eee;
+  border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.input-cell:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.input-cell input:checked ~ .checkmark {
+  background-color: #2196F3;
+}
+
 
 </style>
