@@ -166,7 +166,11 @@
             <tr>
               <template v-for="(title,indexprogress) in progressItems">
                 <td :key="title">
-                <div :style="title==toViewArray[currentView].category_name?'background-color:#817e65':'background-color:#eee'" class="circle"></div>
+                <div :style="title==toViewArray[currentView].category_name?'background-color:#817e65':'background-color:#eee'" class="circle">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="white" class="bi bi-three-dots" viewBox="0 0 16 16">
+                    <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
+                  </svg>
+                </div>
                 </td>
                 <td :key="title">
                 <div v-if="indexprogress < progressItems.length-1"
@@ -432,6 +436,11 @@ h1 {
   border-radius:100%;
   height:4em;
   width:4em;
+}
+.circle svg{
+  width: 100%;
+  margin: auto;
+  display: block;
 }
 .line{
   border:1px solid black;

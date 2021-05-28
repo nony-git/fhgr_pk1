@@ -8,7 +8,7 @@
         <th class="severity-label">mittleres Usability-Problem</th>
         <th class="severity-label">schweres Usability-Problem</th>
         <th class="severity-label">nicht umgesetzt, obwohl notwendig</th>
-        <th class="severity-label">keine Antwort</th>
+        <th class="severity-label">keine Antwort <span class="tooltip" @click="toggleTip()"></span></th>
       </tr>
       <question
         v-for="q in questions.questions"
@@ -18,11 +18,26 @@
         >
       </question>
     </table>
+    <div class="tooltiptext" v-if="showTooltip==true" @click="showTooltip=false">
+        <h4>kein Usability-Problem:</h4>
+        <p>Alles funktioniert und ist leicht bedienbar.</p>
+        <h4>kleines Usability-Problem:</h4>
+        <p>"kosmetisches Problem": Etwas ist nicht schön umgesetzt und wirkt störend. Die entsprechende Schwachstelle führt aber nicht direkt zu Fehlern in der Bedienung.</p>
+        <h4>mittleres Usability-Problem</h4>
+        <p>Die gefundene Schwachstelle kann zu Fehlern in der Bedienung führen, verhindert aber nicht zwingend, dass der Anwender seine Ziele erreicht.</p>
+        <h4>schweres Usability-Problem:</h4>
+        <p>Die gefundene Schwachstelle hindert den Anwender daran, seine Aufgaben zu bearbeiten bzw. seine Ziele zu erreichen.</p>
+        <h4>nicht umgesetzt, obwohl notwendig:</h4>
+        <p>Eine Funktion oder Komponente fehlt, obwohl sie an dieser Stelle hilfreich wäre bzw. als obligatorisch eingestuft worden ist. </p>
+        <h4>keine Antwort</h4>
+        <p>Eine Frage bzw. ein bestimmtes Bewertungskriterium kann auf den zu untersuchenden Webauftritt nicht angewandt werden</p>
+      </div>
   </div>
 </template>
 
 <script>
 import question from './question.vue';
+
 
 export default {
   components: { question },
@@ -31,7 +46,18 @@ export default {
   data: function () {
     return {
       questions: this.toView,
+      showTooltip: this.showTooltip,
     };
+  },
+  methods:{
+    toggleTip: function(){
+      if (this.showTooltip == true){
+        this.showTooltip = false;
+      }
+      else{
+        this.showTooltip = true;
+      }
+    }
   },
   watch: {
     answers: function () {
@@ -117,5 +143,46 @@ td, th{
   font-size:0.7rem;
   font-weight: normal;
   background-color: lightgray;
+  position: relative;
+}
+.tooltip {
+  position: absolute;
+  margin: 0 5px;
+  cursor: context-menu;
+  padding: 0 4px;
+  height: 100%;
+  width: 20px;
+  top:-2.5em;
+  right:0;
+}
+.tooltip:hover{
+  cursor: pointer;
+}
+.tooltip::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 15px;
+  height: 15px;
+  margin-top: -8px;
+  background-image: url("../assets/info_icon_black.svg");
+  background-repeat: no-repeat;
+  background-size: 12px 12px;
+  background-position: center;
+}
+.tooltip:hover > .tooltiptext {
+  display: block;
+}
+.tooltiptext {
+  position: absolute;
+  background: #B7B6A4;
+  padding: 5px 8px;
+  right: 0;
+  z-index: 10;
+  font-size: 0.8rem;
+  width: 15%;
+  text-align: left;
+  top: 35em;
 }
 </style>
