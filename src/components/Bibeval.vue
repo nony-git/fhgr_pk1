@@ -8,6 +8,11 @@
         <!-- PAGE 0 / INFO PAGE -->
         <template v-if="page == 0">
           <img class="bib-header-img" src="../assets/bibeval_intro_image.png" />
+          
+          <!-- dev-only -->
+          <button class="btn btn-forward" @click="page =3">Jump to Report</button>
+          <!-- -->
+
           <div class="language">
             <span>DE</span>
             <label class="eval-sprachswitch">
@@ -245,10 +250,53 @@
         </template>
         <template v-if="page == 3">
           <h1>Auswertung</h1>
-          TODO
-          <button class="bib-pagenav">Export</button>
-          <div class="bottom-nav">
-            <button class="btn btn-back" @click="page -= 1;scrollToTop()"></button>
+          <div class="report">
+            <div class="legende">
+              <div class="legende-item">
+                <div class="legende-icon">
+                  X
+                </div>
+                <div class="legende-description">
+                  <p>Unbedingt zu beheben</p>
+                </div>
+              </div>
+              <div class="legende-item">
+                <div class="legende-icon">
+                  !!
+                </div>
+                <div class="legende-description">
+                  <p>Dringend zu beheben</p>
+                </div>
+              </div>
+              <div class="legende-item">
+                <div class="legende-icon">
+                  !
+                </div>
+                <div class="legende-description">
+                  <p>Empfohlen zu beheben</p>
+                </div>
+              </div>
+              <div class="legende-item">
+                <div class="legende-icon">
+                  (Y)
+                </div>
+                <div class="legende-description">
+                  <p>Nichts zu beheben</p>
+                </div>
+              </div>
+              <div class="legende-spacer"></div>
+              <button class="bib-pagenav btn-legende">Download</button>
+            </div>
+
+            <resultline
+            v-for="(h,index) in testArray"
+                  :eingabe="h"
+                  :key= index
+            ></resultline>
+
+            <div class="bottom-nav">
+              <button class="btn btn-back" @click="page -= 1;scrollToTop()"></button>
+            </div>
           </div>
         </template>
     </div>
@@ -258,6 +306,7 @@
 import QuestionView from "./QuestionView.vue";
 import selectButton from "./SelectButton.vue";
 import bibeval_json from "./json/data_bibeval.json";
+import resultline from './resultline.vue';
 
 // let toView;
 export default {
@@ -266,6 +315,7 @@ export default {
     // eslint-disable-next-line vue/no-unused-components
     QuestionView,
     selectButton,
+    resultline,
   },
   data: function () {
     // toView
@@ -291,6 +341,18 @@ export default {
       answersComplete:{},
       language: this.language,
       showInfoText: false,
+      testArray:{
+        "Information & Kommunikation":
+          {
+            "Kontakt und Zugang":"4",
+            "Seitenüberblick":"3"
+          },
+        "Recherche im Bestand":
+          {
+            "Suchen und Erkunden":"1",
+            "Präsentation und Zugriff":"2"
+          },
+      }
     };
   },
   computed: {
@@ -376,7 +438,8 @@ export default {
         }
       }
       return highest;
-    }
+    },
+
   },
   mounted:function(){
     // Loads categories and subcategories (Komponenten) as a nested arrays.
@@ -403,20 +466,7 @@ export default {
     // console.log(str);
   },
   watch: {
-    userAnswers:function(){
-      
-      // console.log(this.toViewArray);
-      // for (let singleQuestion of this.toViewArray[this.currentView].questions){
-      //   let toCheck = singleQuestion.name;
-      //   if (toCheck){
-      //     this.answersComplete.category_name = true;
-      //   }
-      //   else{
-      //     this.answersComplete.category_name = false;
-      //     break;
-      //   }
-      // }
-    },
+
 		// Removes selected subcategory if category is unchecked.
 		selectedCategories: function() {
 			var notselected = [];
@@ -438,12 +488,10 @@ export default {
 </script>
 
 <style scoped>
-
 .bibeval-container {
 	background: white;
 	padding: 120px 100px;
 }
-
 .bib-pagenav {
 	font-size: 1em;
 	padding: 10px 15px;
@@ -469,7 +517,6 @@ export default {
 .bib-txt-left {
 	text-align: left;
 }
-
 h1 {
 	margin-bottom: 30px;
 }
@@ -477,7 +524,6 @@ h1 {
 .bib-header-img {
 	margin: 0 auto 50px auto;
 }
-
 .bib-select-large {
 	width: 100%;
 	height: 60px;
@@ -607,7 +653,6 @@ input:checked + .toggleswitch:before {
   justify-content: flex-end;
   align-items: end;
 }
-
 .btn {
   font-size: 1rem;
   padding: .5em 1em;
@@ -617,7 +662,6 @@ input:checked + .toggleswitch:before {
   transition: all 0.25s;
   background: #ffffff;
 }
-
 .btn:hover {
   cursor: pointer;
 }
@@ -627,17 +671,14 @@ input:checked + .toggleswitch:before {
   height: 44px;
   margin-right:1em;
 }
-
 .btn-forward {
   background: #817E65;
   color: #ffffff;
   margin-top: 0;
 }
-
 .btn-forward:hover {
   color: #000000;
 }
-
 .btn-back::before {
   content: "";
   position: absolute;
@@ -661,14 +702,12 @@ input:checked + .toggleswitch:before {
 button:focus {
 	outline: none;
 }
-
 .bibeval-linkbuttons {
   display: flex;
   align-items: center;
   max-width: 760px;
   margin: 0 auto 2rem auto;
 }
-
 .linkbutton {
   border: 0;
   padding: 0;
@@ -678,11 +717,9 @@ button:focus {
   font-size: 1rem;
   background: #ffffff;
 }
-
 .linkbutton:hover {
   text-decoration: underline;
 }
-
 .linkbutton-more::after {
   content: "";
   position: absolute;
@@ -709,38 +746,30 @@ button:focus {
   width: 0.9rem;
   height: 0.9rem;
 }
-
-
-
 .bibeval-buttons-start {
   display: flex;
   align-items: center;
   max-width: 760px;
   margin: 0 auto;
 }
-
 .bottom-nav {
   margin-top: 1rem;
   width: calc(100% - 2rem);
   display: flex;
   justify-content: flex-end;
 }
-
 .to-left {
   text-align: left;
 }
-
 .to-right {
   text-align: right;
 }
-
 .bib-select-large.selected,
 .bib-select-small.selected {
 	background: #408198;
 	color: #ffffff;
 	border: 2px solid #408198;
 }
-
 .bib-select-small {
 	width: 100%;
 	min-height: 30px;
@@ -749,7 +778,6 @@ button:focus {
 	border-radius: 5px;
 	color: #245b6f;
 }
-
 .bib-overview-bereiche {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -758,20 +786,16 @@ button:focus {
 	max-width: 500px;
 	margin: 30px auto;
 }
-
 .bib-komponentenauswahl {
 	margin: 55px auto;
 }
-
 .bib-komponentenauswahl.bib-overview-bereiche {
 	gap: 0px 10px;
 }
-
 .bib-komponentenauswahl h2 {
 	margin-bottom: 20px;
 	grid-column: 1/-1;
 }
-
 .line {
 	height: 1px;
 	width: 80%;
@@ -801,5 +825,45 @@ button:focus {
   font-size:0.7rem;
   font-weight: normal;
   background-color: lightgray;
+}
+.report{
+  background-color:white;
+  height:100%;
+  padding:1em;
+}
+.report{
+  background-color:white;
+  height:100%;
+  padding:1em;
+}
+.legende{
+  display:flex;
+}
+.legende-item{
+  flex:15%;
+  display:flex;
+}
+.legende-icon{
+  flex:10%;
+  color:red;
+}
+.legende-description{
+    flex: 90;
+    text-align: left;
+    padding-left: 1em;
+    font-size: .9rem;
+}
+.legende-spacer{
+  flex:20%;
+}
+.btn-legende{
+  flex:20%;
+  background-color: #408198;
+  color:white;
+  border:1px solid black;
+}
+.btn-legende:hover{
+  color: black;
+  background-color: #5c9ab1;
 }
 </style>
