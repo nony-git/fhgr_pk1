@@ -33,7 +33,7 @@
 
           <!-- BUTTON TO START TOOL -->
           <div class="bibeval-buttons-start">
-            <button class="bib-pagenav" v-on:click="page += 1">Start</button>
+            <button class="bib-pagenav" v-on:click="page++;scrollToTop()">Start</button>
           </div>
 
         </template>
@@ -201,7 +201,7 @@
             ></QuestionView>
 
             <!-- Navigiere zwischen Views -->
-            <div class="bottom-nav to-left">
+            <div class="bibeval-buttonContainer">
               <!-- rueckwaerts -->
               <button v-if="currentView != 0" class="btn btn-back" @click="back()"></button>
               <button v-if="currentView == 0" class="btn btn-back" @click="page -= 1"></button>
@@ -216,7 +216,7 @@
           <h1>Auswertung</h1>
           TODO
           <button class="bib-pagenav">Export</button>
-          <div class="bottom-nav to-left">
+          <div class="bottom-nav">
             <button class="btn btn-back" @click="page -= 1"></button>
           </div>
         </template>
@@ -257,7 +257,8 @@ export default {
       userAnswers: {},
       userComments: {},
       showImg: true,
-    };
+      showInfoText: false
+    }
   },
   computed: {
     
@@ -305,6 +306,7 @@ export default {
     }
   },
   methods: {
+    
     next: function () {
       if (this.currentView < this.toViewArray.length - 1) this.currentView++;
       console.log("currentView is "+this.currentView);
@@ -312,6 +314,10 @@ export default {
     back: function () {
       if (this.currentView > 0) this.currentView--;
       console.log("currentView is "+this.currentView);
+    },
+    scrollToTop: function() {
+    var top = document.getElementById("methodencheck-top");
+    top.scrollIntoView();
     },
     // Loads components based on subcategory.
     getComponents(subcategory) {
@@ -495,7 +501,6 @@ h1 {
   cursor: pointer;
 }
 .btn-back {
-  background: url(../assets/Arrow.svg) no-repeat;
   position: relative;
   width: 40px;
   height: 44px;
@@ -509,6 +514,19 @@ h1 {
 
 .btn-forward:hover {
   color: #000000;
+}
+
+.btn-back::before {
+  content: "";
+  position: absolute;
+  top: 12px;
+  left: 8px;
+  background: url("../assets/Arrow.svg");
+  background-repeat: no-repeat;
+  background-size: 20px 20px;
+  background-position: center;
+  width: 20px;
+  height: 20px;
 }
 
 button:focus {
@@ -526,6 +544,20 @@ button:focus {
   align-items: center;
   max-width: 760px;
   margin: 0 auto 2rem auto;
+}
+
+.linkbutton {
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  color: #817e65;
+  position: relative;
+  font-size: 1rem;
+  background: #ffffff;
+}
+
+.linkbutton:hover {
+  text-decoration: underline;
 }
 
 .linkbutton-more::after {
@@ -555,15 +587,7 @@ button:focus {
   height: 0.9rem;
 }
 
-.linkbutton {
-  border: 0;
-  padding: 0;
-  cursor: pointer;
-  color: #817e65;
-  position: relative;
-  font-size: 1rem;
-  background: #ffffff;
-}
+
 
 .bibeval-buttons-start {
   display: flex;
@@ -573,7 +597,10 @@ button:focus {
 }
 
 .bottom-nav {
-  padding: 0em 4em;
+  margin-top: 1rem;
+  width: calc(100% - 2rem);
+  display: flex;
+  justify-content: flex-end;
 }
 
 .to-left {
