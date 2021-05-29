@@ -5,6 +5,7 @@
         Bereich: {{ selectedCategories }}<br>
         Teilbereich: {{ selectedSubCategories }}<br>
         Komponenten: {{ selectedComponents }}<br>
+				{{bibeval_json}}
         <!-- PAGE 0 / INFO PAGE -->
         <template v-if="page == 0">
           <img class="bib-header-img" src="../assets/bibeval_intro_image.png" />
@@ -79,18 +80,19 @@
 
             <div class="bib-overview-bereiche">
 
-                <!-- TODO: unteschiedliche json fragenkataloge laden? -->
                 <button 
                     class="bib-select-large"
                     :value="website"
-                    @click="showImg = false">
+                    @click="showImg = false; loadJson('webeval')"
+										v-bind:class="{selected: wasUntersuchen == 'webeval'}">
                     Website <br> (Web-Eval)
                 </button>
 
                 <button
                     class="bib-select-large"
                     :value="bibliotheksseite"
-                    @click="showImg = false">
+                    @click="showImg = false; loadJson('bibeval')"
+										v-bind:class="{selected: wasUntersuchen == 'bibeval'}">
                     Bibliotheksseite <br> (Bib-Eval)
                 </button>
 
@@ -307,6 +309,7 @@ import QuestionView from "./QuestionView.vue";
 import selectButton from "./SelectButton.vue";
 import bibeval_json from "./json/data_bibeval.json";
 import resultline from './resultline.vue';
+import webeval_json from "./json/data_webeval.json";
 
 // let toView;
 export default {
@@ -324,15 +327,13 @@ export default {
       currentView: 0,
       userdata: bibeval_json,
       page: 0,
-      wasUntersuchen: [],
+      wasUntersuchen: '',
       selectedCategories: [],
       selectedSubCategories: [],
       selectedComponents: [],
-      categories: [],
-      subcategories: [],
       mandatory: false,
       mandatoryComponents: [],
-      data_bibeval: bibeval_json,
+      data_tool: bibeval_json,
       bibliotheksseite: this.bibliotheksseite,
       website: this.website,
       userAnswers: {},
@@ -394,11 +395,43 @@ export default {
       }
       return ergebnis;
     },
+
     progressItems:function(){
       let categories = this.toViewArray.map(c=>c.category_name);
       let categoriesuniq = [...new Set(categories)];
       return categoriesuniq;
-    }
+    },
+
+		categories: function() {
+			let categories = [];
+			for(var i = 0; i < this.data_tool.categories_levelone.length; i++) {
+				categories.push([this.data_tool.categories_levelone[i].name, []]);
+				for(var x = 0; x < this.data_tool.categories_levelone[i].categories_leveltwo.length; x++){
+					categories[i][1].push(this.data_tool.categories_levelone[i].categories_leveltwo[x].name);
+				}
+			}
+			return categories;
+		},
+
+		subcategories: function() {
+			let subcategories = [];
+			let components = [];
+			for(var i = 0; i < this.data_tool.categories_levelone.length; i++) {
+				for(var x = 0; x < this.data_tool.categories_levelone[i].categories_leveltwo.length; x++){
+					subcategories.push([this.data_tool.categories_levelone[i].categories_leveltwo[x].name]);
+					var subtemp = [];
+					for(var y = 0; y < this.data_tool.categories_levelone[i].categories_leveltwo[x].categories_levelthree.length; y++){
+						subtemp.push(this.data_tool.categories_levelone[i].categories_leveltwo[x].categories_levelthree[y].name);
+					}
+						components.push(subtemp);
+				}
+			}
+			for(var n = 0; n < subcategories.length; n++) {
+				subcategories[n].push(components[n]);
+			}
+			return subcategories;
+		}
+
   },
   methods: {
     
@@ -414,6 +447,7 @@ export default {
       var top = document.getElementById("bibeval-top");
       top.scrollIntoView();
     },
+
     // Loads components based on subcategory.
     getComponents(subcategory) {
 			for(var i = 0; i < this.subcategories.length; i++) {
@@ -422,6 +456,23 @@ export default {
 				}
 			}
     },
+
+		// Loads json for webeval or bibeval.
+		loadJson(tool){
+			this.wasUntersuchen = tool;
+			if(this.wasUntersuchen == 'webeval') {
+				this.data_tool = webeval_json;
+				this.selectedComponents = [];
+				this.selectedCategories = [];
+				this.selectedSubCategories = [];
+			} else {
+				this.data_tool= bibeval_json;
+				this.selectedComponents = [];
+				this.selectedCategories = [];
+				this.selectedSubCategories = [];
+			}
+		},
+
     englishActivated: function(){
       if(this.language == "de" || this.language == undefined)this.language = "en";
       else this.language = "de";
@@ -440,30 +491,6 @@ export default {
       return highest;
     },
 
-  },
-  mounted:function(){
-    // Loads categories and subcategories (Komponenten) as a nested arrays.
-		var subcategories = [];
-		var categories = [];
-
-		for(var y = 0; y < this.data_bibeval.categories_levelone.length; y++) {
-			categories.push([this.data_bibeval.categories_levelone[y].name, []]);
-			for(var z = 0; z < this.data_bibeval.categories_levelone[y].categories_leveltwo.length; z++) {
-				categories[y][1].push(this.data_bibeval.categories_levelone[y].categories_leveltwo[z].name);
-				subcategories.push([this.data_bibeval.categories_levelone[y].categories_leveltwo[z].name, []]);
-				for(var a = 0; a < this.data_bibeval.categories_levelone[y].categories_leveltwo[z].categories_levelthree.length; a++) {
-					subcategories[y][1].push(this.data_bibeval.categories_levelone[y].categories_leveltwo[z].categories_levelthree[a].name)
-					if ( this.data_bibeval.categories_levelone[y].categories_leveltwo[z].categories_levelthree[a].is_mandatory ) {
-						this.mandatoryComponents.push(this.data_bibeval.categories_levelone[y].categories_leveltwo[z].categories_levelthree[a].name);
-					}
-				}
-			}
-		}
-
-		this.subcategories = subcategories; 
-		this.categories = categories;
-    // var str = JSON.stringify(this.toViewArray, null, 2);
-    // console.log(str);
   },
   watch: {
 
