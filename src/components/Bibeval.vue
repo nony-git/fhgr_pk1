@@ -278,8 +278,6 @@ export default {
       selectedCategories: [],
       selectedSubCategories: [],
       selectedComponents: [],
-      categories: [],
-      subcategories: [],
       mandatory: false,
       mandatoryComponents: [],
       data_bibeval: bibeval_json,
@@ -332,11 +330,43 @@ export default {
       }
       return ergebnis;
     },
+
     progressItems:function(){
       let categories = this.toViewArray.map(c=>c.category_name);
       let categoriesuniq = [...new Set(categories)];
       return categoriesuniq;
-    }
+    },
+
+		categories: function() {
+			let categories = [];
+			for(var i = 0; i < this.data_bibeval.categories_levelone.length; i++) {
+				categories.push([this.data_bibeval.categories_levelone[i].name, []]);
+				for(var x = 0; x < this.data_bibeval.categories_levelone[i].categories_leveltwo.length; x++){
+					categories[i][1].push(this.data_bibeval.categories_levelone[i].categories_leveltwo[x].name);
+				}
+			}
+			return categories;
+		},
+
+		subcategories: function() {
+			let subcategories = [];
+			let components = [];
+			for(var i = 0; i < this.data_bibeval.categories_levelone.length; i++) {
+				for(var x = 0; x < this.data_bibeval.categories_levelone[i].categories_leveltwo.length; x++){
+					subcategories.push([this.data_bibeval.categories_levelone[i].categories_leveltwo[x].name]);
+					var subtemp = [];
+					for(var y = 0; y < this.data_bibeval.categories_levelone[i].categories_leveltwo[x].categories_levelthree.length; y++){
+						subtemp.push(this.data_bibeval.categories_levelone[i].categories_leveltwo[x].categories_levelthree[y].name);
+					}
+						components.push(subtemp);
+				}
+			}
+			for(var n = 0; n < subcategories.length; n++) {
+				subcategories[n].push(components[n]);
+			}
+			return subcategories;
+		}
+
   },
   methods: {
     
@@ -377,30 +407,6 @@ export default {
       }
       return highest;
     }
-  },
-  mounted:function(){
-    // Loads categories and subcategories (Komponenten) as a nested arrays.
-		var subcategories = [];
-		var categories = [];
-
-		for(var y = 0; y < this.data_bibeval.categories_levelone.length; y++) {
-			categories.push([this.data_bibeval.categories_levelone[y].name, []]);
-			for(var z = 0; z < this.data_bibeval.categories_levelone[y].categories_leveltwo.length; z++) {
-				categories[y][1].push(this.data_bibeval.categories_levelone[y].categories_leveltwo[z].name);
-				subcategories.push([this.data_bibeval.categories_levelone[y].categories_leveltwo[z].name, []]);
-				for(var a = 0; a < this.data_bibeval.categories_levelone[y].categories_leveltwo[z].categories_levelthree.length; a++) {
-					subcategories[y][1].push(this.data_bibeval.categories_levelone[y].categories_leveltwo[z].categories_levelthree[a].name)
-					if ( this.data_bibeval.categories_levelone[y].categories_leveltwo[z].categories_levelthree[a].is_mandatory ) {
-						this.mandatoryComponents.push(this.data_bibeval.categories_levelone[y].categories_leveltwo[z].categories_levelthree[a].name);
-					}
-				}
-			}
-		}
-
-		this.subcategories = subcategories; 
-		this.categories = categories;
-    // var str = JSON.stringify(this.toViewArray, null, 2);
-    // console.log(str);
   },
   watch: {
     userAnswers:function(){
