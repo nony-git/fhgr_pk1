@@ -5,7 +5,6 @@
         Bereich: {{ selectedCategories }}<br>
         Teilbereich: {{ selectedSubCategories }}<br>
         Komponenten: {{ selectedComponents }}<br>
-				{{bibeval_json}}
         <!-- PAGE 0 / INFO PAGE -->
         <template v-if="page == 0">
           <img class="bib-header-img" src="../assets/bibeval_intro_image.png" />
@@ -282,7 +281,6 @@ export default {
       selectedSubCategories: [],
       selectedComponents: [],
       mandatory: false,
-      mandatoryComponents: [],
       data_tool: bibeval_json,
       bibliotheksseite: this.bibliotheksseite,
       website: this.website,
@@ -368,6 +366,20 @@ export default {
 				subcategories[n].push(components[n]);
 			}
 			return subcategories;
+		},
+
+		mandatoryComponents: function() {
+			var mandatoryComponents = [];
+			for(var i = 0; i < this.data_tool.categories_levelone.length; i++) {
+				for(var x = 0; x < this.data_tool.categories_levelone[i].categories_leveltwo.length; x++){
+					for(var y = 0; y < this.data_tool.categories_levelone[i].categories_leveltwo[x].categories_levelthree.length; y++){
+						if( this.data_tool.categories_levelone[i].categories_leveltwo[x].categories_levelthree[y].is_mandatory) {
+							mandatoryComponents.push(this.data_tool.categories_levelone[i].categories_leveltwo[x].categories_levelthree[y].name);
+						}
+					}
+				}
+			}
+			return mandatoryComponents;
 		}
 
   },
