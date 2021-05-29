@@ -154,6 +154,7 @@
                                     :key="index4" 
                                     :value="comp" 
                                     v-model="selectedComponents"
+																		v-bind:class="{hide: mandatoryComponents.includes(comp) && mandatory == false}"
                                     class="bib-select-small">
                             {{ comp }}
                         </select-button>
@@ -507,6 +508,10 @@ export default {
 
 .bib-txt-left {
 	text-align: left;
+}
+
+.hide {
+	display: none;
 }
 
 h1 {
