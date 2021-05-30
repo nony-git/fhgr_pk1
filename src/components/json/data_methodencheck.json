@@ -1,4 +1,25 @@
 {
+  "infotext": {
+    "haupttext": [
+      "Im Bereich der Usability Evaluation existiert eine Vielzahl unterschiedlicher Methoden, die für die Untersuchung interaktiver Produkte genutzt werden können. Die Entscheidung welche Methode dabei konkret für das jeweilige Produkt und den jeweiligen Zweck am geeignetsten ist, kann nicht immer einfach getroffen werden.",
+      "Mithilfe des UX-Methodenchecks, erfahren Sie in kurzer Zeit nach Beantwortung weniger Fragen welche UX-Methode für Ihre Evaluation in Frage kommt."
+    ],
+    "zusatztext": [
+      "In der Regel ist für die Entscheidung einer passenden Methode eine gewisse Erfahrung und entsprechendes Know-How erforderlich. Die Auswahl einer passenden Evaluationsmethode und die Konzeption eines geeigneten Untersuchungsdesigns ist daher eine intellektuelle Aufgabe, die nur bedingt automatisierbar ist.",
+      "Hierfür wird ein Dialog genutzt, bei dem verschiedene Aspekte, wie bspw. der Produktstatus oder die Zielsetzungen der Untersuchung abgefragt werden. Am Ende des Dialogs erhalten Sie eine Übersicht der für Sie in Frage kommenden Methoden.",
+      "Sofern Sie weiterführende Fragen haben, sich gerne zusätzlich von uns beraten lassen würden, oder die Evaluation, die Ihnen empfohlen wurde, mit unserer Unterstützung durchführen wollen, so zögern Sie nicht uns zu <a href='https://blog.fhgr.ch/cheval/kontakt/'>kontaktieren</a>."
+    ]
+  },
+  "textkomponenten": {
+    "mehrErfahren": "mehr erfahren",
+    "weniger": "weniger",
+    "start": "Start",
+    "weiter": "Weiter",
+    "frage": "Frage",
+    "methoden": "Methoden",
+    "empfohleneMethoden": "Empfohlene Methoden",
+    "zurückZumStart": "zurück zum Start"
+  },
   "fragen": {
     "produktstatus": {
       "id": 1,

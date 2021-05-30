@@ -20,44 +20,39 @@
 
     <!-- START: WELCOME-PAGE -->
     <div class="methodencheck-page" v-if="page == 0">
+      <!-- INTRO IMAGE -->
+      <img src="../assets/methodencheck_intro_image.png" class="methodencheck-introImage" alt="Methodencheck Intro Image">
+
+      <!-- LANGUAGE SWITCH -->
+      <div class="methodencheck-languageswitch">
+          <button class="linkbutton" v-on:click="language = 'de'; loadData()" v-bind:class="{linkbuttonActive: language == 'de'}">
+            Deutsch
+          </button>
+          <span>|</span>
+          <button class="linkbutton" v-on:click="language = 'en'; loadData()" v-bind:class="{linkbuttonActive: language == 'en'}">
+            English
+          </button>
+      </div>
+
+      <!-- INOFTEXT -->
       <div class="methodencheck-text">
-        <p>
-          Im Bereich der Usability Evaluation existiert eine Vielzahl unterschiedlicher Methoden, die für die Untersuchung
-          interaktiver Produkte genutzt werden können. Die Entscheidung welche Methode dabei konkret für das jeweilige Produkt und
-          den jeweiligen Zweck am geeignetsten ist, kann nicht immer einfach getroffen werden.
-        </p>
-        <p>
-          Mithilfe des UX-Methodenchecks, erfahren Sie in kurzer Zeit nach Beantwortung weniger Fragen welche UX-Methode für Ihre
-          Evaluation in Frage kommt.
-        </p>
+        <p v-for="text in infotext.haupttext" v-bind:key="text" v-html="text"></p>
       </div>
 
       <!-- ADDITIONAL INFOTEXT -->
       <div class="methodencheck-linkbuttons" v-if="!showInfoText">
-        <button class="linkbutton linkbutton-more" v-on:click="showInfoText = true">mehr erfahren</button>
+        <button class="linkbutton linkbutton-more" v-on:click="showInfoText = true">{{ textcomponents.mehrErfahren }}</button>
       </div>
       <div class="methodencheck-text" v-if="showInfoText">
-        <p>
-          In der Regel ist für die Entscheidung einer passenden Methode eine gewisse Erfahrung und entsprechendes Know-How erforderlich.
-          Die Auswahl einer passenden Evaluationsmethode und die Konzeption eines geeigneten Untersuchungsdesigns ist daher eine
-          intellektuelle Aufgabe, die nur bedingt automatisierbar ist.
-        </p>
-        <p>
-          Hierfür wird ein Dialog genutzt, bei dem verschiedene Aspekte, wie bspw. der Produktstatus oder die Zielsetzungen der
-          Untersuchung abgefragt werden. Am Ende des Dialogs erhalten Sie eine Übersicht der für Sie in Frage kommenden Methoden.
-        </p>
-        <p>
-          Sofern Sie weiterführende Fragen haben, sich gerne zusätzlich von uns beraten lassen würden, oder die Evaluation, die
-          Ihnen empfohlen wurde, mit unserer Unterstützung durchführen wollen, so zögern Sie nicht uns zu <a href="https://blog.fhgr.ch/cheval/kontakt/">kontaktieren</a>.
-        </p>
+      <p v-for="text in infotext.zusatztext" v-bind:key="text" v-html="text"></p>
       </div>
       <div class="methodencheck-linkbuttons" v-if="showInfoText">
-        <button class="linkbutton linkbutton-less" v-on:click="showInfoText = false">weniger</button>
+        <button class="linkbutton linkbutton-less" v-on:click="showInfoText = false">{{ textcomponents.weniger }}</button>
       </div>
 
       <!-- BUTTON TO START TOOL -->
       <div class="methodencheck-buttons-start">
-        <button class="button button-primary-bg" v-on:click="page++;scrollToTop()">Start</button>
+        <button class="button button-primary-bg" v-on:click="page++;scrollToTop()">{{ textcomponents.start }}</button>
       </div>
     </div>
     <!-- END: WELCOME-PAGE -->
@@ -68,9 +63,9 @@
 
         <!-- HEADER QUESTION-PAGE -->
         <div class="methodencheck-titlecontainer">
-          <h2 class="methodencheck-questiontitle">Frage {{ question['id'] }}</h2>
+          <h2 class="methodencheck-questiontitle">{{ textcomponents.frage }} {{ question['id'] }}</h2>
           <div class="methodencheck-methodentitle-wrapper">
-            <h2 class="methodencheck-methodentitle" v-bind:class="{methodentitleActive: methodsActivated}">Methoden</h2>
+            <h2 class="methodencheck-methodentitle" v-bind:class="{methodentitleActive: methodsActivated}">{{ textcomponents.methoden }}</h2>
             <label class="methodencheck-methodenswitch">
               <input type="checkbox" checked v-on:click="changeMethodeActivated()">
               <span class="slider"></span>
@@ -90,35 +85,20 @@
             <div>
               <!-- MULTIPLECHOICE ANSWERS -->
               <div class="methodencheck-answers" v-if="question['multiplechoice']">
-                  <div class="methodencheck-levelanswers" v-for="(name, value, index) in question['antworten']" v-bind:key="index" v-on:click="updateInputs(question['titel'], value);updateMethods(question['titel']); sortMethods()">
-                    <div class="methodencheck-topanswer" v-if="name['level'] == 1" v-on:click="showSubAnwser(value)">
-                      <div class="activeTopAnswer" v-if="inputs[question['titel']].includes(parseInt(value))">
-                        {{ name['antwort'] }}
-                      </div>
-                      <div class="inactiveTopAnswer" v-else>
-                        {{ name['antwort'] }}
-                      </div>
+                  <div class="methodencheck-levelanswers" v-for="(name, value, index) in question['antworten']" v-bind:key="index" v-on:click="updateInputs(question, value);updateMethods(question['id']); sortMethods()">
+                    <div class="methodencheck-topanswer" v-if="name['level'] == 1" v-on:click="showSubAnwser(value)" v-bind:class="{activeAnswer: inputs[question['id'].toString()].includes(parseInt(value))}">
+                      {{ name['antwort'] }}
                     </div>
-                    <div class="methodencheck-subanswer" v-if="name['level'] == 2" v-bind:class="{showSubAnwser: subAnswerActivated}">
-                      <div class="activeSubAnswer" v-if="inputs[question['titel']].includes(parseInt(value))">
-                        {{ name['antwort'] }}
-                      </div>
-                      <div class="inactiveSubAnswer" v-else>
-                        {{ name['antwort'] }}
-                      </div>
+                    <div class="methodencheck-subanswer" v-if="name['level'] == 2" v-bind:class="{showSubAnwser: subAnswerActivated, activeAnswer: inputs[question['id'].toString()].includes(parseInt(value))}">
+                      {{ name['antwort'] }}
                     </div>
                   </div>
               </div>
 
               <!-- SINGLECHOICE ANSWER -->
               <div  class="methodencheck-answers" v-else>
-                <div class="methodencheck-answer" v-for="(name, value, index) in question['antworten']" v-bind:key="index" v-on:click="updateInputs(question['titel'], value);updateMethods(question['titel']); sortMethods()">
-                  <div class="activeAnswer" v-if="inputs[question['titel']] == value">
-                    {{ name }}
-                  </div>
-                  <div class="inactiveAnswer" v-else>
-                    {{ name }}
-                  </div>
+                <div class="methodencheck-answer" v-for="(name, value, index) in question['antworten']" v-bind:key="index" v-on:click="updateInputs(question, value);updateMethods(question['id']); sortMethods()" v-bind:class="{activeAnswer: inputs[question['id'].toString()] == value}">
+                  {{ name }}
                 </div>
               </div>
             </div>
@@ -126,7 +106,7 @@
             <!-- BUTTONS -->
             <div class="methodencheck-buttonContainer">
               <button class="methodencheck-button methodencheck-button-back button button-primary-bg" v-on:click="page--;scrollToTop()"></button>
-              <button class="methodencheck-button methodencheck-button-forward button button-primary-bg" v-on:click="page++;scrollToTop()" v-if="inputs[question['titel']] != 0">Weiter</button>
+              <button class="methodencheck-button methodencheck-button-forward button button-primary-bg" v-on:click="page++;scrollToTop()" v-if="inputs[question['id'].toString()] != 0">{{ textcomponents.weiter }}</button>
             </div>
           </div>
 
@@ -148,7 +128,7 @@
 
     <!-- START: RESULT-PAGE -->
     <div class="methodencheck-page" v-if="page == Object.keys(questions).length + 1">
-      <h2 class="methodencheck-questiontitle">Empfohlene Methoden</h2>
+      <h2 class="methodencheck-questiontitle">{{ textcomponents.empfohleneMethoden }}</h2>
 
       <!-- CARDS WITH METHODS-DESCRIPTION -->
       <div class="methodencheck-results">
@@ -157,7 +137,7 @@
             <h3 class="methodencheck-resulttitle">{{ method['bezeichnung'] }}</h3>
             <div class="methodencheck-resultWrapper">
               <div class="methodencheck-result-leftside" v-bind:class="{wide: method['dauer'] == '' && method['anzahl'] == ''}">
-                <a class="methodencheck-result-link" v-bind:href=" method['link'] " v-if="method['link'] != ''">mehr erfahren</a>
+                <a class="methodencheck-result-link" v-bind:href=" method['link'] " v-if="method['link'] != ''">{{ textcomponents.mehrErfahren}}</a>
                 <div class="methodencheck-result-beschreibung">
                   {{ method['beschreibung'] }}
                 </div>
@@ -179,7 +159,7 @@
       <div class="methodencheck-controls">
         <div class="methodencheck-resultbuttons">
           <button class="button button-primary-bg methodencheck-button-back" v-on:click="page--;scrollToTop()"></button>
-          <button class="button button-primary-bg methodencheck-button methodencheck-button-forward" v-on:click="page = 0; clearInputs(); clearMethods()">zurück zum Start</button>
+          <button class="button button-primary-bg methodencheck-button methodencheck-button-forward" v-on:click="page = 0; clearInputs(); clearMethods()">{{ textcomponents.zurückZumStart }}</button>
         </div>
       </div>
     </div>
@@ -189,6 +169,7 @@
 
 <script>
 import dataset from './json/data_methodencheck.json'
+import datasetEn from './json/data_methodencheck_eng.json'
 
 export default {
   name: 'Methodencheck',
@@ -197,51 +178,58 @@ export default {
       page: 0,
       questions: dataset.fragen,
       methods: dataset.methoden,
+      infotext: dataset.infotext,
+      textcomponents: dataset.textkomponenten,
       inputs: {
-        produktstatus: 0,
-        motivation: 0,
-        untersuchungsziel: 0,
-        untersuchungsschwerpunkt: [],
-        zeit: 0,
-        budget: 0
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": [],
+        "5": 0,
+        "6": 0
       },
       methodsActivated: true,
       subAnswerActivated: false,
-      showInfoText: false
+      showInfoText: false,
+      language: 'de'
     }
   },
   methods: {
+    // UPDATE INPUT-DATA - IF MC-QUESTION ADD VALUES TO ARRAY, ELSE CHANGE NUMBER TO THE SELECTED ONE
     updateInputs: function(question, inputValue) {
       inputValue = parseInt(inputValue);
-      if (this.questions[question]['multiplechoice']) {
+      if (question['multiplechoice']) {
         if (inputValue == 1) {
-          this.inputs[question] = [1];
+          this.inputs[question['id'].toString()] = [1];
         }
         else {
-          var index = this.inputs[question].indexOf(1);
+          var index = this.inputs[question['id'].toString()].indexOf(1);
           if (index > -1) {
-            this.inputs[question].splice(index, 1);
+            this.inputs[question['id'].toString()].splice(index, 1);
           }
 
-          if (this.inputs[question].includes(inputValue)) {
-            var i = this.inputs[question].indexOf(inputValue);
-            this.inputs[question].splice(i, 1);
+          if (this.inputs[question['id'].toString()].includes(inputValue)) {
+            var i = this.inputs[question['id'].toString()].indexOf(inputValue);
+            this.inputs[question['id'].toString()].splice(i, 1);
           }
           else {
-            this.inputs[question].push(inputValue);
+            this.inputs[question['id'].toString()].push(inputValue);
           }
         }
       }
       else {
-        this.inputs[question] = inputValue;
+        this.inputs[question['id'].toString()] = inputValue;
       }
     },
+    // UPDATE METHOD-OBJECT - ALWAYS CHECK FOR EVERY COMPLETED QUESTION BECAUSE USER CAN GO BACK AND FORTH AND CHANGE THE INPUTS
+    // ACITVE --> WHEN METHOD IS STILL POSSIBLE WITH USERS SELECTION
+    // POISITON --> TO ENSURE ACTIVE METHODES ARE SHOWN FIRST IN RIGHT COLUMN WHERE ALL THE METHODS ARE DISPLAYED IN THE TOOL
     updateMethods: function(check) {
       var inputs = this.inputs;
       this.methods.forEach(function(method) {
         switch (check) {
-          case 'produktstatus':
-            if (method['produktstatus'].includes(inputs['produktstatus'].toString())) {
+          case 1:
+            if (method['produktstatus'].includes(inputs['1'].toString())) {
               method['active'] = true;
               method['position'] = 1;
             }
@@ -251,9 +239,9 @@ export default {
             }
             break;
 
-          case 'motivation':
-            if (method['produktstatus'].includes(inputs['produktstatus'].toString()) &&
-                method['motivation'].includes(inputs['motivation'].toString())) {
+          case 2:
+            if (method['produktstatus'].includes(inputs['1'].toString()) &&
+                method['motivation'].includes(inputs['2'].toString())) {
               method['active'] = true;
               method['position'] = 1;
             }
@@ -263,10 +251,10 @@ export default {
             }
             break;
 
-          case 'untersuchungsziel':
-            if (method['produktstatus'].includes(inputs['produktstatus'].toString()) &&
-                method['motivation'].includes(inputs['motivation'].toString()) &&
-                method['untersuchungsziel'].includes(inputs['untersuchungsziel'].toString())) {
+          case 3:
+            if (method['produktstatus'].includes(inputs['1'].toString()) &&
+                method['motivation'].includes(inputs['2'].toString()) &&
+                method['untersuchungsziel'].includes(inputs['3'].toString())) {
               method['active'] = true;
               method['position'] = 1;
             }
@@ -276,11 +264,11 @@ export default {
             }
             break;
 
-          case 'untersuchungsschwerpunkt':
-            if (method['produktstatus'].includes(inputs['produktstatus'].toString()) &&
-                method['motivation'].includes(inputs['motivation'].toString()) &&
-                method['untersuchungsziel'].includes(inputs['untersuchungsziel'].toString()) &&
-                inputs['untersuchungsschwerpunkt'].some(elem => method['untersuchungsschwerpunkt'].includes(elem.toString()))) {
+          case 4:
+            if (method['produktstatus'].includes(inputs['1'].toString()) &&
+                method['motivation'].includes(inputs['2'].toString()) &&
+                method['untersuchungsziel'].includes(inputs['3'].toString()) &&
+                inputs['4'].some(elem => method['untersuchungsschwerpunkt'].includes(elem.toString()))) {
               method['active'] = true;
               method['position'] = 1;
             }
@@ -290,12 +278,12 @@ export default {
             }
             break;
 
-          case 'zeit':
-            if (method['produktstatus'].includes(inputs['produktstatus'].toString()) &&
-                method['motivation'].includes(inputs['motivation'].toString()) &&
-                method['untersuchungsziel'].includes(inputs['untersuchungsziel'].toString()) &&
-                inputs['untersuchungsschwerpunkt'].some(elem => method['untersuchungsschwerpunkt'].includes(elem.toString())) &&
-                method['zeit'].includes(inputs['zeit'].toString())) {
+          case 5:
+            if (method['produktstatus'].includes(inputs['1'].toString()) &&
+                method['motivation'].includes(inputs['2'].toString()) &&
+                method['untersuchungsziel'].includes(inputs['3'].toString()) &&
+                inputs['4'].some(elem => method['untersuchungsschwerpunkt'].includes(elem.toString())) &&
+                method['zeit'].includes(inputs['5'].toString())) {
               method['active'] = true;
               method['position'] = 1;
             }
@@ -305,13 +293,13 @@ export default {
             }
             break;
 
-          case 'budget':
-            if (method['produktstatus'].includes(inputs['produktstatus'].toString()) &&
-                method['motivation'].includes(inputs['motivation'].toString()) &&
-                method['untersuchungsziel'].includes(inputs['untersuchungsziel'].toString()) &&
-                inputs['untersuchungsschwerpunkt'].some(elem => method['untersuchungsschwerpunkt'].includes(elem.toString())) &&
-                method['zeit'].includes(inputs['zeit'].toString()) &&
-                method['budget'].includes(inputs['budget'].toString())) {
+          case 6:
+            if (method['produktstatus'].includes(inputs['1'].toString()) &&
+                method['motivation'].includes(inputs['2'].toString()) &&
+                method['untersuchungsziel'].includes(inputs['3'].toString()) &&
+                inputs['4'].some(elem => method['untersuchungsschwerpunkt'].includes(elem.toString())) &&
+                method['zeit'].includes(inputs['5'].toString()) &&
+                method['budget'].includes(inputs['6'].toString())) {
               method['active'] = true;
               method['position'] = 1;
             }
@@ -323,30 +311,35 @@ export default {
         }
       }
     )},
+    // SORT METHODS SO THE ONE WITH POSITION 1 ARE LISTED BEFORE POSITION 2
     sortMethods: function() {
       this.methods.sort(function (a, b) {
         return a.position - b.position
       })
     },
+    // CHANGE ALL INPUTS-VALUES TO DEFAULT
     clearInputs: function() {
-      this.inputs['produktstatus'] = 0;
-      this.inputs['motivation'] = 0;
-      this.inputs['untersuchungsziel'] = 0;
-      this.inputs['untersuchungsschwerpunkt'] = [];
-      this.inputs['zeit'] = 0;
-      this.inputs['budget'] = 0;
+      this.inputs['1'] = 0;
+      this.inputs['2'] = 0;
+      this.inputs['3'] = 0;
+      this.inputs['4'] = [];
+      this.inputs['5'] = 0;
+      this.inputs['6'] = 0;
       this.methodsActivated = true;
       this.subAnswerActivated = false;
     },
+    // CHANGE METHOD-VALUES TO DEFAULT
     clearMethods: function() {
       this.methods.forEach(function(method) {
         method['active'] = true;
         method['position'] = 1;
       })
     },
+    // CHANGE VALUE OF METHODSACTIVATED IN ORDER TO DISPLAY OR HIDE METHODS IN THE RIGHT COLUMN OF TOOL
     changeMethodeActivated: function() {
       this.methodsActivated = !this.methodsActivated;
     },
+    // CHECK ALL METHODS IF THERE ARE SOME ANY ACITVE METHODS. IF NOT SHOW DEFAULT TEXT.
     showNoResults: function() {
       var results = 0;
       this.methods.forEach(function(method) {
@@ -355,9 +348,15 @@ export default {
         }
       });
       if (results == 0) {
-        return "Leider trifft keine Methode auf Ihre Eingaben zu. Sie können den UX-Methodencheck nochmals durchführen oder sich <a href='https://blog.fhgr.ch/cheval/usability-methoden/'>hier</a> durch die möglichen Methoden lesen."
+        if (this.language == 'de') {
+          return "Leider trifft keine Methode auf Ihre Eingaben zu. Sie können den UX-Methodencheck nochmals durchführen oder sich <a href='https://blog.fhgr.ch/cheval/usability-methoden/'>hier</a> durch die möglichen Methoden lesen."
+        }
+        else {
+          return "Unfortunately, no method matches your input. You can run the UX-Methodencheck again or read through the possible methods <a href='https://blog.fhgr.ch/cheval/usability-methoden/'>here</a>."
+        }
       }
     },
+    // SHOW SUBANSWERES IN MC-QUESTION WHEN PARENT-QUESTION IS SELECTED
     showSubAnwser: function(value) {
       if (value == 0) {
         this.subAnswerActivated = !this.subAnswerActivated;
@@ -366,9 +365,25 @@ export default {
         this.subAnswerActivated = false;
       }
     },
+    // SCROLL TO TOP OF TOOL - ESPECIALLY FOR MOBILE USE
     scrollToTop: function() {
       var top = document.getElementById("methodencheck-top");
       top.scrollIntoView();
+    },
+    // LOAD DATA IN SELECTED LANGUAGE
+    loadData: function() {
+      if (this.language == 'de') {
+        this.questions = dataset.fragen;
+        this.methods = dataset.methoden;
+        this.infotext = dataset.infotext;
+        this.textcomponents = dataset.textkomponenten;
+      }
+      else {
+        this.questions = datasetEn.fragen;
+        this.methods = datasetEn.methoden;
+        this.infotext = datasetEn.infotext;
+        this.textcomponents = datasetEn.textkomponenten;
+      }
     }
   }
 }
@@ -402,6 +417,7 @@ label {
   cursor: pointer;
   transition: all 0.25s;
   background: #ffffff;
+  outline:none;
 }
 .button:hover {
   background: #c0beb2;
@@ -410,6 +426,12 @@ label {
 .methodencheck-page {
   padding: 0 2rem;
   position: relative;
+}
+.methodencheck-introImage {
+  width: 100%;
+  max-width: 760px;
+  object-fit: cover;
+  margin: 0 auto 1rem auto;
 }
 .methodencheck-processbar {
   display: flex;
@@ -515,6 +537,7 @@ label {
   position: relative;
   font-size: 1rem;
   background: #ffffff;
+  outline:none;
 }
 .linkbutton:hover {
   text-decoration: underline;
@@ -544,6 +567,18 @@ label {
   background-position: center;
   width: 0.9rem;
   height: 0.9rem;
+}
+.linkbuttonActive {
+  text-decoration: underline;
+}
+.methodencheck-languageswitch {
+  display: flex;
+  align-items: center;
+  max-width: 760px;
+  margin: 0 auto 2rem auto;
+}
+.methodencheck-languageswitch > span {
+  margin: 0 0.2rem;
 }
 .methodencheck-titlecontainer {
   display: flex;
@@ -686,6 +721,7 @@ input:checked + .slider:before {
   width: calc(50% - 2rem);
   margin-right: 2rem;
   margin-bottom: 2rem;
+  padding: 1rem;
   border: 2px solid #408198;
   border-radius: 5px;
   cursor: pointer;
@@ -715,12 +751,14 @@ input:checked + .slider:before {
   width: 100%;
   border: 2px solid #408198;
   border-radius: 5px;
+  padding: 1rem;
 }
 .methodencheck-subanswer {
   width: 100%;
   border: 2px solid #408198;
   border-radius: 5px;
   display: none;
+  padding: 0.4rem;
 }
 .showSubAnwser {
   display: block;
@@ -781,31 +819,8 @@ input:checked + .slider:before {
   background-image: linear-gradient(rgba(255,255,255,0.3), rgba(255,255,255,1));
 }
 .activeAnswer {
-  width: 100%;
-  padding: 1rem;
   background: #408198;
   color: #ffffff;
-}
-.inactiveAnswer {
-  width: 100%;
-  padding: 1rem;
-}
-.activeTopAnswer {
-  height: 100%;
-  padding: 1rem;
-  background: #408198;
-  color: #ffffff;
-}
-.inactiveTopAnswer {
-  padding: 1rem;
-}
-.activeSubAnswer {
-  padding: 0.4rem;
-  background: #408198;
-  color: #ffffff;
-}
-.inactiveSubAnswer {
-  padding: 0.4rem;
 }
 .methodencheck-controls {
   display: flex;
