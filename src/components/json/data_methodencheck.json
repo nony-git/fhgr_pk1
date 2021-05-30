@@ -158,7 +158,7 @@
 			],
       "anzahl": "ca. 5 Personen",
       "dauer": "ca. 2 Stunden",
-      "beschreibung": "Ein Cognitive Walkthrough gliedert sich in zwei Phasen: Die Vorbereitungsphase und die Analysephase. In der Vorbereitungsphase wird detaillierte Information zu den System-Usern gesammelt und die zu analysierenden Aufgaben ausgewählt. Zudem wird die genaue Handlungsabfolge festgelegt, die Voraussetzung für die korrekte Bewältigung der Aufgaben ist.",
+      "beschreibung": "Ein Cognitive Walkthrough gliedert sich in zwei Phasen: Die Vorbereitungsphase und die Analysephase. In der Vorbereitungsphase wird detaillierte Information zu den System-Usern gesammelt und die zu analysierenden Aufgaben ausgewählt. Zudem wird die genaue Handlungsabfolge festgelegt, die Voraussetzung für die korrekte Bewältigung der Aufgaben ist. ",
       "link": "https://blog.fhgr.ch/cheval/usability-methoden/#cognitive-walkthrough"
 		},
 		{
@@ -209,9 +209,9 @@
 				"2",
 				"3"
 			],
-      "anzahl": "IN BEARBEITUNG",
-      "dauer": "IN BEARBEITUNG",
-      "beschreibung": "IN BEARBEITUNG",
+      "anzahl": "beliebig viele Personen",
+      "dauer": "ca. 1 Stunde bis mehrere Tage",
+      "beschreibung": "Bei der Collaborative Usability Inspection werden nicht nur potentielle Nutzer und Nutzerinnen beobachtet, sonder es werden Personen aus dem ganzen Team miteinbezogen (z.B: auch Entwickler).",
       "link": ""
 		},
 		{
@@ -262,10 +262,10 @@
 				"1",
 				"2"
 			],
-      "anzahl": "IN BEARBEITUNG",
-      "dauer": "IN BEARBEITUNG",
-      "beschreibung": "IN BEARBEITUNG",
-      "link": ""
+      "anzahl": "2 - beliebig viele Personen",
+      "dauer": "3 Stunden",
+      "beschreibung": "Die Claims Analysis wird während der Produktentwicklung für eine systematische Gegenüberstellung der Vor- und Nachteile eingesetzt, die bestimmte Produktmerkmale oder Designelemente auf die Interaktion der Anwender mit dem Produkt haben könnten",
+      "link": "https://blog.fhgr.ch/cheval/usability-methoden/#claims-analysis"
 		},
 		{
 			"id":6,
@@ -345,9 +345,9 @@
 			"untersuchungsschwerpunkt": [
 				"4"
 			],
-      "anzahl": "IN BEARBEITUNG",
-      "dauer": "IN BEARBEITUNG",
-      "beschreibung": "IN BEARBEITUNG",
+      "anzahl": "1 Person (oder mehrere)",
+      "dauer": "unklar, muss laufend geprüft werden",
+      "beschreibung": "Web Accessibility Guidelines sind Richtlinien zur Sicherung der Zugänglichkeit von Webinhalten (Content). Die Richtlinien erläutern, wie Webinhalte für Menschen mit Behinderungen zugänglicher gemacht werden können.",
       "link": ""
 		},
 		{
@@ -371,10 +371,10 @@
 				"1",
 				"5"
 			],
-      "anzahl": "IN BEARBEITUNG",
-      "dauer": "IN BEARBEITUNG",
-      "beschreibung": "IN BEARBEITUNG",
-      "link": ""
+      "anzahl": "10 - 20 Personen",
+      "dauer": "bis zu 3 Monate",
+      "beschreibung": "IAls Fragebogen eignet sich der AttrakDiff insbesondere im Anschluss an andere Testverfahren, wie beispielsweise Usability Tests, in denen der Umgang mit dem Produkt systematisch in einer kontrollierten Umgebung überprüft wird.",
+      "link": "https://blog.fhgr.ch/cheval/usability-methoden/#attrakdiff"
 		},
 		{
 			"id":10,
@@ -396,10 +396,10 @@
 			"untersuchungsschwerpunkt": [
 				"2"
 			],
-      "anzahl": "IN BEARBEITUNG",
-      "dauer": "IN BEARBEITUNG",
-      "beschreibung": "IN BEARBEITUNG",
-      "link": ""
+      "anzahl": "10 - 30 Personen",
+      "dauer": "bis 2 Wochen",
+      "beschreibung": "Der ISOMetrics Fragebogen (kurz) eignet sich eher für die summative Evaluation.",
+      "link": "https://blog.fhgr.ch/cheval/usability-methoden/#isometrics-kurz"
 		},
 		{
 			"id":11,
@@ -421,10 +421,10 @@
 			"untersuchungsschwerpunkt": [
 				"2"
 			],
-      "anzahl": "IN BEARBEITUNG",
-      "dauer": "IN BEARBEITUNG",
-      "beschreibung": "IN BEARBEITUNG",
-      "link": ""
+      "anzahl": "10 - 30 Personen",
+      "dauer": "bis 1 Monat",
+      "beschreibung": "Dieses Verfahren kann sowohl für die summative als auch die qualitative, gestaltungsunterstützende Evaluation einer Software eingesetzt werden.",
+      "link": "https://blog.fhgr.ch/cheval/usability-methoden/#isometrics-lang"
 		},
 		{
 			"id":12,
@@ -446,9 +446,9 @@
 			"untersuchungsschwerpunkt": [
 				"2"
 			],
-      "anzahl": "IN BEARBEITUNG",
-      "dauer": "IN BEARBEITUNG",
-      "beschreibung": "IN BEARBEITUNG",
+      "anzahl": "beliebig viele Personen",
+      "dauer": "10-20min",
+      "beschreibung": "ISONorm 10/110-S ist ein Fragebogen mit 21 Fragen, die sich auf die sieben Grundsätze der Dialoggestaltung, die in der ISO Norm 9241 Teil 10 festgelegt sind, beziehen.",
       "link": ""
 		},
 		{
@@ -471,9 +471,9 @@
 			"untersuchungsschwerpunkt": [
 				"1"
 			],
-      "anzahl": "IN BEARBEITUNG",
-      "dauer": "IN BEARBEITUNG",
-      "beschreibung": "IN BEARBEITUNG",
+      "anzahl": "10 - 30 Personen",
+      "dauer": "ca. 1 Tag",
+      "beschreibung": "SUMI (Software Usability Measurement Inventory) ist eine bewährte Methode zur Messung der Softwarequalität aus Sicht des Endusers.",
       "link": ""
 		},
 		{
@@ -496,9 +496,9 @@
 			"untersuchungsschwerpunkt": [
 				"1"
 			],
-      "anzahl": "IN BEARBEITUNG",
-      "dauer": "IN BEARBEITUNG",
-      "beschreibung": "IN BEARBEITUNG",
+      "anzahl": "10 - 30 Personen",
+      "dauer": "ca. 1 Tag",
+      "beschreibung": "Mithilfe des Messinstruments QUIS (Questionnaire for User Interaction Satisfaction) kann die subjektive Zufriedenheit eines Endusers mit der Computerschnittstelle gemessen werden.",
       "link": ""
 		},
 		{
@@ -521,9 +521,9 @@
 			"untersuchungsschwerpunkt": [
 				"1"
 			],
-      "anzahl": "IN BEARBEITUNG",
-      "dauer": "IN BEARBEITUNG",
-      "beschreibung": "IN BEARBEITUNG",
+      "anzahl": "10 - 30 Personen",
+      "dauer": "ca. 1 Tag",
+      "beschreibung": "Der  Web Usability Index (WUI) ist ein Fragekatalog bestehend aus 137 Fragen, welcher verschiedene Usability-Aspekte aus fünf festgelegten Kategorien überprüft.",
       "link": ""
 		},
 		{
@@ -692,9 +692,9 @@
 				"6",
 				"1"
 			],
-      "anzahl": "IN BEARBEITUNG",
-      "dauer": "IN BEARBEITUNG",
-      "beschreibung": "IN BEARBEITUNG",
+      "anzahl": "Einzeln",
+      "dauer": "1 - mehrere Tage",
+      "beschreibung": "Im Rahmen einer Best Practice Analyse wird durch die Untersuchung der Produkte von Wettbewerbern bzw. von Websites mit ähnlichem Fokus versucht, Anregungen für das eigene Produkt zu erhalten und Varianten für eine möglichst optimale Umsetzung / Gestaltung zu ermitteln. Mehr Erfahren.",
       "link": ""
 		},
 		{
