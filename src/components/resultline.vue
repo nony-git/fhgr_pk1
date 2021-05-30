@@ -1,12 +1,18 @@
 <template>
   <div class="report-bereich">
-    <h2>Information & Kommunikation</h2>
-    <div class="report-line">
+    <h2> TODO</h2>
+    <div  v-for="(teilbereich, index) in eingabe"
+          :key='index'
+          :value='teilbereich'
+          class="report-line">
       <div class="report-icon">
-        X
+        <span v-if="teilbereich.schnitt < 2" class="rating-severe">X</span>
+        <span v-if="teilbereich.schnitt >= 2 && teilbereich.schnitt < 3" class="rating-bad">!!</span>
+        <span v-if="teilbereich.schnitt >= 3 && teilbereich.schnitt < 4" class="rating-medium">!</span>
+        <span v-if="teilbereich.schnitt >= 4" class="rating-good">Y</span>
       </div>
       <div class="report-teilbereich">
-        <h3>{{eingabe}}</h3>
+        <h3>{{teilbereich.name}}</h3>
       </div>
     </div>
   </div>
@@ -74,5 +80,17 @@ td{
 }
 .report-teilbereich h3{
   margin:0;
+}
+.rating-severe{
+  color:red;
+}
+.rating-bad{
+  color:orange;
+}
+.rating-medium{
+  color:orange;
+}
+.rating-good{
+  color:green;
 }
 </style>

@@ -289,11 +289,11 @@
               <div class="legende-spacer"></div>
               <button class="bib-pagenav btn-legende">Download</button>
             </div>
-
+            {{ userAnswers }}
             <resultline
-            v-for="(h,index) in testArray"
+            v-for="(h) in testArray"
                   :eingabe="h"
-                  :key= index
+                  :key="h.name"
             ></resultline>
 
             <div class="bottom-nav">
@@ -342,17 +342,29 @@ export default {
       answersComplete:{},
       language: this.language,
       showInfoText: false,
+
+      // soll so an comp. resultline übergeben werden
       testArray:{
-        "Information & Kommunikation":
+        "Information & Kommunikation":[
+            {
+              "name":"Kontakt und Zugang",
+              "schnitt":"4"
+            },
+            {
+              "name":"Seitenüberblick",
+              "schnitt":"3"
+            }
+        ],
+        "Recherche im Bestand":[
           {
-            "Kontakt und Zugang":"4",
-            "Seitenüberblick":"3"
+            "name":"Suchen und Erkunden",
+            "schnitt":"1"
           },
-        "Recherche im Bestand":
           {
-            "Suchen und Erkunden":"1",
-            "Präsentation und Zugriff":"2"
-          },
+            "name":"Präsentation und Zugriff",
+            "schnitt":"2"
+          }
+        ]
       }
     };
   },
@@ -360,7 +372,7 @@ export default {
     
     toViewArray: function(){
       let ergebnis = [];
-      let selectedComponents= ["Kontaktinformationen","Kontaktformular","Personalisierte Suchmasken"];
+      // let selectedComponents= ["Kontaktinformationen","Kontaktformular","Personalisierte Suchmasken"];
       // nimm fragen von komponente, teilbereich und bereich darüber
       // einzelne komponente
       for (let category of bibeval_json.categories_levelone){
@@ -368,7 +380,7 @@ export default {
           for (let component of subcategory.categories_levelthree){
             // Wenn Name der Komponente in array gefunden
             // wenn selection fertig + this. 
-            if(selectedComponents.includes(component.name)){
+            if(this.selectedComponents.includes(component.name)){
               // add Bereich
               if(!ergebnis.includes(category)){
                 category.category_name = category.name
