@@ -1,13 +1,13 @@
 {
   "infotext": {
     "haupttext": [
-      "ENGLISCH Im Bereich der Usability Evaluation existiert eine Vielzahl unterschiedlicher Methoden, die für die Untersuchung interaktiver Produkte genutzt werden können. Die Entscheidung welche Methode dabei konkret für das jeweilige Produkt und den jeweiligen Zweck am geeignetsten ist, kann nicht immer einfach getroffen werden.",
-      "ENGLISCH Mithilfe des UX-Methodenchecks, erfahren Sie in kurzer Zeit nach Beantwortung weniger Fragen welche UX-Methode für Ihre Evaluation in Frage kommt."
+      "In the area of usability evaluation, there are many different UX-methods that can be used to analyze interactive products. The decision which method suits a particular product and purpose best cannot be made easily in most cases.",
+      "With the UX-Methodencheck you can quickly find out which UX-method is suitable for your evaluation by answering some simple questions."
     ],
     "zusatztext": [
-      "ENGLISCH In der Regel ist für die Entscheidung einer passenden Methode eine gewisse Erfahrung und entsprechendes Know-How erforderlich. Die Auswahl einer passenden Evaluationsmethode und die Konzeption eines geeigneten Untersuchungsdesigns ist daher eine intellektuelle Aufgabe, die nur bedingt automatisierbar ist.",
-      "ENGLISCH Hierfür wird ein Dialog genutzt, bei dem verschiedene Aspekte, wie bspw. der Produktstatus oder die Zielsetzungen der Untersuchung abgefragt werden. Am Ende des Dialogs erhalten Sie eine Übersicht der für Sie in Frage kommenden Methoden.",
-      "ENGLISCH Sofern Sie weiterführende Fragen haben, sich gerne zusätzlich von uns beraten lassen würden, oder die Evaluation, die Ihnen empfohlen wurde, mit unserer Unterstützung durchführen wollen, so zögern Sie nicht uns zu <a href='https://blog.fhgr.ch/cheval/kontakt/'>kontaktieren</a>."
+      "Usually to decide whether a method fits or not requires a certain experience and know-how. That’s why the selection of an appropriate evaluation method and the conception of a suitable design process is an intellectual task, which can only be automated to a limited extent.",
+      "A survey is used for this purpose, in which e.g. the product status or the objectives of the research are asked. At the end of the survey, you will receive an overview of the methods that might be suitable for you.",
+      "If you have any further questions, would like to receive additional advice from us or if you would like to proceed with the evaluation that was recommended to you with our support, please do not hesitate to  <a href='https://blog.fhgr.ch/cheval/kontakt/'>contact</a> us."
     ]
   },
   "textkomponenten": {
@@ -156,9 +156,9 @@
 				"2",
 				"3"
 			],
-      "anzahl": "approx. 5 people",
-      "dauer": "approx. 2 hours",
-      "beschreibung": "",
+      "anzahl": "ca. 5 Personen",
+      "dauer": "ca. 2 Stunden",
+      "beschreibung": "Ein Cognitive Walkthrough gliedert sich in zwei Phasen: Die Vorbereitungsphase und die Analysephase. In der Vorbereitungsphase wird detaillierte Information zu den System-Usern gesammelt und die zu analysierenden Aufgaben ausgewählt. Zudem wird die genaue Handlungsabfolge festgelegt, die Voraussetzung für die korrekte Bewältigung der Aufgaben ist. ",
       "link": "https://blog.fhgr.ch/cheval/usability-methoden/#cognitive-walkthrough"
 		},
 		{
@@ -182,9 +182,9 @@
 				"2",
 				"3"
 			],
-      "anzahl": "approx. 5-7 people",
-      "dauer": "approx. 2 hours",
-      "beschreibung": "",
+      "anzahl": "ca. 5-7 Personen",
+      "dauer": "ca. 2 Stunden",
+      "beschreibung": "Im Pluralistic Usability Walkthrough, wird der Durchlauf in einem Team mit einem repräsentativen Enduser evaluiert. Zusätzlich gehören zum Team ein Entwickler und ein Usability-Experte. Der Enduser im Team hat die Aufgabe, das zu evaluierende Produkt aus seiner Perspektive zu bewerten.",
       "link": "https://blog.fhgr.ch/cheval/usability-methoden/#cognitive-walkthrough"
 		},
 		{
@@ -209,14 +209,14 @@
 				"2",
 				"3"
 			],
-      "anzahl": "IN BEARBEITUNG",
-      "dauer": "IN BEARBEITUNG",
-      "beschreibung": "IN BEARBEITUNG",
+      "anzahl": "beliebig viele Personen",
+      "dauer": "ca. 1 Stunde bis mehrere Tage",
+      "beschreibung": "Bei der Collaborative Usability Inspection werden nicht nur potentielle Nutzer und Nutzerinnen beobachtet, sonder es werden Personen aus dem ganzen Team miteinbezogen (z.B: auch Entwickler).",
       "link": "#"
 		},
 		{
 			"id":4,
-			"bezeichnung":"Heuristic evaluation",
+			"bezeichnung":"Heuristische Evaluation",
 			"zeit":"4",
 			"budget":"4",
 			"relevanz":"5",
@@ -236,10 +236,10 @@
 				"2",
 				"3"
 			],
-      "anzahl": "approx. 3-5 people",
-      "dauer": "approx. 2 hours",
-      "beschreibung": "",
-      "link": "#"
+      "anzahl": "ca. 3-5 Personen",
+      "dauer": "ca. 2 Stunden",
+      "beschreibung": "Bei einer Heuristischen Evaluation überprüfen eine Reihe von Experten und Expertinnen, ob das User Interface eines Produktes konform zu bestimmten anerkannten Prinzipien des Usability Engineerings ist. Diese Prinzipien werden als Heuristiken bezeichnet.",
+      "link": "https://blog.fhgr.ch/cheval/usability-methoden/#heuristic-evaluation"
 		},
 		{
 			"id":5,
@@ -262,10 +262,10 @@
 				"1",
 				"2"
 			],
-      "anzahl": "IN BEARBEITUNG",
-      "dauer": "IN BEARBEITUNG",
-      "beschreibung": "IN BEARBEITUNG",
-      "link": "#"
+      "anzahl": "2 - beliebig viele Personen",
+      "dauer": "3 Stunden",
+      "beschreibung": "Die Claims Analysis wird während der Produktentwicklung für eine systematische Gegenüberstellung der Vor- und Nachteile eingesetzt, die bestimmte Produktmerkmale oder Designelemente auf die Interaktion der Anwender mit dem Produkt haben könnten.",
+      "link": "https://blog.fhgr.ch/cheval/usability-methoden/#claims-analysis"
 		},
 		{
 			"id":6,
@@ -290,10 +290,10 @@
 			"untersuchungsschwerpunkt": [
 				"2"
 			],
-      "anzahl": "IN BEARBEITUNG",
-      "dauer": "IN BEARBEITUNG",
-      "beschreibung": "IN BEARBEITUNG",
-      "link": "#"
+      "anzahl": "",
+      "dauer": "",
+      "beschreibung": "Diese Norm geht auf Grundsätze der Dialoggestaltung ein und umfasst die sieben Kriterien.",
+      "link": "https://blog.fhgr.ch/cheval/ucd-prozess/#iso-9241-110"
 		},
 		{
 			"id":7,
@@ -318,9 +318,9 @@
 			"untersuchungsschwerpunkt": [
 				"3"
 			],
-      "anzahl": "IN BEARBEITUNG",
-      "dauer": "IN BEARBEITUNG",
-      "beschreibung": "IN BEARBEITUNG",
+      "anzahl": "",
+      "dauer": "",
+      "beschreibung": "Diese Norm beschreibt den Standard zur Ergonomie der Mensch-System-Interaktion. Teil 12 beschäftigt sich mit der Informationspräsentation interaktiver Produkte und kann eingesetzt werden, um signifikante Fehler in der Informationsdarstellung von Entwicklungsbeginn an zu vermeiden. ",
       "link": "https://blog.fhgr.ch/cheval/ucd-prozess/#iso-9241-12"
 		},
 		{
@@ -345,9 +345,9 @@
 			"untersuchungsschwerpunkt": [
 				"4"
 			],
-      "anzahl": "IN BEARBEITUNG",
-      "dauer": "IN BEARBEITUNG",
-      "beschreibung": "IN BEARBEITUNG",
+      "anzahl": "1 Person (oder mehrere)",
+      "dauer": "unklar, muss laufend geprüft werden",
+      "beschreibung": "Web Accessibility Guidelines sind Richtlinien zur Sicherung der Zugänglichkeit von Webinhalten (Content). Die Richtlinien erläutern, wie Webinhalte für Menschen mit Behinderungen zugänglicher gemacht werden können.",
       "link": "#"
 		},
 		{
@@ -371,10 +371,10 @@
 				"1",
 				"5"
 			],
-      "anzahl": "IN BEARBEITUNG",
-      "dauer": "IN BEARBEITUNG",
-      "beschreibung": "IN BEARBEITUNG",
-      "link": "#"
+      "anzahl": "10 - 20 Personen",
+      "dauer": "bis zu 3 Monate",
+      "beschreibung": "Als Fragebogen eignet sich der AttrakDiff insbesondere im Anschluss an andere Testverfahren, wie beispielsweise Usability Tests, in denen der Umgang mit dem Produkt systematisch in einer kontrollierten Umgebung überprüft wird.",
+      "link": "https://blog.fhgr.ch/cheval/usability-methoden/#attrakdiff"
 		},
 		{
 			"id":10,
@@ -396,14 +396,14 @@
 			"untersuchungsschwerpunkt": [
 				"2"
 			],
-      "anzahl": "IN BEARBEITUNG",
-      "dauer": "IN BEARBEITUNG",
-      "beschreibung": "IN BEARBEITUNG",
-      "link": "#"
+      "anzahl": "10 - 30 Personen",
+      "dauer": "bis 2 Wochen",
+      "beschreibung": "Der ISOMetrics Fragebogen (kurz) eignet sich eher für die summative Evaluation.",
+      "link": "https://blog.fhgr.ch/cheval/usability-methoden/#isometrics-kurz"
 		},
 		{
 			"id":11,
-			"bezeichnung":"ISOMetrics (long)",
+			"bezeichnung":"ISOMetrics (lang)",
 			"zeit":"2",
 			"budget":"2",
 			"relevanz":"3",
@@ -421,10 +421,10 @@
 			"untersuchungsschwerpunkt": [
 				"2"
 			],
-      "anzahl": "IN BEARBEITUNG",
-      "dauer": "IN BEARBEITUNG",
-      "beschreibung": "IN BEARBEITUNG",
-      "link": "#"
+      "anzahl": "10 - 30 Personen",
+      "dauer": "bis 1 Monat",
+      "beschreibung": "Dieses Verfahren kann sowohl für die summative als auch die qualitative, gestaltungsunterstützende Evaluation einer Software eingesetzt werden",
+      "link": "https://blog.fhgr.ch/cheval/usability-methoden/#isometrics-lang"
 		},
 		{
 			"id":12,
@@ -446,10 +446,10 @@
 			"untersuchungsschwerpunkt": [
 				"2"
 			],
-      "anzahl": "IN BEARBEITUNG",
-      "dauer": "IN BEARBEITUNG",
-      "beschreibung": "IN BEARBEITUNG",
-      "link": "#"
+      "anzahl": "beliebig viele Personen",
+      "dauer": "10-20min",
+      "beschreibung": "ISONorm 10/110-S ist ein Fragebogen mit 21 Fragen, die sich auf die sieben Grundsätze der Dialoggestaltung, die in der ISO Norm 9241 Teil 10 festgelegt sind, beziehen.",
+      "link": ""
 		},
 		{
 			"id":13,
@@ -471,10 +471,10 @@
 			"untersuchungsschwerpunkt": [
 				"1"
 			],
-      "anzahl": "IN BEARBEITUNG",
-      "dauer": "IN BEARBEITUNG",
-      "beschreibung": "IN BEARBEITUNG",
-      "link": "#"
+      "anzahl": "10 - 30 Personen",
+      "dauer": "ca. 1 Tag",
+      "beschreibung": "SUMI (Software Usability Measurement Inventory) ist eine bewährte Methode zur Messung der Softwarequalität aus Sicht des Endusers.",
+      "link": ""
 		},
 		{
 			"id":14,
@@ -496,10 +496,10 @@
 			"untersuchungsschwerpunkt": [
 				"1"
 			],
-      "anzahl": "IN BEARBEITUNG",
-      "dauer": "IN BEARBEITUNG",
-      "beschreibung": "IN BEARBEITUNG",
-      "link": "#"
+      "anzahl": "10 - 30 Personen",
+      "dauer": "ca. 1 Tag",
+      "beschreibung": "Mithilfe des Messinstruments QUIS (Questionnaire for User Interaction Satisfaction) kann die subjektive Zufriedenheit eines Endusers mit der Computerschnittstelle gemessen werden. ",
+      "link": ""
 		},
 		{
 			"id":15,
@@ -521,9 +521,9 @@
 			"untersuchungsschwerpunkt": [
 				"1"
 			],
-      "anzahl": "IN BEARBEITUNG",
-      "dauer": "IN BEARBEITUNG",
-      "beschreibung": "IN BEARBEITUNG",
+      "anzahl": "10 - 30 Personen",
+      "dauer": "ca. 1 Tag",
+      "beschreibung": "Der  Web Usability Index (WUI) ist ein Fragekatalog bestehend aus 137 Fragen, welcher verschiedene Usability-Aspekte aus fünf festgelegten Kategorien überprüft.",
       "link": "#"
 		},
 		{
@@ -551,9 +551,9 @@
 				"8",
 				"1"
 			],
-      "anzahl": "IN BEARBEITUNG",
-      "dauer": "IN BEARBEITUNG",
-      "beschreibung": "IN BEARBEITUNG",
+      "anzahl": "",
+      "dauer": "",
+      "beschreibung": "Contextual Inquiry ist eine strukturierte Feldbefragungs-Methode, die prinzipiell auf herkömmlichen journalistischen Befragungstechniken beruht. Sie dient im Rahmen der Produktentwicklung der Sammlung von Informationen, die für die Anforderungsdefinition genutzt werden können.",
       "link": "https://blog.fhgr.ch/cheval/usability-methoden/#interviews-umfragen"
 		},
 		{
@@ -583,9 +583,9 @@
 				"8",
 				"1"
 			],
-      "anzahl": "approx. 6-12 people",
-      "dauer": "approx. 2 hours",
-      "beschreibung": "IN BEARBEITUNG",
+      "anzahl": "ca. 6-12 Personen",
+      "dauer": "ca. 2 Stunden",
+      "beschreibung": "Bei Fokusgruppen handelt es sich um strukturierte Diskussionen zu vorgegebenen Themen bzw. Fragestellungen, die von einem geschulten Moderator geleitet werden. Die Teilnehmer der Gruppe sollten dabei ähnliche demographische Merkmale aufweisen und repräsentieren eine spezifische Zielgruppe. ",
       "link": "https://blog.fhgr.ch/cheval/usability-methoden/#FocusGroup"
 		},
 		{
@@ -611,9 +611,9 @@
 				"3",
 				"1"
 			],
-      "anzahl": "8 - 12 people",
-      "dauer": "30 - 90 minutes",
-      "beschreibung": "IN BEARBEITUNG",
+      "anzahl": "8 - 12 Personen",
+      "dauer": "30 bis 90 Minuten",
+      "beschreibung": "Im Rahmen eines Usability-Tests bearbeiten Testpersonen mit dem zu untersuchenden Produkt realistische Aufgaben, wobei sie von Usability-Experten beobachtet werden.",
       "link": "https://blog.fhgr.ch/cheval/usability-methoden/#usability-test"
 		},
 		{
@@ -637,9 +637,9 @@
 			"untersuchungsschwerpunkt": [
 				"2"
 			],
-      "anzahl": "approx. 10-12 people",
-      "dauer": "approx. 15 minutes",
-      "beschreibung": "IN BEARBEITUNG",
+      "anzahl": "ca. 10-12 Personen",
+      "dauer": "ca. 15 Minuten",
+      "beschreibung": "Das Card Sorting ist ein einfach anwendbares Verfahren, dass zur Beschreibung von Workflows oder auch zur Entwicklung von Navigationsmenüs genutzt werden kann. Dabei stehen die Wahrnehmung und Erwartungen der Nutzenden an das User Interface im Vordergrund.",
       "link": "https://blog.fhgr.ch/cheval/usability-methoden/#card-sorting"
 		},
 		{
@@ -663,9 +663,9 @@
 				"3",
 				"8"
 			],
-      "anzahl": "3 - 5 people (for group discussion)",
-      "dauer": "approx. 30 minutes (per Persona)",
-      "beschreibung": "IN BEARBEITUNG",
+      "anzahl": "3 - 5 Personen (Für Gruppendiskussion)",
+      "dauer": "ca. 30 Minuten (Pro Persona)",
+      "beschreibung": "Bei dieser Methode werden Stereotypen von zukünftigen Nutzern und Nutzerinnen erstellt. Den Personas werden Namen, oftmals auch ein Bild und bestimmte Eigenschaften zugeordnet. Authentizität ist wichtig damit man sich mit ihnen identifizieren kann.",
       "link": "https://blog.fhgr.ch/cheval/usability-methoden/#personas"
 		},
 		{
@@ -692,9 +692,9 @@
 				"6",
 				"1"
 			],
-      "anzahl": "IN BEARBEITUNG",
-      "dauer": "IN BEARBEITUNG",
-      "beschreibung": "IN BEARBEITUNG",
+      "anzahl": "Einzeln",
+      "dauer": "1 - mehrere Tage",
+      "beschreibung": "Im Rahmen einer Best Practice Analyse wird durch die Untersuchung der Produkte von Wettbewerbern bzw. von Websites mit ähnlichem Fokus versucht, Anregungen für das eigene Produkt zu erhalten und Varianten für eine möglichst optimale Umsetzung / Gestaltung zu ermitteln.",
       "link": "#"
 		},
 		{
