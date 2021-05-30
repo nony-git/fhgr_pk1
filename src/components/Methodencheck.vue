@@ -984,6 +984,10 @@ input:checked + .slider:before {
     background: #ffffff;
     color: #000000;
   }
+  .activeAnswer {
+    background: #408198 !important;
+    color: #ffffff !important;
+  }
 }
 
 </style>
