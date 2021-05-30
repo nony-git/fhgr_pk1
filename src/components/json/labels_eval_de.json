@@ -1,0 +1,17 @@
+{
+    "infotext": {
+      "haupttext": [
+        "Mit BibEval stellt das Schweizerische Institut für Informationswissenschaft (SII) eine modular verwendbare, hierarchisch strukturierte Liste von Evaluationskriterien zur Verfügung, mit welcher Websiten auf Usabilty Schwachstellen überprüft werden können. "
+      ],
+      "zusatztext": [
+        "Mithilfe eines Fragebogens kann das BibEval Tool Ihnen helfen, Schwachstellen ihres Webauftritts zu evaluieren. Der hierachisch struktutierte Aufbau, erlaubt es spezifsche Bereiche einer Homepage zu untersuchen. Durch Klicken auf das Info-Icon erhalten sie weiterführende Informationen zur Frage. Pro Fragen können Sie zuästzlich Kommentare hinzufügen. "
+      ]
+    },
+    "textkomponenten": {
+      "mehrErfahren": "mehr erfahren",
+      "weniger": "weniger",
+      "start": "Start",
+      "weiter": "Weiter",
+      "zurückZumStart": "zurück zum Start"
+    }
+}

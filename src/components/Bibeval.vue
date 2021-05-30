@@ -5,7 +5,7 @@
         Bereich: {{ selectedCategories }}<br>
         Teilbereich: {{ selectedSubCategories }}<br>
         Komponenten: {{ selectedComponents }}<br>
-				{{bibeval_json}}
+				
         <!-- PAGE 0 / INFO PAGE -->
         <template v-if="page == 0">
           <img class="bib-header-img" src="../assets/bibeval_intro_image.png" />
@@ -14,23 +14,22 @@
           <button class="btn btn-forward" @click="page =3">Jump to Report</button>
           <!-- -->
 
-          <div class="language">
-            <span>DE</span>
-            <label class="eval-sprachswitch">
-              <input type="checkbox" v-on:click="englishActivated()">
-              <span class="toggleswitch"></span>
-            </label>
-            <span>EN</span>
+          <!-- LANGUAGE SWITCH -->
+          <div class="methodencheck-languageswitch">
+              <button class="linkbutton" v-on:click="language = 'de'; loadLabels()" v-bind:class="{linkbuttonActive: language == 'de'}">
+                Deutsch
+              </button>
+              <span>|</span>
+              <button class="linkbutton" v-on:click="language = 'en'; loadLabels()" v-bind:class="{linkbuttonActive: language == 'en'}">
+                English
+              </button>
           </div>
-          <span v-if="language=='de' || language==undefined">
             <p class="bibeval-text">
-                Mit BibEval stellt das Schweizerische Institut für Informationswissenschaft (SII) 
-                eine modular verwendbare, hierarchisch strukturierte Liste von Evaluationskriterien 
-                zur Verfügung, mit welcher Websiten auf Usabilty Schwachstellen überprüft werden können.
+                {{ infotext.haupttext }}
             </p>
             <!-- ADDITIONAL INFOTEXT -->
             <div class="bibeval-linkbuttons" v-if="!showInfoText">
-              <button class="linkbutton linkbutton-more" v-on:click="showInfoText = true">mehr erfahren</button>
+              <button class="linkbutton linkbutton-more" v-on:click="showInfoText = true">{{ textcomponents.mehrErfahren }}</button>
             </div>
             <p class="bibeval-text" v-if="showInfoText">
                 Mithilfe eines Fragebogens kann das BibEval Tool Ihnen helfen,
@@ -42,29 +41,7 @@
             <div class="bibeval-linkbuttons" v-if="showInfoText">
               <button class="linkbutton linkbutton-less" v-on:click="showInfoText = false">weniger</button>
             </div>
-          </span>
-          <span v-if="language=='en'">
-            <p class="bibeval-text">
-                With the “Usability Evaluation”-tool, the Swiss Institute of Information Science
-                (SII) provides a modularly usable, hierarchically structured list of evaluation criteria. 
-                The tool is supposed to identify and evaluate usability issues of corporate or library websites.
-            </p>
-            <!-- ADDITIONAL INFOTEXT -->
-            <div class="bibeval-linkbuttons" v-if="!showInfoText">
-              <button class="linkbutton linkbutton-more" v-on:click="showInfoText = true">more</button>
-            </div>
-            <p class="bibeval-text" v-if="showInfoText">
-                The hierarchical structure allows you to analyze specific parts of a homepage. 
-                At the beginning you are asked if you want to analyze a corporate website or a library website. 
-                Depending on your selection, different sectors to be evaluated are available to choose.
-                The matching components appear automatically when you select the sectors to be evaluated. 
-                Suggested components are selected by default, but you are free to choose which sectors or components you want to evaluate. 
-                You can revoke your selection at any time and select new sectors or components to your question catalog.
-            </p>
-            <div class="bibeval-linkbuttons" v-if="showInfoText">
-              <button class="linkbutton linkbutton-less" v-on:click="showInfoText = false">less</button>
-            </div>
-          </span>
+
           <!-- BUTTON TO START TOOL -->
           <div class="bibeval-buttons-start">
             <button class="bib-pagenav" v-on:click="page++;scrollToTop()">Start</button>
@@ -310,6 +287,8 @@ import selectButton from "./SelectButton.vue";
 import bibeval_json from "./json/data_bibeval.json";
 import resultline from './resultline.vue';
 import webeval_json from "./json/data_webeval.json";
+import labels from './json/labels_eval_de.json';
+import labelsEn from './json/labels_eval_en.json';
 
 // let toView;
 export default {
@@ -340,7 +319,9 @@ export default {
       userComments: {},
       showImg: true,
       answersComplete:{},
-      language: this.language,
+      language: 'de',
+      infotext: labels.infotext,
+      textcomponents: labels.textkomponenten,
       showInfoText: false,
 
       // soll so an comp. resultline übergeben werden
@@ -484,12 +465,16 @@ export default {
 				this.selectedSubCategories = [];
 			}
 		},
-
-    englishActivated: function(){
-      if(this.language == "de" || this.language == undefined)this.language = "en";
-      else this.language = "de";
-      // TODO 
-      //nimm englisches JSON
+    // LOAD DATA IN SELECTED LANGUAGE
+    loadLabels: function() {
+      if (this.language == 'de') {
+        this.infotext = labels.infotext;
+        this.textcomponents = labels.textkomponenten;
+      }
+      else {
+        this.infotext = labelsEn.infotext;
+        this.textcomponents = labelsEn.textkomponenten;
+      }
     },
     findHighest: function(quest){
       let highest = 0;
