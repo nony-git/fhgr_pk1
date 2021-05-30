@@ -545,7 +545,7 @@ label {
 .linkbutton-more::after {
   content: "";
   position: absolute;
-  top: 0.3rem;
+  top: 0.2rem;
   right: -1.2rem;
   transform: rotate(270deg);
   background: url("../assets/Arrow.svg");
