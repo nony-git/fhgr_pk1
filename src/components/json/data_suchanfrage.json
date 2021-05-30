@@ -1,0 +1,33 @@
+{
+  "infotext": "Als professionelle Informationsdienstleister heben sich Bibliotheken durch einen hohen Qualitätsanspruch und fachlich überprüfte Inhalte von herkömmlichen Webanbietern ab. Dem entsprechend ist es besonders wichtig, dass Grundlagen der Recherche korrekt und nachvollziehbar erfolgen. Dies ist jedoch dann nicht mehr der Fall, wenn Suchtechnologien falsch konfiguriert wurden, und Suchanfragen in Konsequenz nur noch scheinbar korrekt abgearbeitet werden. Um Ihnen bei der Überprüfung Ihres Webangebots zu assistieren, haben wir hier eine Liste an Suchanfragen zusammengestellt, die Ihnen hierbei behilflich sein soll.",
+  "textkomponenten": {
+    "boolscheOperatoren": "Boolesche Operatoren",
+    "trunkierungenWildcards": "Trunkierungen und Wildcards",
+    "eingabeLeeren": "Eingabe leeren",
+    "suchanfrage": "Suchanfrage",
+    "anzahlTreffer": "Anzahl Treffer",
+    "korrekteAnzahl": "Korrekte Anzahl",
+    "placeholderSuchanfrage1": "Hier Suchanfrage eingeben z.B. Schweiz",
+    "placeholderSuchanfrage2": "Hier Suchanfrage eingeben z.B. Zürich",
+    "placeholderSuchanfrage3": "Hier Suchanfrage eingeben z.B. Johannes",
+    "placeholderSuchanfrage4": "Hier Suchanfrage eingeben z.B. Johan",
+    "placeholderSuchanfrage5": "Hier Suchanfrage eingeben z.B. Johann",
+    "placeholderSuchanfrage6": "Hier Suchanfrage eingeben z.B. Johanna",
+    "placeholderSuchanfrage7": "Hier Suchanfrage eingeben z.B. Johannes",
+    "placeholderSuchanfrage8": "Hier Suchanfrage eingeben z.B. Müller-Jacquier",
+    "placeholderTreffer": "Hier Anzahl Treffer eingeben",
+    "tooltip1": "Kleinster Wert von A oder B",
+    "tooltip2": "Kleinster Wert von A oder C",
+    "tooltip3": "Kleinster Wert von B oder C",
+    "tooltip4": "Anzahl A + Anzahl B - Anzahl D",
+    "tooltip5": "Anzahl D + Anzahl C - Anzahl E - Anzahl F",
+    "tooltip6": "Überlicherweise = Anzahl H",
+    "tooltip7": "Anzahl D + Anzahl E - Anzahl F",
+    "tooltip8": "Anzahl A + Anzahl B + Anzahl C + Anzahl D",
+    "tooltip9": "Anzahl A + Anzahl B + Anzahl C + Anzahl D",
+    "tooltip10": "Anzahl E",
+    "tooltip11": "Anzahl B + Anzahl C + Anzahl D",
+    "tooltip12": "Anzahl F",
+    "tooltip13": "Anzahl H"
+  }
+}

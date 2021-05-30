@@ -1,0 +1,33 @@
+{
+  "infotext": "As professional information service providers, libraries distinguish themselves from conventional web providers through high quality standards and professionally verified content. Accordingly, it is particularly important that basic research is carried out correctly and comprehensibly. However, this is no longer the case if search technologies have been configured incorrectly, and search queries are consequently only processed in an apparently correct manner. To assist you in checking your web services, we have compiled a list of search queries here that should help you in this regard.",
+  "textkomponenten": {
+    "boolscheOperatoren": "Boolean operators",
+    "trunkierungenWildcards": "Truncations and wildcards",
+    "eingabeLeeren": "Clear inputs",
+    "suchanfrage": "Search Query",
+    "anzahlTreffer": "Number Of Hits",
+    "korrekteAnzahl": "Correct Number",
+    "placeholderSuchanfrage1": "Enter search query here e.g. Schweiz",
+    "placeholderSuchanfrage2": "Enter search query here e.g. Zürich",
+    "placeholderSuchanfrage3": "Enter search query here e.g. Johannes",
+    "placeholderSuchanfrage4": "Enter search query here e.g. Johan",
+    "placeholderSuchanfrage5": "Enter search query here e.g. Johann",
+    "placeholderSuchanfrage6": "Enter search query here e.g. Johanna",
+    "placeholderSuchanfrage7": "Enter search query here e.g. Johannes",
+    "placeholderSuchanfrage8": "Enter search query here e.g. Müller-Jacquier",
+    "placeholderTreffer": "Enter number of hits here",
+    "tooltip1": "Smallest value of A or B",
+    "tooltip2": "Smallest value of A or C",
+    "tooltip3": "Smallest value of B or C",
+    "tooltip4": "Value A + value B - value D",
+    "tooltip5": "Value D + value C - value E - value F",
+    "tooltip6": "Usually = value H",
+    "tooltip7": "Value D + value E - value F",
+    "tooltip8": "Value A + value B + value C + value D",
+    "tooltip9": "Value A + value B + value C + value D",
+    "tooltip10": "Value E",
+    "tooltip11": "Value B + value C + value D",
+    "tooltip12": "Value F",
+    "tooltip13": "Value H"
+  }
+}
