@@ -80,7 +80,7 @@
                     :value="website"
                     @click="showImg = false; loadJson('webeval')"
 										v-bind:class="{selected: wasUntersuchen == 'webeval'}">
-                    Website <br> (Web-Eval)
+                    Unternehmenswebsite <br> (Web-Eval)
                 </button>
 
                 <button
@@ -657,6 +657,7 @@ input:checked + .toggleswitch:before {
 
 .btn-forward {
   background: #817E65;
+  height: 44px;
   color: #ffffff;
   margin-top: 0;
 }
