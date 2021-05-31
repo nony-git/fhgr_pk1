@@ -203,7 +203,7 @@
             :userAnswers="userAnswers"
             :textcomponents="textcomponents"
             ></QuestionView>
-
+     
             <!-- Navigiere zwischen Views -->
             <div class="bibeval-buttonContainer">
               <!-- rueckwaerts -->
@@ -214,7 +214,7 @@
               <button v-if="currentView == toViewArray.length-1"
               class="btn btn-forward" @click="page += 1; scrollToTop()">{{ textcomponents.abschliessen }}</button>
             </div>
-            {{ userAnswers }}
+            {{ toExport }}
         </template>
         <template v-if="page == 3">
           <h1>{{ textcomponents.page3h1 }}</h1>
@@ -269,6 +269,17 @@
                 Download CSV
               </download-csv>
             </button>
+
+            <!-- nested JSON to csv -->
+            <!-- <button class="btn">
+              <vue-nested-json-to-csv
+                :fields="toExport"
+                :object="toExport"
+                :show-table="true"
+                :show-export-button="true"
+              ></vue-nested-json-to-csv>Download nested
+            </button> -->
+
             <div class="bottom-nav">
               <button class="btn btn-back" @click="page -= 1;scrollToTop()"></button>
             </div>
@@ -317,45 +328,24 @@ export default {
       textcomponents: labels.textkomponenten,
       showInfoText: false,
       toExport:[],
-      toExportIdeal:[
+      toExportWork:[],
+      toExportAlternative2:[
         {
-          "Information und Kommunikation":[
-            {
-              "Kontakt und Zugang":[
-                {
-                  "Warum ist der Himmel blau?":[
-                    {
-                      "answer":"4",
-                      "comment":"Dies ist ein Kommentar"
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
+          "Frage":"Warum ist der Himmel blau?",
+          "Bereich":"Information und Kommunikation",
+          "Teilbereich":"Kontakt und Zugang",
+          "Antwort":"4",
+          "Kommentar":"Dies ist ein Kommentar"
+        },
+        {
+          "Frage":"Warum ist die Wiese grün?",
+          "Bereich":"Recherche im Bestand",
+          "Teilbereich":"Präsentation und Zugriff",
+          "Antwort":"2",
+          "Kommentar":"Dies ist auch ein Kommentar"
         }
       ],
-      toExportAlternative:[
-        {
-          "Warum ist der Himmel blau?":[
-            {
-              "bereich":"Information und Kommunikation",
-              "teilbereich":"Kontakt und Zugang",
-              "answer":"4",
-              "comment":"Dies ist ein Kommentar"
-            }
-          ],
-          "Warum ist die Wiese grün?":[
-            {
-              "bereich":"Recherche im Bestand",
-              "teilbereich":"Präsentation und Zugriff",
-              "answer":"2",
-              "comment":"Dies ist auch ein Kommentar"
-            }
-          ],
-        }
-      ],
-      // soll so an comp. resultline übergeben werden
+      // soll so an resultline übergeben werden, wahrscheinlich als computed aus toExport generieren
       auswertungArray:{
         "Information & Kommunikation":[
             {
@@ -390,8 +380,7 @@ export default {
       for (let category of bibeval_json.categories_levelone){
         for (let subcategory of category.categories_leveltwo){
           for (let component of subcategory.categories_levelthree){
-            // Wenn Name der Komponente in array gefunden
-            // wenn selection fertig + this. 
+            // Wenn Name der Komponente in array gefunden 
             if(this.selectedComponents.includes(component.name)){
               // add Bereich
               if(!ergebnis.includes(category)){
@@ -401,10 +390,13 @@ export default {
               // add Teilbereich
               if(!ergebnis.includes(subcategory)){
                 subcategory.category_name = category.name
+                subcategory.subcategory_name = subcategory.name;
                 ergebnis.push(subcategory);
               }
               // bestimme Bereich für Nav & verschiebe ins array
               component.category_name = category.name;
+              component.subcategory_name = subcategory.name;
+              component.component_name = component.name;
               ergebnis.push(component);
             }
           }
@@ -469,10 +461,6 @@ export default {
       var top = document.getElementById("bibeval-top");
       top.scrollIntoView();
     },
-    setExportData: function(){
-      this.toExport[0] = this.userAnswers;
-      console.log(this.toExport);
-    },
     // Loads components based on subcategory.
     getComponents(subcategory) {
 			for(var i = 0; i < this.subcategories.length; i++) {
@@ -524,7 +512,36 @@ export default {
   watch: {
     // aktualisiere die Export Datei, sobald neue Antwort / Kommentar
     userAnswers: function(){
-      this.toExport[0] = this.toExportAlternative;
+      this.toExport = [];
+      for(let block of this.toViewArray){
+        for(let question of block.questions){
+          let picked = this.userAnswers[question.name]?this.userAnswers[question.name].picked:"";
+          let comment = this.userAnswers[question.name]?this.userAnswers[question.name].comment:"";
+          this.toExport.push({
+            category_name:block.category_name,
+            subcategory_name:block.subcategory_name,
+            component_name:block.component_name,
+            question:question.name,
+            picked:picked,
+            comment:comment
+          })
+        }
+      }
+      // this.toExport = this.toExportAlternative2;
+      // for (let a in this.userAnswers){
+      //   console.log(this.userAnswers[a]);
+      //   // englische Version mit anderen keys einbauen
+      //   if (!this.toExportWork.find(p => p.Frage == a)){
+      //     this.toExportWork.push(
+      //       {
+      //         "Frage": a,
+      //         "Antwort": this.userAnswers[a].picked,
+      //         "Kommentar": this.userAnswers[a].comment,
+      //       }
+      //     );
+      //   }
+      // }
+      console.log(this.toExportWork);
     },
 		// Removes selected subcategory if category is unchecked.
 		selectedCategories: function() {

@@ -33,6 +33,7 @@
         <h4>{{ textcomponents.severity5 }}</h4>
         <p>{{ textcomponents.severity4tip }}</p>
       </div>
+    
   </div>
 </template>
 

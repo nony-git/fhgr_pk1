@@ -88,7 +88,7 @@
   <tr>
     <td colspan="8" class="left-align add-comment">
       <button class="btn-mini" :id='question.name+"btn"' @click="showCommentField(question.name)">+ {{ textcomponents.kommentar }}</button>
-      <textarea v-model="comment" name="" class="comment" :id="question.name" cols="1" rows="1" placeholder="Kommentar hinzufügen"></textarea>
+      <textarea v-model="comment" name="" class="comment" :id="question.name" cols="1" rows="1" :placeholder="[[textcomponents.kommentar]]"></textarea>
     </td>
   </tr>
         <!-- dev only: um zu zeigen, dass Kommentar in comment gespeichert wird -->
@@ -102,15 +102,26 @@
 export default {
   name: "question",
   // als Prop: JSON einer einzelnen Frage wird übergeben
-  props: ["question", "value","textcomponents"],
+  props: {
+      question: Object,
+      value: {
+          type: Object,
+          default: function() {
+              return { picked: Number.NaN, comment:"" }
+          },
+      },
+      textcomponents: Object
+  },
+
   data: function () {
     return {
-      picked: this.value,
-      comment: this.comment
+      picked: this.value.picked,
+      comment: this.value.comment
     };
   },
   methods:{
     showCommentField: function(id){
+      // todo: schöner lösen?
       console.log("it works");
       var field = document.getElementById(id);
       field.style.display = "block";
@@ -119,17 +130,12 @@ export default {
     }
   },
   watch: {
-    picked: function (neuerWert) {
-      this.$emit("input", neuerWert);
+    picked: function () {
+      this.$emit("input", {picked:this.picked,comment:this.comment,category:4});
     },
-    // Wohin muss Kommentar?
-    comment: function(kommentar){
-      this.$emit("input", kommentar);
+    comment: function(){
+      this.$emit("input", {picked:this.picked,comment:this.comment});
     },
-
-    /*updateValue: function (comment) {
-      this.$emit("input", comment);
-    },*/
   },
 };
 </script>
