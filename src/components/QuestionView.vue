@@ -2,13 +2,13 @@
   <div>
     <table>
       <tr>
-        <th class="question-col">Frage</th>
-        <th class="severity-label">kein Usability-Problem</th>
-        <th class="severity-label">kleines Usability-Problem</th>
-        <th class="severity-label">mittleres Usability-Problem</th>
-        <th class="severity-label">schweres Usability-Problem</th>
-        <th class="severity-label">nicht umgesetzt, obwohl notwendig</th>
-        <th class="severity-label">keine Antwort <span class="tooltip" @click="toggleTip()"></span></th>
+        <th class="question-col">{{ textcomponents.frage }}</th>
+        <th class="severity-label">{{ textcomponents.severity0 }}</th>
+        <th class="severity-label">{{ textcomponents.severity1 }}</th>
+        <th class="severity-label">{{ textcomponents.severity2 }}</th>
+        <th class="severity-label">{{ textcomponents.severity3 }}</th>
+        <th class="severity-label">{{ textcomponents.severity4 }}</th>
+        <th class="severity-label">{{ textcomponents.severity5 }} <span class="tooltip" @click="toggleTip()"></span></th>
       </tr>
       <question
         v-for="q in questions.questions"
@@ -43,7 +43,7 @@ import question from './question.vue';
 export default {
   components: { question },
   name: "QuestionView",
-  props:["toView","userAnswers","userComments", "textcomponents"],
+  props:["toView","userAnswers", "textcomponents"],
   data: function () {
     return {
       questions: this.toView,
@@ -57,12 +57,13 @@ export default {
     }
   },
   watch: {
-    answers: function () {
-      this.$emit("update", this.answers);
-    },
-    comments: function () {
-      this.$emit("update", this.comments);
-    },
+    // 31.05. auskommentiert Nino, warum wurde hier nochmals emitted?
+    // answers: function () {
+    //   this.$emit("update", this.answers);
+    // },
+    // comments: function () {
+    //   this.$emit("update", this.comments);
+    // },
   },
 };
 </script>

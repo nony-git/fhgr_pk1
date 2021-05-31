@@ -1,10 +1,5 @@
 <template>
     <div class="eval-content" id="bibeval-top">
-
-        <!-- Bereich: {{ selectedCategories }}<br>
-        Teilbereich: {{ selectedSubCategories }}<br>
-        Komponenten: {{ selectedComponents }}<br> -->
-				
         <!-- PAGE 0 / INFO PAGE -->
         <template v-if="page == 0">
           <img class="bib-header-img" src="../assets/bibeval_intro_image.png" />
@@ -206,7 +201,6 @@
             :toView="toViewArray[currentView]"
             :key="currentView"
             :userAnswers="userAnswers"
-            :userComments="userComments"
             :textcomponents="textcomponents"
             ></QuestionView>
 
@@ -261,7 +255,6 @@
               <div class="legende-spacer"></div>
               <button class="bib-pagenav btn-legende">{{ textcomponents.download }}</button>
             </div>
-            {{ userAnswers }}
             <resultline
             v-for="(h,index,i) in testArray"
                   :eingabe="h"
@@ -289,7 +282,6 @@ import webeval_json from "./json/data_webeval.json";
 import labels from './json/labels_eval_de.json';
 import labelsEn from './json/labels_eval_en.json';
 
-// let toView;
 export default {
   name: "Bibeval",
   components: {
@@ -299,9 +291,7 @@ export default {
     resultline,
   },
   data: function () {
-    // toView
     return {
-      // toViewArray: toViewArray,
       currentView: 0,
       userdata: bibeval_json,
       page: 0,

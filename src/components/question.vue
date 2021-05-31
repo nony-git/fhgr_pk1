@@ -5,6 +5,7 @@
     <td  rowspan="2" class="left-align question">
       <strong>{{ question.number}}</strong> {{ question.name }}
     </td>
+
     <td class="input-cell">
       <label class="radio-container">
         <input
