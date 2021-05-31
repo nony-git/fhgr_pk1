@@ -52,11 +52,7 @@
                     :value="website"
                     @click="showImg = false; loadJson('webeval')"
 										v-bind:class="{selected: wasUntersuchen == 'webeval'}">
-<<<<<<< HEAD
-                    Unternehmenswebsite <br> (Web-Eval)
-=======
                     {{ textcomponents.bibselect1 }}
->>>>>>> 437736c4ef82e300934d1a1490d3abf4d3028a77
                 </button>
 
                 <button
