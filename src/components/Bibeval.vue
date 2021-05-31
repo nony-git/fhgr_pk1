@@ -1,10 +1,9 @@
 <template>
     <div class="eval-content" id="bibeval-top">
-        <!-- hier kommt Simons Teil der Selektion -->
 
-        Bereich: {{ selectedCategories }}<br>
+        <!-- Bereich: {{ selectedCategories }}<br>
         Teilbereich: {{ selectedSubCategories }}<br>
-        Komponenten: {{ selectedComponents }}<br>
+        Komponenten: {{ selectedComponents }}<br> -->
 				
         <!-- PAGE 0 / INFO PAGE -->
         <template v-if="page == 0">
@@ -15,7 +14,7 @@
           <!-- -->
 
           <!-- LANGUAGE SWITCH -->
-          <div class="methodencheck-languageswitch">
+          <div class="eval-languageswitch">
               <button class="linkbutton" v-on:click="language = 'de'; loadLabels()" v-bind:class="{linkbuttonActive: language == 'de'}">
                 Deutsch
               </button>
@@ -228,46 +227,49 @@
           <div class="report">
             <div class="legende">
               <div class="legende-item">
-                <div class="legende-icon">
+                <div class="legende-icon rating-severe">
                   X
                 </div>
                 <div class="legende-description">
-                  <p>Unbedingt zu beheben</p>
+                  <p>{{ textcomponents.legendedescription0 }}</p>
                 </div>
               </div>
               <div class="legende-item">
-                <div class="legende-icon">
+                <div class="legende-icon rating-bad">
                   !!
                 </div>
                 <div class="legende-description">
-                  <p>Dringend zu beheben</p>
+                  <p>{{ textcomponents.legendedescription1 }}</p>
                 </div>
               </div>
               <div class="legende-item">
-                <div class="legende-icon">
+                <div class="legende-icon rating-medium">
                   !
                 </div>
                 <div class="legende-description">
-                  <p>Empfohlen zu beheben</p>
+                  <p>{{ textcomponents.legendedescription2 }}</p>
                 </div>
               </div>
               <div class="legende-item">
-                <div class="legende-icon">
+                <div class="legende-icon rating-good">
                   (Y)
                 </div>
                 <div class="legende-description">
-                  <p>Nichts zu beheben</p>
+                  <p>{{ textcomponents.legendedescription3 }}</p>
                 </div>
               </div>
               <div class="legende-spacer"></div>
-              <button class="bib-pagenav btn-legende">Download</button>
+              <button class="bib-pagenav btn-legende">{{ textcomponents.download }}</button>
             </div>
             {{ userAnswers }}
             <resultline
-            v-for="(h) in testArray"
+            v-for="(h,index,i) in testArray"
                   :eingabe="h"
                   :textcomponents="textcomponents"
-                  :key="h.name"
+                  :key="index"
+                  :counter="i+1"
+                  :bereiche="Object.keys(testArray)"
+                  
             ></resultline>
 
             <div class="bottom-nav">
@@ -612,60 +614,30 @@ h1 {
   max-width: 2em;
 }
 /* language */
-.language{
-  font-size:1.3em;
+.linkbutton {
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  color: #817e65;
+  position: relative;
+  font-size: 1rem;
+  background: transparent;
+  outline:none;
+}
+.linkbutton:hover {
+  text-decoration: underline;
+}
+.linkbuttonActive {
+  text-decoration: underline;
+}
+.eval-languageswitch {
   display: flex;
   align-items: center;
-  margin: 0 auto;
-  justify-content: end;
   max-width: 760px;
+  margin: 0 auto 2rem auto;
 }
-.eval-sprachswitch {
-  position: relative;
-  display: inline-block;
-  width: 3rem;
-  height: 1.5rem;
-  margin: 0 0.5em 0.5em 0.5em;
-}
-.eval-sprachswitch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-.toggleswitch {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ccc;
-  -webkit-transition: .4s;
-  transition: .4s;
-  border-radius: 34px;
-}
-.toggleswitch:before {
-  position: absolute;
-  content: "";
-  height: 1rem;
-  width: 1rem;
-  left: 4px;
-  bottom: 4px;
-  background-color: white;
-  -webkit-transition: .4s;
-  transition: .4s;
-  border-radius: 50%;
-}
-input:checked + .toggleswitch {
-  background-color: #817E65;
-}
-input:focus + .toggleswitch {
-  box-shadow: 0 0 1px #817E65;
-}
-input:checked + .toggleswitch:before {
-  -webkit-transform: translateX(26px);
-  -ms-transform: translateX(26px);
-  transform: translateX(26px);
+.eval-languageswitch > span {
+  margin: 0 0.2rem;
 }
 .bibeval-buttonContainer {
   margin-top: 1rem;
@@ -729,18 +701,7 @@ button:focus {
   max-width: 760px;
   margin: 0 auto 2rem auto;
 }
-.linkbutton {
-  border: 0;
-  padding: 0;
-  cursor: pointer;
-  color: #817e65;
-  position: relative;
-  font-size: 1rem;
-  background: #ffffff;
-}
-.linkbutton:hover {
-  text-decoration: underline;
-}
+
 .linkbutton-more::after {
   content: "";
   position: absolute;
@@ -842,16 +803,6 @@ button:focus {
 .question-col{
   width:50%;
 }
-.severity-label{
-  font-size:0.7rem;
-  font-weight: normal;
-  background-color: lightgray;
-}
-.report{
-  background-color:white;
-  height:100%;
-  padding:1em;
-}
 .report{
   background-color:white;
   height:100%;
@@ -867,6 +818,7 @@ button:focus {
 .legende-icon{
   flex:10%;
   color:red;
+  font-size: 1.5rem;
 }
 .legende-description{
     flex: 90;
@@ -886,5 +838,22 @@ button:focus {
 .btn-legende:hover{
   color: black;
   background-color: #5c9ab1;
+}
+.severity-label{
+  font-size:0.7rem;
+  font-weight: normal;
+  background-color: lightgray;
+}
+.rating-severe{
+  color:red;
+}
+.rating-bad{
+  color:orange;
+}
+.rating-medium{
+  color:orange;
+}
+.rating-good{
+  color:green;
 }
 </style>

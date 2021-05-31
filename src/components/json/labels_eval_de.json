@@ -37,6 +37,11 @@
       "aendern":"ändern",
       "abschliessen":"Abschliessen",
       "page3h1":"Auswertung",
-      "kommentar":"Kommentar hinzufügen"
+      "kommentar":"Kommentar hinzufügen",
+      "legendedescription0":"Unbedingt zu beheben",
+      "legendedescription1":"Dringend zu beheben",
+      "legendedescription2":"Empfohlen zu beheben",
+      "legendedescription3":"Nichts zu beheben",
+      "download":"Download"
     }
 }

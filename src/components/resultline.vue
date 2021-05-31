@@ -1,12 +1,12 @@
 <template>
   <div class="report-bereich">
-    <h2> TODO</h2>
+    <h2>{{ bereiche[counter-1] }}</h2>
     <div  v-for="(teilbereich, index) in eingabe"
           :key='index'
           :value='teilbereich'
           class="report-line">
       <div class="report-icon">
-        <span v-if="teilbereich.schnitt < 2" class="rating-severe">X</span>
+        <span v-if="teilbereich.schnitt < 2 || teilbereich.schnitt == 'NaN'" class="rating-severe">X</span>
         <span v-if="teilbereich.schnitt >= 2 && teilbereich.schnitt < 3" class="rating-bad">!!</span>
         <span v-if="teilbereich.schnitt >= 3 && teilbereich.schnitt < 4" class="rating-medium">!</span>
         <span v-if="teilbereich.schnitt >= 4" class="rating-good">Y</span>
@@ -22,7 +22,7 @@
 
 export default {
   name: "resultline",
-  props:["eingabe","textcomponents"],
+  props:["eingabe","textcomponents","bereiche","counter"],
   data: function () {
     return {
 
@@ -74,6 +74,7 @@ td{
 }
 .report-icon{
   color:red;
+  font-size: 1.5rem;
 }
 .report-teilbereich{
   padding-left:1em;
