@@ -263,13 +263,10 @@
                   :counter="i+1"
                   :bereiche="Object.keys(auswertungArray)"
             ></resultline>
-            <!-- dev-only -->
-            <button class="btn" @click="setExportData()">Set array</button>
-            <!---->
             <button class="btn">
               <download-csv
                 :data = "toExport">
-                Download Data
+                Download CSV
               </download-csv>
             </button>
             <div class="bottom-nav">
@@ -320,6 +317,44 @@ export default {
       textcomponents: labels.textkomponenten,
       showInfoText: false,
       toExport:[],
+      toExportIdeal:[
+        {
+          "Information und Kommunikation":[
+            {
+              "Kontakt und Zugang":[
+                {
+                  "Warum ist der Himmel blau?":[
+                    {
+                      "answer":"4",
+                      "comment":"Dies ist ein Kommentar"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      toExportAlternative:[
+        {
+          "Warum ist der Himmel blau?":[
+            {
+              "bereich":"Information und Kommunikation",
+              "teilbereich":"Kontakt und Zugang",
+              "answer":"4",
+              "comment":"Dies ist ein Kommentar"
+            }
+          ],
+          "Warum ist die Wiese grün?":[
+            {
+              "bereich":"Recherche im Bestand",
+              "teilbereich":"Präsentation und Zugriff",
+              "answer":"2",
+              "comment":"Dies ist auch ein Kommentar"
+            }
+          ],
+        }
+      ],
       // soll so an comp. resultline übergeben werden
       auswertungArray:{
         "Information & Kommunikation":[
@@ -426,18 +461,16 @@ export default {
     
     next: function () {
       if (this.currentView < this.toViewArray.length - 1) this.currentView++;
-      console.log("currentView is "+this.currentView);
     },
     back: function () {
       if (this.currentView > 0) this.currentView--;
-      console.log("currentView is "+this.currentView);
     },
     scrollToTop: function() {
       var top = document.getElementById("bibeval-top");
       top.scrollIntoView();
     },
     setExportData: function(){
-      this.toExport[0] = bibeval_json;
+      this.toExport[0] = this.userAnswers;
       console.log(this.toExport);
     },
     // Loads components based on subcategory.
@@ -489,7 +522,10 @@ export default {
 
   },
   watch: {
-
+    // aktualisiere die Export Datei, sobald neue Antwort / Kommentar
+    userAnswers: function(){
+      this.toExport[0] = this.toExportAlternative;
+    },
 		// Removes selected subcategory if category is unchecked.
 		selectedCategories: function() {
 			var notselected = [];
