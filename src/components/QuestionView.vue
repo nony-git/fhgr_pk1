@@ -14,23 +14,24 @@
         v-for="q in questions.questions"
         :question="q"
         :key="q.name"
+        :textcomponents ="textcomponents"
         v-model="userAnswers[q.name]"
         >
       </question>
     </table>
     <div class="tooltiptext" v-if="showTooltip==true" @click="showTooltip=false">
-        <h4>kein Usability-Problem:</h4>
-        <p>Alles funktioniert und ist leicht bedienbar.</p>
-        <h4>kleines Usability-Problem:</h4>
-        <p>"kosmetisches Problem": Etwas ist nicht schön umgesetzt und wirkt störend. Die entsprechende Schwachstelle führt aber nicht direkt zu Fehlern in der Bedienung.</p>
-        <h4>mittleres Usability-Problem</h4>
-        <p>Die gefundene Schwachstelle kann zu Fehlern in der Bedienung führen, verhindert aber nicht zwingend, dass der Anwender seine Ziele erreicht.</p>
-        <h4>schweres Usability-Problem:</h4>
-        <p>Die gefundene Schwachstelle hindert den Anwender daran, seine Aufgaben zu bearbeiten bzw. seine Ziele zu erreichen.</p>
-        <h4>nicht umgesetzt, obwohl notwendig:</h4>
-        <p>Eine Funktion oder Komponente fehlt, obwohl sie an dieser Stelle hilfreich wäre bzw. als obligatorisch eingestuft worden ist. </p>
-        <h4>keine Antwort</h4>
-        <p>Eine Frage bzw. ein bestimmtes Bewertungskriterium kann auf den zu untersuchenden Webauftritt nicht angewandt werden</p>
+        <h4>{{ textcomponents.severity0 }}:</h4>
+        <p>{{ textcomponents.severity0tip }}</p>
+        <h4>{{ textcomponents.severity1 }}:</h4>
+        <p>{{ textcomponents.severity1tip }}</p>
+        <h4>{{ textcomponents.severity2 }}</h4>
+        <p>{{ textcomponents.severity2tip }}</p>
+        <h4>{{ textcomponents.severity3 }}:</h4>
+        <p>{{ textcomponents.severity3tip }}</p>
+        <h4>{{ textcomponents.severity4 }}:</h4>
+        <p>{{ textcomponents.severity4tip }} </p>
+        <h4>{{ textcomponents.severity5 }}</h4>
+        <p>{{ textcomponents.severity4tip }}</p>
       </div>
   </div>
 </template>
@@ -42,7 +43,7 @@ import question from './question.vue';
 export default {
   components: { question },
   name: "QuestionView",
-  props:["toView","userAnswers","userComments"],
+  props:["toView","userAnswers","userComments", "textcomponents"],
   data: function () {
     return {
       questions: this.toView,
@@ -51,12 +52,8 @@ export default {
   },
   methods:{
     toggleTip: function(){
-      if (this.showTooltip == true){
-        this.showTooltip = false;
-      }
-      else{
-        this.showTooltip = true;
-      }
+      if (this.showTooltip == true) this.showTooltip = false;
+      else this.showTooltip = true;
     }
   },
   watch: {

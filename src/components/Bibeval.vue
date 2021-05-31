@@ -5,64 +5,42 @@
         Bereich: {{ selectedCategories }}<br>
         Teilbereich: {{ selectedSubCategories }}<br>
         Komponenten: {{ selectedComponents }}<br>
-				{{bibeval_json}}
+				
         <!-- PAGE 0 / INFO PAGE -->
         <template v-if="page == 0">
           <img class="bib-header-img" src="../assets/bibeval_intro_image.png" />
-          <div class="language">
-            <span>DE</span>
-            <label class="eval-sprachswitch">
-              <input type="checkbox" v-on:click="englishActivated()">
-              <span class="toggleswitch"></span>
-            </label>
-            <span>EN</span>
+          
+          <!-- dev-only -->
+          <button class="btn btn-forward" @click="page =3">Jump to Report</button>
+          <!-- -->
+
+          <!-- LANGUAGE SWITCH -->
+          <div class="methodencheck-languageswitch">
+              <button class="linkbutton" v-on:click="language = 'de'; loadLabels()" v-bind:class="{linkbuttonActive: language == 'de'}">
+                Deutsch
+              </button>
+              <span>|</span>
+              <button class="linkbutton" v-on:click="language = 'en'; loadLabels()" v-bind:class="{linkbuttonActive: language == 'en'}">
+                English
+              </button>
           </div>
-          <span v-if="language=='de' || language==undefined">
             <p class="bibeval-text">
-                Mit BibEval stellt das Schweizerische Institut für Informationswissenschaft (SII) 
-                eine modular verwendbare, hierarchisch strukturierte Liste von Evaluationskriterien 
-                zur Verfügung, mit welcher Websiten auf Usabilty Schwachstellen überprüft werden können.
+                {{ infotext.haupttext }}
             </p>
             <!-- ADDITIONAL INFOTEXT -->
             <div class="bibeval-linkbuttons" v-if="!showInfoText">
-              <button class="linkbutton linkbutton-more" v-on:click="showInfoText = true">mehr erfahren</button>
+              <button class="linkbutton linkbutton-more" v-on:click="showInfoText = true">{{ textcomponents.mehrErfahren }}</button>
             </div>
             <p class="bibeval-text" v-if="showInfoText">
-                Mithilfe eines Fragebogens kann das BibEval Tool Ihnen helfen,
-                Schwachstellen ihres Webauftritts zu evaluieren. Der hierachisch struktutierte 
-                Aufbau, erlaubt es spezifsche Bereiche einer Homepage zu untersuchen. Durch 
-                Klicken auf das Info-Icon erhalten sie weiterführende Informationen zur Frage. 
-                Pro Fragen können Sie zuästzlich Kommentare hinzufügen.
+                {{ infotext.zusatztext }}
             </p>
             <div class="bibeval-linkbuttons" v-if="showInfoText">
-              <button class="linkbutton linkbutton-less" v-on:click="showInfoText = false">weniger</button>
+              <button class="linkbutton linkbutton-less" v-on:click="showInfoText = false">{{ textcomponents.weniger }}</button>
             </div>
-          </span>
-          <span v-if="language=='en'">
-            <p class="bibeval-text">
-                With the “Usability Evaluation”-tool, the Swiss Institute of Information Science
-                (SII) provides a modularly usable, hierarchically structured list of evaluation criteria. 
-                The tool is supposed to identify and evaluate usability issues of corporate or library websites.
-            </p>
-            <!-- ADDITIONAL INFOTEXT -->
-            <div class="bibeval-linkbuttons" v-if="!showInfoText">
-              <button class="linkbutton linkbutton-more" v-on:click="showInfoText = true">more</button>
-            </div>
-            <p class="bibeval-text" v-if="showInfoText">
-                The hierarchical structure allows you to analyze specific parts of a homepage. 
-                At the beginning you are asked if you want to analyze a corporate website or a library website. 
-                Depending on your selection, different sectors to be evaluated are available to choose.
-                The matching components appear automatically when you select the sectors to be evaluated. 
-                Suggested components are selected by default, but you are free to choose which sectors or components you want to evaluate. 
-                You can revoke your selection at any time and select new sectors or components to your question catalog.
-            </p>
-            <div class="bibeval-linkbuttons" v-if="showInfoText">
-              <button class="linkbutton linkbutton-less" v-on:click="showInfoText = false">less</button>
-            </div>
-          </span>
+
           <!-- BUTTON TO START TOOL -->
           <div class="bibeval-buttons-start">
-            <button class="bib-pagenav" v-on:click="page++;scrollToTop()">Start</button>
+            <button class="bib-pagenav" v-on:click="page++;scrollToTop()">{{ textcomponents.start }}</button>
           </div>
 
         </template>
@@ -71,7 +49,7 @@
         <template v-if="page == 1">
           <img v-if="showImg == true" class="bib-header-img" src="../assets/bibeval_intro_image.png" />
 
-            <h1>Was möchten Sie untersuchen?</h1>
+            <h1>{{ textcomponents.page1h1_1 }}</h1>
 
             <div class="bib-overview-bereiche">
 
@@ -80,7 +58,11 @@
                     :value="website"
                     @click="showImg = false; loadJson('webeval')"
 										v-bind:class="{selected: wasUntersuchen == 'webeval'}">
+<<<<<<< HEAD
                     Unternehmenswebsite <br> (Web-Eval)
+=======
+                    {{ textcomponents.bibselect1 }}
+>>>>>>> 437736c4ef82e300934d1a1490d3abf4d3028a77
                 </button>
 
                 <button
@@ -88,12 +70,12 @@
                     :value="bibliotheksseite"
                     @click="showImg = false; loadJson('bibeval')"
 										v-bind:class="{selected: wasUntersuchen == 'bibeval'}">
-                    Bibliotheksseite <br> (Bib-Eval)
+                    {{ textcomponents.bibselect2 }}
                 </button>
 
             </div>
 
-            <h1>Untersuchungsbereich?</h1>
+            <h1>{{ textcomponents.page1h12 }}</h1>
 
             <div class="bib-overview-bereiche">
 
@@ -138,7 +120,7 @@
                 <label class="bib-optional">
                     <input type="checkbox" v-model="mandatory">
                     <span class="slider"></span>
-                    optionale Bereiche
+                    {{ textcomponents.optional }}
                 </label>
 
                 <template v-if="selectedSubCategories.length > 0">
@@ -162,19 +144,18 @@
                     </div>
 
                 </template>
-                <p>Ihr Fragenkatalog enthält {{findHighest(toViewArray)}} Fragen.</p>
+                <p>{{ textcomponents.kataloggroesse1 }}{{ findHighest(toViewArray) }}{{ textcomponents.kataloggroesse2 }}</p>
                 <p>
-                    In der folgenden Evaulation bewerten Sie verschiedene Komponenten 
-                    wie gut  dies umgesetzt ist.
+                    {{ textcomponents.severityinfo }}
                 </p>
                 <table class="table-preview">
                   <tr>
-                    <th class="severity-label">kein Usability-Problem</th>
-                    <th class="severity-label">kleines Usability-Problem</th>
-                    <th class="severity-label">mittleres Usability-Problem</th>
-                    <th class="severity-label">schweres Usability-Problem</th>
-                    <th class="severity-label">nicht umgesetzt, obwohl notwendig</th>
-                    <th class="severity-label">keine Antwort</th>
+                    <th class="severity-label">{{ textcomponents.severity0 }}</th>
+                    <th class="severity-label">{{ textcomponents.severity1 }}</th>
+                    <th class="severity-label">{{ textcomponents.severity2 }}</th>
+                    <th class="severity-label">{{ textcomponents.severity3 }}</th>
+                    <th class="severity-label">{{ textcomponents.severity4 }}</th>
+                    <th class="severity-label">{{ textcomponents.severity5 }}</th>
                   </tr>
                   <tr>
                     <td class="input-cell"><input type="radio" name="dummy"></td>
@@ -185,7 +166,7 @@
                     <td class="input-cell"><input type="radio" name="dummy"></td>
                   </tr>
                 </table>
-                <button class="bib-pagenav" v-on:click="page += 1; scrollToTop()">Start</button>
+                <button v-if="selectedComponents.length > 0" class="bib-pagenav" v-on:click="page += 1; scrollToTop()">{{ textcomponents.start }}</button>
             </template>
         </template>
         <!-- PAGE 2 / FRAGEN -->
@@ -222,7 +203,7 @@
             </table>
             <!-- Hier kommt der Button um in die Selektion zurück zu kommen-->
             <div class="to-right">
-                <button class="btn btn-selection" @click="page = 1">Auswahl<br>ändern</button>
+                <button class="btn btn-selection" @click="page = 1">{{ textcomponents.auswahl }}<br>{{ textcomponents.aendern }}</button>
             </div>
 
             <!-- {{ toViewArray }} -->
@@ -231,6 +212,7 @@
             :key="currentView"
             :userAnswers="userAnswers"
             :userComments="userComments"
+            :textcomponents="textcomponents"
             ></QuestionView>
 
             <!-- Navigiere zwischen Views -->
@@ -239,18 +221,62 @@
               <button v-if="currentView != 0" class="btn btn-back" @click="back();scrollToTop()"></button>
               <button v-if="currentView == 0" class="btn btn-back" @click="page -= 1; scrollToTop()"></button>
               <!-- vorwaerts -->
-              <button v-if="currentView < toViewArray.length-1" class="btn btn-forward" @click="next();scrollToTop()">Weiter</button>
+              <button v-if="currentView < toViewArray.length-1" class="btn btn-forward" @click="next();scrollToTop()">{{ textcomponents.weiter }}</button>
               <button v-if="currentView == toViewArray.length-1"
-              class="btn btn-forward" @click="page += 1; scrollToTop()">Abschliessen</button>
+              class="btn btn-forward" @click="page += 1; scrollToTop()">{{ textcomponents.abschliessen }}</button>
             </div>
             {{ userAnswers }}
         </template>
         <template v-if="page == 3">
-          <h1>Auswertung</h1>
-          TODO
-          <button class="bib-pagenav">Export</button>
-          <div class="bottom-nav">
-            <button class="btn btn-back" @click="page -= 1;scrollToTop()"></button>
+          <h1>{{ textcomponents.page3h1 }}</h1>
+          <div class="report">
+            <div class="legende">
+              <div class="legende-item">
+                <div class="legende-icon">
+                  X
+                </div>
+                <div class="legende-description">
+                  <p>Unbedingt zu beheben</p>
+                </div>
+              </div>
+              <div class="legende-item">
+                <div class="legende-icon">
+                  !!
+                </div>
+                <div class="legende-description">
+                  <p>Dringend zu beheben</p>
+                </div>
+              </div>
+              <div class="legende-item">
+                <div class="legende-icon">
+                  !
+                </div>
+                <div class="legende-description">
+                  <p>Empfohlen zu beheben</p>
+                </div>
+              </div>
+              <div class="legende-item">
+                <div class="legende-icon">
+                  (Y)
+                </div>
+                <div class="legende-description">
+                  <p>Nichts zu beheben</p>
+                </div>
+              </div>
+              <div class="legende-spacer"></div>
+              <button class="bib-pagenav btn-legende">Download</button>
+            </div>
+            {{ userAnswers }}
+            <resultline
+            v-for="(h) in testArray"
+                  :eingabe="h"
+                  :textcomponents="textcomponents"
+                  :key="h.name"
+            ></resultline>
+
+            <div class="bottom-nav">
+              <button class="btn btn-back" @click="page -= 1;scrollToTop()"></button>
+            </div>
           </div>
         </template>
     </div>
@@ -259,8 +285,11 @@
 <script>
 import QuestionView from "./QuestionView.vue";
 import selectButton from "./SelectButton.vue";
+import resultline from './resultline.vue';
 import bibeval_json from "./json/data_bibeval.json";
 import webeval_json from "./json/data_webeval.json";
+import labels from './json/labels_eval_de.json';
+import labelsEn from './json/labels_eval_en.json';
 
 // let toView;
 export default {
@@ -269,6 +298,7 @@ export default {
     // eslint-disable-next-line vue/no-unused-components
     QuestionView,
     selectButton,
+    resultline,
   },
   data: function () {
     // toView
@@ -290,15 +320,41 @@ export default {
       userComments: {},
       showImg: true,
       answersComplete:{},
-      language: this.language,
+      language: 'de',
+      infotext: labels.infotext,
+      textcomponents: labels.textkomponenten,
       showInfoText: false,
+
+      // soll so an comp. resultline übergeben werden
+      testArray:{
+        "Information & Kommunikation":[
+            {
+              "name":"Kontakt und Zugang",
+              "schnitt":"4"
+            },
+            {
+              "name":"Seitenüberblick",
+              "schnitt":"3"
+            }
+        ],
+        "Recherche im Bestand":[
+          {
+            "name":"Suchen und Erkunden",
+            "schnitt":"1"
+          },
+          {
+            "name":"Präsentation und Zugriff",
+            "schnitt":"2"
+          }
+        ]
+      }
     };
   },
   computed: {
     
     toViewArray: function(){
       let ergebnis = [];
-      let selectedComponents= ["Kontaktinformationen","Kontaktformular","Personalisierte Suchmasken"];
+      // let selectedComponents= ["Kontaktinformationen","Kontaktformular","Personalisierte Suchmasken"];
       // nimm fragen von komponente, teilbereich und bereich darüber
       // einzelne komponente
       for (let category of bibeval_json.categories_levelone){
@@ -306,7 +362,7 @@ export default {
           for (let component of subcategory.categories_levelthree){
             // Wenn Name der Komponente in array gefunden
             // wenn selection fertig + this. 
-            if(selectedComponents.includes(component.name)){
+            if(this.selectedComponents.includes(component.name)){
               // add Bereich
               if(!ergebnis.includes(category)){
                 category.category_name = category.name
@@ -410,12 +466,16 @@ export default {
 				this.selectedSubCategories = [];
 			}
 		},
-
-    englishActivated: function(){
-      if(this.language == "de" || this.language == undefined)this.language = "en";
-      else this.language = "de";
-      // TODO 
-      //nimm englisches JSON
+    // LOAD DATA IN SELECTED LANGUAGE
+    loadLabels: function() {
+      if (this.language == 'de') {
+        this.infotext = labels.infotext;
+        this.textcomponents = labels.textkomponenten;
+      }
+      else {
+        this.infotext = labelsEn.infotext;
+        this.textcomponents = labelsEn.textkomponenten;
+      }
     },
     findHighest: function(quest){
       let highest = 0;
@@ -427,23 +487,11 @@ export default {
         }
       }
       return highest;
-    }
+    },
+
   },
   watch: {
-    userAnswers:function(){
-      
-      // console.log(this.toViewArray);
-      // for (let singleQuestion of this.toViewArray[this.currentView].questions){
-      //   let toCheck = singleQuestion.name;
-      //   if (toCheck){
-      //     this.answersComplete.category_name = true;
-      //   }
-      //   else{
-      //     this.answersComplete.category_name = false;
-      //     break;
-      //   }
-      // }
-    },
+
 		// Removes selected subcategory if category is unchecked.
 		selectedCategories: function() {
 			var notselected = [];
@@ -465,12 +513,10 @@ export default {
 </script>
 
 <style scoped>
-
 .bibeval-container {
 	background: white;
 	padding: 120px 100px;
 }
-
 .bib-pagenav {
 	font-size: 1em;
 	padding: 10px 15px;
@@ -496,7 +542,6 @@ export default {
 .bib-txt-left {
 	text-align: left;
 }
-
 h1 {
 	margin-bottom: 30px;
 }
@@ -504,7 +549,6 @@ h1 {
 .bib-header-img {
 	margin: 0 auto 50px auto;
 }
-
 .bib-select-large {
 	width: 100%;
 	height: 60px;
@@ -634,7 +678,6 @@ input:checked + .toggleswitch:before {
   justify-content: flex-end;
   align-items: end;
 }
-
 .btn {
   font-size: 1rem;
   padding: .5em 1em;
@@ -644,7 +687,6 @@ input:checked + .toggleswitch:before {
   transition: all 0.25s;
   background: #ffffff;
 }
-
 .btn:hover {
   cursor: pointer;
 }
@@ -654,18 +696,15 @@ input:checked + .toggleswitch:before {
   height: 44px;
   margin-right:1em;
 }
-
 .btn-forward {
   background: #817E65;
   height: 44px;
   color: #ffffff;
   margin-top: 0;
 }
-
 .btn-forward:hover {
   color: #000000;
 }
-
 .btn-back::before {
   content: "";
   position: absolute;
@@ -689,14 +728,12 @@ input:checked + .toggleswitch:before {
 button:focus {
 	outline: none;
 }
-
 .bibeval-linkbuttons {
   display: flex;
   align-items: center;
   max-width: 760px;
   margin: 0 auto 2rem auto;
 }
-
 .linkbutton {
   border: 0;
   padding: 0;
@@ -706,11 +743,9 @@ button:focus {
   font-size: 1rem;
   background: #ffffff;
 }
-
 .linkbutton:hover {
   text-decoration: underline;
 }
-
 .linkbutton-more::after {
   content: "";
   position: absolute;
@@ -737,38 +772,30 @@ button:focus {
   width: 0.9rem;
   height: 0.9rem;
 }
-
-
-
 .bibeval-buttons-start {
   display: flex;
   align-items: center;
   max-width: 760px;
   margin: 0 auto;
 }
-
 .bottom-nav {
   margin-top: 1rem;
   width: calc(100% - 2rem);
   display: flex;
   justify-content: flex-end;
 }
-
 .to-left {
   text-align: left;
 }
-
 .to-right {
   text-align: right;
 }
-
 .bib-select-large.selected,
 .bib-select-small.selected {
 	background: #408198;
 	color: #ffffff;
 	border: 2px solid #408198;
 }
-
 .bib-select-small {
 	width: 100%;
 	min-height: 30px;
@@ -777,7 +804,6 @@ button:focus {
 	border-radius: 5px;
 	color: #245b6f;
 }
-
 .bib-overview-bereiche {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -786,20 +812,16 @@ button:focus {
 	max-width: 500px;
 	margin: 30px auto;
 }
-
 .bib-komponentenauswahl {
 	margin: 55px auto;
 }
-
 .bib-komponentenauswahl.bib-overview-bereiche {
 	gap: 0px 10px;
 }
-
 .bib-komponentenauswahl h2 {
 	margin-bottom: 20px;
 	grid-column: 1/-1;
 }
-
 .line {
 	height: 1px;
 	width: 80%;
@@ -829,5 +851,45 @@ button:focus {
   font-size:0.7rem;
   font-weight: normal;
   background-color: lightgray;
+}
+.report{
+  background-color:white;
+  height:100%;
+  padding:1em;
+}
+.report{
+  background-color:white;
+  height:100%;
+  padding:1em;
+}
+.legende{
+  display:flex;
+}
+.legende-item{
+  flex:15%;
+  display:flex;
+}
+.legende-icon{
+  flex:10%;
+  color:red;
+}
+.legende-description{
+    flex: 90;
+    text-align: left;
+    padding-left: 1em;
+    font-size: .9rem;
+}
+.legende-spacer{
+  flex:20%;
+}
+.btn-legende{
+  flex:20%;
+  background-color: #408198;
+  color:white;
+  border:1px solid black;
+}
+.btn-legende:hover{
+  color: black;
+  background-color: #5c9ab1;
 }
 </style>
