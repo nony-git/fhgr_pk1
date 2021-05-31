@@ -256,15 +256,22 @@
               <button class="bib-pagenav btn-legende">{{ textcomponents.download }}</button>
             </div>
             <resultline
-            v-for="(h,index,i) in testArray"
+            v-for="(h,index,i) in auswertungArray"
                   :eingabe="h"
                   :textcomponents="textcomponents"
                   :key="index"
                   :counter="i+1"
-                  :bereiche="Object.keys(testArray)"
-                  
+                  :bereiche="Object.keys(auswertungArray)"
             ></resultline>
-
+            <!-- dev-only -->
+            <button class="btn" @click="setExportData()">Set array</button>
+            <!---->
+            <button class="btn">
+              <download-csv
+                :data = "toExport">
+                Download Data
+              </download-csv>
+            </button>
             <div class="bottom-nav">
               <button class="btn btn-back" @click="page -= 1;scrollToTop()"></button>
             </div>
@@ -312,9 +319,9 @@ export default {
       infotext: labels.infotext,
       textcomponents: labels.textkomponenten,
       showInfoText: false,
-
+      toExport:[],
       // soll so an comp. resultline übergeben werden
-      testArray:{
+      auswertungArray:{
         "Information & Kommunikation":[
             {
               "name":"Kontakt und Zugang",
@@ -429,7 +436,10 @@ export default {
       var top = document.getElementById("bibeval-top");
       top.scrollIntoView();
     },
-
+    setExportData: function(){
+      this.toExport[0] = bibeval_json;
+      console.log(this.toExport);
+    },
     // Loads components based on subcategory.
     getComponents(subcategory) {
 			for(var i = 0; i < this.subcategories.length; i++) {
