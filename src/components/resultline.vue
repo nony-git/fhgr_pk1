@@ -22,7 +22,7 @@
 
 export default {
   name: "resultline",
-  props:["eingabe"],
+  props:["eingabe","textcomponents"],
   data: function () {
     return {
 

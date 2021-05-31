@@ -14,5 +14,6 @@ new Vue({
       props: { ...mountEl.dataset },
     };
     return createElement(App, context);
-  }
+  }, 
+
 }).$mount('#app');

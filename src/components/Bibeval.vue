@@ -32,19 +32,15 @@
               <button class="linkbutton linkbutton-more" v-on:click="showInfoText = true">{{ textcomponents.mehrErfahren }}</button>
             </div>
             <p class="bibeval-text" v-if="showInfoText">
-                Mithilfe eines Fragebogens kann das BibEval Tool Ihnen helfen,
-                Schwachstellen ihres Webauftritts zu evaluieren. Der hierachisch struktutierte 
-                Aufbau, erlaubt es spezifsche Bereiche einer Homepage zu untersuchen. Durch 
-                Klicken auf das Info-Icon erhalten sie weiterführende Informationen zur Frage. 
-                Pro Fragen können Sie zuästzlich Kommentare hinzufügen.
+                {{ infotext.zusatztext }}
             </p>
             <div class="bibeval-linkbuttons" v-if="showInfoText">
-              <button class="linkbutton linkbutton-less" v-on:click="showInfoText = false">weniger</button>
+              <button class="linkbutton linkbutton-less" v-on:click="showInfoText = false">{{ textcomponents.weniger }}</button>
             </div>
 
           <!-- BUTTON TO START TOOL -->
           <div class="bibeval-buttons-start">
-            <button class="bib-pagenav" v-on:click="page++;scrollToTop()">Start</button>
+            <button class="bib-pagenav" v-on:click="page++;scrollToTop()">{{ textcomponents.start }}</button>
           </div>
 
         </template>
@@ -53,7 +49,7 @@
         <template v-if="page == 1">
           <img v-if="showImg == true" class="bib-header-img" src="../assets/bibeval_intro_image.png" />
 
-            <h1>Was möchten Sie untersuchen?</h1>
+            <h1>{{ textcomponents.page1h1_1 }}</h1>
 
             <div class="bib-overview-bereiche">
 
@@ -62,7 +58,7 @@
                     :value="website"
                     @click="showImg = false; loadJson('webeval')"
 										v-bind:class="{selected: wasUntersuchen == 'webeval'}">
-                    Website <br> (Web-Eval)
+                    {{ textcomponents.bibselect1 }}
                 </button>
 
                 <button
@@ -70,12 +66,12 @@
                     :value="bibliotheksseite"
                     @click="showImg = false; loadJson('bibeval')"
 										v-bind:class="{selected: wasUntersuchen == 'bibeval'}">
-                    Bibliotheksseite <br> (Bib-Eval)
+                    {{ textcomponents.bibselect2 }}
                 </button>
 
             </div>
 
-            <h1>Untersuchungsbereich?</h1>
+            <h1>{{ textcomponents.page1h12 }}</h1>
 
             <div class="bib-overview-bereiche">
 
@@ -120,7 +116,7 @@
                 <label class="bib-optional">
                     <input type="checkbox" v-model="mandatory">
                     <span class="slider"></span>
-                    optionale Bereiche
+                    {{ textcomponents.optional }}
                 </label>
 
                 <template v-if="selectedSubCategories.length > 0">
@@ -144,19 +140,18 @@
                     </div>
 
                 </template>
-                <p>Ihr Fragenkatalog enthält {{findHighest(toViewArray)}} Fragen.</p>
+                <p>{{ textcomponents.kataloggroesse1 }}{{ findHighest(toViewArray) }}{{ textcomponents.kataloggroesse2 }}</p>
                 <p>
-                    In der folgenden Evaulation bewerten Sie verschiedene Komponenten 
-                    wie gut  dies umgesetzt ist.
+                    {{ textcomponents.severityinfo }}
                 </p>
                 <table class="table-preview">
                   <tr>
-                    <th class="severity-label">kein Usability-Problem</th>
-                    <th class="severity-label">kleines Usability-Problem</th>
-                    <th class="severity-label">mittleres Usability-Problem</th>
-                    <th class="severity-label">schweres Usability-Problem</th>
-                    <th class="severity-label">nicht umgesetzt, obwohl notwendig</th>
-                    <th class="severity-label">keine Antwort</th>
+                    <th class="severity-label">{{ textcomponents.severity0 }}</th>
+                    <th class="severity-label">{{ textcomponents.severity1 }}</th>
+                    <th class="severity-label">{{ textcomponents.severity2 }}</th>
+                    <th class="severity-label">{{ textcomponents.severity3 }}</th>
+                    <th class="severity-label">{{ textcomponents.severity4 }}</th>
+                    <th class="severity-label">{{ textcomponents.severity5 }}</th>
                   </tr>
                   <tr>
                     <td class="input-cell"><input type="radio" name="dummy"></td>
@@ -167,7 +162,7 @@
                     <td class="input-cell"><input type="radio" name="dummy"></td>
                   </tr>
                 </table>
-                <button class="bib-pagenav" v-on:click="page += 1; scrollToTop()">Start</button>
+                <button v-if="selectedComponents.length > 0" class="bib-pagenav" v-on:click="page += 1; scrollToTop()">{{ textcomponents.start }}</button>
             </template>
         </template>
         <!-- PAGE 2 / FRAGEN -->
@@ -204,7 +199,7 @@
             </table>
             <!-- Hier kommt der Button um in die Selektion zurück zu kommen-->
             <div class="to-right">
-                <button class="btn btn-selection" @click="page = 1">Auswahl<br>ändern</button>
+                <button class="btn btn-selection" @click="page = 1">{{ textcomponents.auswahl }}<br>{{ textcomponents.aendern }}</button>
             </div>
 
             <!-- {{ toViewArray }} -->
@@ -213,6 +208,7 @@
             :key="currentView"
             :userAnswers="userAnswers"
             :userComments="userComments"
+            :textcomponents="textcomponents"
             ></QuestionView>
 
             <!-- Navigiere zwischen Views -->
@@ -221,14 +217,14 @@
               <button v-if="currentView != 0" class="btn btn-back" @click="back();scrollToTop()"></button>
               <button v-if="currentView == 0" class="btn btn-back" @click="page -= 1; scrollToTop()"></button>
               <!-- vorwaerts -->
-              <button v-if="currentView < toViewArray.length-1" class="btn btn-forward" @click="next();scrollToTop()">Weiter</button>
+              <button v-if="currentView < toViewArray.length-1" class="btn btn-forward" @click="next();scrollToTop()">{{ textcomponents.weiter }}</button>
               <button v-if="currentView == toViewArray.length-1"
-              class="btn btn-forward" @click="page += 1; scrollToTop()">Abschliessen</button>
+              class="btn btn-forward" @click="page += 1; scrollToTop()">{{ textcomponents.abschliessen }}</button>
             </div>
             {{ userAnswers }}
         </template>
         <template v-if="page == 3">
-          <h1>Auswertung</h1>
+          <h1>{{ textcomponents.page3h1 }}</h1>
           <div class="report">
             <div class="legende">
               <div class="legende-item">
@@ -270,6 +266,7 @@
             <resultline
             v-for="(h) in testArray"
                   :eingabe="h"
+                  :textcomponents="textcomponents"
                   :key="h.name"
             ></resultline>
 
@@ -284,8 +281,8 @@
 <script>
 import QuestionView from "./QuestionView.vue";
 import selectButton from "./SelectButton.vue";
-import bibeval_json from "./json/data_bibeval.json";
 import resultline from './resultline.vue';
+import bibeval_json from "./json/data_bibeval.json";
 import webeval_json from "./json/data_webeval.json";
 import labels from './json/labels_eval_de.json';
 import labelsEn from './json/labels_eval_en.json';

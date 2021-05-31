@@ -86,7 +86,7 @@
   </tr>
   <tr>
     <td colspan="8" class="left-align add-comment">
-      <button class="btn-mini" :id='question.name+"btn"' @click="showCommentField(question.name)">+ Kommentar hinzufügen</button>
+      <button class="btn-mini" :id='question.name+"btn"' @click="showCommentField(question.name)">+ {{ textcomponents.kommentar }}</button>
       <textarea v-model="comment" name="" class="comment" :id="question.name" cols="1" rows="1" placeholder="Kommentar hinzufügen"></textarea>
     </td>
   </tr>
@@ -101,7 +101,7 @@
 export default {
   name: "question",
   // als Prop: JSON einer einzelnen Frage wird übergeben
-  props: ["question", "value"],
+  props: ["question", "value","textcomponents"],
   data: function () {
     return {
       picked: this.value,

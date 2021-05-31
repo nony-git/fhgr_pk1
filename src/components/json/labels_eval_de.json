@@ -1,17 +1,42 @@
 {
     "infotext": {
-      "haupttext": [
+      "haupttext": 
         "Mit BibEval stellt das Schweizerische Institut für Informationswissenschaft (SII) eine modular verwendbare, hierarchisch strukturierte Liste von Evaluationskriterien zur Verfügung, mit welcher Websiten auf Usabilty Schwachstellen überprüft werden können. "
-      ],
-      "zusatztext": [
+      ,
+      "zusatztext": 
         "Mithilfe eines Fragebogens kann das BibEval Tool Ihnen helfen, Schwachstellen ihres Webauftritts zu evaluieren. Der hierachisch struktutierte Aufbau, erlaubt es spezifsche Bereiche einer Homepage zu untersuchen. Durch Klicken auf das Info-Icon erhalten sie weiterführende Informationen zur Frage. Pro Fragen können Sie zuästzlich Kommentare hinzufügen. "
-      ]
+      
     },
     "textkomponenten": {
       "mehrErfahren": "mehr erfahren",
       "weniger": "weniger",
       "start": "Start",
       "weiter": "Weiter",
-      "zurückZumStart": "zurück zum Start"
+      "zurückZumStart": "zurück zum Start",
+      "page1h11":"Was möchten Sie untersuchen?",
+      "page1h12":"Untersuchungsbereich?",
+      "bibselect1": "Website (Web-Eval)",
+      "bibselect2": "Bibliotheksseite (Bib-Eval)",
+      "optional":"optionale Bereiche",
+      "kataloggroesse1":"Ihr Fragenkatalog enthält ",
+      "kataloggroesse2":" Fragen.",
+      "severityinfo":"In der folgenden Evaulation bewerten Sie verschiedene Komponenten wie gut dies umgesetzt ist.",
+      "severity0tip":"Alles funktioniert und ist leicht bedienbar.",
+      "severity1tip":"'kosmetisches Problem': Etwas ist nicht schön umgesetzt und wirkt störend. Die entsprechende Schwachstelle führt aber nicht direkt zu Fehlern in der Bedienung.",
+      "severity2tip":"Die gefundene Schwachstelle kann zu Fehlern in der Bedienung führen, verhindert aber nicht zwingend, dass der Anwender seine Ziele erreicht.",
+      "severity3tip":"Die gefundene Schwachstelle hindert den Anwender daran, seine Aufgaben zu bearbeiten bzw. seine Ziele zu erreichen.",
+      "severity4tip":"Eine Funktion oder Komponente fehlt, obwohl sie an dieser Stelle hilfreich wäre bzw. als obligatorisch eingestuft worden ist.",
+      "severity5tip":"Eine Frage bzw. ein bestimmtes Bewertungskriterium kann auf den zu untersuchenden Webauftritt nicht angewandt werden",
+      "severity0":"kein Usability-Problem",
+      "severity1":"kleines Usability-Problem",
+      "severity2":"mittleres Usability-Problem",
+      "severity3":"schweres Usability-Problem",
+      "severity4":"nicht umgesetzt, obwohl notwendig",
+      "severity5":"keine Antwort",
+      "auswahl":"Auswahl",
+      "aendern":"ändern",
+      "abschliessen":"Abschliessen",
+      "page3h1":"Auswertung",
+      "kommentar":"Kommentar hinzufügen"
     }
 }
