@@ -38,7 +38,6 @@
           </div>
 
         </template>
-
         <!-- PAGE 1 / AUSWAHL BEREICHE -->
         <template v-if="page == 1">
           <img v-if="showImg == true" class="bib-header-img" src="../assets/bibeval_intro_image.png" />
@@ -256,20 +255,23 @@
               <button class="bib-pagenav btn-legende">{{ textcomponents.download }}</button>
             </div>
             <resultline
-            v-for="(h,index,i) in auswertungArray"
+            v-for="(h,index,i) in auswertungArrayMuster"
                   :eingabe="h"
                   :textcomponents="textcomponents"
                   :key="index"
                   :counter="i+1"
-                  :bereiche="Object.keys(auswertungArray)"
+                  :bereiche="Object.keys(auswertungArrayMuster)"
             ></resultline>
+            <button class="btn" @click="auswerten()">
+              Auswerten
+            </button>
             <button class="btn">
               <download-csv
                 :data = "toExport">
                 Download CSV
               </download-csv>
             </button>
-
+            {{toExport}}
             <!-- nested JSON to csv -->
             <!-- <button class="btn">
               <vue-nested-json-to-csv
@@ -329,24 +331,9 @@ export default {
       showInfoText: false,
       toExport:[],
       toExportWork:[],
-      toExportAlternative2:[
-        {
-          "Frage":"Warum ist der Himmel blau?",
-          "Bereich":"Information und Kommunikation",
-          "Teilbereich":"Kontakt und Zugang",
-          "Antwort":"4",
-          "Kommentar":"Dies ist ein Kommentar"
-        },
-        {
-          "Frage":"Warum ist die Wiese grün?",
-          "Bereich":"Recherche im Bestand",
-          "Teilbereich":"Präsentation und Zugriff",
-          "Antwort":"2",
-          "Kommentar":"Dies ist auch ein Kommentar"
-        }
-      ],
       // soll so an resultline übergeben werden, wahrscheinlich als computed aus toExport generieren
-      auswertungArray:{
+      auswertungArrayMuster:[
+        {
         "Information & Kommunikation":[
             {
               "name":"Kontakt und Zugang",
@@ -368,6 +355,8 @@ export default {
           }
         ]
       }
+    ],
+      auswertungArray:[]
     };
   },
   computed: {
@@ -507,11 +496,34 @@ export default {
       }
       return highest;
     },
-
+    auswerten:function(){
+      let auswertung = {};
+      function pushOrUpdate(arr, obj) {
+        const index = arr.findIndex((e) => e.name === obj.name);
+        if (index === -1) {
+            arr.push(obj);
+        } else {
+            arr[index] = obj;
+        }
+      }
+      for (let item of this.toExport){
+        if(!(item.category_name in auswertung)){ auswertung[item.category_name] = []; }
+        let current = {"name": item.subcategory_name,"schnitt": item.picked};
+        if( current.name != undefined){
+          pushOrUpdate(auswertung[item.category_name], current);
+        }
+      }
+        
+      this.auswertungArray[0]= auswertung;
+      console.log(this.auswertungArray);
+    }
   },
   watch: {
     // aktualisiere die Export Datei, sobald neue Antwort / Kommentar
     userAnswers: function(){
+      // watcher muss auch nested watchen, sonst wird answer / comment änderung nicht updated
+      //deep: true
+      console.log("fired");
       this.toExport = [];
       for(let block of this.toViewArray){
         for(let question of block.questions){
@@ -524,24 +536,9 @@ export default {
             question:question.name,
             picked:picked,
             comment:comment
-          })
+          });
         }
-      }
-      // this.toExport = this.toExportAlternative2;
-      // for (let a in this.userAnswers){
-      //   console.log(this.userAnswers[a]);
-      //   // englische Version mit anderen keys einbauen
-      //   if (!this.toExportWork.find(p => p.Frage == a)){
-      //     this.toExportWork.push(
-      //       {
-      //         "Frage": a,
-      //         "Antwort": this.userAnswers[a].picked,
-      //         "Kommentar": this.userAnswers[a].comment,
-      //       }
-      //     );
-      //   }
-      // }
-      console.log(this.toExportWork);
+      }  
     },
 		// Removes selected subcategory if category is unchecked.
 		selectedCategories: function() {

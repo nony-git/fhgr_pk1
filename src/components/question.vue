@@ -91,9 +91,6 @@
       <textarea v-model="comment" name="" class="comment" :id="question.name" cols="1" rows="1" :placeholder="[[textcomponents.kommentar]]"></textarea>
     </td>
   </tr>
-        <!-- dev only: um zu zeigen, dass Kommentar in comment gespeichert wird -->
-        <tr>{{ comment }}</tr>
-        <!---->
   </tbody>
 </template>
 
