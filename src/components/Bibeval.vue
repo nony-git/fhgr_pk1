@@ -20,9 +20,13 @@
             <div class="bibeval-linkbuttons" v-if="!showInfoText">
               <button class="linkbutton linkbutton-more" v-on:click="showInfoText = true">{{ textcomponents.mehrErfahren }}</button>
             </div>
-            <p class="bibeval-text" v-if="showInfoText">
-                {{ infotext.zusatztext }}
-            </p>
+            <div class="bibeval-text" v-if="showInfoText">
+              <p>{{ infotext.zusatztext.block0 }}></p>
+              <h3>{{ infotext.zusatztext.block1.title }}</h3>
+              <p v-for="text in infotext.zusatztext.block1.body" v-bind:key="text" v-html="text"></p>
+              <h3>{{ infotext.zusatztext.block2.title }}</h3>
+              <p v-for="text in infotext.zusatztext.block2.body" v-bind:key="text" v-html="text"></p>
+            </div>
             <div class="bibeval-linkbuttons" v-if="showInfoText">
               <button class="linkbutton linkbutton-less" v-on:click="showInfoText = false">{{ textcomponents.weniger }}</button>
             </div>

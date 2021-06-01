@@ -1,11 +1,29 @@
 {
     "infotext": {
       "haupttext": 
-        "Mit BibEval stellt das Schweizerische Institut für Informationswissenschaft (SII) eine modular verwendbare, hierarchisch strukturierte Liste von Evaluationskriterien zur Verfügung, mit welcher Websiten auf Usabilty Schwachstellen überprüft werden können. "
+      "Mit dem Usability Evaluation-Tool stellt das Schweizerische Institut für Informationswissenschaft (SII) eine modular verwendbare, hierarchisch strukturierte Liste von Evaluationskriterien zur Verfügung. Dadurch können Usability Schwachstellen von Unternehmens- oder Bibliothekswebsites identifiziert und evaluiert werden."
       ,
-      "zusatztext": 
-        "Mithilfe eines Fragebogens kann das BibEval Tool Ihnen helfen, Schwachstellen ihres Webauftritts zu evaluieren. Der hierachisch struktutierte Aufbau, erlaubt es spezifsche Bereiche einer Homepage zu untersuchen. Durch Klicken auf das Info-Icon erhalten sie weiterführende Informationen zur Frage. Pro Fragen können Sie zuästzlich Kommentare hinzufügen. "
-      
+      "zusatztext": {
+        "block0":"Der hierarchisch strukturierte Aufbau, erlaubt es spezifische Bereiche einer Homepage zu untersuchen. Je nach Auswahl (Unternehmens- oder Bibliothekswebsite)  stehen verschiedene Bereiche zur Verfügung, welche auf Usability Schwachstellen untersucht werden können. Die passenden Komponenten erscheinen automatisch bei der Auswahl der zu untersuchenden Bereiche. Obligatorische Komponenten sind per Default ausgewählt, jedoch steht es Ihnen frei zur Verfügung, welche Bereiche oder Komponenten Sie untersuchen möchten. Sie können Ihre Auswahl jederzeit widerrufen und neue Bereiche oder Komponenten zu Ihrem Fragenkatalog hinzufügen.",
+        "block1":{
+          "title":"Fragebogen ausfüllen",
+          "body":[
+            "Zu jeder Frage haben Sie die Möglichkeit, eine entsprechende Bewertung vorzunehmen. Zusätzlich kann mit einem Klick auf das Pluszeichen bei \"Kommentar einfügen\" ein Eingabefeld eingeblendet werden, um mögliche Anmerkungen zu einem bestimmten Kriterium zu erfassen. Bei Fragen mit Info-Icons erhalten Sie durch Klicken auf dieses weiterführende Informationen zur Frage.",
+            "Hinsichtlich der Bewertung ist anzumerken, dass die Problemeinstufung (\"Severity-Rating\") gerade für Personen mit wenig Erfahrung bzw. Hintergrundwissen nicht immer einfach sein dürfte. Allerdings ist das Ziel dieser Problemeinstufung auch gar keine exakte Bewertung - es geht vielmehr darum Prioritäten für die Beseitigung der identifizierten Mängel festlegen zu können. Daher ist es nicht so entscheidend, ob ein Problem jetzt bspw. als \"mittleres Usability-Problem\" oder \"schweres Usability-Problem\" eingestuft worden ist. Denn jedes Problem, dass ein/e Anwender/In im Umgang mit einem Webauftritt begegnet, mindert den Qualitätsanspruch der entsprechenden Website und sollte daher beseitigt werden. Um eine zuverlässigere Fehlereinstufung zu erhalten, ist es daher sinnvoll solche Evaluationen mit mehreren Gutachtern/Innen durchzuführen. Aber auch als einzelne/r Anwender/In sollten Sie bei der Anwendung des Kriterienkatalogs relativ schnell ein Gespür dafür bekommen, welche Schwachstellen Endanwendern grosse Probleme bereiten dürften und welche Mängel vielleicht eher kosmetischer Natur sind. Eine Tabelle mit der entsprechenden Erklärung zu jeder Problem-Einstufung kann jederzeit im Fragebogen angezeigt werden. Hierfür steht Ihnen ein Info-Button zur Verfügung welcher oben rechts neben den Problem-Einstufungen ersichtlich ist."
+          ]
+        },
+        "block2":{
+          "title":"Auswertung",
+          "body":[
+            "Am Ende Ihrer Evaluation erhalten Sie eine grobe Bewertung der derzeitigen Usability zu jedem untersuchenden Bereich. Es gibt für die Bewertung von Usability-Schwachstellen bzw. die Interpretation entsprechender Evaluationsergebnisse kein fest vorgegebenes Schema. Es zeigt potentiell vorhandene Schwachstellen und Problembereiche auf, um diese anschliessend gezielt beseitigen zu können.",
+            "Mit Hinblick auf die Anwender kann dabei bspw. ein einzelner gravierender Fehler, der die Nutzer an ihrer Zielerreichung hindert problematischer sein, als eine Vielzahl kleinerer Schwachstellen, die eher kosmetischer Natur sind. Wobei natürlich das gehäufte Auftreten kleinerer Mängel insgesamt auch keinen guten Eindruck vermittelt.",
+            "Die alleinige Anzahl von identifizierten Fehlern spiegelt also nicht unmittelbar die Qualität eines Webauftrittes wieder. Vielmehr muss auch beachtet werden, welche Auswirkungen eine ermittelte Schwachstelle auf die Anwender hat.",
+            "Ausserdem haben Sie die Möglichkeit einen Evaluationsbericht zu generieren. Dieser enthält Ihren individuell zusammengestellten Fragenkatalog, die vorgenommenen Bewertungen sowie ggf. die erfassten Kommentare. Über den \"Download-Button\" können Sie ihn im Exportformat .CSV herunterladen.",
+            "Sollten Sie weitere Fragen zur Usability Evaluation haben oder zur Erarbeitung passender Verbesserungsmassnahmen bzw. von Redesign-Vorschlägen, so können wir Sie gerne im Rahmen von Dienstleistungsaufträgen bei der Optimierung Ihres Web-Angebots unterstützen.",
+            "Hier <a href='https://blog.fhgr.ch/cheval/kontakt/'>Kontakt</a> mit uns aufnehmen."
+          ]
+        }
+      }      
     },
     "textkomponenten": {
       "mehrErfahren": "mehr erfahren",
