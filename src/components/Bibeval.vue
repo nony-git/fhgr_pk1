@@ -3,11 +3,6 @@
         <!-- PAGE 0 / INFO PAGE -->
         <template v-if="page == 0">
           <img class="bib-header-img" src="../assets/bibeval_intro_image.png" />
-          
-          <!-- dev-only -->
-          <button class="btn btn-forward" @click="page =3">Jump to Report</button>
-          <!-- -->
-
           <!-- LANGUAGE SWITCH -->
           <div class="eval-languageswitch">
               <button class="linkbutton" v-on:click="language = 'de'; loadLabels()" v-bind:class="{linkbuttonActive: language == 'de'}">
@@ -211,7 +206,7 @@
               <!-- vorwaerts -->
               <button v-if="currentView < toViewArray.length-1" class="btn btn-forward" @click="next();scrollToTop()">{{ textcomponents.weiter }}</button>
               <button v-if="currentView == toViewArray.length-1"
-              class="btn btn-forward" @click="page += 1; scrollToTop()">{{ textcomponents.abschliessen }}</button>
+              class="btn btn-forward" @click="page += 1; scrollToTop(); auswerten()">{{ textcomponents.abschliessen }}</button>
             </div>
             {{ toExport }}
         </template>
@@ -252,36 +247,19 @@
                 </div>
               </div>
               <div class="legende-spacer"></div>
-              <button class="bib-pagenav btn-legende">{{ textcomponents.download }}</button>
+              <button class="bib-pagenav btn-legende"><download-csv
+                :data = "toExport">
+                {{ textcomponents.download }}
+              </download-csv></button>
             </div>
             <resultline
-            v-for="(h,index,i) in auswertungArrayMuster"
+            v-for="(h,index,i) in auswertungArray"
                   :eingabe="h"
                   :textcomponents="textcomponents"
                   :key="index"
                   :counter="i+1"
-                  :bereiche="Object.keys(auswertungArrayMuster)"
+                  :bereiche="Object.keys(auswertungArray)"
             ></resultline>
-            <button class="btn" @click="auswerten()">
-              Auswerten
-            </button>
-            <button class="btn">
-              <download-csv
-                :data = "toExport">
-                Download CSV
-              </download-csv>
-            </button>
-            {{toExport}}
-            <!-- nested JSON to csv -->
-            <!-- <button class="btn">
-              <vue-nested-json-to-csv
-                :fields="toExport"
-                :object="toExport"
-                :show-table="true"
-                :show-export-button="true"
-              ></vue-nested-json-to-csv>Download nested
-            </button> -->
-
             <div class="bottom-nav">
               <button class="btn btn-back" @click="page -= 1;scrollToTop()"></button>
             </div>
@@ -331,33 +309,34 @@ export default {
       showInfoText: false,
       toExport:[],
       toExportWork:[],
-      // soll so an resultline übergeben werden, wahrscheinlich als computed aus toExport generieren
+      // dev-only
       auswertungArrayMuster:[
         {
-        "Information & Kommunikation":[
+          "Information & Kommunikation":[
+              {
+                "name":"Kontakt und Zugang",
+                "schnitt":"4"
+              },
+              {
+                "name":"Seitenüberblick",
+                "schnitt":"3"
+              }
+          ],
+          "Recherche im Bestand":[
             {
-              "name":"Kontakt und Zugang",
-              "schnitt":"4"
+              "name":"Suchen und Erkunden",
+              "schnitt":"1"
             },
             {
-              "name":"Seitenüberblick",
-              "schnitt":"3"
+              "name":"Präsentation und Zugriff",
+              "schnitt":"2"
             }
-        ],
-        "Recherche im Bestand":[
-          {
-            "name":"Suchen und Erkunden",
-            "schnitt":"1"
-          },
-          {
-            "name":"Präsentation und Zugriff",
-            "schnitt":"2"
-          }
-        ]
-      }
-    ],
-      auswertungArray:[]
-    };
+          ]
+        }
+      ],
+      //---//
+      auswertungArray: this.auswertungArray
+      };
   },
   computed: {
     
@@ -500,10 +479,9 @@ export default {
       let auswertung = {};
       function pushOrUpdate(arr, obj) {
         const index = arr.findIndex((e) => e.name === obj.name);
-        if (index === -1) {
-            arr.push(obj);
-        } else {
-            arr[index] = obj;
+        if (index === -1) arr.push(obj);
+        else {
+          if(obj.schnitt < arr[index].schnitt) arr[index] = obj;
         }
       }
       for (let item of this.toExport){
@@ -513,9 +491,8 @@ export default {
           pushOrUpdate(auswertung[item.category_name], current);
         }
       }
-        
-      this.auswertungArray[0]= auswertung;
-      console.log(this.auswertungArray);
+      this.auswertungArray = [];
+      this.auswertungArray= auswertung;
     }
   },
   watch: {
@@ -523,7 +500,6 @@ export default {
     userAnswers: function(){
       // watcher muss auch nested watchen, sonst wird answer / comment änderung nicht updated
       //deep: true
-      console.log("fired");
       this.toExport = [];
       for(let block of this.toViewArray){
         for(let question of block.questions){
