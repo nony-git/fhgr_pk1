@@ -1,7 +1,7 @@
 <template>
-<div class="container" id="app">
+<div class="suchanfrage-container">
     <!-- START: INTRO IMAGE -->
-    <img src="../assets/suchanfragen_intro_image.jpg" class="introImage" alt="Intro Image">
+    <img src="/apps/stand1105/dist/img/suchanfragen_intro_image.916b5f6b.jpg" class="introImage" alt="Intro Image">
     <!-- END: INTRO IMAGE -->
 
     <!-- START: LANGUAGE SWITCH -->
@@ -251,7 +251,7 @@ import dataset from './json/data_suchanfrage.json'
 import datasetEn from './json/data_suchanfrage_eng.json'
 
 export default {
-          name: 'App',
+          name: 'Suchanfrage',
           data: function(){
             return {
             query1: '',
@@ -543,10 +543,10 @@ export default {
         object-fit: cover;
         margin-bottom: 1rem;
       }
-      .container {
-        max-width: 1000px;
+      .suchanfrage-container {
+        max-width: 900px;
         margin: 0 auto;
-        background: #fff;
+        text-align: left;
       }
       .languageswitch {
         margin-bottom: 2rem;
@@ -662,11 +662,11 @@ export default {
       }
       .tooltip {
         position: relative;
-        margin: 0 5px;
+        margin: 0 0 0 5px;
         cursor: context-menu;
         padding: 0 4px;
         height: 100%;
-        width: 20px;
+        width: 12px;
       }
       .tooltip::before {
         content: "";
@@ -747,7 +747,7 @@ export default {
           display: none;
         }
         .cell, .cellInput {
-          padding: 3px;
+          padding: 4px;
         }
       }
 </style>
