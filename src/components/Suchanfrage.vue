@@ -1,5 +1,9 @@
 <template>
 <div class="container" id="app">
+    <!-- START: INTRO IMAGE -->
+    <img src="../assets/suchanfragen_intro_image.jpg" class="introImage" alt="Intro Image">
+    <!-- END: INTRO IMAGE -->
+
     <!-- START: LANGUAGE SWITCH -->
     <div class="languageswitch">
         <button class="linkbutton" v-on:click="language = 'de'; loadData()" v-bind:class="{linkbuttonActive: language == 'de'}">
@@ -534,6 +538,11 @@ export default {
       #app {
         text-align: left;
       }
+      .introImage {
+        width: 100%;
+        object-fit: cover;
+        margin-bottom: 1rem;
+      }
       .container {
         max-width: 1000px;
         margin: 0 auto;
@@ -726,16 +735,19 @@ export default {
 
       @media screen and (max-width: 450px) {
         .row {
-          font-size: 0.8rem;
+          font-size: 0.75rem;
         }
         input[type=text] {
-          font-size: 0.8rem !important;
+          font-size: 0.75rem !important;
         }
         input[type=number] {
-          font-size: 0.8rem !important;
+          font-size: 0.75rem !important;
         }
         .tooltip {
           display: none;
+        }
+        .cell, .cellInput {
+          padding: 3px;
         }
       }
 </style>

@@ -406,9 +406,6 @@ a {
 label {
   margin-top: 0;
 }
-.methodencheck {
-  padding-top: 1rem;
-}
 .button {
   font-size: 1rem;
   padding: 10px 15px;
@@ -424,7 +421,6 @@ label {
   color: #ffffff;
 }
 .methodencheck-page {
-  padding: 0 2rem;
   position: relative;
 }
 .methodencheck-introImage {
@@ -436,7 +432,7 @@ label {
 .methodencheck-processbar {
   display: flex;
   align-items: center;
-  padding: 0rem 2rem 4rem 2rem;
+  padding: 0 0 4rem 0;
 }
 .methodencheck-step {
   width: 30px;
