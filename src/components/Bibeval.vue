@@ -501,24 +501,27 @@ export default {
   },
   watch: {
     // aktualisiere die Export Datei, sobald neue Antwort / Kommentar
-    userAnswers: function(){
+    userAnswers: {
       // watcher muss auch nested watchen, sonst wird answer / comment änderung nicht updated
       //deep: true
-      this.toExport = [];
-      for(let block of this.toViewArray){
-        for(let question of block.questions){
-          let picked = this.userAnswers[question.name]?this.userAnswers[question.name].picked:"";
-          let comment = this.userAnswers[question.name]?this.userAnswers[question.name].comment:"";
-          this.toExport.push({
-            category_name:block.category_name,
-            subcategory_name:block.subcategory_name,
-            component_name:block.component_name,
-            question:question.name,
-            picked:picked,
-            comment:comment
-          });
+      handler:function(){
+        this.toExport = [];
+        for(let block of this.toViewArray){
+          for(let question of block.questions){
+            let picked = this.userAnswers[question.name]?this.userAnswers[question.name].picked:"";
+            let comment = this.userAnswers[question.name]?this.userAnswers[question.name].comment:"";
+            this.toExport.push({
+              category_name:block.category_name,
+              subcategory_name:block.subcategory_name,
+              component_name:block.component_name,
+              question:question.name,
+              picked:picked,
+              comment:comment
+            });
+          }
         }
-      }  
+      },
+    deep: true
     },
 		// Removes selected subcategory if category is unchecked.
 		selectedCategories: function() {
