@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+
 import Bibeval from './components/Bibeval.vue'
 import Methodencheck from './components/Methodencheck.vue'
 import Suchanfrage from './components/Suchanfrage.vue'
@@ -18,7 +18,6 @@ import Suchanfrage from './components/Suchanfrage.vue'
 export default {
   name: 'App',
   components: {
-    HelloWorld,
 		Bibeval,
     Methodencheck,
     Suchanfrage,

@@ -87,8 +87,8 @@
   </tr>
   <tr>
     <td colspan="8" class="left-align add-comment">
-      <button class="btn-mini" :id='question.name+"btn"' @click="showCommentField(question.name)">+ {{ textcomponents.kommentar }}</button>
-      <textarea v-model="comment" name="" class="comment" :id="question.name" cols="1" rows="1" :placeholder="[[textcomponents.kommentar]]"></textarea>
+      <button class="btn-mini" :id='question.name+"btn"' @click="showCommentField(question.name);focus(question.name)">+ {{ textcomponents.kommentar }}</button>
+      <textarea v-model="comment" name="" :ref="question.name" class="comment" :id="question.name" cols="1" rows="1" :placeholder="[[textcomponents.kommentar]]"></textarea>
     </td>
   </tr>
   </tbody>
@@ -119,11 +119,13 @@ export default {
   methods:{
     showCommentField: function(id){
       // todo: schöner lösen?
-      console.log("it works");
       var field = document.getElementById(id);
       field.style.display = "block";
       var button = document.getElementById(id+"btn");
       button.style.display = "none";
+    },
+    focus: function(id){
+      this.$refs[id].focus()
     }
   },
   watch: {
@@ -254,6 +256,8 @@ textarea{
   font-size:0.8rem;
   border:1px solid;
   border-radius: 5px;
+  padding:0.5em;
+  margin-top:1em;
 }
 .comment{
   display:none;
