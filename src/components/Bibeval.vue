@@ -160,7 +160,7 @@
         <!-- PAGE 2 / FRAGEN -->
         <template v-if="page == 2">
             <!-- Navigator, braucht noch Zustände: in Bearbeitung / fertig, inkl. Icons -->
-            {{ progressItems }}
+            <!-- {{ progressItems }} -->
             <table class="navigator-table" cellspacing="0" cellpadding="0">
             <tr>
               <template v-for="(title,indexprogress) in progressItems">
@@ -212,7 +212,7 @@
               <button v-if="currentView == toViewArray.length-1"
               class="btn btn-forward" @click="page += 1; scrollToTop(); auswerten()">{{ textcomponents.abschliessen }}</button>
             </div>
-            {{ toExport }}
+            <!-- {{ toExport }} -->
         </template>
         <template v-if="page == 3">
           <h1>{{ textcomponents.page3h1 }}</h1>
