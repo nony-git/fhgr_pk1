@@ -3,9 +3,10 @@
         {
             "name": "Information und Kommunikation",
             "is_mandatory": false,
+            "desc": "Unter diesem Bereich sind alle Aspekte zusammengefasst, die sich auf das Bereitstellen von Informationen durch die Bibliothek beziehen. Hierunter fallen beispielsweise die Öffnungszeiten oder aber auch ein Newsletter oder ein Live-Chat-Service.",
             "questions": [
                 {
-                    "name": "Sind die Informationsseiten klar und deutlich strukturiert, um die Anwender bei der Orientierung zu unterstützen?",
+                    "name": "Sind die Informationsseiten klar und deutlich strukturiert, um die Anwender/innen bei der Orientierung zu unterstützen?",
                     "is_mandatory": true 
                 },
                 {
@@ -25,6 +26,7 @@
                 {
                     "name": "Kontakt und Zugang",
                     "is_mandatory": true,
+                    "desc": "Dieser Bereich beinhaltet Informationen bezüglich der Lage der Bibliothek, sowie über die räumliche Aufteilung innerhalb der Bibliothek (z.B. Lageplan, etc.). Zudem sind diesem Bereich Instrumente zur Kommunikation mit der Bibliothek wie bspw. Kontaktformulare, Chatbots und ähnliches zusammengefasst.",
                     "questions": [
                         {
                             "name": "Ist deutlich erkennbar, wer bzw. welche Institution für den Webauftritt verantwortlich ist?",
@@ -39,6 +41,7 @@
                         {
                             "name": "Kontaktinformationen",
                             "is_mandatory": true,
+                            "desc": "Der Anwender erhält Informationen über Öffnungszeiten, Kontaktmöglichkeiten, Standort und Mitarbeitende der Institution.",
                             "questions": [
                                 {
                                     "name": "Sind direkte Kontaktmöglichkeiten (z.B. per Email oder Telefon) angegeben?",
@@ -65,7 +68,7 @@
                                     "is_mandatory": true 
                                 },
                                 {
-                                    "name": "Wird, sofern mehrere Ansprechpartner benannt sind,  deutlich aufgeführt, für welche Belange welcher Ansprechpartner zuständig ist und gibt es eine allgemeine Adresse, an die man sich bei Unklarheiten wenden kann?",
+                                    "name": "Wird, sofern mehrere Ansprechpartner/innen benannt sind,  deutlich aufgeführt, für welche Belange welche/r Ansprechpartner/in zuständig ist und gibt es eine allgemeine Adresse, an die man sich bei Unklarheiten wenden kann?",
                                     "is_mandatory": true 
                                 }
                             ]
@@ -73,6 +76,7 @@
                         {
                             "name": "Kontaktformular",
                             "is_mandatory": false,
+                            "desc": "Das Formular dient dem Anwender zur gezielten Kontaktaufnahme mit der Bibliothek.",
                             "questions": [
                                 {
                                     "name": "Ist das Formular übersichtlich gestaltet und sind alle  Felder vorhanden, die zur Kontaktaufnahme notwendig sind?",
@@ -87,7 +91,7 @@
                                     "is_mandatory": true 
                                 },
                                 {
-                                    "name": "Sofern Eingaben in bestimmten Formaten notwendig sind, bekommt der Anwender eine Rückmeldung, wie die Eingabe zu tätigen ist?",
+                                    "name": "Sofern Eingaben in bestimmten Formaten notwendig sind, bekommt der/die Anwender/in eine Rückmeldung, wie die Eingabe zu tätigen ist?",
                                     "is_mandatory": true 
                                 },
                                 {
@@ -103,6 +107,197 @@
                                     "is_mandatory": true 
                                 }
                             ]
+                        },
+                        {
+                            "name": "Lageplan",
+                            "is_mandatory": true,
+                            "desc": "",
+                            "questions": [
+                                {
+                                    "name": "Ist eine Wegbeschreibung vorhanden?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Ist ein Lageplan vorhanden?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Ist der Lageplan in einer ausreichenden Grösse dargestellt bzw. kann er ausreichend vergrössert werden?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Ist die Ausrichtung des Lageplans klar und sind die notwendigen Legenden mit dargestellt?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Sind Wegbeschreibung und Lageplan in einer Druckversion vorhanden bzw. steht eine Druckfunktion zur Verfügung?",
+                                    "is_mandatory": true 
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Virtuelle Touren durch die Bibliothek",
+                            "is_mandatory": false,
+                            "desc": "",
+                            "questions": [
+                                {
+                                    "name": "Wird dem/der Anwender/in eine geleitete Führung durch die Bibliothek (Guided Tour) zur Verfügung gestellt?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Kann der/die Anwender/in dabei steuern, in welchen Bereich er/sie gehen möchte, und wie lange er/sie diesen Bereich erkunden will?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Kann der/die Anwender/in jederzeit zum Ausgangspunkt seiner/ihrer Tour zurückkehren und zwischen den Bereichen navigieren?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Erhält der/die Anwenderin ein Feedback, welche Bereiche er/sie schon erkundet hat und welchen Bereich er/sie gerade betrachtet?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Enthält die Führung neben der Information zur Lage der einzelnen Bereiche auch illustratives Bildmaterial  (Fotografien oder Videos)?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Enthält die Führung zusätzlich noch weitere relevante Informationen (Text oder Audio)?",
+                                    "is_mandatory": false 
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Live-Chat",
+                            "is_mandatory": false,
+                            "desc": "",
+                            "questions": [
+                                {
+                                    "name": "Kann der Chat ohne Installation einer zusätzlichen Software über die Webseite direkt genutzt werden?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Kann der Chat anonym ohne Registrierung und Angabe persönlicher Informationen genutzt werden?",
+                                    "is_mandatory": false 
+                                },
+                                {
+                                    "name": "Ist ersichtlich, ob die Bibliothek aktuell on- oder offline ist und sind die Servicezeiten angegeben?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Wird eine alternative Kontaktmöglichkeit angeboten, wenn die Bibliothek offline ist, oder kann ggf. eine Nachricht hinterlassen werden?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Ist ersichtlich, in welchen Sprachen kommuniziert werden kann?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Ist das Eingabefeld ausreichend breit dargestellt?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Ist klar, wie die Frage abgeschickt werden kann?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Erhält der/die Anwender/in ein Feedback, dass seine Anfrage erfolgreich übermittelt wurde und wird auf die Fragen angemessen schnell reagiert?",
+                                    "is_mandatory": true 
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Chatbot",
+                            "is_mandatory": false,
+                            "desc": "",
+                            "questions": [
+                                {
+                                    "name": "Kann der Chatbot ohne Installation einer zusätzlichen Software über die Webseite direkt angesprochen werden?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Kann der Chat anonym ohne Registrierung und Angabe persönlicher Informationen genutzt werden?",
+                                    "is_mandatory": false 
+                                },
+                                {
+                                    "name": "Ist ersichtlich, in welchen Sprachen kommuniziert werden kann?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Gibt es einen Avatar?",
+                                    "is_mandatory": false 
+                                },
+                                {
+                                    "name": "Ist das Eingabefeld ausreichend breit dargestellt?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Ist klar, wie eine Frage abgeschickt werden kann?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Kann die Eingabe in natürlicher Sprache formuliert werden?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Erhält der/die Anwender/in ein Feedback, dass seine/ihre Anfrage erfolgreich übermittelt wurde?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Wird auf Fragen angemessen schnell reagiert?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Kann der Avatar Auskünfte zu häufig gestellten Fragen wie beispielsweise Öffnungszeiten, Leihgebühren und Dienstleistungen der Bibliothek geben?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Kann der Avatar zusätzlich Hilfestellung zur Recherche im Katalog geben?",
+                                    "is_mandatory": false 
+                                },
+                                {
+                                    "name": "Sind die Antworten in natürlicher Sprache (korrekte Grammatik und Rechtschreibung) formuliert?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Werden die Antworten vollständig angezeigt?",
+                                    "is_mandatory": true 
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Social Media",
+                            "is_mandatory": false,
+                            "desc": "",
+                            "questions": [
+                                {
+                                    "name": "Ist der Link zur entsprechenden Social-Media-Seite angemessen in die Bibliothekswebseite eingebunden?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Ist das Social-Media-Profil der Bibliothek angemessen, übersichtlich und  ansprechend gestaltet?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Stellt das Social-Media-Profil alle relevanten Informationen und darüber hinaus passende Webinhalte zur Verfügung, so dass ein Mehrwert zur Bibliothekswebseite entsteht?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Wird das Social-Media-Profil regelmässig aktualisiert?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Ist ersichtlich, welche/r Mitarbeiter/in der Bibliothek welche Beiträge verfasst hat?",
+                                    "is_mandatory": false 
+                                },
+                                {
+                                    "name": "Ermöglicht das Social-Media-Profil Bibliotheksnutzenden eine ausreichende interaktive Beteiligung?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Reagiert die Bibliothek angemessen auf Kommentare, Gästebucheinträge und Anfragen?",
+                                    "is_mandatory": true 
+                                }
+                            ]
                         }
 
                     ]
@@ -110,6 +305,7 @@
                 {
                     "name": "Seitenüberblick",
                     "is_mandatory": true,
+                    "desc": "Dieser Bereich umfasst alle Komponenten, die den Anwender bei der Orientierung auf der Website unterstützen sollen (z.B. eine Sitemap).",
                     "questions": [
                         {
                             "name": "Sind die Navigationselemente als solche klar erkennbar?",
@@ -124,6 +320,7 @@
                         {
                             "name": "Sitemap",
                             "is_mandatory": false,
+                            "desc": "Die Struktur der Webseite wird in Form einer hierarchischen Sitemap dargestellt.",
                             "questions": [
                                 {
                                     "name": "Sind die einzelnen Hierarchieebenen optisch klar voneinander getrennt, so dass die Darstellung übersichtlich wirkt?",
@@ -146,6 +343,7 @@
                         {
                             "name": "Seitensuche",
                             "is_mandatory": false,
+                            "desc": "Sitesearch ist die Suche innerhalb der Website einer Institution und somit von der Suche innerhalb des Katalogs zwingend zu unterscheiden. ",
                             "questions": [
                                 {
                                     "name": "Ist die Sitesearch optisch klar von der Suche im Bibliotheksbestand abgegrenzt?",
@@ -164,7 +362,7 @@
                                     "is_mandatory": true 
                                 },
                                 {
-                                    "name": "Ist transparent, wie die unterschiedlichen Suchbegriffe miteinander verknüpft werden, sofern der Anwender keine Operatoren und Klammern eingibt?",
+                                    "name": "Ist transparent, wie die unterschiedlichen Suchbegriffe miteinander verknüpft werden, sofern der/die Anwender/in keine Operatoren und Klammern eingibt?",
                                     "is_mandatory": true 
                                 },
                                 {
@@ -184,7 +382,7 @@
                                     "is_mandatory": true 
                                 },
                                 {
-                                    "name": "Ist die initiale Sortierung (z.B. nach Relevanz) der Ergebnisse für den Anwender transparent?",
+                                    "name": "Ist die initiale Sortierung (z.B. nach Relevanz) der Ergebnisse für den/die Anwender/in transparent?",
                                     "is_mandatory": true 
                                 },
                                 {
@@ -208,8 +406,345 @@
                                     "is_mandatory": true 
                                 }
                             ]
+                        },
+                        {
+                            "name": "Glossar",
+                            "is_mandatory": false,
+                            "desc": "",
+                            "questions": [
+                                {
+                                    "name": "Sind zu allen relevanten Begriffen Erläuterungen im Glossar vorhanden?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Sind die Erläuterungen knapp gehalten und für Laien verständlich?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Ist das Glossar sinnvoll sortiert und bietet eine angemessene, intuitive Navigation?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Ist das Glossar übersichtlich gestaltet?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Sind Querverweise zu anderen, thematisch verwandten Einträgen vorhanden, so dass der/die Anwender/in explorativ das Glossar erkunden und Zusammenhänge erkennen kann?",
+                                    "is_mandatory": false 
+                                }
+                            ]
                         }
 
+                    ]
+                },
+                {
+                    "name": "News & Veranstaltungen",
+                    "is_mandatory": false,
+                    "desc": "",
+                    "questions": [
+                        {
+                            "name": "Ist klar ersichtlich, wie aktuell die jeweiligen Beiträge sind?",
+                            "is_mandatory": true 
+                        }
+                    ],
+                    "categories_levelthree": [
+                        {
+                            "name": "Veranstaltungskalender",
+                            "is_mandatory": false,
+                            "desc": "",
+                            "questions": [
+                                {
+                                    "name": "Beinhaltet der Veranstaltungskalender eine ausreichende Anzahl an Einträgen?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Wird der Kalender regelmässig aktualisiert und sind die enthaltenen Daten stets aktuell?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Beinhaltet der Kalender genügend Informationen zu den einzelnen Veranstaltungen?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Kann innerhalb des Kalenders zwischen den einzelnen Monaten navigiert werden?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Kann nach einer konkreten Veranstaltung gesucht werden?",
+                                    "is_mandatory": false 
+                                },
+                                {
+                                    "name": "Werden ausreichend Extraktionsmechanismen wie eine Druckfunktion angeboten?",
+                                    "is_mandatory": false 
+                                },
+                                {
+                                    "name": "Können Termine in den eigenen Kalender importiert werden?",
+                                    "is_mandatory": false 
+                                },
+                                {
+                                    "name": "Bietet der Veranstaltungskalender einen RSS-Feed?",
+                                    "is_mandatory": false 
+                                }
+                            ]
+                        },
+                        {
+                            "name": "News & Newsletter",
+                            "is_mandatory": false,
+                            "desc": "",
+                            "questions": [
+                                {
+                                    "name": "Sind die einzelnen Newsbeiträge oder Newsletter mit Datum versehen und chronologisch sortiert?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Ist es möglich, Newsbeiträge per RSS-Feed zu abonnieren?",
+                                    "is_mandatory": false 
+                                },
+                                {
+                                    "name": "Ist ein grober Überblick über die Inhalte der News/ des Newsletters gegeben?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Sind die Inhalte der Beiträge allgemein verständlich und bieten dem/der Anwender/in einen Mehrwert?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Sofern Push-Dienste eingesetzt werden (z.B. E-Mail-Versand eines Newsletters), ist die Registrierung einfach zu finden und zu tätigen?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Sofern Push-Dienste eingesetzt werden (z.B. Email-Versand eines Newsletters), ist eine Abmeldung einfach und jederzeit möglich?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Ist die Personalisierung des Newsletters möglich und einfach einzustellen?",
+                                    "is_mandatory": false 
+                                },
+                                {
+                                    "name": "Können die Abonnenten/innen ihre Daten verwalten und ist klar ersichtlich, wie und wo sie das können?",
+                                    "is_mandatory": false 
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Weblog",
+                            "is_mandatory": false,
+                            "desc": "",
+                            "questions": [
+                                {
+                                    "name": "Ist der Link zum Weblog oder der Blog selbst angemessen in die Bibliothekswebseite eingebunden?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Ist der Weblog der Bibliothek angemessen, übersichtlich und  ansprechend gestaltet?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Ist ein grober Überblick über die Inhalte der einzelnen Beiträge gegeben?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Sind die Inhalte der Beiträge allgemein verständlich und bieten dem/der Anwender/in Zusatzinformationen zur bestehenden Webseite?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Werden dem Blog regelmässig neue Beiträge hinzugefügt?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Werden einzelne Beiträge mit Hilfe von Tags zu Themenbereichen gruppiert?",
+                                    "is_mandatory": false 
+                                },
+                                {
+                                    "name": "Ist ersichtlich, welche/r Mitarbeiter/in der Bibliothek welche Beiträge verfasst hat?",
+                                    "is_mandatory": false 
+                                },
+                                {
+                                    "name": "Ermöglicht der Weblog den Bibliotheksnutzenden eine ausreichende interaktive Beteiligung?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Reagiert die Bibliothek angemessen auf Kommentare und Anfragen?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Verfügt der Weblog über RSS?",
+                                    "is_mandatory": false 
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Microblogging",
+                            "is_mandatory": false,
+                            "desc": "",
+                            "questions": [
+                                {
+                                    "name": "Ist der Link zum Microblog bzw. der Microblog selbst angemessen in die Bibliothekswebseite eingebunden?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Informieren die Beiträge über Themen, die dem/der Nutzer/in von Interesse sein können?",
+                                    "is_mandatory": false 
+                                },
+                                {
+                                    "name": "Werden dem Microblog regelmässig neue Beiträge hinzugefügt?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Reagiert die Bibliothek angemessen auf Kommentare und Anfragen?",
+                                    "is_mandatory": true 
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "Anleitungen",
+                    "is_mandatory": true,
+                    "desc": "",
+                    "questions": [
+                        {
+                            "name": "Ist für den/die Nutzer/in ersichtlich wo er Unterstützung zu etwaigen Problemstellungen findet?",
+                            "is_mandatory": false 
+                        },
+                        {
+                            "name": "Sind die angebotenen Hilfsmittel den jeweiligen Problemstellungen angemessen?",
+                            "is_mandatory": true 
+                        }
+                    ],
+                    "categories_levelthree": [
+                        {
+                            "name": "Häufig gestellte Fragen (FAQs)",
+                            "is_mandatory": true,
+                            "desc": "",
+                            "questions": [
+                                {
+                                    "name": "Sind die FAQ angemessen in die Webseite eingebunden bzw. prominent platziert?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Sind die FAQ übersichtlich gestaltet?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Sind die FAQ sinnvoll sortiert und bieten sie eine angemessene, intuitive Navigation?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Liefern die FAQ Antworten auf alle potentiell relevanten Fragen aus Sicht der Bibliotheksnutzer/in?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Sind die Erläuterungen knapp gehalten und für Laien verständlich?",
+                                    "is_mandatory": true 
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Online-Anleitungen",
+                            "is_mandatory": false,
+                            "desc": "",
+                            "questions": [
+                                {
+                                    "name": "Sind die Tutorials an prominenter Stelle in die Webseite integriert, so dass der/die Anwender/in sie leicht finden kann?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Ist klar ersichtlich, was in der Anleitung beschrieben wird?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Sind die Inhalte der Tutorials allgemein verständlich verfasst?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Sind die Anleitungen klar strukturiert und gegliedert?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Kann der/die Anwender/in die Geschwindigkeit selbst bestimmen, mit der er der Anleitung folgt?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Sind die Inhalte didaktisch angemessen aufbereitet?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Sind die Inhalte ansprechend und angemessen gestaltet?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Wird zu jeder Anleitung eine Printversion angeboten?",
+                                    "is_mandatory": false 
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Wiki",
+                            "is_mandatory": false,
+                            "desc": "",
+                            "questions": [
+                                {
+                                    "name": "Ist das Wiki angemessen in die Seite integriert?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Kann nach den einzelnen Wiki-Artikeln gesucht werden?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Wird eine Sitemap mit einem Überblick über die einzelnen Wiki-Artikel angeboten?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Sind die Wiki-Artikel ausreichend durch Links miteinander verknüpft?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Ist transparent, welche/r Autor/in welchen Artikel oder Abschnitt verfasst hat und in wie weit diese Abschnitte als \"seriös\" oder zuverlässig zu bewerten sind und ist der Stand (Datum) der Artikel mitangegeben?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Sind die Inhalte innerhalb der einzelnen Seiten übersichtlich gegliedert?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Sind ausreichend Artikel vorhanden bzw. sind umgekehrt keine \"brachliegenden\", unbefüllten oder überflüssigen Seiten vorhanden?",
+                                    "is_mandatory": true 
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Podcast",
+                            "is_mandatory": false,
+                            "desc": "",
+                            "questions": [
+                                {
+                                    "name": "Ist klar ersichtlich, welche Thematik der Podcast behandelt?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Sind Grösse, Dauer und Format des Podcasts angegeben?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Steht der Podcast zum Download zur Verfügung?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Kann der Podcast direkt in der Webseite über einen integrierten Player abgespielt werden?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Sind die Inhalte des Podcasts klar verständlich?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Sind die ID3-Tags der einzelnen Podcast-Dateien entsprechend befüllt?",
+                                    "is_mandatory": false 
+                                }
+                            ]
+                        }
                     ]
                 }
             ]
@@ -217,13 +752,14 @@
         {
             "name": "Recherche im Bestand",
             "is_mandatory": false,
+            "desc": "Dieser Bereich umfasst alle Funktionalitäten, die in Zusammenhang mit dem Suchen, Browsen oder dem Zugriff auf den Bibliotheksbestand stehen.",
             "questions": [
                 {
-                    "name": "Ist es möglich im Kontext einer Recherche bei Problemen den jeweils zuständigen Ansprechpartner zu kontaktieren?",
+                    "name": "Ist es möglich im Kontext einer Recherche bei Problemen den/der jeweils zuständigen Ansprechpartner/in zu kontaktieren?",
                     "is_mandatory": true 
                 },
                 {
-                    "name": "Stehen dem Anwender jederzeit angemessene Extraktionsmechanismen (z.B. Email, Print, Speichern, etc.) zur weiteren Verwertung seiner Recherchen und Treffer zur Verfügung?",
+                    "name": "Stehen dem/der Anwender/in jederzeit angemessene Extraktionsmechanismen (z.B. Email, Print, Speichern, etc.) zur weiteren Verwertung seiner/ihrer Recherchen und Treffer zur Verfügung?",
                     "is_mandatory": true 
                 }
             ],        
@@ -231,6 +767,7 @@
                 {
                     "name": "Suchen & Erkunden",
                     "is_mandatory": true,
+                    "desc": "In diesem Bereich sind alle Komponenten enthalten, die für die Suche  innerhalb des Bibliotheksbestandes sowie das explorative erkunden dieser Objekte genutzt werden können.",
                     "questions": [
                         {
                             "name": "Ermöglichen die angebotenen Rechercheoptionen die Unterstützung unterschiedlicher Suchstrategien?",
@@ -241,7 +778,7 @@
                             "is_mandatory": true 
                         },
                         {
-                            "name": "Gibt es für fortgeschrittene Anwender eine Möglichkeit, über die Eingabe zusätzlicher Suchparameter gezielt in bestimmten Feldern zu suchen?",
+                            "name": "Gibt es für fortgeschrittene Anwender/innen eine Möglichkeit, über die Eingabe zusätzlicher Suchparameter gezielt in bestimmten Feldern zu suchen?",
                             "is_mandatory": false 
                         }
                     ],
@@ -249,6 +786,7 @@
                         {
                             "name": "Einfache Suche",
                             "is_mandatory": true,
+                            "desc": "einfaches Sucheingabefeld",
                             "questions": [
                                 {
                                     "name": "Kann die Suche sowohl durch das Drücken eines dedizierten Buttons als auch per \"Enter\" gestartet werden?",
@@ -263,7 +801,7 @@
                                     "is_mandatory": true 
                                 },
                                 {
-                                    "name": "Ist es für den Nutzer ersichtlich, wie mehrere Suchbegriffe miteinander verknüpft werden (welche Operator wird per default verwendet)?",
+                                    "name": "Ist es für den/die Nutzer/in ersichtlich, wie mehrere Suchbegriffe miteinander verknüpft werden (welche Operator wird per default verwendet)?",
                                     "is_mandatory": true 
                                 },
                                 {
@@ -275,6 +813,7 @@
                         {
                             "name": "Erweiterte Suche",
                             "is_mandatory": true,
+                            "desc": "Suche mit zusätzlichen Optionen (Filter, Eingabefelder)",
                             "questions": [
                                 {
                                     "name": "Sind alle Formularfelder korrekt und sichtbar beschriftet?",
@@ -297,7 +836,7 @@
                                     "is_mandatory": true 
                                 },
                                 {
-                                    "name": "Ist es möglich, die Suche mindestens auf Autor, Titel, Schlagwort, Signatur oder Jahr einzuschränken?",
+                                    "name": "Ist es möglich, die Suche mindestens auf Autor/in, Titel, Schlagwort, Signatur oder Jahr einzuschränken?",
                                     "is_mandatory": true 
                                 },
                                 {
@@ -309,13 +848,139 @@
                                     "is_mandatory": false 
                                 }
                             ]
+                        },
+                        {
+                            "name": "Eingabemöglichkeiten",
+                            "is_mandatory": true,
+                            "desc": "",
+                            "questions": [
+                                {
+                                    "name": "Werden die Booleschen Operatoren AND, OR und NOT unterstützt?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Ist es möglich, mehrere Operatoren gleichzeitig zu verwenden und ist klar, in welcher Reihenfolge diese verarbeitet werden, sofern der/die Anwender/in keine Klammern setzt?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Werden die Operatoren in unterschiedlichen Schreibweisen unterstützt?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Können Wildcards, Trunkierungen und Klammern eingesetzt werden?",
+                                    "is_mandatory": false 
+                                },
+                                {
+                                    "name": "Ist es möglich Sonderzeichen und Umlaute in einer Anfrage zu formulieren und werden diese korrekt interpretiert?",
+                                    "is_mandatory": true 
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Assistierende Funktionen bei der Suche",
+                            "is_mandatory": false,
+                            "desc": "",
+                            "questions": [
+                                {
+                                    "name": "Wird eine Suchhistorie angeboten, mittels der der/die Anwender/in frühere Suchanfragen wiederholt durchführen kann?",
+                                    "is_mandatory": false 
+                                },
+                                {
+                                    "name": "Werden alle Eingaben, Einstellungen und Operatoren in der Suchhistorie korrekt abgelegt?",
+                                    "is_mandatory": false 
+                                },
+                                {
+                                    "name": "Ist es möglich, frühere Anfragen aus der Suchhistorie zu editieren und dann neu abzuschicken?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Erlauben die Anfragen aus der Suchhistorie den korrekten Wechsel zwischen der einfachen und erweiterten Suche?",
+                                    "is_mandatory": false 
+                                },
+                                {
+                                    "name": "Wird eine Rechtschreibkorrektur angeboten und funktioniert diese korrekt?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Werden die Vorschläge zur Rechschreibkorrektur in der Nähe des Sucheingabefelds platziert, das den Tipp- oder Rechtschreibfehler beinhaltet?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Werden ähnliche bzw. weiterführende Suchanfragen vorgeschlagen und scheinen diese sinnvoll?",
+                                    "is_mandatory": false 
+                                },
+                                {
+                                    "name": "Werden die Vorschläge für ähnliche Suchanfragen in der Nähe des Sucheingabefeldes präsentiert?",
+                                    "is_mandatory": false 
+                                },
+                                {
+                                    "name": "Wird eine Autocomplete-Funktion in den Eingabefeldern zur Verfügung gestellt und scheinen die Vorschläge sinnvoll?",
+                                    "is_mandatory": false 
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Browsen",
+                            "is_mandatory": true,
+                            "desc": "",
+                            "questions": [
+                                {
+                                    "name": "Gibt es einen Index/Thesaurus oder eine Klassifikation, in der der/die Anwender/in durch den Datenbestand browsen kann?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Sofern ein Index vorhanden ist, sind die Benennungen auf jeder hierarchischen Ebene inhaltlich gut voneinander abgegrenzt und unterscheidbar?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Ist das Browsen durch den Katalog mindestens nach Thema, Autor/in und Titel möglich?",
+                                    "is_mandatory": false 
+                                },
+                                {
+                                    "name": "Ist es möglich, innerhalb des Index/ Thesaurus oder der Klassifikation zu suchen?",
+                                    "is_mandatory": false 
+                                },
+                                {
+                                    "name": "Sofern eine Suche innerhalb des Index angeboten wird, ist es visuell ersichtlich und klar angegeben, dass diese Suche sich von der Suche im Katalog unterscheidet?",
+                                    "is_mandatory": false 
+                                },
+                                {
+                                    "name": "Sofern eine Suche im Index angeboten wird, gibt es dazu eine Anleitung, wie diese Suche funktioniert?",
+                                    "is_mandatory": false 
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Suchhilfe",
+                            "is_mandatory": true,
+                            "desc": "",
+                            "questions": [
+                                {
+                                    "name": "Ist die  Hilfefunktion deutlich erkennbar und kann auf sie während des gesamten Suchprozesses direkt zugegriffen werden?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Werden in der Suchhilfe alle unterstützten Eingabemöglichkeiten und Suchfeatures erklärt?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Sind die Erklärungen der Suchhilfe in einfachen Sätzen formuliert und anhand von Beispielen illustriert?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Beinhaltet die Suchhilfe eine Kontaktangabe für weiterführende Fragen?",
+                                    "is_mandatory": false 
+                                }
+                            ]
                         }
+                        
 
                     ]
                 },
                 {
                     "name": "Präsentation & Zugriff",
                     "is_mandatory": false,
+                    "desc": "Dieser Bereich befasst sich mit der Darstellung von Trefferlisten und einzelnen Ergebnisobjekten sowie den Interaktionsmöglichkeiten mit denselbigen.",
                     "questions": [
                         {
                             "name": "Unterstützt die Dialoggestaltung (z.B. die verwendeten Navigationselemente) einen einfachen Wechsel zwischen Suche, Trefferlisten und Detailanzeigen?",
@@ -330,6 +995,7 @@
                         {
                             "name": "Darstellung der Trefferliste",
                             "is_mandatory": true,
+                            "desc": "Beinhaltet alle Aspekte, die die Darstellung einer Trefferliste betreffen",
                             "questions": [
                                 {
                                     "name": "Ist die Suchanfrage, die zur Ergebnisliste geführt hat, weiterhin vollständig sichtbar und kann sie direkt editiert werden?",
@@ -348,7 +1014,7 @@
                                     "is_mandatory": true 
                                 },
                                 {
-                                    "name": "Ist die anfängliche Sortierung der Treffer (Ranking) für den Anwender transparent?",
+                                    "name": "Ist die anfängliche Sortierung der Treffer (Ranking) für den/die Anwender/in transparent?",
                                     "is_mandatory": false 
                                 },
                                 {
@@ -360,6 +1026,7 @@
                         {
                             "name": "Darstellung der Detailansicht",
                             "is_mandatory": true,
+                            "desc": "Beinhaltet alle Aspekte bezüglich der Präsentation eines Suchtreffers in einer Detailansicht",
                             "questions": [
                                 {
                                     "name": "Werden alle relevanten Informationen der Trefferliste ebenso angezeigt, wie zusätzliche Informationen, die hilfreich sind?",
@@ -394,7 +1061,109 @@
                                     "is_mandatory": false 
                                 }
                             ]
+                        },
+                        {
+                            "name": "Manipulation der Trefferliste",
+                            "is_mandatory": true,
+                            "desc": "",
+                            "questions": [
+                                {
+                                    "name": "Ist es möglich, die Anzahl der Treffer pro Seite anzupassen, sofern die Trefferliste über mehrere Seiten paginiert ist?",
+                                    "is_mandatory": false 
+                                },
+                                {
+                                    "name": "Ist es möglich, die Trefferliste nach unterschiedlichen Kriterien zu sortieren?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Stehen dem/der Anwender/in Filterfunktionen zur weiteren Manipulation der Trefferliste (z.B. 'faceted search') zur Verfügung?",
+                                    "is_mandatory": false 
+                                },
+                                {
+                                    "name": "Ist es möglich, Sortierungen und Filter wieder zu entfernen, um zum ursprünglichen Zustand der Trefferliste zurückzukehren?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Ist es möglich, direkt zu einem bestimmten Treffer zu springen, bzw. im Fall von paginierten Trefferlisten direkt auf eine bestimmte Seite der Trefferliste zu navigieren?",
+                                    "is_mandatory": false 
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Zugriff auf physische Objekte",
+                            "is_mandatory": true,
+                            "desc": "",
+                            "questions": [
+                                {
+                                    "name": "Werden alle notwendigen Informationen angeboten, wo ein Objekt in der Bibliothek zu finden ist?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Ist es möglich, den Abholort auszuwählen?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Wird die Lieferzeit angezeigt?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Wird angezeigt, wie lange das Objekt ausgeliehen werden kann?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Wird das Datum zu welcher das Objekt zurückgegeben werden muss, angezeigt?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Gibt es eine Warteliste für ausgeliehene Objekte und wird das voraussichtliche Rückgabedatum angezeigt?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Ist es möglich, bei der Ausleihe oder Reservation einen Kommentar beizufügen?",
+                                    "is_mandatory": false 
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Zugriff auf digitale Objekte",
+                            "is_mandatory": true,
+                            "desc": "",
+                            "questions": [
+                                {
+                                    "name": "Ist die Präsentation des digitalen Objekts angemessen in die Webseite integriert?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Ist der direkte Link auf das digitale Objekt direkt verfügbar?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Steht eine Zooming-Funktion zur Verfügung und ist diese einfach zu handhaben?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Sofern eine Zoomingfunktion zur Verfügung steht, ist das Objekt in jedem Zoomlevel in ausreichender Schärfe dargestellt?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Ist es möglich, die Seiten des digitalen Objekts bei Bedarf zu drehen?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Ist es auf einfachem Weg möglich, zwischen den einzelnen Seiten des Trefferobjekts zu navigieren?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Werden herkömmliche Extraktionsmechanismen wie Bookmarken, Speichern/ Download, Drucken und Email angeboten?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Werden Schnittstellen zu Literaturverwaltungssystemen wie Endnote, Bibsonomy usw. angeboten oder im Fall von Bildern zu Flickr, Cooliris usw.?",
+                                    "is_mandatory": false 
+                                }
+                            ]
                         }
+                        
 
                     ]
                 }
@@ -403,9 +1172,10 @@
         {
             "name": "Personalisierung",
             "is_mandatory": false,
+            "desc": "Der Bereich beinhaltet alle Funktionen, welche es dem Anwender erlauben, die Webseite an seine eigenen, individuellen Vorlieben anzupassen.",
             "questions": [
                 {
-                    "name": "Hat der Anwender einen Überblick, welche Möglichkeiten er insgesamt zur Personalisierung nutzen kann?",
+                    "name": "Hat der/die Anwender/in einen Überblick, welche Möglichkeiten er/sie insgesamt zur Personalisierung nutzen kann?",
                     "is_mandatory": true 
                 },
                 {
@@ -417,17 +1187,18 @@
                 {
                     "name": "Nutzerkonto & -einstellungen",
                     "is_mandatory": true,
+                    "desc": "Dieser Bereich beinhaltet alle Funktionalitäten, die in Zusammenhang mit dem Benutzungskonto eines Anwenders stehen (wie bspw. Verwaltung der persönlichen Daten, etc.).",
                     "questions": [
                         {
                             "name": "Bietet das System einen ausreichenden Schutz persönlicher Daten (z.B. verschlüsselte Datenübertragung, etc.)?",
                             "is_mandatory": true 
                         },
                         {
-                            "name": "Stehen dem Anwender Informationen bzgl. der Speicherung seiner persönlichen Daten und dem Umgang mit diesen zur Verfügung?",
+                            "name": "Stehen dem/der Anwender/in Informationen bzgl. der Speicherung seiner/ihrer persönlichen Daten und dem Umgang mit diesen zur Verfügung?",
                             "is_mandatory": true 
                         },
                         {
-                            "name": "Hat der Anwender jederzeit die Möglichkeit, die in seinem Profil hinterlegten Einstellungen und persönliche Angaben zu editieren bzw. seinen Account nachhaltig und vollständig zu löschen?",
+                            "name": "Hat der/die Anwender/in jederzeit die Möglichkeit, die in seinem/ihren, Profil hinterlegten Einstellungen und persönliche Angaben zu editieren bzw. seinen/ihren Account nachhaltig und vollständig zu löschen?",
                             "is_mandatory": true 
                         }
                     ],
@@ -435,9 +1206,10 @@
                         {
                             "name": "Nutzerkonto",
                             "is_mandatory": true,
+                            "desc": "Ein Benutzerkonto oder kurz Nutzerkonto (engl. user account) ist eine Zugangsberechtigung zu einem zugangsbeschränkten IT-System. Üblicherweise muss ein Anwender sich beim Login mit Benutzername und Kennwort authentisieren. Oft ist ein Nutzerkonto oder ein Nutzerzugang Voraussetzung für Personalisierungsoptionen, da erst durch das Einloggen erkannt wird, um welchen Nutzer es sich handelt.",
                             "questions": [
                                 {
-                                    "name": "Ist für den Anwender ersichtlich, wie er ein Nutzerkonto erstellen kann?",
+                                    "name": "Ist für den/die Anwender/in ersichtlich, wie er/sie ein Nutzerkonto erstellen kann?",
                                     "is_mandatory": true 
                                 },
                                 {
@@ -445,15 +1217,15 @@
                                     "is_mandatory": true 
                                 },
                                 {
-                                    "name": "Ist für den Anwender ersichtlich, wie er sich in sein Nutzerkonto einloggen kann und steht diese Möglichkeit dem Anwender jederzeit zur Verfügung?",
+                                    "name": "Ist für die Anwender/innen ersichtlich, wie sie sich in ihr Nutzerkonto einloggen können und steht diese Möglichkeit den Anwendern/innen jederzeit zur Verfügung?",
                                     "is_mandatory": true 
                                 },
                                 {
-                                    "name": "Stehen dem Anwender beim Login unterschiedliche Optionen zur Verfügung (z.B. Single-Sign-On, Passwortspeicherung)?",
+                                    "name": "Stehen dem/der Anwender/in beim Login unterschiedliche Optionen zur Verfügung (z.B. Single-Sign-On, Passwortspeicherung)?",
                                     "is_mandatory": false 
                                 },
                                 {
-                                    "name": "Kann der Anwender personenbezogene Einstellungen des Nutzerkontos selbst anpassen und sein Passwort ändern?",
+                                    "name": "Kann der/die Anwender/in personenbezogene Einstellungen des Nutzerkontos selbst anpassen und sein/ihr Passwort ändern?",
                                     "is_mandatory": true 
                                 },
                                 {
@@ -461,23 +1233,23 @@
                                     "is_mandatory": true 
                                 },
                                 {
-                                    "name": "Kann der Anwender sich anzeigen lassen, welche Ausleihen er in der Vergangenheit getätigt hat?",
+                                    "name": "Kann der/die Anwender/in sich anzeigen lassen, welche Ausleihen er/sie in der Vergangenheit getätigt hat?",
                                     "is_mandatory": false 
                                 },
                                 {
-                                    "name": "Kann der Anwender den Ausleihstatus seiner aktuellen Reservationen einsehen?",
+                                    "name": "Kann der/die Anwender/in den Ausleihstatus seiner/ihrer aktuellen Reservationen einsehen?",
                                     "is_mandatory": true 
                                 },
                                 {
-                                    "name": "Kann der Anwender das Rückgabedatum seiner aktuellen Ausleihen abrufen?",
+                                    "name": "Kann der/die Anwender/in das Rückgabedatum seiner/ihrer aktuellen Ausleihen abrufen?",
                                     "is_mandatory": true 
                                 },
                                 {
-                                    "name": "Kann der Anwender sein Gebührenkonto einsehen?",
+                                    "name": "Kann der/die Anwender/in in sein/ihr Gebührenkonto einsehen?",
                                     "is_mandatory": true 
                                 },
                                 {
-                                    "name": "Hat der Anwender die Möglichkeit, eine Auswahl zu treffen , in welcher Sprache die Webseite dargestellt wird und diese zu speichern?",
+                                    "name": "Hat der/die Anwender/in die Möglichkeit, eine Auswahl zu treffen , in welcher Sprache die Webseite dargestellt wird und diese zu speichern?",
                                     "is_mandatory": true 
                                 }
                             ]
@@ -485,21 +1257,22 @@
                         {
                             "name": "Personalisierbare Einstiegsseiten oder Portallösung",
                             "is_mandatory": false,
+                            "desc": "Darunter wird die Möglichkeit der Anpassung von Inhalt, Format und Erscheinungsbild der Bibliotheksdienste an persönliche Präferenzen verstanden (Heuwing, 2008, S. 20). Dadurch können Nutzer bspw. jene Funktionalitäten, die sie oft nutzen, gleich auf ihrer persönlichen Einstiegsseite platzieren. Auf diese Weise müssen Nutzer, die bspw. besondere Bedürfnisse an die Schriftgrösse stellen, entsprechende Einstellungen nur einmal tätigen.",
                             "questions": [
                                 {
-                                    "name": "Kann der Anwender einstellen, welche Elemente und Funktionen auf seiner individuellen Startseite angezeigt werden sollen?",
+                                    "name": "Kann der/die Anwender/in einstellen, welche Elemente und Funktionen auf seiner/ihrer individuellen Startseite angezeigt werden sollen?",
                                     "is_mandatory": true 
                                 },
                                 {
-                                    "name": "Kann er die Reihenfolge/ Platzierung der einzelnen Elemente manipulieren?",
+                                    "name": "Kann die Reihenfolge/ Platzierung der einzelnen Elemente manipuliert werden?",
                                     "is_mandatory": true 
                                 },
                                 {
-                                    "name": "Kann die Darstellung  der einzelnen Elemente beeinflusst werden?",
+                                    "name": "Kann die Darstellung der einzelnen Elemente beeinflusst werden?",
                                     "is_mandatory": false 
                                 },
                                 {
-                                    "name": "Kann der Anwender das Layout (verwendete Schriftgrösse, Farben, etc.) selbst einstellen?",
+                                    "name": "Kann der/die Anwender/in das Layout (verwendete Schriftgrösse, Farben, etc.) selbst einstellen?",
                                     "is_mandatory": false 
                                 },
                                 {
@@ -507,7 +1280,7 @@
                                     "is_mandatory": false 
                                 },
                                 {
-                                    "name": "Kann der Anwender die Anpassungen bei Bedarf mit wenig Aufwand wieder zurücksetzen oder kann er alternativ bereits vor dem Speichern seine Einstellungen überprüfen (Vorschau)?",
+                                    "name": "Kann der/die Anwender/in die Anpassungen bei Bedarf mit wenig Aufwand wieder zurücksetzen oder kann er/sie alternativ bereits vor dem Speichern seine/ihre Einstellungen überprüfen (Vorschau)?",
                                     "is_mandatory": true 
                                 },
                                 {
@@ -522,6 +1295,7 @@
                 {
                     "name": "personalisierte Recherchetools",
                     "is_mandatory": true,
+                    "desc": "Hierunter sind alle Komponenten zusammengefasst, die es dem Anwender erlauben, die Suchinstrumente und Recherchetools der Bibliothek an eigene Präferenzen anpassen zu können.",
                     "questions": [
                         {
                             "name": "Sind alle Funktionen zur Einstellung einzelner Parameter ausreichend und klar beschriftet?",
@@ -532,7 +1306,7 @@
                             "is_mandatory": true 
                         },
                         {
-                            "name": "Kann der Anwender getroffene Einstellungen jederzeit ohne (grossen) Aufwand rückgängig machen oder auf das vorgegebene Schema zurücksetzen?",
+                            "name": "Kann der/die Anwender/in getroffene Einstellungen jederzeit ohne (grossen) Aufwand rückgängig machen oder auf das vorgegebene Schema zurücksetzen?",
                             "is_mandatory": true 
                         }
                     ],
@@ -540,13 +1314,14 @@
                         {
                             "name": "Personalisierte Suchmasken",
                             "is_mandatory": false,
+                            "desc": "Darunter werden vom Anwender individuell zusammengestellte Abfragemasken verstanden, die nur die von ihm gewünschten Auswahlfelder enthalten.",
                             "questions": [
                                 {
-                                    "name": "Kann der Anwender die Reihenfolge der einzelnen Eingabefelder selbst einstellen?",
+                                    "name": "Kann der/die Anwender/in die Reihenfolge der einzelnen Eingabefelder selbst einstellen?",
                                     "is_mandatory": true 
                                 },
                                 {
-                                    "name": "Stehen dem Anwender Vorlagen zur Gestaltung seiner individuellen Suchmasken zur Verfügung?",
+                                    "name": "Stehen dem/der Anwender/in Vorlagen zur Gestaltung seiner/ihrer individuellen Suchmasken zur Verfügung?",
                                     "is_mandatory": true 
                                 },
                                 {
@@ -554,7 +1329,7 @@
                                     "is_mandatory": true 
                                 },
                                 {
-                                    "name": "Kann der Anwender getroffene Einstellungen jederzeit ohne (grossen) Aufwand rückgängig machen oder auf das vorgegebene Schema zurücksetzen?",
+                                    "name": "Kann der/die Anwender/in getroffene Einstellungen jederzeit ohne (grossen) Aufwand rückgängig machen oder auf das vorgegebene Schema zurücksetzen?",
                                     "is_mandatory": true 
                                 },
                                 {
@@ -566,22 +1341,199 @@
                         {
                             "name": "Personalisierte Sucheinstellungen und Trefferlisten",
                             "is_mandatory": false,
+                            "desc": "Darunter werden vom Nutzer für die Suche vorgenommene Einstellungen verstanden, wie bspw. nach welchem Kriterium die Trefferlisten standardmässig sortiert werden sollen. ",
                             "questions": [
                                 {
-                                    "name": "Kann der Anwender festlegen, nach welchem Kriterium die Trefferliste standardmässig sortiert wird?",
+                                    "name": "Kann der/die Anwender/in festlegen, nach welchem Kriterium die Trefferliste standardmässig sortiert wird?",
                                     "is_mandatory": true 
                                 },
                                 {
-                                    "name": "Kann der Anwender die Anzeige der Metainformationen sinnvoll einschränken bzw. anpassen?",
+                                    "name": "Kann der/die Anwender/in die Anzeige der Metainformationen sinnvoll einschränken bzw. anpassen?",
                                     "is_mandatory": false 
                                 },
                                 {
-                                    "name": "Kann der Anwender einzelne Filtereinstellungen bei der Recherche als Default setzen?",
+                                    "name": "Kann der/die Anwender/in einzelne Filtereinstellungen bei der Recherche als Default setzen?",
                                     "is_mandatory": false 
                                 },
                                 {
-                                    "name": "Erhält der Anwender, sofern er Filtereinstellungen per Default in seinem Profil gesetzt hat, den Hinweis, welche Einstellungen bei seiner Sucheingabe wirken und kann er diese bei Bedarf auch während des Recherchevorgangs wieder entfernen?",
+                                    "name": "Erhält der/die Anwender/in, sofern er/sie Filtereinstellungen per Default in seinem/ihrem Profil gesetzt hat, den Hinweis, welche Einstellungen bei seiner/ihrer Sucheingabe wirken und kann er/sie diese bei Bedarf auch während des Recherchevorgangs wieder entfernen?",
                                     "is_mandatory": true 
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Personalisierte Datenbank-Zugänge (My Databases)",
+                            "is_mandatory": false,
+                            "desc": "",
+                            "questions": [
+                                {
+                                    "name": "Ist dem/der Anwender/in klar, wie er/sie eine neue Datenbankliste generiert und speichert bzw. löscht?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Kann die Liste mit einem selbstgewählten Namen bezeichnet oder mit Schlagwörtern in einer Kurzzusammenfassung versehen werden?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Können die Listen verändert werden?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Ist klar ersichtlich, wie einzelne Datenbanken einer Liste hinzugefügt respektive wieder von ihr entfernt werden können?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Kann der/die Anwender/in auf eine Gesamtübersicht der erstellten Listen inklusive der jeweiligen Datenbanken zurückgreifen?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Werden die Sucheingabemöglichkeiten innerhalb der einzelnen Datenbanken aufeinander abgestimmt (Metasuche)?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Werden die Ergebnisse von verschiedenen Datenbanken abgeglichen und in gleicher Weise dargestellt?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Können versehentlich gelöschte Einträge oder Listen wieder rekonstruiert werden oder steht eine Kontaktaddresse zur Verfügung?",
+                                    "is_mandatory": false 
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Personalisierte E-Journal Auswahl",
+                            "is_mandatory": false,
+                            "desc": "",
+                            "questions": [
+                                {
+                                    "name": "Ist dem/der Anwender/in klar, wie er eine neue Liste an e-Journals generiert und speichert bzw. löscht?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Kann die Liste mit einem selbstgewählten Namen bezeichnet oder mit Schlagwörtern/ einer Kurzzusammenfassung versehen werden?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Können die Listen verändert werden?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Ist klar ersichtlich, wie einzelnen Journals einer Liste hinzugefügt respektive wieder von ihr entfernt werden können?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Kann der/die Anwender/in auf eine Gesamtübersicht über die erstellten Listen inklusive der jeweiligen Journals zugreifen?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Werden die Sucheingabemöglichkeiten innerhalb der einzelnen e-Journals aufeinander abgestimmt (Metasuche)?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Werden die Ergebnisse von verschiedenen Journals abgeglichen und in gleicher Weise dargestellt?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Können versehentlich gelöschte Einträge oder Listen wieder rekonstruiert werden oder steht eine Kontaktaddresse zur Verfügung?",
+                                    "is_mandatory": false 
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Meine Literaturlisten/Objektlisten",
+                            "is_mandatory": false,
+                            "desc": "",
+                            "questions": [
+                                {
+                                    "name": "Ist klar ersichtlich, wie eigene Literaturlisten erstellt und gelöscht werden können?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Können die Listen mit selbstbestimmten Namen und Schlagwörtern versehen werden?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Können Objekte auf einfachem Weg einer oder auch mehreren Listen hinzugefügt werden?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Wird der Stand, wann Objekte hinzugefügt wurden mitgespeichert?",
+                                    "is_mandatory": false 
+                                },
+                                {
+                                    "name": "Kann der/die Anwender/in nach dem Hinzufügen direkt zum aktuellen Recherchekontext (z.B. die Trefferliste, von der aus man ein Objekt hinzugefügt hat) zurückkehren?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Können ein oder mehrere Objekte direkt aus einer Liste entfernt werden?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Kann der/die Anwender/in von den Literaturlisten direkt auf die einzelnen Objekte zugreifen?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Können die Literaturlisten nach unterschiedlich Kriterien sortiert werden?",
+                                    "is_mandatory": false 
+                                },
+                                {
+                                    "name": "Kann innerhalb der Literaturlisten gesucht werden?",
+                                    "is_mandatory": false 
+                                },
+                                {
+                                    "name": "Kann innerhalb der Objekte einer Literaturliste (Detailansichten) direkt und einfach navigiert werden?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Stehen für die Literaturlisten Extraktionsmechanismen wie Print und Email sowie Schnittstellen zu Literaturverwaltungssoftware wie bspw. Endnote, Citavi oder Bibsonomy zur Verfügung?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Kann aus den bibliografischen Angaben einer oder mehreren Listen ein Literaturverzeichnis in einem frei wählbaren Zitationsformat erstellt werden?",
+                                    "is_mandatory": false 
+                                },
+                                {
+                                    "name": "Können die Literaturlisten öffentlich freigegeben oder mit anderen Nutzenden (einer gezielten Gruppe) geteilt und ggf. gemeinsam bearbeitet werden?",
+                                    "is_mandatory": false 
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Meine Suchanfragen/Alerts",
+                            "is_mandatory": false,
+                            "desc": "",
+                            "questions": [
+                                {
+                                    "name": "Ist klar ersichtlich, wie Suchanfragen gespeichert/ Alerts auf Suchanfragen gesetzt respektive wieder gelöscht werden können?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Bleiben beim Speichern von Suchanfragen alle Parameter, die der/die Anwender/in eingestellt hat, erhalten?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Ist eine Art \"Dublettenkontrolle\" vorhanden, die das mehrfache Speichern identischer Anfragen verhindert?",
+                                    "is_mandatory": false 
+                                },
+                                {
+                                    "name": "Können die Alerts/gespeicherten Suchanfragen wahlweise per Push- oder Pull-Mechanismen abgerufen werden?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Kann der/die Anwender/in einstellen, wie oft Neuerungen hinsichtlich der Suchanfragen abgefragt/angezeigt werden?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Wird bei neuen Treffern das entsprechende Datum (Zugang zur Bibliothek) mitangezeigt?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Können die Suchanfragen/ Alerts nach unterschiedlichen Kriterien sortiert oder gefiltert werden?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Können vorhandene Suchanfragen modifiziert und unter einem neuen Namen  gespeichert werden?",
+                                    "is_mandatory": false 
                                 }
                             ]
                         }
@@ -593,9 +1545,10 @@
         {
             "name": "Nutzerpartizipation",
             "is_mandatory": false,
+            "desc": "Dieser Bereich ist stark mit dem Begriff Web2.0 verbunden und bezieht sich auf alle Komponenten, die es dem Anwender erlauben, Inhalte zu erstellen oder auszutauschen.",
             "questions": [
                 {
-                    "name": "Steht für die Anwender eine Dokumentation der Verhaltensregeln (\"Netiquette\") zur Verfügung?",
+                    "name": "Steht für die Anwender/innen eine Dokumentation der Verhaltensregeln (\"Netiquette\") zur Verfügung?",
                     "is_mandatory": true 
                 },
                 {
@@ -611,7 +1564,7 @@
                     "is_mandatory": true 
                 },
                 {
-                    "name": "Stehen dem Anwender Informationen bzgl. der Speicherung seiner persönlichen Daten und dem Umgang mit diesen zur Verfügung?",
+                    "name": "Stehen dem/der Anwender/in Informationen bzgl. der Speicherung seiner/ihrer persönlichen Daten und dem Umgang mit diesen zur Verfügung?",
                     "is_mandatory": true 
                 }
             ],        
@@ -619,13 +1572,14 @@
                 {
                     "name": "Bestandsbezogene Nutzerpartizipation",
                     "is_mandatory": true,
+                    "desc": "Dieser Bereich beinhaltet alle Komponenten, die in Zusammenhang mit der interaktiven Nutzung des Bibliotheksbestandes stehen (z.B. das taggen eines konkreten Buches).",
                     "questions": [
                         {
-                            "name": "Hat der Anwender jederzeit die Möglichkeit, von ihm verfasste Beiträge zu editieren bzw. nachträglich zu kommentieren?",
+                            "name": "Hat der/die Anwender/in jederzeit die Möglichkeit, von ihm/ihr verfasste Beiträge zu editieren bzw. nachträglich zu kommentieren?",
                             "is_mandatory": true 
                         },
                         {
-                            "name": "Kann sich der Anwender schnell einen Überblick über alle von ihm verfassten Beiträge verschaffen?",
+                            "name": "Kann sich der/die Anwender/in schnell einen Überblick über alle von ihm/ihr verfassten Beiträge verschaffen?",
                             "is_mandatory": true 
                         },
                         {
@@ -633,7 +1587,7 @@
                             "is_mandatory": true 
                         },
                         {
-                            "name": "Ist deutlich angegeben, wer auf die von den Anwendern verfassten Beiträge Zugriff hat und bei wem die Urheber- bzw. Verwertungsrechte liegen?",
+                            "name": "Ist deutlich angegeben, wer auf die von den Anwendenden verfassten Beiträge Zugriff hat und bei wem die Urheber- bzw. Verwertungsrechte liegen?",
                             "is_mandatory": true 
                         }
                     ],
@@ -641,13 +1595,14 @@
                         {
                             "name": "Recommender-Dienste",
                             "is_mandatory": false,
+                            "desc": "Ein Recommender-Dienst ist ein Algorithmus, der ausgehend von den in der Vergangenheit ausgeführten Suchen und persönlichen Listen automatisch ähnliche Objekte ermittelt und diese dem Anwender empfiehlt.",
                             "questions": [
                                 {
                                     "name": "Sind die Empfehlungen konsistent und an geeigneter Stelle in die Website integriert?",
                                     "is_mandatory": true 
                                 },
                                 {
-                                    "name": "Ist für den Nutzer ersichtlich, auf welcher Basis die bereitgestellten Empfehlungen beruhen?",
+                                    "name": "Ist für den/die Nutzer/in ersichtlich, auf welcher Basis die bereitgestellten Empfehlungen beruhen?",
                                     "is_mandatory": true 
                                 },
                                 {
@@ -659,7 +1614,7 @@
                                     "is_mandatory": true 
                                 },
                                 {
-                                    "name": "Ist, sofern das System dies erlaubt, die Eingabe von Bewertungen durch die Benutzer schnell und intuitiv möglich?",
+                                    "name": "Ist, sofern das System dies erlaubt, die Eingabe von Bewertungen durch die Benutzer/innen schnell und intuitiv möglich?",
                                     "is_mandatory": true 
                                 },
                                 {
@@ -674,7 +1629,8 @@
                         },
                         {
                             "name": "Kommentare und Rezensionen",
-                            "is_mandatory": true,
+                            "is_mandatory": false,
+                            "desc": "Im Kontext dieses Leitfadens wird unter dieser Komponente verstanden, dass Nutzer ihre Meinungen und Einschätzungen zu einzelnen Ressourcen abgeben können. Für gewöhnlich können Anwender mittels eines Freitextfeldes Kommentare verfassen, die dann in der Detailansicht der entsprechenden Ressource angezeigt werden (Heuwing, 2008, S. 87). Diese Möglichkeit der Nutzerbeteiligung wird häufig auch als Rezension bezeichnet.",
                             "questions": [
                                 {
                                     "name": "Ist die Funktion zum Erstellen von Kommentaren bzw. Rezensionen in der Nähe des zu beschreibenden Objektes platziert?",
@@ -697,11 +1653,46 @@
                                     "is_mandatory": true 
                                 },
                                 {
-                                    "name": "Können Kommentare nachträglich vom Anwender noch editiert werden?",
+                                    "name": "Können Kommentare nachträglich vom Anwendenden noch editiert werden?",
                                     "is_mandatory": true 
                                 },
                                 {
-                                    "name": "Können unsachgemässe Inhalte von anderen Nutzern schnell und einfach einer Kontrollinstanz gemeldet werden?",
+                                    "name": "Können unsachgemässe Inhalte von anderen Nutzenden schnell und einfach einer Kontrollinstanz gemeldet werden?",
+                                    "is_mandatory": true 
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Social Tagging / Folksonomie",
+                            "is_mandatory": false,
+                            "desc": "",
+                            "questions": [
+                                {
+                                    "name": "Ist eine Beschreibung vorhanden, in der erläutert wird, wie die Tags eingegeben werden müssen?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Erlaubt das System, sowohl die Eingabe einzelner Tags als auch die gleichzeitige Vergabe mehrerer Schlagworte?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Werden dem/der Nutzer/in bei der Vergabe von Tags Vorschläge (z.B. die für das Objekt bereits vorhandenen Tags) für eine direkte Übernahme unterbreitet?",
+                                    "is_mandatory": false 
+                                },
+                                {
+                                    "name": "Wird angezeigt, wie viele Nutzer/innen bereits einen bestimmten Tag für ein Objekt vergeben haben?",
+                                    "is_mandatory": false 
+                                },
+                                {
+                                    "name": "Wird bei der Eingabe der Tags eine Rechtschreib- bzw. Stammformkontrolle durchgeführt?",
+                                    "is_mandatory": false 
+                                },
+                                {
+                                    "name": "Erfolgt eine übersichtliche Darstellung der vom Anwendenden bzw. der von der Community für ein Objekt vergebenen Tags (z.B. Tag Cloud)?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Kann der/die Anwender/in die Tag-Listen für eine weitere Recherche im Bibliotheksbestand nutzen?",
                                     "is_mandatory": true 
                                 }
                             ]
@@ -712,6 +1703,7 @@
                 {
                     "name": "Globale Partizipationsmöglichkeiten",
                     "is_mandatory": true,
+                    "desc": "Dieser Bereich umfasst alle Komponenten, die es den Anwendern ermöglichen selbst Inhalte zu generieren und diese mit der Bibliothek bzw. anderen Bibliotheksbenutzern auszutauschen (z.B. Wikis, Blogs, etc.).",
                     "questions": [
                         {
                             "name": "Sind die vorhandenen Kollaborationstools (z.B. Wiki, Blog) angemessen in den Webauftritt integriert?",
@@ -726,9 +1718,10 @@
                         {
                             "name": "Wiki",
                             "is_mandatory": false,
+                            "desc": "Ein Wiki ist ein Kollaborationstool, welches Nutzern ermöglicht, sich gemeinsam an der Erstellung von Webseiten zu beteiligen. Nutzer können dabei Inhalte von Seiten ändern, überarbeiten, korrigieren, ergänzen, erstellen oder löschen. Das grösste und bekannteste Wiki ist die Online-Enzyklopädie Wikipedia (Kroski, 2008, S. 41).",
                             "questions": [
                                 {
-                                    "name": "Wird der Anwender beim Verfassen von Artikeln angemessen unterstützt?",
+                                    "name": "Wird der/die Anwender/in beim Verfassen von Artikeln angemessen unterstützt?",
                                     "is_mandatory": true 
                                 },
                                 {
@@ -744,7 +1737,7 @@
                                     "is_mandatory": true 
                                 },
                                 {
-                                    "name": "Ist transparent, welcher Autor welchen Artikel oder Abschnitt verfasst hat und in wie weit diese Abschnitte als \"seriös\" oder zuverlässig zu bewerten sind und ist der Stand (Datum) der Artikel mitangegeben?",
+                                    "name": "Ist transparent, welche/r Autor/in welchen Artikel oder Abschnitt verfasst hat und in wie weit diese Abschnitte als \"seriös\" oder zuverlässig zu bewerten sind und ist der Stand (Datum) der Artikel mitangegeben?",
                                     "is_mandatory": true 
                                 },
                                 {
@@ -760,17 +1753,18 @@
                         {
                             "name": "Forum",
                             "is_mandatory": false,
+                            "desc": "In einem Forum können Nutzer Gedanken, Meinungen oder Erfahrungen zu bestimmten Themen untereinander austauschen. Informationsanbieter können Foren nutzen, um sich Anregungen einzuholen oder um sich ein Bild von den Meinungen der Anwender zu machen.",
                             "questions": [
                                 {
                                     "name": "Ist das Forum übersichtlich gestaltet und unterstützt das verwendete Layout eine gute Lesbarkeit der Beiträge?",
                                     "is_mandatory": true 
                                 },
                                 {
-                                    "name": "Kann der Anwender seine persönlichen Angaben und sein Passwort nachträglich noch selbst editieren?",
+                                    "name": "Kann der/die Anwender/in seine persönlichen Angaben und sein/ihr Passwort nachträglich noch selbst editieren?",
                                     "is_mandatory": true 
                                 },
                                 {
-                                    "name": "Ist das Eingabefeld für das Verfassen von Beiträgen ausreichend gross, so dass die vom Nutzer getätigten Eingaben während des Vorgangs jederzeit sichtbar sind?",
+                                    "name": "Ist das Eingabefeld für das Verfassen von Beiträgen ausreichend gross, so dass die vom Nutzenden getätigten Eingaben während des Vorgangs jederzeit sichtbar sind?",
                                     "is_mandatory": true 
                                 },
                                 {
@@ -782,16 +1776,67 @@
                                     "is_mandatory": true 
                                 },
                                 {
-                                    "name": "Können Beiträge nachträglich vom Anwender noch editiert werden?",
+                                    "name": "Können Beiträge nachträglich vom Anwendenden noch editiert werden?",
                                     "is_mandatory": true 
                                 },
                                 {
-                                    "name": "Können unsachgemässe Inhalte von anderen Nutzern schnell und einfach einer Kontrollinstanz gemeldet werden?",
+                                    "name": "Können unsachgemässe Inhalte von anderen Nutzenden schnell und einfach einer Kontrollinstanz gemeldet werden?",
                                     "is_mandatory": true 
                                 },
                                 {
-                                    "name": "Reagiert ein Moderator regelmässig auf bislang unbeantwortete Fragen aus dem Forum?",
+                                    "name": "Reagiert ein/e Moderator/in regelmässig auf bislang unbeantwortete Fragen aus dem Forum?",
                                     "is_mandatory": true 
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Blog",
+                            "is_mandatory": false,
+                            "desc": "",
+                            "questions": [
+                                {
+                                    "name": "Ist der Weblog der Bibliothek angemessen, übersichtlich und  ansprechend gestaltet?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Ist ein grober Überblick über die Inhalte der einzelnen Beiträge gegeben?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Sind die Inhalte der Beiträge allgemein verständlich und bieten dem/der Anwender/in Zusatzinformationen zur bestehenden Webseite?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Werden dem Blog regelmässig neue Beiträge hinzugefügt?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Werden einzelne Beiträge mit Hilfe von Tags zu Themenbereichen gruppiert?",
+                                    "is_mandatory": false 
+                                },
+                                {
+                                    "name": "Ist das Eingabefeld für das Verfassen von Beiträgen ausreichend gross, so dass die vom Nutzenden getätigten Eingaben während des Vorgangs jederzeit sichtbar sind?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Sind die Funktionen des Editors respektive die spezifische Syntax zur Eingabe und Formatierung von Inhalten einfach und intuitiv zu handhaben?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Ist transparent, welche/r Autor/in welchen Beitrag verfasst hat und ist der Stand (Datum) der Artikel mitangegeben?",
+                                    "is_mandatory": false 
+                                },
+                                {
+                                    "name": "Ermöglicht der Weblog den Bibliotheksnutzenden eine ausreichende interaktive Beteiligung?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Reagiert die Bibliothek angemessen auf Kommentare und Anfragen?",
+                                    "is_mandatory": true 
+                                },
+                                {
+                                    "name": "Verfügt der Weblog über RSS?",
+                                    "is_mandatory": false 
                                 }
                             ]
                         }
