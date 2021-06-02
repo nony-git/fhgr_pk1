@@ -39,7 +39,7 @@
         </template>
         <!-- PAGE 1 / AUSWAHL BEREICHE -->
         <template v-if="page == 1">
-          <img v-if="showImg == true" class="bib-header-img" src="../assets/bibeval_intro_image.png" />
+          <img v-if="showImg == true" class="bib-header-img" src="/apps/stand1105/dist/img/bibeval_intro_image.2d5e403a.png" />
 
             <h1>{{ textcomponents.page1h1_1 }}</h1>
 
