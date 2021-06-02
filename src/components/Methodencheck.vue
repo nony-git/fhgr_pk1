@@ -21,7 +21,7 @@
     <!-- START: WELCOME-PAGE -->
     <div class="methodencheck-page" v-if="page == 0">
       <!-- INTRO IMAGE -->
-      <img src="/apps/stand1105/dist/img/methodencheck_intro_image.f9acbe0d.png" class="methodencheck-introImage" alt="Methodencheck Intro Image">
+      <img src="/apps/stand1105/dist/img/methodencheck_intro_image.141a1948.png" class="methodencheck-introImage" alt="Methodencheck Intro Image">
 
       <!-- LANGUAGE SWITCH -->
       <div class="methodencheck-languageswitch">
@@ -106,7 +106,8 @@
             <!-- BUTTONS -->
             <div class="methodencheck-buttonContainer">
               <button class="methodencheck-button methodencheck-button-back button button-primary-bg" v-on:click="page--;scrollToTop('methodencheck-top', 60)"></button>
-              <button class="methodencheck-button methodencheck-button-forward button button-primary-bg" v-on:click="page++;scrollToTop('methodencheck-top', 60)" v-if="inputs[question['id'].toString()] != 0">{{ textcomponents.weiter }}</button>
+              <button class="methodencheck-button methodencheck-button-forward button button-primary-bg" v-on:click="page++;scrollToTop('methodencheck-top', 60)" v-if="inputs[question['id'].toString()] != 0 && page < Object.keys(questions).length">{{ textcomponents.weiter }}</button>
+              <button class="methodencheck-button methodencheck-button-forward button button-primary-bg" v-on:click="page++;scrollToTop('methodencheck-top', 60)" v-if="inputs[question['id'].toString()] != 0 && page == Object.keys(questions).length">{{ textcomponents.fertig }}</button>
             </div>
           </div>
 
@@ -435,19 +436,23 @@ label {
 .methodencheck-processbar {
   display: flex;
   align-items: center;
-  padding: 0 0 4rem 0;
+  padding: 0 1rem 4rem 0;
 }
 .methodencheck-step {
   width: 30px;
   height: 30px;
+  margin: 0 10px;
   border-radius: 100%;
-  background: #D0D0D0;
+  background: #C4C4C4;
   color: #8D8D8D;
   font-size: 0.9rem;
   display: flex;
   justify-content: center;
   align-items: center;
   transition: 0.3s linear;
+}
+.methodencheck-step:first-child {
+  margin: 0 5px 0 0;
 }
 .stepActive {
   background: #817E65;
@@ -475,8 +480,9 @@ label {
   width: 30px;
   height: 30px;
   transform: rotate(45deg);
-  background: #D0D0D0;
+  background: #C4C4C4;
   transition: 0.3s linear;
+  margin-left: 15px;
 }
 .endstepActive {
   background: #817E65;
@@ -510,7 +516,7 @@ label {
 .methodencheck-line {
   height: 2px;
   background: #D0D0D0;
-  width: calc((100% - 210px) / 6);
+  width: calc((100% - 330px) / 6);
   transition: 0.3s linear;
 }
 .lineActive {
@@ -793,7 +799,7 @@ input:checked + .slider:before {
     background: #C4C4C4;
 }
 .methodencheck-method {
-  border: 2px solid #817E65;
+  border: 2px solid #C4C4C4;
   border-radius: 5px;
   padding: 1rem;
   margin-bottom: 1rem;
@@ -926,22 +932,29 @@ input:checked + .slider:before {
   }
 }
 @media only screen and (max-width: 768px) {
+  .methodencheck-processbar {
+    padding: 0 0 4rem 0;
+  }
   .methodencheck-line {
     display: none;
   }
   .methodencheck-step, .methodencheck-endstep {
     width: 10%;
-    height: 4px;
+    height: 5px;
     border-radius: 4px;
-    border: 1.5px solid #000000;
-    background: #ffffff;
+    background: #C4C4C4;
     margin-right: 5%;
     color: #000000;
     font-size: 0;
+    margin-left: 0;
+  }
+  .methodencheck-step:first-child {
+    margin-right: 5%;
   }
   .methodencheck-endstep {
     transform: rotate(0deg);
     margin-right: 0;
+    margin-left: 0;
   }
   .stepActive {
     background: #000000;

@@ -1,7 +1,7 @@
 <template>
 <div class="suchanfrage-container">
     <!-- START: INTRO IMAGE -->
-    <img src="/apps/stand1105/dist/img/suchanfragen_intro_image.916b5f6b.jpg" class="introImage" alt="Intro Image">
+    <img src="/apps/stand1105/dist/img/suchanfragen_intro_image.9aafb173.jpg" class="introImage" alt="Intro Image">
     <!-- END: INTRO IMAGE -->
 
     <!-- START: LANGUAGE SWITCH -->
