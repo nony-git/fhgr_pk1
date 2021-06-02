@@ -5,6 +5,7 @@
         Bereich: {{ selectedCategories }}<br>
         Teilbereich: {{ selectedSubCategories }}<br>
         Komponenten: {{ selectedComponents }}<br>
+{{displayedComponents}}
         <!-- PAGE 0 / INFO PAGE -->
         <template v-if="page == 0">
           <img class="bib-header-img" src="../assets/bibeval_intro_image.png" />
@@ -133,11 +134,10 @@
 
                 <div class="line"></div>
 
-                <!-- TODO: abklaeren was dieser button genau machen soll... -->
                 <label class="bib-optional">
                     <input type="checkbox" v-model="mandatory">
                     <span class="slider"></span>
-                    optionale Bereiche
+                    optionale Bereiche einblenden
                 </label>
 
                 <template v-if="selectedSubCategories.length > 0">
@@ -153,6 +153,7 @@
                                     v-for="(comp, index4) in getComponents(subcategory)" 
                                     :key="index4" 
                                     :value="comp" 
+																		:mandatory="mandatoryComponents"
                                     v-model="selectedComponents"
 																		v-bind:class="{hide: mandatoryComponents.includes(comp) && mandatory == false}"
                                     class="bib-select-small">
@@ -281,6 +282,7 @@ export default {
       selectedCategories: [],
       selectedSubCategories: [],
       selectedComponents: [],
+      displayedComponents: [],
       mandatory: false,
       data_tool: bibeval_json,
       bibliotheksseite: this.bibliotheksseite,
@@ -399,7 +401,7 @@ export default {
       top.scrollIntoView();
     },
 
-    // Loads components based on subcategory.
+// Loads components based on subcategory.
     getComponents(subcategory) {
 			for(var i = 0; i < this.subcategories.length; i++) {
 				if( this.subcategories[i][0] === subcategory ){
@@ -457,6 +459,7 @@ export default {
       //   }
       // }
     },
+
 		// Removes selected subcategory if category is unchecked.
 		selectedCategories: function() {
 			var notselected = [];
@@ -471,8 +474,15 @@ export default {
 					this.selectedSubCategories.splice(index, 1);
 				}
 			}
-		}
-
+		},
+		selectedSubCategories: function() {
+			var displayedComponents = [];
+			for(var i = 0; i < this.selectedSubCategories.length; i++){
+				// if(this.displayedComponents.indexOf(this.selectedSubCategories[i]) === -1) {
+					displayedComponents.push(...this.subcategories[i][1])}
+			// }
+			this.displayedComponents = [...new Set(displayedComponents)];
+		}	
 	},
 }
 </script>
