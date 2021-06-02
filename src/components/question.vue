@@ -5,6 +5,7 @@
     <td  rowspan="2" class="left-align question">
       <strong>{{ question.number}}</strong> {{ question.name }}
     </td>
+
     <td class="input-cell">
       <label class="radio-container">
         <input
@@ -86,13 +87,10 @@
   </tr>
   <tr>
     <td colspan="8" class="left-align add-comment">
-      <button class="btn-mini" :id='question.name+"btn"' @click="showCommentField(question.name)">+ Kommentar hinzufügen</button>
-      <textarea v-model="comment" name="" class="comment" :id="question.name" cols="1" rows="1" placeholder="Kommentar hinzufügen"></textarea>
+      <button class="btn-mini" :id='question.name+"btn"' @click="showCommentField(question.name);focus(question.name)">+ {{ textcomponents.kommentar }}</button>
+      <textarea v-model="comment" name="" :ref="question.name" class="comment" :id="question.name" cols="1" rows="1" :placeholder="[[textcomponents.kommentar]]"></textarea>
     </td>
   </tr>
-        <!-- dev only: um zu zeigen, dass Kommentar in comment gespeichert wird -->
-        <tr>{{ comment }}</tr>
-        <!---->
   </tbody>
 </template>
 
@@ -101,34 +99,42 @@
 export default {
   name: "question",
   // als Prop: JSON einer einzelnen Frage wird übergeben
-  props: ["question", "value"],
+  props: {
+      question: Object,
+      value: {
+          type: Object,
+          default: function() {
+              return { picked: Number.NaN, comment:"" }
+          },
+      },
+      textcomponents: Object
+  },
+
   data: function () {
     return {
-      picked: this.value,
-      comment: this.comment
+      picked: this.value.picked,
+      comment: this.value.comment
     };
   },
   methods:{
     showCommentField: function(id){
-      console.log("it works");
+      // todo: schöner lösen?
       var field = document.getElementById(id);
       field.style.display = "block";
       var button = document.getElementById(id+"btn");
       button.style.display = "none";
+    },
+    focus: function(id){
+      this.$refs[id].focus()
     }
   },
   watch: {
-    picked: function (neuerWert) {
-      this.$emit("input", neuerWert);
+    picked: function () {
+      this.$emit("input", {picked:this.picked,comment:this.comment,category:4});
     },
-    // Wohin muss Kommentar?
-    comment: function(kommentar){
-      this.$emit("input", kommentar);
+    comment: function(){
+      this.$emit("input", {picked:this.picked,comment:this.comment});
     },
-
-    /*updateValue: function (comment) {
-      this.$emit("input", comment);
-    },*/
   },
 };
 </script>
@@ -250,6 +256,8 @@ textarea{
   font-size:0.8rem;
   border:1px solid;
   border-radius: 5px;
+  padding:0.5em;
+  margin-top:1em;
 }
 .comment{
   display:none;

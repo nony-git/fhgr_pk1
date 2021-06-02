@@ -1,6 +1,9 @@
 import Vue from 'vue'
 import App from './App.vue'
 
+import JsonCSV from 'vue-json-csv'
+Vue.component('downloadCsv', JsonCSV)
+
 Vue.config.productionTip = true
 
 // new Vue({
@@ -14,5 +17,6 @@ new Vue({
       props: { ...mountEl.dataset },
     };
     return createElement(App, context);
-  }
+  }, 
+
 }).$mount('#app');
