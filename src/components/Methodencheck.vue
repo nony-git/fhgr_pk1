@@ -21,7 +21,7 @@
     <!-- START: WELCOME-PAGE -->
     <div class="methodencheck-page" v-if="page == 0">
       <!-- INTRO IMAGE -->
-      <img src="../assets/methodencheck_intro_image.png" class="methodencheck-introImage" alt="Methodencheck Intro Image">
+      <img src="/apps/stand1105/dist/img/methodencheck_intro_image.f9acbe0d.png" class="methodencheck-introImage" alt="Methodencheck Intro Image">
 
       <!-- LANGUAGE SWITCH -->
       <div class="methodencheck-languageswitch">
@@ -52,7 +52,7 @@
 
       <!-- BUTTON TO START TOOL -->
       <div class="methodencheck-buttons-start">
-        <button class="button button-primary-bg" v-on:click="page++;scrollToTop()">{{ textcomponents.start }}</button>
+        <button class="button button-primary-bg" v-on:click="page++;scrollToTop('methodencheck-top', 60)">{{ textcomponents.start }}</button>
       </div>
     </div>
     <!-- END: WELCOME-PAGE -->
@@ -105,8 +105,8 @@
 
             <!-- BUTTONS -->
             <div class="methodencheck-buttonContainer">
-              <button class="methodencheck-button methodencheck-button-back button button-primary-bg" v-on:click="page--;scrollToTop()"></button>
-              <button class="methodencheck-button methodencheck-button-forward button button-primary-bg" v-on:click="page++;scrollToTop()" v-if="inputs[question['id'].toString()] != 0">{{ textcomponents.weiter }}</button>
+              <button class="methodencheck-button methodencheck-button-back button button-primary-bg" v-on:click="page--;scrollToTop('methodencheck-top', 60)"></button>
+              <button class="methodencheck-button methodencheck-button-forward button button-primary-bg" v-on:click="page++;scrollToTop('methodencheck-top', 60)" v-if="inputs[question['id'].toString()] != 0">{{ textcomponents.weiter }}</button>
             </div>
           </div>
 
@@ -137,7 +137,9 @@
             <h3 class="methodencheck-resulttitle">{{ method['bezeichnung'] }}</h3>
             <div class="methodencheck-resultWrapper">
               <div class="methodencheck-result-leftside" v-bind:class="{wide: method['dauer'] == '' && method['anzahl'] == ''}">
-                <a class="methodencheck-result-link" v-bind:href=" method['link'] " v-if="method['link'] != ''">{{ textcomponents.mehrErfahren}}</a>
+                <div class="methodencheck-result-link" v-if="method['link'] != ''">
+                  <a v-bind:href=" method['link'] ">{{ textcomponents.mehrErfahren}}</a>
+                </div>
                 <div class="methodencheck-result-beschreibung">
                   {{ method['beschreibung'] }}
                 </div>
@@ -158,8 +160,8 @@
 
       <div class="methodencheck-controls">
         <div class="methodencheck-resultbuttons">
-          <button class="button button-primary-bg methodencheck-button-back" v-on:click="page--;scrollToTop()"></button>
-          <button class="button button-primary-bg methodencheck-button methodencheck-button-forward" v-on:click="page = 0; clearInputs(); clearMethods()">{{ textcomponents.zurückZumStart }}</button>
+          <button class="button button-primary-bg methodencheck-button-back" v-on:click="page--;scrollToTop('methodencheck-top', 60)"></button>
+          <button class="button button-primary-bg methodencheck-button methodencheck-button-forward" v-on:click="page = 0; clearInputs(); clearMethods();scrollToTop('methodencheck-top', 60)">{{ textcomponents.zurückZumStart }}</button>
         </div>
       </div>
     </div>
@@ -365,10 +367,11 @@ export default {
         this.subAnswerActivated = false;
       }
     },
-    // SCROLL TO TOP OF TOOL - ESPECIALLY FOR MOBILE USE
-    scrollToTop: function() {
-      var top = document.getElementById("methodencheck-top");
-      top.scrollIntoView();
+    // SCROLL TO SECTION
+    scrollToTop: function(scrollSection, offset) {
+      var element = document.getElementById(scrollSection);
+      var top = element.offsetTop - offset;
+      window.scrollTo(0, top);
     },
     // LOAD DATA IN SELECTED LANGUAGE
     loadData: function() {
@@ -413,7 +416,7 @@ label {
   border: 1px solid #c0beb2;
   cursor: pointer;
   transition: all 0.25s;
-  background: #ffffff;
+  background: transparent;
   outline:none;
 }
 .button:hover {
@@ -425,7 +428,7 @@ label {
 }
 .methodencheck-introImage {
   width: 100%;
-  max-width: 760px;
+  max-width: 900px;
   object-fit: cover;
   margin: 0 auto 1rem auto;
 }
@@ -516,13 +519,13 @@ label {
 .methodencheck-buttons-start {
   display: flex;
   align-items: center;
-  max-width: 760px;
+  max-width: 900px;
   margin: 0 auto;
 }
 .methodencheck-linkbuttons {
   display: flex;
   align-items: center;
-  max-width: 760px;
+  max-width: 900px;
   margin: 0 auto 2rem auto;
 }
 .linkbutton {
@@ -532,7 +535,7 @@ label {
   color: #817e65;
   position: relative;
   font-size: 1rem;
-  background: #ffffff;
+  background: transparent;
   outline:none;
 }
 .linkbutton:hover {
@@ -570,7 +573,7 @@ label {
 .methodencheck-languageswitch {
   display: flex;
   align-items: center;
-  max-width: 760px;
+  max-width: 900px;
   margin: 0 auto 2rem auto;
 }
 .methodencheck-languageswitch > span {
@@ -646,7 +649,7 @@ input:checked + .slider:before {
 }
 .methodencheck-text {
   text-align: left;
-  max-width: 760px;
+  max-width: 900px;
   margin: 0 auto 1.5rem auto;
 }
 .methodencheck-formcontainer {
@@ -856,8 +859,8 @@ input:checked + .slider:before {
   padding-left: 1rem;
   order: 2;
 }
-.methodencheck-result-beschreibung {
-  margin-top: 1rem;
+.methodencheck-result-link {
+  margin-bottom: 1rem;
 }
 .methodencheck-result-dauer {
   position: relative;
