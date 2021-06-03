@@ -2,19 +2,11 @@
   <div class="methodencheck" id="methodencheck-top">
     <!-- START: PROCESSBAR -->
     <div class="methodencheck-processbar" v-if="page > 0">
-      <div class="methodencheck-step" v-bind:class="{stepActive: page > 0, stepDone: page > 1}">1</div>
-      <div class="methodencheck-line" v-bind:class="{lineActive: page > 1}"></div>
-      <div class="methodencheck-step" v-bind:class="{stepActive: page > 1, stepDone: page > 2}">2</div>
-      <div class="methodencheck-line" v-bind:class="{lineActive: page > 2}"></div>
-      <div class="methodencheck-step" v-bind:class="{stepActive: page > 2, stepDone: page > 3}">3</div>
-      <div class="methodencheck-line" v-bind:class="{lineActive: page > 3}"></div>
-      <div class="methodencheck-step" v-bind:class="{stepActive: page > 3, stepDone: page > 4}">4</div>
-      <div class="methodencheck-line" v-bind:class="{lineActive: page > 4}"></div>
-      <div class="methodencheck-step" v-bind:class="{stepActive: page > 4, stepDone: page > 5}">5</div>
-      <div class="methodencheck-line" v-bind:class="{lineActive: page > 5}"></div>
-      <div class="methodencheck-step" v-bind:class="{stepActive: page > 5, stepDone: page > 6}">6</div>
-      <div class="methodencheck-line" v-bind:class="{lineActive: page > 6}"></div>
-      <div class="methodencheck-endstep" v-bind:class="{endstepActive: page > 6}"></div>
+      <div class="methodencheck-stepwrapper" v-for="question in questions" v-bind:key="question['id']" v-bind:style="{'width': 'calc((100% - 30px) / ' + Object.keys(questions).length + ')'}">
+        <div class="methodencheck-step" v-bind:class="{stepActive: page > question['id'] - 1, stepDone: page > question['id']}">{{ question['id'] }}</div>
+        <div class="methodencheck-line" v-bind:class="{lineActive: page > question['id']}"></div>
+      </div>
+      <div class="methodencheck-endstep" v-bind:class="{endstepActive: page > Object.keys(questions).length}"></div>
     </div>
     <!-- END: PROCESSBAR -->
 
@@ -199,6 +191,7 @@ export default {
   },
   methods: {
     // UPDATE INPUT-DATA - IF MC-QUESTION ADD VALUES TO ARRAY, ELSE CHANGE NUMBER TO THE SELECTED ONE
+    // VALUES HAVE TO BE CONVERTED INTO STRINGS BECAUSE THEY'RE STRINGS IN THE JSON-FILE
     updateInputs: function(question, inputValue) {
       inputValue = parseInt(inputValue);
       if (question['multiplechoice']) {
@@ -438,10 +431,15 @@ label {
   align-items: center;
   padding: 0 1rem 4rem 0;
 }
+.methodencheck-stepwrapper {
+  display: flex;
+  align-items: center;
+  transition: 0.3s linear;
+}
 .methodencheck-step {
   width: 30px;
   height: 30px;
-  margin: 0 10px;
+  margin: 0 15px 0 0;
   border-radius: 100%;
   background: #C4C4C4;
   color: #8D8D8D;
@@ -450,9 +448,6 @@ label {
   justify-content: center;
   align-items: center;
   transition: 0.3s linear;
-}
-.methodencheck-step:first-child {
-  margin: 0 5px 0 0;
 }
 .stepActive {
   background: #817E65;
@@ -482,7 +477,7 @@ label {
   transform: rotate(45deg);
   background: #C4C4C4;
   transition: 0.3s linear;
-  margin-left: 15px;
+  margin-left: 5px;
 }
 .endstepActive {
   background: #817E65;
@@ -516,7 +511,7 @@ label {
 .methodencheck-line {
   height: 2px;
   background: #D0D0D0;
-  width: calc((100% - 330px) / 6);
+  width: calc(100% - 60px);
   transition: 0.3s linear;
 }
 .lineActive {
@@ -934,12 +929,21 @@ input:checked + .slider:before {
 @media only screen and (max-width: 768px) {
   .methodencheck-processbar {
     padding: 0 0 4rem 0;
+    justify-content: space-between
+  }
+  .methodencheck-stepwrapper {
+    width: 10% !important;
   }
   .methodencheck-line {
     display: none;
   }
-  .methodencheck-step, .methodencheck-endstep {
+  .methodencheck-step {
+    width: 100%;
+  }
+  .methodencheck-endstep {
     width: 10%;
+  }
+  .methodencheck-step, .methodencheck-endstep {
     height: 5px;
     border-radius: 4px;
     background: #C4C4C4;
