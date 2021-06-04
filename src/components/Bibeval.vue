@@ -40,103 +40,77 @@
         <!-- PAGE 1 / AUSWAHL BEREICHE -->
         <template v-if="page == 1">
           <img v-if="showImg == true" class="bib-header-img" src="/apps/stand1105/dist/img/bibeval_intro_image.2d5e403a.png" />
-
             <h1>{{ textcomponents.page1h1_1 }}</h1>
-
             <div class="bib-overview-bereiche">
-
-                <button 
-                    class="bib-select-large"
-                    :value="website"
-                    @click="showImg = false; loadJson('webeval')"
-										v-bind:class="{selected: wasUntersuchen == 'webeval'}">
-                    {{ textcomponents.bibselect1 }}
-                </button>
-
-                <button
-                    class="bib-select-large"
-                    :value="bibliotheksseite"
-                    @click="showImg = false; loadJson('bibeval')"
-										v-bind:class="{selected: wasUntersuchen == 'bibeval'}">
-                    {{ textcomponents.bibselect2 }}
-                </button>
-
+              <button 
+                  class="bib-select-large"
+                  :value="website"
+                  @click="showImg = false; loadJson('webeval')"
+                  v-bind:class="{selected: wasUntersuchen == 'webeval'}">
+                  {{ textcomponents.bibselect1 }}
+              </button>
+              <button
+                  class="bib-select-large"
+                  :value="bibliotheksseite"
+                  @click="showImg = false; loadJson('bibeval')"
+                  v-bind:class="{selected: wasUntersuchen == 'bibeval'}">
+                  {{ textcomponents.bibselect2 }}
+              </button>
             </div>
-
             <h1>{{ textcomponents.page1h12 }}</h1>
-
             <div class="bib-overview-bereiche">
-
                 <!-- Loop over category level one. -->
                 <div v-for="(cat1, index) in categories" :key="index">
-
-                    <select-button 
-                        class="bib-select-large"
-                        v-model="selectedCategories" 
-                        :value="cat1[0]">
-                        {{ cat1[0] }} 
-                    </select-button>
-
-                    <!-- Loop over category level two. -->
-                    <template v-if="selectedCategories.includes(cat1[0])">
-                        <div v-for="(cat2, index2) in cat1[1]" :key="index2">
-
-                            <select-button 
-                                class="bib-select-small"
-                                v-model="selectedSubCategories" 
-                                :value="cat2">
-                                {{ cat2 }} 
-                            </select-button>
-
-                        </div>
-                    </template>
-
+                  <select-button 
+                    class="bib-select-large"
+                    v-model="selectedCategories" 
+                    :value="cat1[0]">
+                    {{ cat1[0] }} 
+                  </select-button>
+                  <!-- Loop over category level two. -->
+                  <template v-if="selectedCategories.includes(cat1[0])">
+                    <div v-for="(cat2, index2) in cat1[1]" :key="index2">
+                      <select-button 
+                        class="bib-select-small"
+                        v-model="selectedSubCategories" 
+                        :value="cat2">
+                        {{ cat2 }} 
+                      </select-button>
+                    </div>
+                  </template>
                 </div>
-
                 <!-- Back Button -->
                 <div class="bibeval-buttonContainer">
                   <button class="bibeval-button btn-back btn button-primary-bg" v-on:click="page--;scrollToTop()"></button>
                 </div>
-
             </div>
-
             <template v-if="selectedSubCategories.length > 0">
-
                 <div class="line"></div>
-
                 <label class="bib-optional">
                     <input type="checkbox" v-model="mandatory">
                     <span class="slider"></span>
                     {{ textcomponents.optional }}
                 </label>
-
                 <template v-if="selectedSubCategories.length > 0">
-
                     <div 
-                            v-for="(subcategory, index3) in selectedSubCategories" 
-                            :key="index3" 
-                            class="bib-komponentenauswahl bib-overview-bereiche"
-                        >
+                      v-for="(subcategory, index3) in selectedSubCategories" 
+                      :key="index3" 
+                      class="bib-komponentenauswahl bib-overview-bereiche">
                         <h2>{{ subcategory }}</h2>
-
                         <select-button 
-                                    v-for="(comp, index4) in getComponents(subcategory)" 
-                                    :key="index4" 
-                                    :value="comp" 
-																		:mandatory="mandatoryComponents"
-                                    v-model="selectedComponents"
-																		v-bind:class="{hide: mandatoryComponents.includes(comp) && mandatory == false}"
-                                    class="bib-select-small">
-                            {{ comp }}
+                          v-for="(comp, index4) in getComponents(subcategory)" 
+                          :key="index4" 
+                          :value="comp" 
+                          :mandatory="mandatoryComponents"
+                          v-model="selectedComponents"
+                          v-bind:class="{hide: mandatoryComponents.includes(comp) && mandatory == false}"
+                          class="bib-select-small">
+                          {{ comp }}
                         </select-button>
-
                     </div>
-
                 </template>
                 <p>{{ textcomponents.kataloggroesse1 }}{{ findHighest(toViewArray) }}{{ textcomponents.kataloggroesse2 }}</p>
-                <p>
-                    {{ textcomponents.severityinfo }}
-                </p>
+                <p>{{ textcomponents.severityinfo }}</p>
                 <table class="table-preview">
                   <tr>
                     <th class="severity-label">{{ textcomponents.severity0 }}</th>
@@ -147,12 +121,9 @@
                     <th class="severity-label">{{ textcomponents.severity5 }}</th>
                   </tr>
                   <tr>
-                    <td class="input-cell"><input type="radio" name="dummy"></td>
-                    <td class="input-cell"><input type="radio" name="dummy"></td>
-                    <td class="input-cell"><input type="radio" name="dummy"></td>
-                    <td class="input-cell"><input type="radio" name="dummy"></td>
-                    <td class="input-cell"><input type="radio" name="dummy"></td>
-                    <td class="input-cell"><input type="radio" name="dummy"></td>
+                    <td v-for="(x, index) in 6" :key="index" class="input-cell">
+                      <input type="radio" name="dummy">
+                    </td>
                   </tr>
                 </table>
                 <button v-if="selectedComponents.length > 0" class="bib-pagenav" v-on:click="page += 1; scrollToTop()">{{ textcomponents.start }}</button>
@@ -160,19 +131,11 @@
         </template>
         <!-- PAGE 2 / FRAGEN -->
         <template v-if="page == 2">
-            <!-- Navigator, braucht noch Zustände: in Bearbeitung / fertig, inkl. Icons -->
-            <!-- {{ progressItems }} -->
             <table class="navigator-table" cellspacing="0" cellpadding="0">
             <tr>
               <template v-for="(title,indexprogress) in progressItems">
                 <td :key="title">
                 <div :style="title==toViewArray[currentView].category_name?'background-color:#817e65':'background-color:#eee'" class="circle">
-                  <!-- <svg v-if="todo" xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="white" class="bi bi-three-dots" viewBox="0 0 16 16">
-                    <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
-                  </svg>
-                  <svg v-if="todo" xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="white" class="bi bi-check-lg" viewBox="0 0 16 16">
-                    <path d="M13.485 1.431a1.473 1.473 0 0 1 2.104 2.062l-7.84 9.801a1.473 1.473 0 0 1-2.12.04L.431 8.138a1.473 1.473 0 0 1 2.084-2.083l4.111 4.112 6.82-8.69a.486.486 0 0 1 .04-.045z"/>
-                  </svg> -->
                 </div>
                 </td>
                 <td :key="title">
@@ -190,12 +153,9 @@
               </template>
             </tr>
             </table>
-            <!-- Hier kommt der Button um in die Selektion zurück zu kommen-->
             <div class="to-right">
                 <button class="btn btn-selection" @click="page = 1">{{ textcomponents.auswahl }}<br>{{ textcomponents.aendern }}</button>
             </div>
-
-            <!-- {{ toViewArray }} -->
             <QuestionView
             :toView="toViewArray[currentView]"
             :key="currentView"
@@ -213,7 +173,6 @@
               <button v-if="currentView == toViewArray.length-1"
               class="btn btn-forward" @click="page += 1; scrollToTop(); auswerten()">{{ textcomponents.abschliessen }}</button>
             </div>
-            <!-- {{ toExport }} -->
         </template>
         <template v-if="page == 3">
           <h1>{{ textcomponents.page3h1 }}</h1>
@@ -285,7 +244,6 @@ import labelsEn from './json/labels_eval_en.json';
 export default {
   name: "Bibeval",
   components: {
-    // eslint-disable-next-line vue/no-unused-components
     QuestionView,
     selectButton,
     resultline,
@@ -314,32 +272,6 @@ export default {
       showInfoText: false,
       toExport:[],
       toExportWork:[],
-      // dev-only
-      auswertungArrayMuster:[
-        {
-          "Information & Kommunikation":[
-              {
-                "name":"Kontakt und Zugang",
-                "schnitt":"4"
-              },
-              {
-                "name":"Seitenüberblick",
-                "schnitt":"3"
-              }
-          ],
-          "Recherche im Bestand":[
-            {
-              "name":"Suchen und Erkunden",
-              "schnitt":"1"
-            },
-            {
-              "name":"Präsentation und Zugriff",
-              "schnitt":"2"
-            }
-          ]
-        }
-      ],
-      //---//
       auswertungArray: this.auswertungArray
       };
   },
@@ -518,8 +450,6 @@ export default {
   watch: {
     // aktualisiere die Export Datei, sobald neue Antwort / Kommentar
     userAnswers: {
-      // watcher muss auch nested watchen, sonst wird answer / comment änderung nicht updated
-      //deep: true
       handler:function(){
         this.toExport = [];
         for(let block of this.toViewArray){
@@ -581,31 +511,25 @@ export default {
 	transition: all .25s;
 	background: #fff;
 }
-
 .bib-pagenav:hover {
 	background: #c0beb2;
 	text-decoration: none;
 	color: #fff;
 }
-
 .bibeval-text {
   text-align: left;
   max-width: 760px;
   margin: 0 auto 1.5rem auto;
 }
-
 .bib-txt-left {
 	text-align: left;
 }
-
 .hide {
 	display: none;
 }
-
 h1 {
 	margin-bottom: 30px;
 }
-
 .bib-header-img {
 	margin: 0 auto 50px auto;
 }
@@ -675,7 +599,6 @@ h1 {
   width: 3em;
   max-width: 2em;
 }
-/* language */
 .linkbutton {
   border: 0;
   padding: 0;
@@ -750,7 +673,6 @@ h1 {
 .btn-selection{
     background: #817e65;
     color: #fff;
-    /* font-size: 0.8rem; */
 }
 .btn-selection:hover{
   color:black;
@@ -764,7 +686,6 @@ button:focus {
   max-width: 760px;
   margin: 0 auto 2rem auto;
 }
-
 .linkbutton-more::after {
   content: "";
   position: absolute;
