@@ -77,11 +77,11 @@
             <div>
               <!-- MULTIPLECHOICE ANSWERS -->
               <div class="methodencheck-answers" v-if="question['multiplechoice']">
-                  <div class="methodencheck-levelanswers" v-for="(name, value, index) in question['antworten']" v-bind:key="index" v-on:click="updateInputs(question, value);updateMethods(question['id']); sortMethods()">
-                    <div class="methodencheck-topanswer" v-if="name['level'] == 1" v-on:click="showSubAnwser(value)" v-bind:class="{activeAnswer: inputs[question['id'].toString()].includes(parseInt(value))}">
+                  <div class="methodencheck-levelanswers" v-for="(name, value, index) in question['antworten']" v-bind:key="index" v-on:click="updateInputs(question, value);updateMethods(); sortMethods()">
+                    <div class="methodencheck-topanswer" v-if="name['level'] == 1" v-on:click="showSubAnwser(question, value)" v-bind:class="{activeAnswer: (question['input']) ? question['input'].includes(parseInt(value)) : false}">
                       {{ name['antwort'] }}
                     </div>
-                    <div class="methodencheck-subanswer" v-if="name['level'] == 2" v-bind:class="{showSubAnwser: subAnswerActivated, activeAnswer: inputs[question['id'].toString()].includes(parseInt(value))}">
+                    <div class="methodencheck-subanswer" v-if="name['level'] == 2" v-bind:class="{showSubAnwser: subAnswerActivated, activeAnswer: (question['input']) ? question['input'].includes(parseInt(value)) : false}">
                       {{ name['antwort'] }}
                     </div>
                   </div>
@@ -89,7 +89,7 @@
 
               <!-- SINGLECHOICE ANSWER -->
               <div  class="methodencheck-answers" v-else>
-                <div class="methodencheck-answer" v-for="(name, value, index) in question['antworten']" v-bind:key="index" v-on:click="updateInputs(question, value);updateMethods(question['id']); sortMethods()" v-bind:class="{activeAnswer: inputs[question['id'].toString()] == value}">
+                <div class="methodencheck-answer" v-for="(name, value, index) in question['antworten']" v-bind:key="index" v-on:click="updateInputs(question, value);updateMethods(); sortMethods()" v-bind:class="{activeAnswer: question['input'] == value}">
                   {{ name }}
                 </div>
               </div>
@@ -98,8 +98,8 @@
             <!-- BUTTONS -->
             <div class="methodencheck-buttonContainer">
               <button class="methodencheck-button methodencheck-button-back button button-primary-bg" v-on:click="page--;scrollToTop('methodencheck-top', 60)"></button>
-              <button class="methodencheck-button methodencheck-button-forward button button-primary-bg" v-on:click="page++;scrollToTop('methodencheck-top', 60)" v-if="inputs[question['id'].toString()] != 0 && page < Object.keys(questions).length">{{ textcomponents.weiter }}</button>
-              <button class="methodencheck-button methodencheck-button-forward button button-primary-bg" v-on:click="page++;scrollToTop('methodencheck-top', 60)" v-if="inputs[question['id'].toString()] != 0 && page == Object.keys(questions).length">{{ textcomponents.fertig }}</button>
+              <button class="methodencheck-button methodencheck-button-forward button button-primary-bg" v-on:click="page++;scrollToTop('methodencheck-top', 60)" v-if="question['input'] && page < Object.keys(questions).length">{{ textcomponents.weiter }}</button>
+              <button class="methodencheck-button methodencheck-button-forward button button-primary-bg" v-on:click="page++;scrollToTop('methodencheck-top', 60)" v-if="question['input'] && page == Object.keys(questions).length">{{ textcomponents.fertig }}</button>
             </div>
           </div>
 
@@ -175,14 +175,6 @@ export default {
       methods: dataset.methoden,
       infotext: dataset.infotext,
       textcomponents: dataset.textkomponenten,
-      inputs: {
-        "1": 0,
-        "2": 0,
-        "3": 0,
-        "4": [],
-        "5": 0,
-        "6": 0
-      },
       methodsActivated: true,
       subAnswerActivated: false,
       showInfoText: false,
@@ -190,120 +182,85 @@ export default {
     }
   },
   methods: {
-    // UPDATE INPUT-DATA - IF MC-QUESTION ADD VALUES TO ARRAY, ELSE CHANGE NUMBER TO THE SELECTED ONE
+    // UPDATE USERINPUTS (MC AND SC QUESTIONS HAVE TO BE HANDELED DIFFERENTLY)
     // VALUES HAVE TO BE CONVERTED INTO STRINGS BECAUSE THEY'RE STRINGS IN THE JSON-FILE
     updateInputs: function(question, inputValue) {
       inputValue = parseInt(inputValue);
-      if (question['multiplechoice']) {
-        if (inputValue == 1) {
-          this.inputs[question['id'].toString()] = [1];
-        }
-        else {
-          var index = this.inputs[question['id'].toString()].indexOf(1);
-          if (index > -1) {
-            this.inputs[question['id'].toString()].splice(index, 1);
-          }
 
-          if (this.inputs[question['id'].toString()].includes(inputValue)) {
-            var i = this.inputs[question['id'].toString()].indexOf(inputValue);
-            this.inputs[question['id'].toString()].splice(i, 1);
+      // CHECK IF MC-QUESTION OR SC-QUESTION. INPUTS HAVE TO BE HANDLED DIFFERENTLY
+      if (question['multiplechoice'] == true) {
+        // CHECK IF CLICKED ANSWER HAS SUBANWSERS. IF NOT ADD INPUT AND DON'T SHOW ANY SUBANSWERS
+        if (question['antworten'][inputValue]['level'] == 1 && !question['antworten'][inputValue]['ausklappen']) {
+          question['input'] = [inputValue];
+        }
+        // IF THERE ARE SUBANSWERS - ADD VALUE TO ARRAY FOR TOPLEVEL ANSWER AND SUBANSWERS
+        else {
+          // IF TOPLEVEL-ANWSER WITH SUBANSWERS IS CLICKED, CHECK IF AN ARRAY EXISTS
+          // IF NOT CREATE ARRAY WITH VALUE ELSE PUSH VALUE TO ARRAY
+          if (question['antworten'][inputValue]['level'] == 1) {
+            if (question['input'] && question['input'].includes(inputValue)) {
+              question['input'].push(inputValue);
+            }
+            else {
+              question['input'] = [inputValue];
+            }
           }
           else {
-            this.inputs[question['id'].toString()].push(inputValue);
+            // CHECK IF INPUT HAS ALREADY BEEN ADDED TO INPUT ARRAY
+            // IF SO, DELETE THIS INPUT FROM THE ARRAY ELSE PUSH VALUE TO ARRAY (SO USER CAN CHANGE HIS INPUTS)
+            if (question['input'].includes(inputValue)) {
+              var j = question['input'].indexOf(inputValue);
+              question['input'].splice(j, 1);
+            }
+            else {
+              question['input'].push(inputValue);
+            }
           }
         }
       }
+      // SC-QUESTION - ADD INPUT
       else {
-        this.inputs[question['id'].toString()] = inputValue;
+        question['input'] = inputValue;
       }
     },
-    // UPDATE METHOD-OBJECT - ALWAYS CHECK FOR EVERY COMPLETED QUESTION BECAUSE USER CAN GO BACK AND FORTH AND CHANGE THE INPUTS
+    // UPDATE METHOD-OBJECT - METHOD IS ACTIVE WHEN EVERY GIVEN ANSWERS MATCHES TO THE METHOD
+    // IF ANY ANSWER DOES NOT MATCH, METHOD IN INACTIVE
+    // SINCE MC AND SC INPUTS HAVE DIFFERENT DATE-TYPES, THEY NEED TO BE HANDELED DIFFERENTLY
+    // BECAUSE USER CAN GO BACK AND FORTH IN TOOL AND CHANGE INPUTS THIS HAS ALWAYS TO BE EXECUTED FOR EVERY METHOD AND EVERY ANSWERS
     // ACITVE --> WHEN METHOD IS STILL POSSIBLE WITH USERS SELECTION
     // POISITON --> TO ENSURE ACTIVE METHODES ARE SHOWN FIRST IN RIGHT COLUMN WHERE ALL THE METHODS ARE DISPLAYED IN THE TOOL
-    updateMethods: function(check) {
-      var inputs = this.inputs;
+    updateMethods: function() {
+      var questions = Object.values(this.questions);
+
       this.methods.forEach(function(method) {
-        switch (check) {
-          case 1:
-            if (method['produktstatus'].includes(inputs['1'].toString())) {
-              method['active'] = true;
-              method['position'] = 1;
+        method['activeQuestion'] = [];
+        questions.forEach(function(question) {
+          if (question['input']) {
+            if (question['multiplechoice']) {
+              if (question['input'].some(elem => method[question['name']].includes(elem.toString()))) {
+                method['activeQuestion'].push(true)
+              }
+              else {
+                method['activeQuestion'].push(false)
+              }
             }
             else {
-              method['active'] = false;
-              method['position'] = 2;
+              if (method[question['name']].includes(question['input'].toString())) {
+                method['activeQuestion'].push(true)
+              }
+              else {
+                method['activeQuestion'].push(false)
+              }
             }
-            break;
-
-          case 2:
-            if (method['produktstatus'].includes(inputs['1'].toString()) &&
-                method['motivation'].includes(inputs['2'].toString())) {
-              method['active'] = true;
-              method['position'] = 1;
-            }
-            else {
-              method['active'] = false;
-              method['position'] = 2;
-            }
-            break;
-
-          case 3:
-            if (method['produktstatus'].includes(inputs['1'].toString()) &&
-                method['motivation'].includes(inputs['2'].toString()) &&
-                method['untersuchungsziel'].includes(inputs['3'].toString())) {
-              method['active'] = true;
-              method['position'] = 1;
-            }
-            else {
-              method['active'] = false;
-              method['position'] = 2;
-            }
-            break;
-
-          case 4:
-            if (method['produktstatus'].includes(inputs['1'].toString()) &&
-                method['motivation'].includes(inputs['2'].toString()) &&
-                method['untersuchungsziel'].includes(inputs['3'].toString()) &&
-                inputs['4'].some(elem => method['untersuchungsschwerpunkt'].includes(elem.toString()))) {
-              method['active'] = true;
-              method['position'] = 1;
-            }
-            else {
-              method['active'] = false;
-              method['position'] = 2;
-            }
-            break;
-
-          case 5:
-            if (method['produktstatus'].includes(inputs['1'].toString()) &&
-                method['motivation'].includes(inputs['2'].toString()) &&
-                method['untersuchungsziel'].includes(inputs['3'].toString()) &&
-                inputs['4'].some(elem => method['untersuchungsschwerpunkt'].includes(elem.toString())) &&
-                method['zeit'].includes(inputs['5'].toString())) {
-              method['active'] = true;
-              method['position'] = 1;
-            }
-            else {
-              method['active'] = false;
-              method['position'] = 2;
-            }
-            break;
-
-          case 6:
-            if (method['produktstatus'].includes(inputs['1'].toString()) &&
-                method['motivation'].includes(inputs['2'].toString()) &&
-                method['untersuchungsziel'].includes(inputs['3'].toString()) &&
-                inputs['4'].some(elem => method['untersuchungsschwerpunkt'].includes(elem.toString())) &&
-                method['zeit'].includes(inputs['5'].toString()) &&
-                method['budget'].includes(inputs['6'].toString())) {
-              method['active'] = true;
-              method['position'] = 1;
-            }
-            else {
-              method['active'] = false;
-              method['position'] = 2;
-            }
-            break;
+          }
+        })
+        if (method['activeQuestion'].includes(false)) {
+          method['active'] = false;
+          method['position'] = 2;
+        }
+        else {
+          method['active'] = true;
+          method['position'] = 1;
         }
       }
     )},
@@ -315,12 +272,10 @@ export default {
     },
     // CHANGE ALL INPUTS-VALUES TO DEFAULT
     clearInputs: function() {
-      this.inputs['1'] = 0;
-      this.inputs['2'] = 0;
-      this.inputs['3'] = 0;
-      this.inputs['4'] = [];
-      this.inputs['5'] = 0;
-      this.inputs['6'] = 0;
+      var questions = Object.values(this.questions);
+      questions.forEach(function(question) {
+        delete question['input']
+      });
       this.methodsActivated = true;
       this.subAnswerActivated = false;
     },
@@ -353,11 +308,11 @@ export default {
       }
     },
     // SHOW SUBANSWERES IN MC-QUESTION WHEN PARENT-QUESTION IS SELECTED
-    showSubAnwser: function(value) {
-      if (value == 0) {
+    showSubAnwser: function(question, value) {
+      if (question['antworten'][value]['ausklappen']) {
         this.subAnswerActivated = !this.subAnswerActivated;
       }
-      else if (value == 1) {
+      else {
         this.subAnswerActivated = false;
       }
     },

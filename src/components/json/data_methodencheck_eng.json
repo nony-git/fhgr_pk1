@@ -24,6 +24,7 @@
   "fragen": {
     "produktstatus": {
       "id": 1,
+      "name": "produktstatus",
       "titel":"product status",
       "frage": "What is the state of your product?",
       "antworten": {
@@ -36,6 +37,7 @@
   	},
   	"motivation": {
       "id": 2,
+      "name": "motivation",
       "titel":"motivation",
       "frage": "What do you want to achieve with the evaluation?",
       "antworten": {
@@ -48,6 +50,7 @@
   	},
   	"untersuchungsziel":{
       "id": 3,
+      "name": "untersuchungsziel",
       "titel":"aim of the evaluation",
       "frage": "What is the aim of the evaluation?",
       "antworten": {
@@ -60,16 +63,19 @@
   	},
   	"untersuchungsschwerpunkt":{
       "id": 4,
+      "name": "untersuchungsschwerpunkt",
       "titel":"focus of the evaluation",
       "frage": "Should the product?",
       "antworten": {
         "1": {
             "antwort":"be examined as a whole",
-            "level":1
+            "level":1,
+            "ausklappen": false
         },
         "0": {
           "antwort":"be examined primarily",
-          "level":1
+          "level":1,
+          "ausklappen": true
         },
         "9": {
           "antwort":"Learnability",
@@ -108,6 +114,7 @@
   	},
     "zeit": {
       "id": 5,
+      "name": "zeit",
       "titel":"time",
       "frage": "How much time is available?",
       "antworten": {
@@ -121,6 +128,7 @@
     },
     "budget": {
       "id": 6,
+      "name": "budget",
       "titel":"budget",
       "frage": "What is the budget of the evaluation?",
       "antworten": {

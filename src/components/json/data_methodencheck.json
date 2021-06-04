@@ -24,6 +24,7 @@
   "fragen": {
     "produktstatus": {
       "id": 1,
+      "name": "produktstatus",
       "titel":"produktstatus",
       "frage": "Was ist der Status Ihres Produkts?",
       "antworten": {
@@ -36,6 +37,7 @@
   	},
   	"motivation": {
       "id": 2,
+      "name": "motivation",
       "titel":"motivation",
       "frage": "Was wollen Sie mit der Evaluation erreichen?",
       "antworten": {
@@ -48,6 +50,7 @@
   	},
   	"untersuchungsziel":{
       "id": 3,
+      "name": "untersuchungsziel",
       "titel":"untersuchungsziel",
       "frage": "Was ist das Ziel der Untersuchung?",
       "antworten": {
@@ -60,16 +63,19 @@
   	},
   	"untersuchungsschwerpunkt":{
       "id": 4,
+      "name": "untersuchungsschwerpunkt",
       "titel":"untersuchungsschwerpunkt",
       "frage": "Dabei soll das Produkt?",
       "antworten": {
         "1": {
             "antwort":"gesamthaft untersucht werden",
-            "level":1
+            "level":1,
+            "ausklappen": false
         },
         "0": {
           "antwort":"schwerpunktmässig untersucht werden",
-          "level":1
+          "level":1,
+          "ausklappen": true
         },
         "9": {
           "antwort":"Erlernbarkeit",
@@ -108,6 +114,7 @@
   	},
     "zeit": {
       "id": 5,
+      "name": "zeit",
       "titel":"zeit",
       "frage": "Wie viel Zeit steht für die Untersuchung zur Verfügung?",
       "antworten": {
@@ -121,6 +128,7 @@
     },
     "budget": {
       "id": 6,
+      "name": "budget",
       "titel":"budget",
       "frage": "Wie ist das Budget für die Untersuchung?",
       "antworten": {
