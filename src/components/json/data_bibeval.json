@@ -1179,13 +1179,13 @@
                     "is_mandatory": true 
                 },
                 {
-                    "name": "Werden Änderungen an den Nutzereinstellungen korrekt gespeichert und bei jedem Neustart des Systems entsprechend berücksichtigt?",
+                    "name": "Werden Änderungen an den persönlichen Einstellungen korrekt gespeichert und bei jedem Neustart des Systems entsprechend berücksichtigt?",
                     "is_mandatory": true 
                 }
             ],        
             "categories_leveltwo": [
                 {
-                    "name": "Nutzerkonto & -einstellungen",
+                    "name": "Nutzendenkonto & -einstellungen",
                     "is_mandatory": true,
                     "desc": "Dieser Bereich beinhaltet alle Funktionalitäten, die in Zusammenhang mit dem Benutzungskonto eines Anwenders stehen (wie bspw. Verwaltung der persönlichen Daten, etc.).",
                     "questions": [
@@ -1204,12 +1204,12 @@
                     ],
                     "categories_levelthree": [
                         {
-                            "name": "Nutzerkonto",
+                            "name": "Nutzendenkonto",
                             "is_mandatory": true,
-                            "desc": "Ein Benutzerkonto oder kurz Nutzerkonto (engl. user account) ist eine Zugangsberechtigung zu einem zugangsbeschränkten IT-System. Üblicherweise muss ein Anwender sich beim Login mit Benutzername und Kennwort authentisieren. Oft ist ein Nutzerkonto oder ein Nutzerzugang Voraussetzung für Personalisierungsoptionen, da erst durch das Einloggen erkannt wird, um welchen Nutzer es sich handelt.",
+                            "desc": "Ein Nutzendenkonto (engl. user account) ist eine Zugangsberechtigung zu einem zugangsbeschränkten IT-System. Üblicherweise muss ein Anwender sich beim Login mit Benutzername und Kennwort authentisieren. Oft ist ein Nutzendenkonto oder ein Zugang Voraussetzung für Personalisierungsoptionen, da erst durch das Einloggen erkannt wird, um welchen Nutzende es sich handelt.",
                             "questions": [
                                 {
-                                    "name": "Ist für den/die Anwender/in ersichtlich, wie er/sie ein Nutzerkonto erstellen kann?",
+                                    "name": "Ist für den/die Anwender/in ersichtlich, wie er/sie ein Nutzendenkonto erstellen kann?",
                                     "is_mandatory": true 
                                 },
                                 {
@@ -1217,7 +1217,7 @@
                                     "is_mandatory": true 
                                 },
                                 {
-                                    "name": "Ist für die Anwender/innen ersichtlich, wie sie sich in ihr Nutzerkonto einloggen können und steht diese Möglichkeit den Anwendern/innen jederzeit zur Verfügung?",
+                                    "name": "Ist für die Anwender/innen ersichtlich, wie sie sich in ihr Nutzendenkonto einloggen können und steht diese Möglichkeit den Anwendern/innen jederzeit zur Verfügung?",
                                     "is_mandatory": true 
                                 },
                                 {
@@ -1225,7 +1225,7 @@
                                     "is_mandatory": false 
                                 },
                                 {
-                                    "name": "Kann der/die Anwender/in personenbezogene Einstellungen des Nutzerkontos selbst anpassen und sein/ihr Passwort ändern?",
+                                    "name": "Kann der/die Anwender/in personenbezogene Einstellungen des Nutzendenkontos selbst anpassen und sein/ihr Passwort ändern?",
                                     "is_mandatory": true 
                                 },
                                 {
@@ -1257,7 +1257,7 @@
                         {
                             "name": "Personalisierbare Einstiegsseiten oder Portallösung",
                             "is_mandatory": false,
-                            "desc": "Darunter wird die Möglichkeit der Anpassung von Inhalt, Format und Erscheinungsbild der Bibliotheksdienste an persönliche Präferenzen verstanden (Heuwing, 2008, S. 20). Dadurch können Nutzer bspw. jene Funktionalitäten, die sie oft nutzen, gleich auf ihrer persönlichen Einstiegsseite platzieren. Auf diese Weise müssen Nutzer, die bspw. besondere Bedürfnisse an die Schriftgrösse stellen, entsprechende Einstellungen nur einmal tätigen.",
+                            "desc": "Darunter wird die Möglichkeit der Anpassung von Inhalt, Format und Erscheinungsbild der Bibliotheksdienste an persönliche Präferenzen verstanden (Heuwing, 2008, S. 20). Dadurch können Nutzende bspw. jene Funktionalitäten, die sie oft nutzen, gleich auf ihrer persönlichen Einstiegsseite platzieren. Auf diese Weise müssen Nutzende, die bspw. besondere Bedürfnisse an die Schriftgrösse stellen, entsprechende Einstellungen nur einmal tätigen.",
                             "questions": [
                                 {
                                     "name": "Kann der/die Anwender/in einstellen, welche Elemente und Funktionen auf seiner/ihrer individuellen Startseite angezeigt werden sollen?",
@@ -1341,7 +1341,7 @@
                         {
                             "name": "Personalisierte Sucheinstellungen und Trefferlisten",
                             "is_mandatory": false,
-                            "desc": "Darunter werden vom Nutzer für die Suche vorgenommene Einstellungen verstanden, wie bspw. nach welchem Kriterium die Trefferlisten standardmässig sortiert werden sollen. ",
+                            "desc": "Darunter werden vom Nutzenden für die Suche vorgenommene Einstellungen verstanden, wie bspw. nach welchem Kriterium die Trefferlisten standardmässig sortiert werden sollen. ",
                             "questions": [
                                 {
                                     "name": "Kann der/die Anwender/in festlegen, nach welchem Kriterium die Trefferliste standardmässig sortiert wird?",
@@ -1543,7 +1543,7 @@
             ]
         },
         {
-            "name": "Nutzerpartizipation",
+            "name": "Nutzendenpartizipation",
             "is_mandatory": false,
             "desc": "Dieser Bereich ist stark mit dem Begriff Web2.0 verbunden und bezieht sich auf alle Komponenten, die es dem Anwender erlauben, Inhalte zu erstellen oder auszutauschen.",
             "questions": [
@@ -1570,7 +1570,7 @@
             ],        
             "categories_leveltwo": [
                 {
-                    "name": "Bestandsbezogene Nutzerpartizipation",
+                    "name": "Bestandsbezogene Nutzendenpartizipation",
                     "is_mandatory": true,
                     "desc": "Dieser Bereich beinhaltet alle Komponenten, die in Zusammenhang mit der interaktiven Nutzung des Bibliotheksbestandes stehen (z.B. das taggen eines konkreten Buches).",
                     "questions": [
@@ -1583,7 +1583,7 @@
                             "is_mandatory": true 
                         },
                         {
-                            "name": "Ist bei Beiträgen, die unter einem mittlerweile gelöschten Nutzerprofil verfasst wurden, ein entsprechender Vermerk angebracht?",
+                            "name": "Ist bei Beiträgen, die unter einem mittlerweile gelöschten Profil verfasst wurden, ein entsprechender Vermerk angebracht?",
                             "is_mandatory": true 
                         },
                         {
@@ -1618,11 +1618,11 @@
                                     "is_mandatory": true 
                                 },
                                 {
-                                    "name": "Ist, sofern Nutzerbewertungen möglich sind, die verwendete Bewertungsskala erläutert und intuitiv?",
+                                    "name": "Ist, sofern Bewertungen möglich sind, die verwendete Bewertungsskala erläutert und intuitiv?",
                                     "is_mandatory": true 
                                 },
                                 {
-                                    "name": "Werden die Empfehlungen dynamisch aufgrund des Nutzerverhaltens bzw. vorgenommenen Bewertungen zeitnah angepasst oder können sie aktiv aktualisiert werden?",
+                                    "name": "Werden die Empfehlungen dynamisch aufgrund des Verhaltens bzw. vorgenommenen Bewertungen zeitnah angepasst oder können sie aktiv aktualisiert werden?",
                                     "is_mandatory": true 
                                 }
                             ]
@@ -1630,14 +1630,14 @@
                         {
                             "name": "Kommentare und Rezensionen",
                             "is_mandatory": false,
-                            "desc": "Im Kontext dieses Leitfadens wird unter dieser Komponente verstanden, dass Nutzer ihre Meinungen und Einschätzungen zu einzelnen Ressourcen abgeben können. Für gewöhnlich können Anwender mittels eines Freitextfeldes Kommentare verfassen, die dann in der Detailansicht der entsprechenden Ressource angezeigt werden (Heuwing, 2008, S. 87). Diese Möglichkeit der Nutzerbeteiligung wird häufig auch als Rezension bezeichnet.",
+                            "desc": "Im Kontext dieses Leitfadens wird unter dieser Komponente verstanden, dass Nutzende ihre Meinungen und Einschätzungen zu einzelnen Ressourcen abgeben können. Für gewöhnlich können Anwender mittels eines Freitextfeldes Kommentare verfassen, die dann in der Detailansicht der entsprechenden Ressource angezeigt werden (Heuwing, 2008, S. 87). Diese Möglichkeit der Nutzerbeteiligung wird häufig auch als Rezension bezeichnet.",
                             "questions": [
                                 {
                                     "name": "Ist die Funktion zum Erstellen von Kommentaren bzw. Rezensionen in der Nähe des zu beschreibenden Objektes platziert?",
                                     "is_mandatory": true 
                                 },
                                 {
-                                    "name": "Ist das Eingabefeld für das Verfassen von Kommentaren ausreichend gross, so dass die vom Nutzer getätigten Eingaben während des Vorgangs jederzeit sichtbar sind?",
+                                    "name": "Ist das Eingabefeld für das Verfassen von Kommentaren ausreichend gross, so dass die vom Nutzenden getätigten Eingaben während des Vorgangs jederzeit sichtbar sind?",
                                     "is_mandatory": true 
                                 },
                                 {
@@ -1718,7 +1718,7 @@
                         {
                             "name": "Wiki",
                             "is_mandatory": false,
-                            "desc": "Ein Wiki ist ein Kollaborationstool, welches Nutzern ermöglicht, sich gemeinsam an der Erstellung von Webseiten zu beteiligen. Nutzer können dabei Inhalte von Seiten ändern, überarbeiten, korrigieren, ergänzen, erstellen oder löschen. Das grösste und bekannteste Wiki ist die Online-Enzyklopädie Wikipedia (Kroski, 2008, S. 41).",
+                            "desc": "Ein Wiki ist ein Kollaborationstool, welches Nutzenden ermöglicht, sich gemeinsam an der Erstellung von Webseiten zu beteiligen. Nutzende können dabei Inhalte von Seiten ändern, überarbeiten, korrigieren, ergänzen, erstellen oder löschen. Das grösste und bekannteste Wiki ist die Online-Enzyklopädie Wikipedia (Kroski, 2008, S. 41).",
                             "questions": [
                                 {
                                     "name": "Wird der/die Anwender/in beim Verfassen von Artikeln angemessen unterstützt?",
@@ -1753,7 +1753,7 @@
                         {
                             "name": "Forum",
                             "is_mandatory": false,
-                            "desc": "In einem Forum können Nutzer Gedanken, Meinungen oder Erfahrungen zu bestimmten Themen untereinander austauschen. Informationsanbieter können Foren nutzen, um sich Anregungen einzuholen oder um sich ein Bild von den Meinungen der Anwender zu machen.",
+                            "desc": "In einem Forum können Nutzende Gedanken, Meinungen oder Erfahrungen zu bestimmten Themen untereinander austauschen. Informationsanbieter können Foren nutzen, um sich Anregungen einzuholen oder um sich ein Bild von den Meinungen der Anwender zu machen.",
                             "questions": [
                                 {
                                     "name": "Ist das Forum übersichtlich gestaltet und unterstützt das verwendete Layout eine gute Lesbarkeit der Beiträge?",

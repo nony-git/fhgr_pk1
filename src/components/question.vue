@@ -1,90 +1,49 @@
 <template>
   <tbody>
   <tr class="single-question">
-    <!-- auf Details einer Frage zugreifen -->
+    <!-- Zeige Fragentext an -->
     <td  rowspan="2" class="left-align question">
       <strong>{{ question.number}}</strong> {{ question.name }}
     </td>
-
+    <!-- Zeige Radiobuttons an -->
     <td class="input-cell">
       <label class="radio-container">
-        <input
-          type="radio"
-          checked="checked"
-          id="four"
-          value="4"
-          :name="question.name"
-          v-model="picked"
-        >
+        <input type="radio" checked="checked" id="four" value="4" :name="question.name" v-model="picked">
         <span class="checkmark"></span>
       </label>
     </td>
     <td class="input-cell">
       <label class="radio-container">
-        <input
-          type="radio"
-          checked="checked"
-          id="three"
-          value="3"
-          :name="question.name"
-          v-model="picked"
-        >
+        <input type="radio" checked="checked" id="three" value="3" :name="question.name" v-model="picked">
         <span class="checkmark"></span>
       </label>
     </td>
     <td class="input-cell">
       <label class="radio-container">
-        <input
-          type="radio"
-          checked="checked"
-          id="two"
-          value="2"
-          :name="question.name"
-          v-model="picked"
-        >
+        <input type="radio" checked="checked" id="two" value="2" :name="question.name" v-model="picked">
         <span class="checkmark"></span>
       </label>
     </td>
     <td class="input-cell">
       <label class="radio-container">
-        <input
-          type="radio"
-          checked="checked"
-          id="one"
-          value="1"
-          :name="question.name"
-          v-model="picked"
-        >
+        <input type="radio" checked="checked" id="one" value="1" :name="question.name" v-model="picked">
         <span class="checkmark"></span>
       </label>
     </td>
     <td class="input-cell">
       <label class="radio-container">
-        <input
-          type="radio"
-          checked="checked"
-          id="zero"
-          value="0"
-          :name="question.name"
-          v-model="picked"
-        >
+        <input type="radio" checked="checked" id="zero" value="0" :name="question.name" v-model="picked">
         <span class="checkmark"></span>
       </label>
     </td>
     <td class="input-cell">
       <label class="radio-container">
-        <input
-          type="radio"
-          checked="checked"
-          id="NaN"
-          value="NaN"
-          :name="question.name"
-          v-model="picked"
-        >
+        <input type="radio" checked="checked" id="NaN" value="NaN" :name="question.name" v-model="picked">
         <span class="checkmark"></span>
       </label>
     </td>
   </tr>
+  <!-- Kommentarfeld -->
   <tr>
     <td colspan="8" class="left-align add-comment">
       <button class="btn-mini" :id='question.name+"btn"' @click="showCommentField(question.name);focus(question.name)">+ {{ textcomponents.kommentar }}</button>
@@ -94,22 +53,21 @@
   </tbody>
 </template>
 
-<script>
+<!----/ Script /---->
 
+<script>
 export default {
   name: "question",
-  // als Prop: JSON einer einzelnen Frage wird übergeben
   props: {
-      question: Object,
-      value: {
-          type: Object,
-          default: function() {
-              return { picked: Number.NaN, comment:"" }
-          },
+    question: Object,
+    value: {
+      type: Object,
+      default: function() {
+          return { picked: Number.NaN, comment:"" }
       },
-      textcomponents: Object
+    },
+    textcomponents: Object
   },
-
   data: function () {
     return {
       picked: this.value.picked,
@@ -118,7 +76,6 @@ export default {
   },
   methods:{
     showCommentField: function(id){
-      // todo: schöner lösen?
       var field = document.getElementById(id);
       field.style.display = "block";
       var button = document.getElementById(id+"btn");
@@ -139,7 +96,8 @@ export default {
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
+<!----/ Style /---->
+
 <style scoped>
 .radio-container{
   display: block;
@@ -161,52 +119,28 @@ export default {
 }
 .checkmark {
   position: absolute;
-  /* top: 0;
-  left: 0; */
   height: 25px;
   width: 25px;
   background-color: #eee;
   border:1px solid black;
   border-radius: 50%;
 }
-/* On mouse-over, add a grey background color */
 .radio-container:hover input ~ .checkmark {
   background-color: #ccc;
   border:1px solid black;
 }
-
-/* When the checkbox is checked, add a blue background */
 .radio-container input:checked ~ .checkmark {
   background-color: #408198;
   border:1px solid black;
 }
-
-/* Create the checkmark/indicator (hidden when not checked) */
 .checkmark:after {
   content: "";
   position: absolute;
   display: none;
 }
-
-/* Show the checkmark when checked */
 .radio-container input:checked ~ .checkmark:after {
   display: block;
 }
-
-/* Style the checkmark/indicator */
-/* .radio-container .checkmark:after {
-  left: 9px;
-  top: 5px;
-  width: 5px;
-  height: 10px;
-  border: solid white;
-  border-width: 0 3px 3px 0;
-  -webkit-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  transform: rotate(45deg);
-} */
-
-/*---------*/
 h3 {
   margin: 40px 0 0;
 }
@@ -224,7 +158,6 @@ a {
 td{
   padding: 1em;
   text-align:center;
-  /* border:1px solid black; */
 }
 .tooltip {
   position: relative;
@@ -276,5 +209,4 @@ textarea{
 .question{
   vertical-align: top;
 }
-
 </style>

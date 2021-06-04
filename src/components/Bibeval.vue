@@ -3,7 +3,7 @@
         <!-- PAGE 0 / INFO PAGE -->
         <template v-if="page == 0">
           <img class="bib-header-img" src="/apps/stand1105/dist/img/bibeval_intro_image.2d5e403a.png" />
-          <!-- LANGUAGE SWITCH -->
+          <!-- language switch -->
           <div class="eval-languageswitch">
               <button class="linkbutton" v-on:click="language = 'de'; loadLabels()" v-bind:class="{linkbuttonActive: language == 'de'}">
                 Deutsch
@@ -16,7 +16,7 @@
             <p class="bibeval-text">
                 {{ infotext.haupttext }}
             </p>
-            <!-- ADDITIONAL INFOTEXT -->
+            <!-- read more -->
             <div class="bibeval-linkbuttons" v-if="!showInfoText">
               <button class="linkbutton linkbutton-more" v-on:click="showInfoText = true">{{ textcomponents.mehrErfahren }}</button>
             </div>
@@ -31,30 +31,30 @@
               <button class="linkbutton linkbutton-less" v-on:click="showInfoText = false">{{ textcomponents.weniger }}</button>
             </div>
 
-          <!-- BUTTON TO START TOOL -->
+          <!-- startbutton -->
           <div class="bibeval-buttons-start">
             <button class="bib-pagenav" v-on:click="page++;scrollToTop()">{{ textcomponents.start }}</button>
           </div>
 
         </template>
-        <!-- PAGE 1 / AUSWAHL BEREICHE -->
+        <!-- PAGE 1 / SELECTION -->
         <template v-if="page == 1">
           <img v-if="showImg == true" class="bib-header-img" src="/apps/stand1105/dist/img/bibeval_intro_image.2d5e403a.png" />
             <h1>{{ textcomponents.page1h1_1 }}</h1>
             <div class="bib-overview-bereiche">
               <button 
-                  class="bib-select-large"
-                  :value="website"
-                  @click="showImg = false; loadJson('webeval')"
-                  v-bind:class="{selected: wasUntersuchen == 'webeval'}">
-                  {{ textcomponents.bibselect1 }}
+                class="bib-select-large"
+                :value="website"
+                @click="showImg = false; loadJson('webeval')"
+                v-bind:class="{selected: wasUntersuchen == 'webeval'}">
+                {{ textcomponents.bibselect1 }}
               </button>
               <button
-                  class="bib-select-large"
-                  :value="bibliotheksseite"
-                  @click="showImg = false; loadJson('bibeval')"
-                  v-bind:class="{selected: wasUntersuchen == 'bibeval'}">
-                  {{ textcomponents.bibselect2 }}
+                class="bib-select-large"
+                :value="bibliotheksseite"
+                @click="showImg = false; loadJson('bibeval')"
+                v-bind:class="{selected: wasUntersuchen == 'bibeval'}">
+                {{ textcomponents.bibselect2 }}
               </button>
             </div>
             <h1>{{ textcomponents.page1h12 }}</h1>
@@ -129,8 +129,9 @@
                 <button v-if="selectedComponents.length > 0" class="bib-pagenav" v-on:click="page += 1; scrollToTop()">{{ textcomponents.start }}</button>
             </template>
         </template>
-        <!-- PAGE 2 / FRAGEN -->
+        <!-- PAGE 2 / QUESTIONS -->
         <template v-if="page == 2">
+            <!-- display progressbar -->
             <table class="navigator-table" cellspacing="0" cellpadding="0">
             <tr>
               <template v-for="(title,indexprogress) in progressItems">
@@ -153,27 +154,29 @@
               </template>
             </tr>
             </table>
+            <!-- go back to selection -->
             <div class="to-right">
                 <button class="btn btn-selection" @click="page = 1">{{ textcomponents.auswahl }}<br>{{ textcomponents.aendern }}</button>
             </div>
+            <!-- iterate over questionnaires and display them  -->
             <QuestionView
             :toView="toViewArray[currentView]"
             :key="currentView"
             :userAnswers="userAnswers"
             :textcomponents="textcomponents"
             ></QuestionView>
-     
-            <!-- Navigiere zwischen Views -->
+            <!-- navigate between questionnaires -->
             <div class="bibeval-buttonContainer">
-              <!-- rueckwaerts -->
+              <!-- next questionnaire -->
               <button v-if="currentView != 0" class="btn btn-back" @click="back();scrollToTop()"></button>
               <button v-if="currentView == 0" class="btn btn-back" @click="page -= 1; scrollToTop()"></button>
-              <!-- vorwaerts -->
+              <!-- previous questionnaire -->
               <button v-if="currentView < toViewArray.length-1" class="btn btn-forward" @click="next();scrollToTop()">{{ textcomponents.weiter }}</button>
               <button v-if="currentView == toViewArray.length-1"
               class="btn btn-forward" @click="page += 1; scrollToTop(); auswerten()">{{ textcomponents.abschliessen }}</button>
             </div>
         </template>
+        <!-- PAGE 3 / SCORE  -->
         <template v-if="page == 3">
           <h1>{{ textcomponents.page3h1 }}</h1>
           <div class="report">
@@ -232,12 +235,19 @@
     </div>
 </template>
 
+<!----/ Script /---->
+
 <script>
+// import components
 import QuestionView from "./QuestionView.vue";
 import selectButton from "./SelectButton.vue";
 import resultline from './resultline.vue';
+
+// import data files
 import bibeval_json from "./json/data_bibeval.json";
 import webeval_json from "./json/data_webeval.json";
+
+// import language files
 import labels from './json/labels_eval_de.json';
 import labelsEn from './json/labels_eval_en.json';
 
@@ -271,21 +281,19 @@ export default {
       textcomponents: labels.textkomponenten,
       showInfoText: false,
       toExport:[],
-      toExportWork:[],
       auswertungArray: this.auswertungArray
       };
   },
   computed: {
-    
+    // generates questionnaires
     toViewArray: function(){
       let ergebnis = [];
-      // let selectedComponents= ["Kontaktinformationen","Kontaktformular","Personalisierte Suchmasken"];
-      // nimm fragen von komponente, teilbereich und bereich darüber
-      // einzelne komponente
+      // take questions of component, teilbereich & bereich overhead
+      // single componente
       for (let category of bibeval_json.categories_levelone){
         for (let subcategory of category.categories_leveltwo){
           for (let component of subcategory.categories_levelthree){
-            // Wenn Name der Komponente in array gefunden 
+            // when name of component found in array 
             if(this.selectedComponents.includes(component.name)){
               // add Bereich
               if(!ergebnis.includes(category)){
@@ -298,7 +306,7 @@ export default {
                 subcategory.subcategory_name = subcategory.name;
                 ergebnis.push(subcategory);
               }
-              // bestimme Bereich für Nav & verschiebe ins array
+              // set Bereich for nav & push to array
               component.category_name = category.name;
               component.subcategory_name = subcategory.name;
               component.component_name = component.name;
@@ -316,13 +324,13 @@ export default {
       }
       return ergebnis;
     },
-
+    // creates array with names of Bereich for the progressbar
     progressItems:function(){
       let categories = this.toViewArray.map(c=>c.category_name);
       let categoriesuniq = [...new Set(categories)];
       return categoriesuniq;
     },
-
+    // todo description
 		categories: function() {
 			let categories = [];
 			for(var i = 0; i < this.data_tool.categories_levelone.length; i++) {
@@ -333,7 +341,7 @@ export default {
 			}
 			return categories;
 		},
-
+    // todo description
 		subcategories: function() {
 			let subcategories = [];
 			let components = [];
@@ -344,7 +352,7 @@ export default {
 					for(var y = 0; y < this.data_tool.categories_levelone[i].categories_leveltwo[x].categories_levelthree.length; y++){
 						subtemp.push(this.data_tool.categories_levelone[i].categories_leveltwo[x].categories_levelthree[y].name);
 					}
-						components.push(subtemp);
+					components.push(subtemp);
 				}
 			}
 			for(var n = 0; n < subcategories.length; n++) {
@@ -352,7 +360,7 @@ export default {
 			}
 			return subcategories;
 		},
-
+    // todo description
 		mandatoryComponents: function() {
 			var mandatoryComponents = [];
 			for(var i = 0; i < this.data_tool.categories_levelone.length; i++) {
@@ -366,22 +374,22 @@ export default {
 			}
 			return mandatoryComponents;
 		}
-
   },
   methods: {
-    
+    // jump to next questionnaire
     next: function () {
       if (this.currentView < this.toViewArray.length - 1) this.currentView++;
     },
+    // jump to previous questionnaire
     back: function () {
       if (this.currentView > 0) this.currentView--;
     },
+    // scrolls to top when new "page" or "currentview" is reached
     scrollToTop: function() {
       var top = document.getElementById("bibeval-top");
       top.scrollIntoView();
     },
-
-    // Loads components based on subcategory.
+    // loads component depending on teilbereich.
     getComponents(subcategory) {
 			for(var i = 0; i < this.subcategories.length; i++) {
 				if( this.subcategories[i][0] === subcategory ){
@@ -389,8 +397,7 @@ export default {
 				}
 			}
     },
-
-		// Loads json for webeval or bibeval.
+		// loads JSON for webeval or bibeval.
 		loadJson(tool){
 			this.wasUntersuchen = tool;
 			if(this.wasUntersuchen == 'webeval') {
@@ -405,7 +412,7 @@ export default {
 				this.selectedSubCategories = [];
 			}
 		},
-    // LOAD DATA IN SELECTED LANGUAGE
+    // load data in selected language
     loadLabels: function() {
       if (this.language == 'de') {
         this.infotext = labels.infotext;
@@ -416,6 +423,7 @@ export default {
         this.textcomponents = labelsEn.textkomponenten;
       }
     },
+    // find highest question number
     findHighest: function(quest){
       let highest = 0;
       for (let page of quest) {
@@ -427,6 +435,7 @@ export default {
       }
       return highest;
     },
+    // updates the ausswertungArray
     auswerten:function(){
       let auswertung = {};
       function pushOrUpdate(arr, obj) {
@@ -448,7 +457,7 @@ export default {
     }
   },
   watch: {
-    // aktualisiere die Export Datei, sobald neue Antwort / Kommentar
+    // updates toExport, everytime answers or comments get submitted
     userAnswers: {
       handler:function(){
         this.toExport = [];
@@ -469,7 +478,6 @@ export default {
       },
     deep: true
     },
-
 		// Removes selected subcategory if category is unchecked.
 		selectedCategories: function() {
 			var notselected = [];
