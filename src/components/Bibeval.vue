@@ -215,10 +215,15 @@
                 </div>
               </div>
               <div class="legende-spacer"></div>
-              <button class="bib-pagenav btn-legende"><download-csv
+              <!-- <button class="bib-pagenav btn-legende"><download-csv
                 :data = "toExport">
                 {{ textcomponents.download }}
-              </download-csv></button>
+              </download-csv></button> -->
+             <download-csv
+                class="bib-pagenav btn-legende"
+                :data = "toExport">
+                {{ textcomponents.download }}
+              </download-csv>
             </div>
             <resultline
             v-for="(h,index,i) in auswertungArray"
@@ -823,10 +828,11 @@ button:focus {
   flex:20%;
 }
 .btn-legende{
-  flex:20%;
+  flex:10%;
   background-color: #408198;
   color:white;
   border:1px solid black;
+  font-size: 0.9rem;
 }
 .btn-legende:hover{
   color: black;
