@@ -1,6 +1,6 @@
 <template>
   <div class="report-bereich">
-    <h2>{{ bereiche[counter-1] }}</h2>
+    <h3>{{ bereiche[counter-1] }}</h3>
     <div  v-for="(teilbereich, index) in eingabe"
           :key='index'
           :value='teilbereich'
@@ -12,7 +12,7 @@
         <span v-if="teilbereich.schnitt >= 4" class="rating-good">Y</span>
       </div>
       <div class="report-teilbereich">
-        <h3>{{teilbereich.name}}</h3>
+        <h4>{{teilbereich.name}}</h4>
       </div>
     </div>
   </div>
