@@ -3,6 +3,7 @@
         <!-- PAGE 0 / INFO PAGE -->
         <template v-if="page == 0">
           <img class="bib-header-img" src="/apps/stand1105/dist/img/bibeval_intro_image.2d5e403a.png" />
+          <img class="bib-header-img" src="/apps/app_cheval/img/bibeval_intro_image.2d5e403a.png" />
           <!-- language switch -->
           <div class="eval-languageswitch">
               <button class="linkbutton" v-on:click="language = 'de'; loadLabels()" v-bind:class="{linkbuttonActive: language == 'de'}">
