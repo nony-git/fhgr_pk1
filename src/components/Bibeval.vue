@@ -184,7 +184,6 @@
             <div class="legende">
               <div class="legende-item">
                 <div class="legende-icon rating-severe">
-                  X
                 </div>
                 <div class="legende-description">
                   <p>{{ textcomponents.legendedescription0 }}</p>
@@ -192,7 +191,6 @@
               </div>
               <div class="legende-item">
                 <div class="legende-icon rating-bad">
-                  !!
                 </div>
                 <div class="legende-description">
                   <p>{{ textcomponents.legendedescription1 }}</p>
@@ -200,7 +198,6 @@
               </div>
               <div class="legende-item">
                 <div class="legende-icon rating-medium">
-                  !
                 </div>
                 <div class="legende-description">
                   <p>{{ textcomponents.legendedescription2 }}</p>
@@ -208,7 +205,6 @@
               </div>
               <div class="legende-item">
                 <div class="legende-icon rating-good">
-                  (Y)
                 </div>
                 <div class="legende-description">
                   <p>{{ textcomponents.legendedescription3 }}</p>
@@ -814,15 +810,14 @@ button:focus {
   display:flex;
 }
 .legende-icon{
-  flex:10%;
-  color:red;
-  font-size: 1.5rem;
+  flex: 25%;
 }
 .legende-description{
-    flex: 90;
+    flex: 75%;
     text-align: left;
-    padding-left: 1em;
-    font-size: .9rem;
+    padding-left: 0em;
+    font-size: 0.9rem;
+    padding-left: 0.5em
 }
 .legende-spacer{
   flex:20%;
@@ -844,15 +839,23 @@ button:focus {
   background-color: lightgray;
 }
 .rating-severe{
-  color:red;
+  background-image: url("../assets/cross.png");
+  background-repeat: no-repeat;
+  background-size: 20px 20px;
 }
 .rating-bad{
-  color:orange;
+  background-image: url("../assets/doubleExclamation.png");
+  background-repeat: no-repeat;
+  background-size: 20px 20px;
 }
 .rating-medium{
-  color:orange;
+  background-image: url("../assets/exclamation.png");
+  background-repeat: no-repeat;
+  background-size: 20px 20px;
 }
 .rating-good{
-  color:green;
+  background-image: url("../assets/tick.png");
+  background-repeat: no-repeat;
+  background-size: 20px 20px;
 }
 </style>

@@ -6,10 +6,18 @@
           :value='teilbereich'
           class="report-line">
       <div class="report-icon">
-        <span v-if="teilbereich.schnitt < 2 || teilbereich.schnitt == 'NaN'" class="rating-severe">X</span>
-        <span v-if="teilbereich.schnitt >= 2 && teilbereich.schnitt < 3" class="rating-bad">!!</span>
-        <span v-if="teilbereich.schnitt >= 3 && teilbereich.schnitt < 4" class="rating-medium">!</span>
-        <span v-if="teilbereich.schnitt >= 4" class="rating-good">Y</span>
+        <span v-if="teilbereich.schnitt < 2 || teilbereich.schnitt == 'NaN'">
+          <img src="../assets/cross.png">
+        </span>
+        <span v-if="teilbereich.schnitt >= 2 && teilbereich.schnitt < 3" class="rating-bad">
+          <img src="../assets/doubleExclamation.png">
+        </span>
+        <span v-if="teilbereich.schnitt >= 3 && teilbereich.schnitt < 4" class="rating-medium">
+          <img src="../assets/exclamation.png">
+        </span>
+        <span v-if="teilbereich.schnitt >= 4" class="rating-good">
+          <img src="../assets/tick.png">
+        </span>
       </div>
       <div class="report-teilbereich">
         <h4>{{teilbereich.name}}</h4>
