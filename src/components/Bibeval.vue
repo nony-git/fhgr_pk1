@@ -810,14 +810,15 @@ button:focus {
   display:flex;
 }
 .legende-icon{
-  flex: 25%;
+  flex: 15%;
 }
 .legende-description{
-    flex: 75%;
+    flex: 95%;
     text-align: left;
     padding-left: 0em;
-    font-size: 0.9rem;
-    padding-left: 0.5em
+    font-size: 0.85rem;
+    padding-left: 0.5em;
+    padding-top: 0.2em;
 }
 .legende-spacer{
   flex:20%;
@@ -841,21 +842,21 @@ button:focus {
 .rating-severe{
   background-image: url("../assets/cross.png");
   background-repeat: no-repeat;
-  background-size: 20px 20px;
+  background-size: 25px 25px;
 }
 .rating-bad{
   background-image: url("../assets/doubleExclamation.png");
   background-repeat: no-repeat;
-  background-size: 20px 20px;
+  background-size: 25px 25px;
 }
 .rating-medium{
   background-image: url("../assets/exclamation.png");
   background-repeat: no-repeat;
-  background-size: 20px 20px;
+  background-size: 25px 25px;
 }
 .rating-good{
   background-image: url("../assets/tick.png");
   background-repeat: no-repeat;
-  background-size: 20px 20px;
+  background-size: 25px 25px;
 }
 </style>

@@ -9,13 +9,13 @@
         <span v-if="teilbereich.schnitt < 2 || teilbereich.schnitt == 'NaN'">
           <img src="../assets/cross.png">
         </span>
-        <span v-if="teilbereich.schnitt >= 2 && teilbereich.schnitt < 3" class="rating-bad">
+        <span v-if="teilbereich.schnitt >= 2 && teilbereich.schnitt < 3">
           <img src="../assets/doubleExclamation.png">
         </span>
-        <span v-if="teilbereich.schnitt >= 3 && teilbereich.schnitt < 4" class="rating-medium">
+        <span v-if="teilbereich.schnitt >= 3 && teilbereich.schnitt < 4">
           <img src="../assets/exclamation.png">
         </span>
-        <span v-if="teilbereich.schnitt >= 4" class="rating-good">
+        <span v-if="teilbereich.schnitt >= 4">
           <img src="../assets/tick.png">
         </span>
       </div>
@@ -75,8 +75,7 @@ td{
   padding: .25em 1em;
 }
 .report-icon{
-  color:red;
-  font-size: 1.5rem;
+
 }
 .report-teilbereich{
   padding-left:1em;
@@ -84,28 +83,5 @@ td{
 .report-teilbereich h3{
   margin:0;
 }
-.rating-severe{
-  background-image: url("../assets/cross.png");
-  background-repeat: no-repeat;
-  background-size: 20px 20px;
-  background-position: center;
-}
-.rating-bad{
-  background-image: url("../assets/doubleExclamation.png");
-  background-repeat: no-repeat;
-  background-size: 20px 20px;
-  background-position: center;
-}
-.rating-medium{
-  background-image: url("../assets/exclamation.png");
-  background-repeat: no-repeat;
-  background-size: 20px 20px;
-  background-position: center;
-}
-.rating-good{
-  background-image: url("../assets/tick.png");
-  background-repeat: no-repeat;
-  background-size: 20px 20px;
-  background-position: center;
-}
+
 </style>
