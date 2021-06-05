@@ -1543,7 +1543,7 @@
             ]
         },
         {
-            "name": "Nutzendenpartizipation",
+            "name": "Nutzenden-Partizipation",
             "is_mandatory": false,
             "desc": "Dieser Bereich ist stark mit dem Begriff Web2.0 verbunden und bezieht sich auf alle Komponenten, die es dem Anwender erlauben, Inhalte zu erstellen oder auszutauschen.",
             "questions": [
