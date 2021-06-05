@@ -77,15 +77,27 @@ td{
   margin:0;
 }
 .rating-severe{
-  color:red;
+  background-image: url("../assets/cross.png");
+  background-repeat: no-repeat;
+  background-size: 20px 20px;
+  background-position: center;
 }
 .rating-bad{
-  color:orange;
+  background-image: url("../assets/doubleExclamation.png");
+  background-repeat: no-repeat;
+  background-size: 20px 20px;
+  background-position: center;
 }
 .rating-medium{
-  color:orange;
+  background-image: url("../assets/exclamation.png");
+  background-repeat: no-repeat;
+  background-size: 20px 20px;
+  background-position: center;
 }
 .rating-good{
-  color:green;
+  background-image: url("../assets/tick.png");
+  background-repeat: no-repeat;
+  background-size: 20px 20px;
+  background-position: center;
 }
 </style>
