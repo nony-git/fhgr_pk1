@@ -5,11 +5,11 @@
           <img class="bib-header-img" src="/apps/stand1105/dist/img/bibeval_intro_image.2d5e403a.png" />
           <!-- LANGUAGE SWITCH -->
           <div class="eval-languageswitch">
-              <button class="linkbutton" v-on:click="language = 'de'; loadLabels()" v-bind:class="{linkbuttonActive: language == 'de'}">
+              <button class="linkbutton" v-on:click="language = 'de'; loadLabels(); loadDefaultJson('de')" v-bind:class="{linkbuttonActive: language == 'de'}">
                 Deutsch
               </button>
               <span>|</span>
-              <button class="linkbutton" v-on:click="language = 'en'; loadLabels()" v-bind:class="{linkbuttonActive: language == 'en'}">
+              <button class="linkbutton" v-on:click="language = 'en'; loadLabels(); loadDefaultJson('en')" v-bind:class="{linkbuttonActive: language == 'en'}">
                 English
               </button>
           </div>
@@ -125,7 +125,7 @@
                                     :value="comp" 
 																		:mandatory="mandatoryComponents"
                                     v-model="selectedComponents"
-																		v-bind:class="{hide: mandatoryComponents.includes(comp) && mandatory == false}"
+																		v-bind:class="{hide: !mandatoryComponents.includes(comp) && mandatory == false }"
                                     class="bib-select-small">
                             {{ comp }}
                         </select-button>
@@ -278,7 +278,9 @@ import QuestionView from "./QuestionView.vue";
 import selectButton from "./SelectButton.vue";
 import resultline from './resultline.vue';
 import bibeval_json from "./json/data_bibeval.json";
+import bibeval_json_en from "./json/data_bibeval_en.json";
 import webeval_json from "./json/data_webeval.json";
+import webeval_json_en from "./json/data_webeval_en.json";
 import labels from './json/labels_eval_de.json';
 import labelsEn from './json/labels_eval_en.json';
 
@@ -293,7 +295,7 @@ export default {
   data: function () {
     return {
       currentView: 0,
-      userdata: bibeval_json,
+      // userdata: bibeval_json,
       page: 0,
       wasUntersuchen: '',
       selectedCategories: [],
@@ -421,6 +423,14 @@ export default {
 			return subcategories;
 		},
 
+		subcategoriesFlat: function() {
+			var subcategoriesFlat = [];
+			for(var i = 0; i < this.subcategories.length; i++){
+				subcategoriesFlat.push(this.subcategories[i][0]);
+			}
+			return subcategoriesFlat;
+		},
+
 		mandatoryComponents: function() {
 			var mandatoryComponents = [];
 			for(var i = 0; i < this.data_tool.categories_levelone.length; i++) {
@@ -458,19 +468,41 @@ export default {
 			}
     },
 
+		loadDefaultJson(lang) {
+			if(lang == 'de') {
+				this.data_tool = bibeval_json;
+			} else {
+				this.data_tool = bibeval_json_en;
+			}
+		},
+
 		// Loads json for webeval or bibeval.
 		loadJson(tool){
 			this.wasUntersuchen = tool;
-			if(this.wasUntersuchen == 'webeval') {
-				this.data_tool = webeval_json;
-				this.selectedComponents = [];
-				this.selectedCategories = [];
-				this.selectedSubCategories = [];
+			if(this.language == 'de') {
+				if(this.wasUntersuchen == 'webeval') {
+					this.data_tool = webeval_json;
+					this.selectedComponents = [];
+					this.selectedCategories = [];
+					this.selectedSubCategories = [];
+				} else {
+					this.data_tool= bibeval_json;
+					this.selectedComponents = [];
+					this.selectedCategories = [];
+					this.selectedSubCategories = [];
+				}
 			} else {
-				this.data_tool= bibeval_json;
-				this.selectedComponents = [];
-				this.selectedCategories = [];
-				this.selectedSubCategories = [];
+				if(this.wasUntersuchen == 'webeval') {
+					this.data_tool = webeval_json_en;
+					this.selectedComponents = [];
+					this.selectedCategories = [];
+					this.selectedSubCategories = [];
+				} else {
+					this.data_tool= bibeval_json_en;
+					this.selectedComponents = [];
+					this.selectedCategories = [];
+					this.selectedSubCategories = [];
+				}
 			}
 		},
     // LOAD DATA IN SELECTED LANGUAGE
@@ -540,8 +572,8 @@ export default {
     deep: true
     },
 
-		// Removes selected subcategory if category is unchecked.
 		selectedCategories: function() {
+			// Removes selected subcategory if category is unchecked.
 			var notselected = [];
 			for(var i = 0; i < this.categories.length; i++){
 				if(!this.selectedCategories.includes(this.categories[i][0])) {
@@ -555,14 +587,39 @@ export default {
 				}
 			}
 		},
+
 		selectedSubCategories: function() {
+
+			// Creates an array containing all displayed components.
 			var displayedComponents = [];
 			for(var i = 0; i < this.selectedSubCategories.length; i++){
-				// if(this.displayedComponents.indexOf(this.selectedSubCategories[i]) === -1) {
-					displayedComponents.push(...this.subcategories[i][1])}
-			// }
+				var index = this.subcategoriesFlat.indexOf(this.selectedSubCategories[i]);
+				// console.log(index);
+				console.log(this.selectedSubCategories[i]);
+				console.log(this.subcategoriesFlat.indexOf(this.selectedSubCategories[i]));
+				displayedComponents.push(...this.subcategories[index][1])
+			}
 			this.displayedComponents = [...new Set(displayedComponents)];
-		}	
+
+			// Removes selected components if subcategory is unchecked.
+			for(var x =0; x < this.subcategories.length; x++) {
+				if(this.selectedSubCategories.indexOf(this.subcategories[x][0]) === -1) {
+					for(var n = 0; n < this.subcategories[x][1].length; n++){
+						this.selectedComponents.splice(this.selectedComponents.indexOf(this.subcategories[x][1][n]), 1);
+					}
+				}
+			}
+		},
+
+		displayedComponents: function() {
+			// Selects mandatory components if displayed.
+			for(var i = 0; i < this.displayedComponents.length; i++) {
+				if(this.mandatoryComponents.includes(this.displayedComponents[i])) {
+					this.selectedComponents.push(this.displayedComponents[i]);
+				}
+			}
+			this.selectedComponents = [...new Set(this.selectedComponents)];
+		}
 	},
 }
 </script>
