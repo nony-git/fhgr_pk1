@@ -1,6 +1,5 @@
 <template>
     <div class="eval-content" id="bibeval-top">
-		{{ selectedComponents}}
         <!-- PAGE 0 / INFO PAGE -->
         <template v-if="page == 0">
           <img class="bib-header-img" src="/apps/stand1105/dist/img/bibeval_intro_image.2d5e403a.png" />
@@ -43,6 +42,7 @@
         <template v-if="page == 1">
           <img v-if="showImg == true" class="bib-header-img" src="/apps/stand1105/dist/img/bibeval_intro_image.2d5e403a.png" />
             <h1>{{ textcomponents.page1h1_1 }}</h1>
+						<!-- select bibeval or webeval -->
             <div class="bib-overview-bereiche">
               <button 
                 class="bib-select-large"
@@ -88,11 +88,13 @@
             </div>
             <template v-if="selectedSubCategories.length > 0">
                 <div class="line"></div>
+								<!-- hide/show optional components -->
                 <label class="bib-optional">
                     <input type="checkbox" v-model="mandatory">
                     <span class="slider"></span>
                     {{ textcomponents.optional }}
                 </label>
+								<!-- displays components if subcatecory is selected -->
                 <template v-if="selectedSubCategories.length > 0">
                     <div 
                       v-for="(subcategory, index3) in selectedSubCategories" 
@@ -270,7 +272,6 @@ export default {
   data: function () {
     return {
       currentView: 0,
-      // userdata: bibeval_json,
       page: 0,
       wasUntersuchen: '',
       selectedCategories: [],
@@ -350,7 +351,8 @@ export default {
 			}
 			return categories;
 		},
-    // todo description
+
+    // loads subcategories and associated components as a nested array
 		subcategories: function() {
 			let subcategories = [];
 			let components = [];
@@ -370,6 +372,7 @@ export default {
 			return subcategories;
 		},
 
+		// loads subcategories as array
 		subcategoriesFlat: function() {
 			var subcategoriesFlat = [];
 			for(var i = 0; i < this.subcategories.length; i++){
@@ -378,7 +381,7 @@ export default {
 			return subcategoriesFlat;
 		},
 
-    // todo description
+    // load mandatory components as array
 		mandatoryComponents: function() {
 			var mandatoryComponents = [];
 			for(var i = 0; i < this.data_tool.categories_levelone.length; i++) {
@@ -416,6 +419,7 @@ export default {
 			}
     },
 
+		// loads bibeval as default data at start
 		loadDefaultJson(lang) {
 			if(lang == 'de') {
 				this.data_tool = bibeval_json;
@@ -424,7 +428,7 @@ export default {
 			}
 		},
 
-		// loads JSON for webeval or bibeval.
+		// loads JSON for webeval or bibeval based on selection
 		loadJson(tool){
 			this.wasUntersuchen = tool;
 			if(this.language == 'de') {
@@ -520,8 +524,8 @@ export default {
     deep: true
     },
 
+		// removes selected subcategory if category is unchecked
 		selectedCategories: function() {
-			// Removes selected subcategory if category is unchecked.
 			var notselected = [];
 			for(var i = 0; i < this.categories.length; i++){
 				if(!this.selectedCategories.includes(this.categories[i][0])) {
@@ -538,18 +542,15 @@ export default {
 
 		selectedSubCategories: function() {
 
-			// Creates an array containing all displayed components.
+			// creates an array containing all displayed components
 			var displayedComponents = [];
 			for(var i = 0; i < this.selectedSubCategories.length; i++){
 				var index = this.subcategoriesFlat.indexOf(this.selectedSubCategories[i]);
-				// console.log(index);
-				console.log(this.selectedSubCategories[i]);
-				console.log(this.subcategoriesFlat.indexOf(this.selectedSubCategories[i]));
 				displayedComponents.push(...this.subcategories[index][1])
 			}
 			this.displayedComponents = [...new Set(displayedComponents)];
 
-			// Removes selected components if subcategory is unchecked.
+			// removes selected components if subcategory is unchecked
 			for(var x =0; x < this.subcategories.length; x++) {
 				if(this.selectedSubCategories.indexOf(this.subcategories[x][0]) === -1) {
 					for(var n = 0; n < this.subcategories[x][1].length; n++){
@@ -557,10 +558,11 @@ export default {
 					}
 				}
 			}
+
 		},
 
+		// selects mandatory components if component is displayed
 		displayedComponents: function() {
-			// Selects mandatory components if displayed.
 			for(var i = 0; i < this.displayedComponents.length; i++) {
 				if(this.mandatoryComponents.includes(this.displayedComponents[i])) {
 					this.selectedComponents.push(this.displayedComponents[i]);
