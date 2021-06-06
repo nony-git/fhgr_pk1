@@ -18,11 +18,13 @@
     "frage": "Question",
     "methoden": "Methods",
     "empfohleneMethoden": "Recommended methods",
-    "zurückZumStart": "Back to start"
+    "zurückZumStart": "Back to start",
+    "fertig": "Finish"
   },
   "fragen": {
     "produktstatus": {
       "id": 1,
+      "name": "produktstatus",
       "titel":"product status",
       "frage": "What is the state of your product?",
       "antworten": {
@@ -35,6 +37,7 @@
   	},
   	"motivation": {
       "id": 2,
+      "name": "motivation",
       "titel":"motivation",
       "frage": "What do you want to achieve with the evaluation?",
       "antworten": {
@@ -47,6 +50,7 @@
   	},
   	"untersuchungsziel":{
       "id": 3,
+      "name": "untersuchungsziel",
       "titel":"aim of the evaluation",
       "frage": "What is the aim of the evaluation?",
       "antworten": {
@@ -59,16 +63,19 @@
   	},
   	"untersuchungsschwerpunkt":{
       "id": 4,
+      "name": "untersuchungsschwerpunkt",
       "titel":"focus of the evaluation",
       "frage": "Should the product?",
       "antworten": {
         "1": {
             "antwort":"be examined as a whole",
-            "level":1
+            "level":1,
+            "ausklappen": false
         },
         "0": {
           "antwort":"be examined primarily",
-          "level":1
+          "level":1,
+          "ausklappen": true
         },
         "9": {
           "antwort":"Learnability",
@@ -107,6 +114,7 @@
   	},
     "zeit": {
       "id": 5,
+      "name": "zeit",
       "titel":"time",
       "frage": "How much time is available?",
       "antworten": {
@@ -120,6 +128,7 @@
     },
     "budget": {
       "id": 6,
+      "name": "budget",
       "titel":"budget",
       "frage": "What is the budget of the evaluation?",
       "antworten": {
@@ -182,7 +191,7 @@
 				"2",
 				"3"
 			],
-      "anzahl": "ca. 5-7 Personen",
+      "anzahl": "ca. 5 bis 7 Personen",
       "dauer": "ca. 2 Stunden",
       "beschreibung": "Im Pluralistic Usability Walkthrough, wird der Durchlauf in einem Team mit einem repräsentativen Enduser evaluiert. Zusätzlich gehören zum Team ein Entwickler und ein Usability-Experte. Der Enduser im Team hat die Aufgabe, das zu evaluierende Produkt aus seiner Perspektive zu bewerten.",
       "link": "https://blog.fhgr.ch/cheval/usability-methoden/#cognitive-walkthrough"
@@ -236,7 +245,7 @@
 				"2",
 				"3"
 			],
-      "anzahl": "ca. 3-5 Personen",
+      "anzahl": "ca. 3 bis 5 Personen",
       "dauer": "ca. 2 Stunden",
       "beschreibung": "Bei einer Heuristischen Evaluation überprüfen eine Reihe von Experten und Expertinnen, ob das User Interface eines Produktes konform zu bestimmten anerkannten Prinzipien des Usability Engineerings ist. Diese Prinzipien werden als Heuristiken bezeichnet.",
       "link": "https://blog.fhgr.ch/cheval/usability-methoden/#heuristic-evaluation"
@@ -262,7 +271,7 @@
 				"1",
 				"2"
 			],
-      "anzahl": "2 - beliebig viele Personen",
+      "anzahl": "2 bis beliebig viele Personen",
       "dauer": "3 Stunden",
       "beschreibung": "Die Claims Analysis wird während der Produktentwicklung für eine systematische Gegenüberstellung der Vor- und Nachteile eingesetzt, die bestimmte Produktmerkmale oder Designelemente auf die Interaktion der Anwender mit dem Produkt haben könnten.",
       "link": "https://blog.fhgr.ch/cheval/usability-methoden/#claims-analysis"
@@ -371,7 +380,7 @@
 				"1",
 				"5"
 			],
-      "anzahl": "10 - 20 Personen",
+      "anzahl": "10 bis 20 Personen",
       "dauer": "bis zu 3 Monate",
       "beschreibung": "Als Fragebogen eignet sich der AttrakDiff insbesondere im Anschluss an andere Testverfahren, wie beispielsweise Usability Tests, in denen der Umgang mit dem Produkt systematisch in einer kontrollierten Umgebung überprüft wird.",
       "link": "https://blog.fhgr.ch/cheval/usability-methoden/#attrakdiff"
@@ -396,7 +405,7 @@
 			"untersuchungsschwerpunkt": [
 				"2"
 			],
-      "anzahl": "10 - 30 Personen",
+      "anzahl": "10 bis 30 Personen",
       "dauer": "bis 2 Wochen",
       "beschreibung": "Der ISOMetrics Fragebogen (kurz) eignet sich eher für die summative Evaluation.",
       "link": "https://blog.fhgr.ch/cheval/usability-methoden/#isometrics-kurz"
@@ -421,7 +430,7 @@
 			"untersuchungsschwerpunkt": [
 				"2"
 			],
-      "anzahl": "10 - 30 Personen",
+      "anzahl": "10 bis 30 Personen",
       "dauer": "bis 1 Monat",
       "beschreibung": "Dieses Verfahren kann sowohl für die summative als auch die qualitative, gestaltungsunterstützende Evaluation einer Software eingesetzt werden",
       "link": "https://blog.fhgr.ch/cheval/usability-methoden/#isometrics-lang"
@@ -471,7 +480,7 @@
 			"untersuchungsschwerpunkt": [
 				"1"
 			],
-      "anzahl": "10 - 30 Personen",
+      "anzahl": "10 bis 30 Personen",
       "dauer": "ca. 1 Tag",
       "beschreibung": "SUMI (Software Usability Measurement Inventory) ist eine bewährte Methode zur Messung der Softwarequalität aus Sicht des Endusers.",
       "link": ""
@@ -496,7 +505,7 @@
 			"untersuchungsschwerpunkt": [
 				"1"
 			],
-      "anzahl": "10 - 30 Personen",
+      "anzahl": "10 bis 30 Personen",
       "dauer": "ca. 1 Tag",
       "beschreibung": "Mithilfe des Messinstruments QUIS (Questionnaire for User Interaction Satisfaction) kann die subjektive Zufriedenheit eines Endusers mit der Computerschnittstelle gemessen werden. ",
       "link": ""
@@ -521,7 +530,7 @@
 			"untersuchungsschwerpunkt": [
 				"1"
 			],
-      "anzahl": "10 - 30 Personen",
+      "anzahl": "10 bis 30 Personen",
       "dauer": "ca. 1 Tag",
       "beschreibung": "Der  Web Usability Index (WUI) ist ein Fragekatalog bestehend aus 137 Fragen, welcher verschiedene Usability-Aspekte aus fünf festgelegten Kategorien überprüft.",
       "link": "#"
@@ -583,7 +592,7 @@
 				"8",
 				"1"
 			],
-      "anzahl": "ca. 6-12 Personen",
+      "anzahl": "ca. 6 bis 12 Personen",
       "dauer": "ca. 2 Stunden",
       "beschreibung": "Bei Fokusgruppen handelt es sich um strukturierte Diskussionen zu vorgegebenen Themen bzw. Fragestellungen, die von einem geschulten Moderator geleitet werden. Die Teilnehmer der Gruppe sollten dabei ähnliche demographische Merkmale aufweisen und repräsentieren eine spezifische Zielgruppe. ",
       "link": "https://blog.fhgr.ch/cheval/usability-methoden/#FocusGroup"
@@ -611,7 +620,7 @@
 				"3",
 				"1"
 			],
-      "anzahl": "8 - 12 Personen",
+      "anzahl": "8 bis 12 Personen",
       "dauer": "30 bis 90 Minuten",
       "beschreibung": "Im Rahmen eines Usability-Tests bearbeiten Testpersonen mit dem zu untersuchenden Produkt realistische Aufgaben, wobei sie von Usability-Experten beobachtet werden.",
       "link": "https://blog.fhgr.ch/cheval/usability-methoden/#usability-test"
@@ -637,7 +646,7 @@
 			"untersuchungsschwerpunkt": [
 				"2"
 			],
-      "anzahl": "ca. 10-12 Personen",
+      "anzahl": "ca. 10 bis 12 Personen",
       "dauer": "ca. 15 Minuten",
       "beschreibung": "Das Card Sorting ist ein einfach anwendbares Verfahren, dass zur Beschreibung von Workflows oder auch zur Entwicklung von Navigationsmenüs genutzt werden kann. Dabei stehen die Wahrnehmung und Erwartungen der Nutzenden an das User Interface im Vordergrund.",
       "link": "https://blog.fhgr.ch/cheval/usability-methoden/#card-sorting"
@@ -663,7 +672,7 @@
 				"3",
 				"8"
 			],
-      "anzahl": "3 - 5 Personen (Für Gruppendiskussion)",
+      "anzahl": "3 bis 5 Personen (Für Gruppendiskussion)",
       "dauer": "ca. 30 Minuten (Pro Persona)",
       "beschreibung": "Bei dieser Methode werden Stereotypen von zukünftigen Nutzern und Nutzerinnen erstellt. Den Personas werden Namen, oftmals auch ein Bild und bestimmte Eigenschaften zugeordnet. Authentizität ist wichtig damit man sich mit ihnen identifizieren kann.",
       "link": "https://blog.fhgr.ch/cheval/usability-methoden/#personas"
@@ -693,7 +702,7 @@
 				"1"
 			],
       "anzahl": "Einzeln",
-      "dauer": "1 - mehrere Tage",
+      "dauer": "1 bis mehrere Tage",
       "beschreibung": "Im Rahmen einer Best Practice Analyse wird durch die Untersuchung der Produkte von Wettbewerbern bzw. von Websites mit ähnlichem Fokus versucht, Anregungen für das eigene Produkt zu erhalten und Varianten für eine möglichst optimale Umsetzung / Gestaltung zu ermitteln.",
       "link": "#"
 		},

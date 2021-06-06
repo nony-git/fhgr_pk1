@@ -4,6 +4,8 @@
   </button>
 </template>
 
+<!----/ Script /---->
+
 <script>
 export default {
   props: ["checked", "value"],

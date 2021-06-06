@@ -18,8 +18,9 @@
   </div>
 </template>
 
-<script>
+<!----/ Script /---->
 
+<script>
 export default {
   name: "resultline",
   props:["eingabe","textcomponents","bereiche","counter"],
@@ -28,18 +29,12 @@ export default {
 
     };
   },
-  methods:{
-    
-  },
-  watch: {
-    
-  },
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<!----/ Style /---->
 
+<style scoped>
 h3 {
   margin: 40px 0 0;
 }
@@ -57,7 +52,6 @@ a {
 td{
   padding: 1em;
   text-align:center;
-  /* border:1px solid black; */
 }
 .report-bereich{
   text-align: left;

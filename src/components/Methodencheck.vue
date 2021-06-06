@@ -2,26 +2,18 @@
   <div class="methodencheck" id="methodencheck-top">
     <!-- START: PROCESSBAR -->
     <div class="methodencheck-processbar" v-if="page > 0">
-      <div class="methodencheck-step" v-bind:class="{stepActive: page > 0, stepDone: page > 1}">1</div>
-      <div class="methodencheck-line" v-bind:class="{lineActive: page > 1}"></div>
-      <div class="methodencheck-step" v-bind:class="{stepActive: page > 1, stepDone: page > 2}">2</div>
-      <div class="methodencheck-line" v-bind:class="{lineActive: page > 2}"></div>
-      <div class="methodencheck-step" v-bind:class="{stepActive: page > 2, stepDone: page > 3}">3</div>
-      <div class="methodencheck-line" v-bind:class="{lineActive: page > 3}"></div>
-      <div class="methodencheck-step" v-bind:class="{stepActive: page > 3, stepDone: page > 4}">4</div>
-      <div class="methodencheck-line" v-bind:class="{lineActive: page > 4}"></div>
-      <div class="methodencheck-step" v-bind:class="{stepActive: page > 4, stepDone: page > 5}">5</div>
-      <div class="methodencheck-line" v-bind:class="{lineActive: page > 5}"></div>
-      <div class="methodencheck-step" v-bind:class="{stepActive: page > 5, stepDone: page > 6}">6</div>
-      <div class="methodencheck-line" v-bind:class="{lineActive: page > 6}"></div>
-      <div class="methodencheck-endstep" v-bind:class="{endstepActive: page > 6}"></div>
+      <div class="methodencheck-stepwrapper" v-for="question in questions" v-bind:key="question['id']" v-bind:style="{'width': 'calc((100% - 30px) / ' + Object.keys(questions).length + ')'}">
+        <div class="methodencheck-step" v-bind:class="{stepActive: page > question['id'] - 1, stepDone: page > question['id']}">{{ question['id'] }}</div>
+        <div class="methodencheck-line" v-bind:class="{lineActive: page > question['id']}"></div>
+      </div>
+      <div class="methodencheck-endstep" v-bind:class="{endstepActive: page > Object.keys(questions).length}"></div>
     </div>
     <!-- END: PROCESSBAR -->
 
     <!-- START: WELCOME-PAGE -->
     <div class="methodencheck-page" v-if="page == 0">
       <!-- INTRO IMAGE -->
-      <img src="/apps/stand1105/dist/img/methodencheck_intro_image.f9acbe0d.png" class="methodencheck-introImage" alt="Methodencheck Intro Image">
+      <img src="/apps/stand1105/dist/img/methodencheck_intro_image.141a1948.png" class="methodencheck-introImage" alt="Methodencheck Intro Image">
 
       <!-- LANGUAGE SWITCH -->
       <div class="methodencheck-languageswitch">
@@ -85,11 +77,11 @@
             <div>
               <!-- MULTIPLECHOICE ANSWERS -->
               <div class="methodencheck-answers" v-if="question['multiplechoice']">
-                  <div class="methodencheck-levelanswers" v-for="(name, value, index) in question['antworten']" v-bind:key="index" v-on:click="updateInputs(question, value);updateMethods(question['id']); sortMethods()">
-                    <div class="methodencheck-topanswer" v-if="name['level'] == 1" v-on:click="showSubAnwser(value)" v-bind:class="{activeAnswer: inputs[question['id'].toString()].includes(parseInt(value))}">
+                  <div class="methodencheck-levelanswers" v-for="(name, value, index) in question['antworten']" v-bind:key="index" v-on:click="updateInputs(question, value);updateMethods(); sortMethods()">
+                    <div class="methodencheck-topanswer" v-if="name['level'] == 1" v-on:click="showSubAnwser(question, value)" v-bind:class="{activeAnswer: (question['input']) ? question['input'].includes(parseInt(value)) : false}">
                       {{ name['antwort'] }}
                     </div>
-                    <div class="methodencheck-subanswer" v-if="name['level'] == 2" v-bind:class="{showSubAnwser: subAnswerActivated, activeAnswer: inputs[question['id'].toString()].includes(parseInt(value))}">
+                    <div class="methodencheck-subanswer" v-if="name['level'] == 2" v-bind:class="{showSubAnwser: subAnswerActivated, activeAnswer: (question['input']) ? question['input'].includes(parseInt(value)) : false}">
                       {{ name['antwort'] }}
                     </div>
                   </div>
@@ -97,7 +89,7 @@
 
               <!-- SINGLECHOICE ANSWER -->
               <div  class="methodencheck-answers" v-else>
-                <div class="methodencheck-answer" v-for="(name, value, index) in question['antworten']" v-bind:key="index" v-on:click="updateInputs(question, value);updateMethods(question['id']); sortMethods()" v-bind:class="{activeAnswer: inputs[question['id'].toString()] == value}">
+                <div class="methodencheck-answer" v-for="(name, value, index) in question['antworten']" v-bind:key="index" v-on:click="updateInputs(question, value);updateMethods(); sortMethods()" v-bind:class="{activeAnswer: question['input'] == value}">
                   {{ name }}
                 </div>
               </div>
@@ -106,7 +98,8 @@
             <!-- BUTTONS -->
             <div class="methodencheck-buttonContainer">
               <button class="methodencheck-button methodencheck-button-back button button-primary-bg" v-on:click="page--;scrollToTop('methodencheck-top', 60)"></button>
-              <button class="methodencheck-button methodencheck-button-forward button button-primary-bg" v-on:click="page++;scrollToTop('methodencheck-top', 60)" v-if="inputs[question['id'].toString()] != 0">{{ textcomponents.weiter }}</button>
+              <button class="methodencheck-button methodencheck-button-forward button button-primary-bg" v-on:click="page++;scrollToTop('methodencheck-top', 60)" v-if="question['input'] && page < Object.keys(questions).length">{{ textcomponents.weiter }}</button>
+              <button class="methodencheck-button methodencheck-button-forward button button-primary-bg" v-on:click="page++;scrollToTop('methodencheck-top', 60)" v-if="question['input'] && page == Object.keys(questions).length">{{ textcomponents.fertig }}</button>
             </div>
           </div>
 
@@ -182,14 +175,6 @@ export default {
       methods: dataset.methoden,
       infotext: dataset.infotext,
       textcomponents: dataset.textkomponenten,
-      inputs: {
-        "1": 0,
-        "2": 0,
-        "3": 0,
-        "4": [],
-        "5": 0,
-        "6": 0
-      },
       methodsActivated: true,
       subAnswerActivated: false,
       showInfoText: false,
@@ -197,119 +182,85 @@ export default {
     }
   },
   methods: {
-    // UPDATE INPUT-DATA - IF MC-QUESTION ADD VALUES TO ARRAY, ELSE CHANGE NUMBER TO THE SELECTED ONE
+    // UPDATE USERINPUTS (MC AND SC QUESTIONS HAVE TO BE HANDELED DIFFERENTLY)
+    // VALUES HAVE TO BE CONVERTED INTO STRINGS BECAUSE THEY'RE STRINGS IN THE JSON-FILE
     updateInputs: function(question, inputValue) {
       inputValue = parseInt(inputValue);
-      if (question['multiplechoice']) {
-        if (inputValue == 1) {
-          this.inputs[question['id'].toString()] = [1];
-        }
-        else {
-          var index = this.inputs[question['id'].toString()].indexOf(1);
-          if (index > -1) {
-            this.inputs[question['id'].toString()].splice(index, 1);
-          }
 
-          if (this.inputs[question['id'].toString()].includes(inputValue)) {
-            var i = this.inputs[question['id'].toString()].indexOf(inputValue);
-            this.inputs[question['id'].toString()].splice(i, 1);
+      // CHECK IF MC-QUESTION OR SC-QUESTION. INPUTS HAVE TO BE HANDLED DIFFERENTLY
+      if (question['multiplechoice'] == true) {
+        // CHECK IF CLICKED ANSWER HAS SUBANWSERS. IF NOT ADD INPUT AND DON'T SHOW ANY SUBANSWERS
+        if (question['antworten'][inputValue]['level'] == 1 && !question['antworten'][inputValue]['ausklappen']) {
+          question['input'] = [inputValue];
+        }
+        // IF THERE ARE SUBANSWERS - ADD VALUE TO ARRAY FOR TOPLEVEL ANSWER AND SUBANSWERS
+        else {
+          // IF TOPLEVEL-ANWSER WITH SUBANSWERS IS CLICKED, CHECK IF AN ARRAY EXISTS
+          // IF NOT CREATE ARRAY WITH VALUE ELSE PUSH VALUE TO ARRAY
+          if (question['antworten'][inputValue]['level'] == 1) {
+            if (question['input'] && question['input'].includes(inputValue)) {
+              question['input'].push(inputValue);
+            }
+            else {
+              question['input'] = [inputValue];
+            }
           }
           else {
-            this.inputs[question['id'].toString()].push(inputValue);
+            // CHECK IF INPUT HAS ALREADY BEEN ADDED TO INPUT ARRAY
+            // IF SO, DELETE THIS INPUT FROM THE ARRAY ELSE PUSH VALUE TO ARRAY (SO USER CAN CHANGE HIS INPUTS)
+            if (question['input'].includes(inputValue)) {
+              var j = question['input'].indexOf(inputValue);
+              question['input'].splice(j, 1);
+            }
+            else {
+              question['input'].push(inputValue);
+            }
           }
         }
       }
+      // SC-QUESTION - ADD INPUT
       else {
-        this.inputs[question['id'].toString()] = inputValue;
+        question['input'] = inputValue;
       }
     },
-    // UPDATE METHOD-OBJECT - ALWAYS CHECK FOR EVERY COMPLETED QUESTION BECAUSE USER CAN GO BACK AND FORTH AND CHANGE THE INPUTS
+    // UPDATE METHOD-OBJECT - METHOD IS ACTIVE WHEN EVERY GIVEN ANSWERS MATCHES TO THE METHOD
+    // IF ANY ANSWER DOES NOT MATCH, METHOD IN INACTIVE
+    // SINCE MC AND SC INPUTS HAVE DIFFERENT DATE-TYPES, THEY NEED TO BE HANDELED DIFFERENTLY
+    // BECAUSE USER CAN GO BACK AND FORTH IN TOOL AND CHANGE INPUTS THIS HAS ALWAYS TO BE EXECUTED FOR EVERY METHOD AND EVERY ANSWERS
     // ACITVE --> WHEN METHOD IS STILL POSSIBLE WITH USERS SELECTION
     // POISITON --> TO ENSURE ACTIVE METHODES ARE SHOWN FIRST IN RIGHT COLUMN WHERE ALL THE METHODS ARE DISPLAYED IN THE TOOL
-    updateMethods: function(check) {
-      var inputs = this.inputs;
+    updateMethods: function() {
+      var questions = Object.values(this.questions);
+
       this.methods.forEach(function(method) {
-        switch (check) {
-          case 1:
-            if (method['produktstatus'].includes(inputs['1'].toString())) {
-              method['active'] = true;
-              method['position'] = 1;
+        method['activeQuestion'] = [];
+        questions.forEach(function(question) {
+          if (question['input']) {
+            if (question['multiplechoice']) {
+              if (question['input'].some(elem => method[question['name']].includes(elem.toString()))) {
+                method['activeQuestion'].push(true)
+              }
+              else {
+                method['activeQuestion'].push(false)
+              }
             }
             else {
-              method['active'] = false;
-              method['position'] = 2;
+              if (method[question['name']].includes(question['input'].toString())) {
+                method['activeQuestion'].push(true)
+              }
+              else {
+                method['activeQuestion'].push(false)
+              }
             }
-            break;
-
-          case 2:
-            if (method['produktstatus'].includes(inputs['1'].toString()) &&
-                method['motivation'].includes(inputs['2'].toString())) {
-              method['active'] = true;
-              method['position'] = 1;
-            }
-            else {
-              method['active'] = false;
-              method['position'] = 2;
-            }
-            break;
-
-          case 3:
-            if (method['produktstatus'].includes(inputs['1'].toString()) &&
-                method['motivation'].includes(inputs['2'].toString()) &&
-                method['untersuchungsziel'].includes(inputs['3'].toString())) {
-              method['active'] = true;
-              method['position'] = 1;
-            }
-            else {
-              method['active'] = false;
-              method['position'] = 2;
-            }
-            break;
-
-          case 4:
-            if (method['produktstatus'].includes(inputs['1'].toString()) &&
-                method['motivation'].includes(inputs['2'].toString()) &&
-                method['untersuchungsziel'].includes(inputs['3'].toString()) &&
-                inputs['4'].some(elem => method['untersuchungsschwerpunkt'].includes(elem.toString()))) {
-              method['active'] = true;
-              method['position'] = 1;
-            }
-            else {
-              method['active'] = false;
-              method['position'] = 2;
-            }
-            break;
-
-          case 5:
-            if (method['produktstatus'].includes(inputs['1'].toString()) &&
-                method['motivation'].includes(inputs['2'].toString()) &&
-                method['untersuchungsziel'].includes(inputs['3'].toString()) &&
-                inputs['4'].some(elem => method['untersuchungsschwerpunkt'].includes(elem.toString())) &&
-                method['zeit'].includes(inputs['5'].toString())) {
-              method['active'] = true;
-              method['position'] = 1;
-            }
-            else {
-              method['active'] = false;
-              method['position'] = 2;
-            }
-            break;
-
-          case 6:
-            if (method['produktstatus'].includes(inputs['1'].toString()) &&
-                method['motivation'].includes(inputs['2'].toString()) &&
-                method['untersuchungsziel'].includes(inputs['3'].toString()) &&
-                inputs['4'].some(elem => method['untersuchungsschwerpunkt'].includes(elem.toString())) &&
-                method['zeit'].includes(inputs['5'].toString()) &&
-                method['budget'].includes(inputs['6'].toString())) {
-              method['active'] = true;
-              method['position'] = 1;
-            }
-            else {
-              method['active'] = false;
-              method['position'] = 2;
-            }
-            break;
+          }
+        })
+        if (method['activeQuestion'].includes(false)) {
+          method['active'] = false;
+          method['position'] = 2;
+        }
+        else {
+          method['active'] = true;
+          method['position'] = 1;
         }
       }
     )},
@@ -321,12 +272,10 @@ export default {
     },
     // CHANGE ALL INPUTS-VALUES TO DEFAULT
     clearInputs: function() {
-      this.inputs['1'] = 0;
-      this.inputs['2'] = 0;
-      this.inputs['3'] = 0;
-      this.inputs['4'] = [];
-      this.inputs['5'] = 0;
-      this.inputs['6'] = 0;
+      var questions = Object.values(this.questions);
+      questions.forEach(function(question) {
+        delete question['input']
+      });
       this.methodsActivated = true;
       this.subAnswerActivated = false;
     },
@@ -359,11 +308,11 @@ export default {
       }
     },
     // SHOW SUBANSWERES IN MC-QUESTION WHEN PARENT-QUESTION IS SELECTED
-    showSubAnwser: function(value) {
-      if (value == 0) {
+    showSubAnwser: function(question, value) {
+      if (question['antworten'][value]['ausklappen']) {
         this.subAnswerActivated = !this.subAnswerActivated;
       }
-      else if (value == 1) {
+      else {
         this.subAnswerActivated = false;
       }
     },
@@ -435,13 +384,19 @@ label {
 .methodencheck-processbar {
   display: flex;
   align-items: center;
-  padding: 0 0 4rem 0;
+  padding: 0 1rem 4rem 0;
+}
+.methodencheck-stepwrapper {
+  display: flex;
+  align-items: center;
+  transition: 0.3s linear;
 }
 .methodencheck-step {
   width: 30px;
   height: 30px;
+  margin: 0 15px 0 0;
   border-radius: 100%;
-  background: #D0D0D0;
+  background: #C4C4C4;
   color: #8D8D8D;
   font-size: 0.9rem;
   display: flex;
@@ -475,8 +430,9 @@ label {
   width: 30px;
   height: 30px;
   transform: rotate(45deg);
-  background: #D0D0D0;
+  background: #C4C4C4;
   transition: 0.3s linear;
+  margin-left: 5px;
 }
 .endstepActive {
   background: #817E65;
@@ -510,7 +466,7 @@ label {
 .methodencheck-line {
   height: 2px;
   background: #D0D0D0;
-  width: calc((100% - 210px) / 6);
+  width: calc(100% - 60px);
   transition: 0.3s linear;
 }
 .lineActive {
@@ -793,7 +749,7 @@ input:checked + .slider:before {
     background: #C4C4C4;
 }
 .methodencheck-method {
-  border: 2px solid #817E65;
+  border: 2px solid #C4C4C4;
   border-radius: 5px;
   padding: 1rem;
   margin-bottom: 1rem;
@@ -926,22 +882,38 @@ input:checked + .slider:before {
   }
 }
 @media only screen and (max-width: 768px) {
+  .methodencheck-processbar {
+    padding: 0 0 4rem 0;
+    justify-content: space-between
+  }
+  .methodencheck-stepwrapper {
+    width: 10% !important;
+  }
   .methodencheck-line {
     display: none;
   }
-  .methodencheck-step, .methodencheck-endstep {
+  .methodencheck-step {
+    width: 100%;
+  }
+  .methodencheck-endstep {
     width: 10%;
-    height: 4px;
+  }
+  .methodencheck-step, .methodencheck-endstep {
+    height: 5px;
     border-radius: 4px;
-    border: 1.5px solid #000000;
-    background: #ffffff;
+    background: #C4C4C4;
     margin-right: 5%;
     color: #000000;
     font-size: 0;
+    margin-left: 0;
+  }
+  .methodencheck-step:first-child {
+    margin-right: 5%;
   }
   .methodencheck-endstep {
     transform: rotate(0deg);
     margin-right: 0;
+    margin-left: 0;
   }
   .stepActive {
     background: #000000;

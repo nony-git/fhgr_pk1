@@ -33,13 +33,13 @@
         <h4>{{ textcomponents.severity5 }}</h4>
         <p>{{ textcomponents.severity4tip }}</p>
       </div>
-    
   </div>
 </template>
 
+<!----/ Script /---->
+
 <script>
 import question from './question.vue';
-
 
 export default {
   components: { question },
@@ -57,19 +57,11 @@ export default {
       else this.showTooltip = true;
     }
   },
-  watch: {
-    // 31.05. auskommentiert Nino, warum wurde hier nochmals emitted?
-    // answers: function () {
-    //   this.$emit("update", this.answers);
-    // },
-    // comments: function () {
-    //   this.$emit("update", this.comments);
-    // },
-  },
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
+<!----/ Style /---->
+
 <style scoped>
 h2{
   margin-bottom: 1em;
@@ -91,13 +83,11 @@ a {
 table{
   text-align: left;
   border-collapse: collapse;
-  /* border:1px solid black; */
   width:100%;
 }
 td, th{
   width:100px;
   padding: 1em;
-  /* border:1px solid black; */
 }
 .question-col{
   width:50%;
@@ -127,8 +117,6 @@ td, th{
   background: url(../assets/Arrow.svg) no-repeat;
   padding: 1em;
   border:1px solid #817e65;
-  /* absoluter pfad für live version */
-  /* background: url(https://blog.fhgr.ch/apps/img/Arrow.77733ac5.svg); */
 }
 .btn-forward{
   background: #817e65;
