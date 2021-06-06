@@ -610,15 +610,6 @@ h1 {
 .bib-header-img {
 	margin: 0 auto 50px auto;
 }
-.bib-select-large {
-	width: 100%;
-	height: 60px;
-	margin-bottom: 5px;
-	border: 2px solid #408198;
-	border-radius: 5px;
-	color: #245b6f;
-	transition: 0.25s;
-}
 .navigator{
   display:flex;
   padding:0em 5em;
@@ -807,6 +798,21 @@ button:focus {
 .to-right {
   text-align: right;
 }
+.bib-select-large {
+	width: 100%;
+	height: 60px;
+	margin-bottom: 5px;
+	border: 2px solid #408198;
+	border-radius: 5px;
+	color: #245b6f;
+	transition: 0.25s;
+	cursor: pointer;
+}
+.bib-select-large:hover,
+.bib-select-small:hover {
+	background: #408198;
+	color: #ffffff;
+}
 .bib-select-large.selected,
 .bib-select-small.selected {
 	background: #408198;
@@ -820,6 +826,8 @@ button:focus {
 	border: 2px solid #408198;
 	border-radius: 5px;
 	color: #245b6f;
+	transition: 0.25s;
+	cursor: pointer;
 }
 .bib-overview-bereiche {
   display: grid;
