@@ -41,7 +41,7 @@
         <!-- PAGE 1 / SELECTION -->
         <template v-if="page == 1">
           <img v-if="showImg == true" class="bib-header-img" src="/apps/stand1105/dist/img/bibeval_intro_image.2d5e403a.png" />
-            <h1>{{ textcomponents.page1h1_1 }}</h1>
+            <h1>{{ textcomponents.page1h11 }}</h1>
 						<!-- select bibeval or webeval -->
             <div class="bib-overview-bereiche">
               <button 
