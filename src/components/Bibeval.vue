@@ -94,6 +94,7 @@
                     <span class="slider"></span>
                     {{ textcomponents.optional }}
                 </label>
+                {{selectedComponents}}
 								<!-- displays components if subcatecory is selected -->
                 <template v-if="selectedSubCategories.length > 0">
                     <div 
@@ -296,7 +297,7 @@ export default {
       let ergebnis = [];
       // take questions of component, teilbereich & bereich overhead
       // single componente
-      for (let category of bibeval_json.categories_levelone){
+      for (let category of this.data_tool.categories_levelone){
         for (let subcategory of category.categories_leveltwo){
           for (let component of subcategory.categories_levelthree){
             // when name of component found in array 

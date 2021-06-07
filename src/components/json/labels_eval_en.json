@@ -37,7 +37,7 @@
     "bibselect2": "Library website (Bib-Eval)",
     "optional":"optional areas",
     "kataloggroesse1":"Your questionnaire contains ",
-    "kataloggroesse2":" Questions.",
+    "kataloggroesse2":" questions.",
     "severityinfo":"In the following evaulation you rate different components on how well this is implemented.",
     "severity0tip":"Everything works and is easy to use.",
     "severity1tip":"'Cosmetic problem': Something is not nicely implemented and seems annoying. However, the corresponding weakness does not directly lead to errors in operation.",
@@ -54,13 +54,13 @@
     "auswahl":"selection",
     "aendern":"change",
     "abschliessen":"close",
-    "page3h1":"evaluation",
+    "page3h1":"Evaluation",
     "kommentar":"add comment",
     "legendedescription0":"Essential to be fixed",
     "legendedescription1":"Urgently to be fixed",
     "legendedescription2":"Recommended to be fixed",
     "legendedescription3":"Nothing to be fixed",
     "download":"Download CSV",
-    "frage":"question"
+    "frage":"Question"
   }
 }
