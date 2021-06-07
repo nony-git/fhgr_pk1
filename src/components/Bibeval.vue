@@ -93,7 +93,6 @@
                     <span class="slider"></span>
                     {{ textcomponents.optional }}
                 </label>
-                {{selectedComponents}}
 								<!-- displays components if subcatecory is selected -->
                 <template v-if="selectedSubCategories.length > 0">
                     <div 
