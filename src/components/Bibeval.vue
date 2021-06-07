@@ -840,6 +840,11 @@ button:focus {
 	max-width: 500px;
 	margin: 30px auto;
 }
+@media screen and (max-width: 360px) {
+	.bib-overview-bereiche {
+		grid-template-columns: 1fr;
+	}
+}
 .bib-komponentenauswahl {
 	margin: 55px auto;
 }
