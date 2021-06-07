@@ -85,6 +85,7 @@ table{
   text-align: left;
   border-collapse: collapse;
   width:100%;
+  overflow: scroll;
 }
 .left-align{
   text-align: left;

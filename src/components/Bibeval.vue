@@ -40,21 +40,21 @@
         </template>
         <!-- PAGE 1 / SELECTION -->
         <template v-if="page == 1">
-          <img v-if="showImg == true" class="bib-header-img" src="/apps/stand1105/dist/img/bibeval_intro_image.2d5e403a.png" />
+          <img class="bib-header-img" src="/apps/stand1105/dist/img/bibeval_intro_image.2d5e403a.png" />
             <h1>{{ textcomponents.page1h11 }}</h1>
 						<!-- select bibeval or webeval -->
             <div class="bib-overview-bereiche">
               <button 
                 class="bib-select-large"
                 :value="website"
-                @click="showImg = false; loadJson('webeval')"
+                @click="loadJson('webeval')"
                 v-bind:class="{selected: wasUntersuchen == 'webeval'}">
                 {{ textcomponents.bibselect1 }}
               </button>
               <button
                 class="bib-select-large"
                 :value="bibliotheksseite"
-                @click="showImg = false; loadJson('bibeval')"
+                @click="loadJson('bibeval')"
                 v-bind:class="{selected: wasUntersuchen == 'bibeval'}">
                 {{ textcomponents.bibselect2 }}
               </button>
@@ -281,7 +281,6 @@ export default {
       website: this.website,
       userAnswers: {},
       userComments: {},
-      showImg: true,
       answersComplete:{},
       language: 'de',
       infotext: labels.infotext,
@@ -663,6 +662,18 @@ h1 {
 .title-box {
   width: 3em;
   max-width: 2em;
+}
+@media screen and (max-width: 600px) {
+  .line-box {
+    width:3em;
+  }
+  .circle{
+    height:2em;
+    width:2em;
+  }
+  .navigator-title{
+    font-size:0.6rem;
+  }
 }
 .linkbutton {
   border: 0;
