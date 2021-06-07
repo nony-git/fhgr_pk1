@@ -336,7 +336,8 @@ export default {
       let categoriesuniq = [...new Set(categories)];
       return categoriesuniq;
     },
-    // todo description
+
+    // loads categories and associated subcategories as a nested array
 		categories: function() {
 			let categories = [];
 			for(var i = 0; i < this.data_tool.categories_levelone.length; i++) {
@@ -419,8 +420,14 @@ export default {
 		loadDefaultJson(lang) {
 			if(lang == 'de') {
 				this.data_tool = bibeval_json;
+				this.selectedComponents = [];
+				this.selectedCategories = [];
+				this.selectedSubCategories = [];
 			} else {
 				this.data_tool = bibeval_json_en;
+				this.selectedComponents = [];
+				this.selectedCategories = [];
+				this.selectedSubCategories = [];
 			}
 		},
 
