@@ -6,11 +6,11 @@
           <img class="bib-header-img" src="/apps/app_cheval/img/bibeval_intro_image.2d5e403a.png" />
           <!-- language switch -->
           <div class="eval-languageswitch">
-              <button class="linkbutton" v-on:click="language = 'de'; loadLabels()" v-bind:class="{linkbuttonActive: language == 'de'}">
+              <button class="linkbutton" v-on:click="language = 'de'; loadLabels(); loadDefaultJson('de')" v-bind:class="{linkbuttonActive: language == 'de'}">
                 Deutsch
               </button>
               <span>|</span>
-              <button class="linkbutton" v-on:click="language = 'en'; loadLabels()" v-bind:class="{linkbuttonActive: language == 'en'}">
+              <button class="linkbutton" v-on:click="language = 'en'; loadLabels(); loadDefaultJson('en')" v-bind:class="{linkbuttonActive: language == 'en'}">
                 English
               </button>
           </div>
@@ -41,7 +41,8 @@
         <!-- PAGE 1 / SELECTION -->
         <template v-if="page == 1">
           <img v-if="showImg == true" class="bib-header-img" src="/apps/stand1105/dist/img/bibeval_intro_image.2d5e403a.png" />
-            <h1>{{ textcomponents.page1h1_1 }}</h1>
+            <h1>{{ textcomponents.page1h11 }}</h1>
+						<!-- select bibeval or webeval -->
             <div class="bib-overview-bereiche">
               <button 
                 class="bib-select-large"
@@ -87,11 +88,13 @@
             </div>
             <template v-if="selectedSubCategories.length > 0">
                 <div class="line"></div>
+								<!-- hide/show optional components -->
                 <label class="bib-optional">
                     <input type="checkbox" v-model="mandatory">
                     <span class="slider"></span>
                     {{ textcomponents.optional }}
                 </label>
+								<!-- displays components if subcatecory is selected -->
                 <template v-if="selectedSubCategories.length > 0">
                     <div 
                       v-for="(subcategory, index3) in selectedSubCategories" 
@@ -104,7 +107,7 @@
                           :value="comp" 
                           :mandatory="mandatoryComponents"
                           v-model="selectedComponents"
-                          v-bind:class="{hide: mandatoryComponents.includes(comp) && mandatory == false}"
+                          v-bind:class="{hide: !mandatoryComponents.includes(comp) && mandatory == false}"
                           class="bib-select-small">
                           {{ comp }}
                         </select-button>
@@ -247,7 +250,9 @@ import resultline from './resultline.vue';
 
 // import data files
 import bibeval_json from "./json/data_bibeval.json";
+import bibeval_json_en from "./json/data_bibeval_en.json";
 import webeval_json from "./json/data_webeval.json";
+import webeval_json_en from "./json/data_webeval_en.json";
 
 // import language files
 import labels from './json/labels_eval_de.json';
@@ -263,7 +268,6 @@ export default {
   data: function () {
     return {
       currentView: 0,
-      userdata: bibeval_json,
       page: 0,
       wasUntersuchen: '',
       selectedCategories: [],
@@ -343,7 +347,8 @@ export default {
 			}
 			return categories;
 		},
-    // todo description
+
+    // loads subcategories and associated components as a nested array
 		subcategories: function() {
 			let subcategories = [];
 			let components = [];
@@ -362,7 +367,17 @@ export default {
 			}
 			return subcategories;
 		},
-    // todo description
+
+		// loads subcategories as array
+		subcategoriesFlat: function() {
+			var subcategoriesFlat = [];
+			for(var i = 0; i < this.subcategories.length; i++){
+				subcategoriesFlat.push(this.subcategories[i][0]);
+			}
+			return subcategoriesFlat;
+		},
+
+    // load mandatory components as array
 		mandatoryComponents: function() {
 			var mandatoryComponents = [];
 			for(var i = 0; i < this.data_tool.categories_levelone.length; i++) {
@@ -399,19 +414,43 @@ export default {
 				}
 			}
     },
-		// loads JSON for webeval or bibeval.
+
+		// loads bibeval as default data at start
+		loadDefaultJson(lang) {
+			if(lang == 'de') {
+				this.data_tool = bibeval_json;
+			} else {
+				this.data_tool = bibeval_json_en;
+			}
+		},
+
+		// loads JSON for webeval or bibeval based on selection
 		loadJson(tool){
 			this.wasUntersuchen = tool;
-			if(this.wasUntersuchen == 'webeval') {
-				this.data_tool = webeval_json;
-				this.selectedComponents = [];
-				this.selectedCategories = [];
-				this.selectedSubCategories = [];
+			if(this.language == 'de') {
+				if(this.wasUntersuchen == 'webeval') {
+					this.data_tool = webeval_json;
+					this.selectedComponents = [];
+					this.selectedCategories = [];
+					this.selectedSubCategories = [];
+				} else {
+					this.data_tool= bibeval_json;
+					this.selectedComponents = [];
+					this.selectedCategories = [];
+					this.selectedSubCategories = [];
+				}
 			} else {
-				this.data_tool= bibeval_json;
-				this.selectedComponents = [];
-				this.selectedCategories = [];
-				this.selectedSubCategories = [];
+				if(this.wasUntersuchen == 'webeval') {
+					this.data_tool = webeval_json_en;
+					this.selectedComponents = [];
+					this.selectedCategories = [];
+					this.selectedSubCategories = [];
+				} else {
+					this.data_tool= bibeval_json_en;
+					this.selectedComponents = [];
+					this.selectedCategories = [];
+					this.selectedSubCategories = [];
+				}
 			}
 		},
     // load data in selected language
@@ -480,7 +519,8 @@ export default {
       },
     deep: true
     },
-		// Removes selected subcategory if category is unchecked.
+
+		// removes selected subcategory if category is unchecked
 		selectedCategories: function() {
 			var notselected = [];
 			for(var i = 0; i < this.categories.length; i++){
@@ -495,14 +535,37 @@ export default {
 				}
 			}
 		},
+
 		selectedSubCategories: function() {
+
+			// creates an array containing all displayed components
 			var displayedComponents = [];
 			for(var i = 0; i < this.selectedSubCategories.length; i++){
-				// if(this.displayedComponents.indexOf(this.selectedSubCategories[i]) === -1) {
-					displayedComponents.push(...this.subcategories[i][1])}
-			// }
+				var index = this.subcategoriesFlat.indexOf(this.selectedSubCategories[i]);
+				displayedComponents.push(...this.subcategories[index][1])
+			}
 			this.displayedComponents = [...new Set(displayedComponents)];
-		}	
+
+			// removes selected components if subcategory is unchecked
+			for(var x =0; x < this.subcategories.length; x++) {
+				if(this.selectedSubCategories.indexOf(this.subcategories[x][0]) === -1) {
+					for(var n = 0; n < this.subcategories[x][1].length; n++){
+						this.selectedComponents.splice(this.selectedComponents.indexOf(this.subcategories[x][1][n]), 1);
+					}
+				}
+			}
+
+		},
+
+		// selects mandatory components if component is displayed
+		displayedComponents: function() {
+			for(var i = 0; i < this.displayedComponents.length; i++) {
+				if(this.mandatoryComponents.includes(this.displayedComponents[i])) {
+					this.selectedComponents.push(this.displayedComponents[i]);
+				}
+			}
+			this.selectedComponents = [...new Set(this.selectedComponents)];
+		}
 	},
 }
 </script>
@@ -542,15 +605,6 @@ h1 {
 }
 .bib-header-img {
 	margin: 0 auto 50px auto;
-}
-.bib-select-large {
-	width: 100%;
-	height: 60px;
-	margin-bottom: 5px;
-	border: 2px solid #408198;
-	border-radius: 5px;
-	color: #245b6f;
-	transition: 0.25s;
 }
 .navigator{
   display:flex;
@@ -740,6 +794,21 @@ button:focus {
 .to-right {
   text-align: right;
 }
+.bib-select-large {
+	width: 100%;
+	height: 60px;
+	margin-bottom: 5px;
+	border: 2px solid #408198;
+	border-radius: 5px;
+	color: #245b6f;
+	transition: 0.25s;
+	cursor: pointer;
+}
+.bib-select-large:hover,
+.bib-select-small:hover {
+	background: #408198;
+	color: #ffffff;
+}
 .bib-select-large.selected,
 .bib-select-small.selected {
 	background: #408198;
@@ -753,6 +822,8 @@ button:focus {
 	border: 2px solid #408198;
 	border-radius: 5px;
 	color: #245b6f;
+	transition: 0.25s;
+	cursor: pointer;
 }
 .bib-overview-bereiche {
   display: grid;
