@@ -7,16 +7,16 @@
           class="report-line">
       <div class="report-icon">
         <span v-if="teilbereich.schnitt < 2 || teilbereich.schnitt == 'NaN'">
-          <img src="../assets/cross.png">
+          <img src="/apps/app_cheval/img/cross.png">
         </span>
         <span v-if="teilbereich.schnitt >= 2 && teilbereich.schnitt < 3">
-          <img src="../assets/doubleExclamation.png">
+          <img src="/apps/app_cheval/img/doubleExclamation.png">
         </span>
         <span v-if="teilbereich.schnitt >= 3 && teilbereich.schnitt < 4">
-          <img src="../assets/exclamation.png">
+          <img src="/apps/app_cheval/img/exclamation.png">
         </span>
         <span v-if="teilbereich.schnitt >= 4">
-          <img src="../assets/tick.png">
+          <img src="/apps/app_cheval/img/tick.png">
         </span>
       </div>
       <div class="report-teilbereich">

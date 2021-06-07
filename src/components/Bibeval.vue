@@ -2,8 +2,7 @@
     <div class="eval-content" id="bibeval-top">
         <!-- PAGE 0 / INFO PAGE -->
         <template v-if="page == 0">
-          <img class="bib-header-img" src="/apps/stand1105/dist/img/bibeval_intro_image.2d5e403a.png" />
-          <img class="bib-header-img" src="/apps/app_cheval/img/bibeval_intro_image.2d5e403a.png" />
+          <img class="bib-header-img" alt="bibeval intro image" src="/apps/app_cheval/img/bibeval_intro_image.2d5e403a.png" />
           <!-- language switch -->
           <div class="eval-languageswitch">
               <button class="linkbutton" v-on:click="language = 'de'; loadLabels(); loadDefaultJson('de')" v-bind:class="{linkbuttonActive: language == 'de'}">
@@ -40,7 +39,7 @@
         </template>
         <!-- PAGE 1 / SELECTION -->
         <template v-if="page == 1">
-          <img class="bib-header-img" src="/apps/stand1105/dist/img/bibeval_intro_image.2d5e403a.png" />
+          <img class="bib-header-img" alt="bibeval intro image" src="/apps/app_cheval/img/bibeval_intro_image.2d5e403a.png" />
             <h1>{{ textcomponents.page1h11 }}</h1>
 						<!-- select bibeval or webeval -->
             <div class="bib-overview-bereiche">
@@ -640,6 +639,9 @@ h1 {
 .navigator-title{
   font-size: 0.7rem;
   text-align: center;
+  margin-left:-100%;
+  margin-right:-100px;
+  padding-top:1em;
 }
 .fullbox td {
   width: 100%;
