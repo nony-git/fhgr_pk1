@@ -652,6 +652,8 @@ h1 {
   font-size: 0.7rem;
   text-align: center;
   padding-top:1em;
+  margin-left: -100%;
+  margin-right: -100%;
 }
 .fullbox td {
   width: 100%;
@@ -685,6 +687,19 @@ h1 {
   }
   .navigator-title{
     font-size:0.6rem;
+  }
+  .legende{
+    flex-direction: column;
+  }
+  .legende-item{
+    padding: .5em 0em !important;
+    background-color: transparent;
+  }
+  .legende-description{
+    font-size: 1rem !important;
+  }
+  .eval-content{
+    overflow:scroll;
   }
 }
 .linkbutton {
@@ -736,6 +751,7 @@ h1 {
   width: 40px;
   height: 44px;
   margin-right:1em;
+  margin-top:0 !important;
 }
 .btn-forward {
   background: #817E65;
@@ -883,6 +899,7 @@ button:focus {
   margin: 1.5em auto 1.5em auto;
   text-align: left;
   border-collapse: collapse;
+  overflow:scroll;
 }
 .table-preview td{
   width:100px;
@@ -904,6 +921,7 @@ button:focus {
 }
 .legende{
   display:flex;
+  flex-direction: column;
 }
 .legende-item{
   flex:15%;
