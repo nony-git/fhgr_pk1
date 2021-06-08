@@ -74,9 +74,6 @@ td{
   align-items: center;
   padding: .25em 1em;
 }
-.report-icon{
-
-}
 .report-teilbereich{
   padding-left:1em;
 }
