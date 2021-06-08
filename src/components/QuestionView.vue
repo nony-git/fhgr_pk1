@@ -1,5 +1,6 @@
 <template>
   <div>
+    <h2 class="left-align">{{ questions.name}}</h2>
     <table>
       <tr>
         <th class="question-col">{{ textcomponents.frage }}</th>
@@ -86,6 +87,10 @@ table{
   text-align: left;
   border-collapse: collapse;
   width:100%;
+  overflow: scroll;
+}
+.left-align{
+  text-align: left;
 }
 td, th{
   width:100px;
