@@ -213,11 +213,7 @@
                 </div>
               </div>
               <div class="legende-spacer"></div>
-              <!-- <button class="bib-pagenav btn-legende"><download-csv
-                :data = "toExport">
-                {{ textcomponents.download }}
-              </download-csv></button> -->
-             <download-csv
+              <download-csv
                 class="bib-pagenav btn-legende"
                 :data = "toExport">
                 {{ textcomponents.download }}
@@ -231,8 +227,10 @@
                   :counter="i+1"
                   :bereiche="Object.keys(auswertungArray)"
             ></resultline>
-            <div class="bottom-nav">
+            <!-- <div class="bottom-nav"> -->
+            <div class="bibeval-buttonContainer">
               <button class="btn btn-back" @click="page -= 1;scrollToTop()"></button>
+              <button class="btn btn-forward" @click="reload();">{{ textcomponents.restart }}</button>
             </div>
           </div>
         </template>
@@ -346,7 +344,11 @@ export default {
 			}
 			return categories;
 		},
-
+    // restart from beginning
+    reload: function(){
+      location.reload();
+      return true;
+    },
     // loads subcategories and associated components as a nested array
 		subcategories: function() {
 			let subcategories = [];
@@ -396,15 +398,18 @@ export default {
     next: function () {
       if (this.currentView < this.toViewArray.length - 1) this.currentView++;
     },
+
     // jump to previous questionnaire
     back: function () {
       if (this.currentView > 0) this.currentView--;
     },
+
     // scrolls to top when new "page" or "currentview" is reached
     scrollToTop: function() {
       var top = document.getElementById("bibeval-top");
       top.scrollIntoView();
     },
+
     // loads component depending on teilbereich
     getComponents(subcategory) {
 			for(var i = 0; i < this.subcategories.length; i++) {
@@ -458,6 +463,7 @@ export default {
 				}
 			}
 		},
+
     // load data in selected language
     loadLabels: function() {
       if (this.language == 'de') {
@@ -542,7 +548,6 @@ export default {
 		},
 
 		selectedSubCategories: function() {
-
 			// creates an array containing all displayed components
 			var displayedComponents = [];
 			for(var i = 0; i < this.selectedSubCategories.length; i++){
@@ -550,7 +555,6 @@ export default {
 				displayedComponents.push(...this.subcategories[index][1])
 			}
 			this.displayedComponents = [...new Set(displayedComponents)];
-
 			// removes selected components if subcategory is unchecked
 			for(var x =0; x < this.subcategories.length; x++) {
 				if(this.selectedSubCategories.indexOf(this.subcategories[x][0]) === -1) {
@@ -559,7 +563,6 @@ export default {
 					}
 				}
 			}
-
 		},
 
 		// selects mandatory components if component is displayed

@@ -61,6 +61,7 @@
       "legendedescription2":"Empfohlen zu beheben",
       "legendedescription3":"Nichts zu beheben",
       "download":"Download CSV",
-      "frage":"Frage"
+      "frage":"Frage",
+      "restart":"Neustart"
     }
 }
