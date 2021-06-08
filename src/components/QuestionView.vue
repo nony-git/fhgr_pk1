@@ -176,13 +176,13 @@ td, th{
   z-index: 999;
 	width: 100vw;
 	height: 100vh;
-	background: rgba(0, 0, 0, 0.31);
 	opacity: 1;
 	transition: opacity 1s;
 }
 .tooltiptext>div {
 	margin: auto;
   background: white;
+	box-shadow: 0px 0px 41px 11px rgba(0,0,0,0.19);
   padding: 30px 30px;
   font-size: 0.9em;
   width: 80%;
