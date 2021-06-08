@@ -20,7 +20,8 @@
         >
       </question>
     </table>
-    <div class="tooltiptext" v-if="showTooltip==true" @click="showTooltip=false">
+    <div class="tooltiptext" v-bind:class="{tooltipOpacity: showTooltip}" v-if="showTooltip==true" @click="showTooltip=false">
+			<div>
         <h4>{{ textcomponents.severity0 }}:</h4>
         <p>{{ textcomponents.severity0tip }}</p>
         <h4>{{ textcomponents.severity1 }}:</h4>
@@ -34,6 +35,7 @@
         <h4>{{ textcomponents.severity5 }}</h4>
         <p>{{ textcomponents.severity4tip }}</p>
       </div>
+     </div>
   </div>
 </template>
 
@@ -168,13 +170,31 @@ td, th{
 }
 .tooltiptext {
   position: absolute;
-  background: #B7B6A4;
-  padding: 5px 8px;
-  right: 0;
-  z-index: 10;
-  font-size: 0.8rem;
-  width: 15%;
+	display: grid;
+	top: 0;
+	left: 0;
+  z-index: 999;
+	width: 100vw;
+	height: 100vh;
+	background: rgba(0, 0, 0, 0.31);
+	opacity: 1;
+	transition: opacity 1s;
+}
+.tooltiptext>div {
+	margin: auto;
+  background: white;
+  padding: 30px 30px;
+  font-size: 0.9em;
+  width: 80%;
+	max-width: 500px;
   text-align: left;
-  top: 35em;
+}
+.tooltipOpacity {
+	animation-name: tooltipFade;
+  animation-duration: .5s;
+}
+@keyframes tooltipFade {
+  from {opacity: 0;}
+  to {opacity: 1;}
 }
 </style>
