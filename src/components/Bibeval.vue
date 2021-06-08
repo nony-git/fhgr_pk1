@@ -777,7 +777,7 @@ h1 {
   position: absolute;
   top: 12px;
   left: 8px;
-  background: url("apps/app_cheval/img/Arrow.20572eb2.svg");
+  background: url("../assets/Arrow.svg");
   background-repeat: no-repeat;
   background-size: 20px 20px;
   background-position: center;
