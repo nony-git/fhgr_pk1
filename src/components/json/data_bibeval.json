@@ -568,7 +568,7 @@
                                     "is_mandatory": true
                                 },
                                 {
-                                    "name": "Verfügt der Weblog über RSS?",
+                                    "name": "Verfügt der Weblog über einen RSS-Feed?",
                                     "is_mandatory": false
                                 }
                             ]
