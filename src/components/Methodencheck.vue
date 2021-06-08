@@ -13,7 +13,7 @@
     <!-- START: WELCOME-PAGE -->
     <div class="methodencheck-page" v-if="page == 0">
       <!-- INTRO IMAGE -->
-      <img src="/apps/stand1105/dist/img/methodencheck_intro_image.141a1948.png" class="methodencheck-introImage" alt="Methodencheck Intro Image">
+      <img src="/apps/app_cheval/img/methodencheck_intro_image.141a1948.png" class="methodencheck-introImage" alt="Methodencheck Intro Image">
 
       <!-- LANGUAGE SWITCH -->
       <div class="methodencheck-languageswitch">
@@ -131,7 +131,7 @@
             <div class="methodencheck-resultWrapper">
               <div class="methodencheck-result-leftside" v-bind:class="{wide: method['dauer'] == '' && method['anzahl'] == ''}">
                 <div class="methodencheck-result-link" v-if="method['link'] != ''">
-                  <a v-bind:href=" method['link'] ">{{ textcomponents.mehrErfahren}}</a>
+                  <a v-bind:href=" method['link'] " target="_blank">{{ textcomponents.mehrErfahren}}</a>
                 </div>
                 <div class="methodencheck-result-beschreibung">
                   {{ method['beschreibung'] }}
@@ -300,10 +300,10 @@ export default {
       });
       if (results == 0) {
         if (this.language == 'de') {
-          return "Leider trifft keine Methode auf Ihre Eingaben zu. Sie können den UX-Methodencheck nochmals durchführen oder sich <a href='https://blog.fhgr.ch/cheval/usability-methoden/'>hier</a> durch die möglichen Methoden lesen."
+          return "Leider trifft keine Methode auf Ihre Eingaben zu. Sie können den UX-Methodencheck nochmals durchführen oder sich <a href='https://blog.fhgr.ch/cheval/usability-methoden/' target='_blank'>hier</a> durch die möglichen Methoden lesen."
         }
         else {
-          return "Unfortunately, no method matches your input. You can run the UX-Methodencheck again or read through the possible methods <a href='https://blog.fhgr.ch/cheval/usability-methoden/'>here</a>."
+          return "Unfortunately, no method matches your input. You can run the UX-Methodencheck again or read through the possible methods <a href='https://blog.fhgr.ch/cheval/usability-methoden/' target='_blank'>here</a>."
         }
       }
     },
@@ -354,6 +354,7 @@ ul {
 }
 a {
   color: #817e65;
+  outline: none;
 }
 label {
   margin-top: 0;
