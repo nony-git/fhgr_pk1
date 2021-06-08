@@ -777,7 +777,7 @@ h1 {
   position: absolute;
   top: 12px;
   left: 8px;
-  background: url("../assets/Arrow.svg");
+  background: url("apps/app_cheval/img/Arrow.20572eb2.svg");
   background-repeat: no-repeat;
   background-size: 20px 20px;
   background-position: center;
@@ -875,6 +875,7 @@ button:focus {
 	color: #245b6f;
 	transition: 0.25s;
 	cursor: pointer;
+  background-color:transparent;
 }
 .bib-overview-bereiche {
   display: grid;
