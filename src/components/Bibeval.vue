@@ -247,7 +247,7 @@ import QuestionView from "./QuestionView.vue";
 import selectButton from "./SelectButton.vue";
 import resultline from './resultline.vue';
 
-// import data files
+// import data files (DE and EN)
 import bibeval_json from "./json/data_bibeval.json";
 import bibeval_json_en from "./json/data_bibeval_en.json";
 import webeval_json from "./json/data_webeval.json";
@@ -334,7 +334,8 @@ export default {
       let categoriesuniq = [...new Set(categories)];
       return categoriesuniq;
     },
-    // todo description
+
+    // loads categories and associated subcategories as a nested array
 		categories: function() {
 			let categories = [];
 			for(var i = 0; i < this.data_tool.categories_levelone.length; i++) {
@@ -375,7 +376,7 @@ export default {
 			return subcategoriesFlat;
 		},
 
-    // load mandatory components as array
+    // loads mandatory components as array
 		mandatoryComponents: function() {
 			var mandatoryComponents = [];
 			for(var i = 0; i < this.data_tool.categories_levelone.length; i++) {
@@ -404,7 +405,7 @@ export default {
       var top = document.getElementById("bibeval-top");
       top.scrollIntoView();
     },
-    // loads component depending on teilbereich.
+    // loads component depending on teilbereich
     getComponents(subcategory) {
 			for(var i = 0; i < this.subcategories.length; i++) {
 				if( this.subcategories[i][0] === subcategory ){
@@ -413,12 +414,18 @@ export default {
 			}
     },
 
-		// loads bibeval as default data at start
+		// loads bibeval as default data at start and resets selection on language switch
 		loadDefaultJson(lang) {
 			if(lang == 'de') {
 				this.data_tool = bibeval_json;
+				this.selectedComponents = [];
+				this.selectedCategories = [];
+				this.selectedSubCategories = [];
 			} else {
 				this.data_tool = bibeval_json_en;
+				this.selectedComponents = [];
+				this.selectedCategories = [];
+				this.selectedSubCategories = [];
 			}
 		},
 
@@ -638,8 +645,6 @@ h1 {
 .navigator-title{
   font-size: 0.7rem;
   text-align: center;
-  margin-left:-100%;
-  margin-right:-100px;
   padding-top:1em;
 }
 .fullbox td {
@@ -845,6 +850,11 @@ button:focus {
   gap: 10px 10px;
 	max-width: 500px;
 	margin: 30px auto;
+}
+@media screen and (max-width: 360px) {
+	.bib-overview-bereiche {
+		grid-template-columns: 1fr;
+	}
 }
 .bib-komponentenauswahl {
 	margin: 55px auto;
