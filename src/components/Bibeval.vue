@@ -677,6 +677,22 @@ h1 {
   width: 3em;
   max-width: 2em;
 }
+@media screen and (max-width: 1000px) {
+  .legende{
+    flex-direction: column;
+  }
+  .legende-item{
+    padding: .5em 0em !important;
+    background-color: transparent;
+  }
+  .legende-description{
+    font-size: 1rem !important;
+  }
+  .btn-legende{
+    width:30%;
+  }
+
+}
 @media screen and (max-width: 600px) {
   .line-box {
     width:3em;
@@ -688,18 +704,11 @@ h1 {
   .navigator-title{
     font-size:0.6rem;
   }
-  .legende{
-    flex-direction: column;
-  }
-  .legende-item{
-    padding: .5em 0em !important;
-    background-color: transparent;
-  }
-  .legende-description{
-    font-size: 1rem !important;
-  }
   .eval-content{
     overflow:scroll;
+  }
+  .btn-legende{
+    width:100%;
   }
 }
 .linkbutton {
@@ -921,7 +930,6 @@ button:focus {
 }
 .legende{
   display:flex;
-  flex-direction: column;
 }
 .legende-item{
   flex:15%;
@@ -937,9 +945,6 @@ button:focus {
     font-size: 0.85rem;
     padding-left: 0.5em;
     padding-top: 0.2em;
-}
-.legende-spacer{
-  flex:20%;
 }
 .btn-legende{
   flex:10%;
