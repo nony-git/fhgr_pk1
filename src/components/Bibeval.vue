@@ -83,7 +83,7 @@
 								</div>
 								<!-- Back Button -->
 								<div class="bibeval-buttonContainer">
-									<button class="bibeval-button btn-back btn button-primary-bg" v-on:click="page--;scrollToTop()"></button>
+									<button class="bib-pagenav bibeval-button btn-back btn button-primary-bg" v-on:click="page--;scrollToTop()"></button>
 								</div>
 							</div>
 						</template>
@@ -173,8 +173,8 @@
             <!-- navigate between questionnaires -->
             <div class="bibeval-buttonContainer">
               <!-- next questionnaire -->
-              <button v-if="currentView != 0" class="btn btn-back" @click="back();scrollToTop()"></button>
-              <button v-if="currentView == 0" class="btn btn-back" @click="page -= 1; scrollToTop()"></button>
+              <button v-if="currentView != 0" class="btn bib-pagenav btn-back" @click="back();scrollToTop()"></button>
+              <button v-if="currentView == 0" class="btn bib-pagenav btn-back" @click="page -= 1; scrollToTop()"></button>
               <!-- previous questionnaire -->
               <button v-if="currentView < toViewArray.length-1" class="btn btn-forward" @click="next();scrollToTop()">{{ textcomponents.weiter }}</button>
               <button v-if="currentView == toViewArray.length-1"
@@ -231,7 +231,7 @@
             ></resultline>
             <!-- <div class="bottom-nav"> -->
             <div class="bibeval-buttonContainer">
-              <button class="btn btn-back" @click="page -= 1;scrollToTop()"></button>
+              <button class="btn bib-pagenav btn-back" @click="page -= 1;scrollToTop()"></button>
               <button class="btn btn-forward" @click="reload();">{{ textcomponents.restart }}</button>
             </div>
           </div>
@@ -770,6 +770,7 @@ h1 {
 }
 .btn-forward:hover {
   color: #000000;
+  background-color:transparent;
 }
 .btn-back::before {
   content: "";
@@ -852,6 +853,7 @@ button:focus {
 	color: #245b6f;
 	transition: 0.25s;
 	cursor: pointer;
+  background-color:transparent;
 }
 .bib-select-large:hover,
 .bib-select-small:hover {
