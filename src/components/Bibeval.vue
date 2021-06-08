@@ -58,33 +58,35 @@
                 {{ textcomponents.bibselect2 }}
               </button>
             </div>
-            <h1>{{ textcomponents.page1h12 }}</h1>
-            <div class="bib-overview-bereiche">
-                <!-- Loop over category level one. -->
-                <div v-for="(cat1, index) in categories" :key="index">
-                  <select-button 
-                    class="bib-select-large"
-                    v-model="selectedCategories" 
-                    :value="cat1[0]">
-                    {{ cat1[0] }} 
-                  </select-button>
-                  <!-- Loop over category level two. -->
-                  <template v-if="selectedCategories.includes(cat1[0])">
-                    <div v-for="(cat2, index2) in cat1[1]" :key="index2">
-                      <select-button 
-                        class="bib-select-small"
-                        v-model="selectedSubCategories" 
-                        :value="cat2">
-                        {{ cat2 }} 
-                      </select-button>
-                    </div>
-                  </template>
-                </div>
-                <!-- Back Button -->
-                <div class="bibeval-buttonContainer">
-                  <button class="bibeval-button btn-back btn button-primary-bg" v-on:click="page--;scrollToTop()"></button>
-                </div>
-            </div>
+						<template v-if="toolSelected">
+							<h1>{{ textcomponents.page1h12 }}</h1>
+							<div class="bib-overview-bereiche">
+								<!-- Loop over category level one. -->
+								<div v-for="(cat1, index) in categories" :key="index">
+									<select-button 
+										class="bib-select-large"
+										v-model="selectedCategories" 
+										:value="cat1[0]">
+										{{ cat1[0] }} 
+									</select-button>
+									<!-- Loop over category level two. -->
+									<template v-if="selectedCategories.includes(cat1[0])">
+										<div v-for="(cat2, index2) in cat1[1]" :key="index2">
+											<select-button 
+												class="bib-select-small"
+												v-model="selectedSubCategories" 
+												:value="cat2">
+												{{ cat2 }} 
+											</select-button>
+										</div>
+									</template>
+								</div>
+								<!-- Back Button -->
+								<div class="bibeval-buttonContainer">
+									<button class="bibeval-button btn-back btn button-primary-bg" v-on:click="page--;scrollToTop()"></button>
+								</div>
+							</div>
+						</template>
             <template v-if="selectedSubCategories.length > 0">
                 <div class="line"></div>
 								<!-- hide/show optional components -->
@@ -272,6 +274,7 @@ export default {
       selectedComponents: [],
       displayedComponents: [],
       mandatory: false,
+			toolSelected: false,
       data_tool: bibeval_json,
       bibliotheksseite: this.bibliotheksseite,
       website: this.website,
@@ -421,22 +424,22 @@ export default {
 
 		// loads bibeval as default data at start and resets selection on language switch
 		loadDefaultJson(lang) {
+			this.selectedComponents = [];
+			this.selectedCategories = [];
+			this.selectedSubCategories = [];
+			this.toolSelected = false;
+			this.wasUntersuchen = '';
 			if(lang == 'de') {
 				this.data_tool = bibeval_json;
-				this.selectedComponents = [];
-				this.selectedCategories = [];
-				this.selectedSubCategories = [];
 			} else {
 				this.data_tool = bibeval_json_en;
-				this.selectedComponents = [];
-				this.selectedCategories = [];
-				this.selectedSubCategories = [];
 			}
 		},
 
 		// loads JSON for webeval or bibeval based on selection
 		loadJson(tool){
 			this.wasUntersuchen = tool;
+			this.toolSelected = true;
 			if(this.language == 'de') {
 				if(this.wasUntersuchen == 'webeval') {
 					this.data_tool = webeval_json;
