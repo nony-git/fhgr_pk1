@@ -451,7 +451,7 @@
                                     "is_mandatory": false
                                 },
                                 {
-                                    "name": "Does the event calendar provide an RSS feed?",
+                                    "name": "Does the event calendar provide a RSS-feed?",
                                     "is_mandatory": false
                                 }
                             ]
