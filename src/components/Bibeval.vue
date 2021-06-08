@@ -652,6 +652,8 @@ h1 {
   font-size: 0.7rem;
   text-align: center;
   padding-top:1em;
+  margin-left: -100%;
+  margin-right: -100%;
 }
 .fullbox td {
   width: 100%;
@@ -675,6 +677,22 @@ h1 {
   width: 3em;
   max-width: 2em;
 }
+@media screen and (max-width: 1000px) {
+  .legende{
+    flex-direction: column;
+  }
+  .legende-item{
+    padding: .5em 0em !important;
+    background-color: transparent;
+  }
+  .legende-description{
+    font-size: 1rem !important;
+  }
+  .btn-legende{
+    width:30%;
+  }
+
+}
 @media screen and (max-width: 600px) {
   .line-box {
     width:3em;
@@ -685,6 +703,12 @@ h1 {
   }
   .navigator-title{
     font-size:0.6rem;
+  }
+  .eval-content{
+    overflow:scroll;
+  }
+  .btn-legende{
+    width:100%;
   }
 }
 .linkbutton {
@@ -736,6 +760,7 @@ h1 {
   width: 40px;
   height: 44px;
   margin-right:1em;
+  margin-top:0 !important;
 }
 .btn-forward {
   background: #817E65;
@@ -883,6 +908,7 @@ button:focus {
   margin: 1.5em auto 1.5em auto;
   text-align: left;
   border-collapse: collapse;
+  overflow:scroll;
 }
 .table-preview td{
   width:100px;
@@ -919,9 +945,6 @@ button:focus {
     font-size: 0.85rem;
     padding-left: 0.5em;
     padding-top: 0.2em;
-}
-.legende-spacer{
-  flex:20%;
 }
 .btn-legende{
   flex:10%;
