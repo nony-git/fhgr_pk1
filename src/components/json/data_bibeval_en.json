@@ -196,7 +196,7 @@
                                     "is_mandatory": true
                                 },
                                 {
-                                    "name": "Is it clear how a question can be submitted?",
+                                    "name": "Is it clear in which ways question can be submitted?",
                                     "is_mandatory": true
                                 },
                                 {
@@ -358,7 +358,7 @@
                                     "is_mandatory": true
                                 },
                                 {
-                                    "name": "Does the search engine permit queries with a different number of search terms?",
+                                    "name": "Does the search engine permit a query with a different number of search terms?",
                                     "is_mandatory": true
                                 },
                                 {
@@ -374,7 +374,7 @@
                                     "is_mandatory": true
                                 },
                                 {
-                                    "name": "Are different spellings for the operators permitted?",
+                                    "name": "Are different spellings for operators permitted?",
                                     "is_mandatory": true
                                 },
                                 {
